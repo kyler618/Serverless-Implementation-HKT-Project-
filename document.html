@@ -1,0 +1,73 @@
+<html>
+  <title>document</title>
+  <link rel="stylesheet" href="css/document.css">
+  <body>
+    <h1>Document</h1>
+    <div>
+      <div>
+        <button onclick="prefix_remove();objectOps.clear();listFolder();">Back</button>
+        <select id="select-folder" onchange="setSourcePath(this)">
+          <option disabled selected value> -- select an Enduser -- </option>
+        </select>
+        <div id="current-Path"></div>
+      </div>
+      <div>
+        <button onclick="uploadOps();">Upload</button>
+        <button onclick="objectOps.handle_createFolder(prompt('Enter Folder Name:'))">Create New Folder</button>
+        <div id="dropDown">
+          <button onclick="objectOps.dropDown()" class="dropbtn">Action</button>
+          <div id="dropDownList">
+            <button onclick="objectOps.cut(true);objectOps.clear();objectOps.remove();">Delete</button>
+            <br>
+            <button onclick="objectOps.cut(true)">Cut</button>
+            <br>
+            <button onclick="objectOps.cut(false)">Copy</button>
+            <br>
+            <button onclick="objectOps.paste()">Paste</button>
+            <br>
+            <button onclick="objectOps.rename(prompt('Enter New Name:'))">Rename</button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <input id="selectAllBoxes" type="checkbox" onclick="objectOps.pushAll()" /> Name
+        <div id="list-item"></div>
+      </div>
+      <div id="upload-Modal" class="w3-modal" data-backdrop="true">
+        <div class="w3-modal-content">
+          <div class="w3-container">
+            <span id="modalCancelButton"class="w3-button w3-display-topright" onclick="uploadOps.postOperation(true)"><i class="fa fa-window-close" aria-hidden="true"></i></span>
+            <div id="dropDiv" class>
+              <div id="upload-modal-initial">
+                <div>
+                  Drag & drop your files here!
+                  <p>
+                    or
+                  </div>
+                  <input type="file" id="uploadInput" name="uploadInput" fileread="" multiple="multiple" onchange="uploadOps.inputClicked()">
+                  <label id="uploadInputNoFilesSelected" for="uploadInput"></label>
+                </div>
+                <div id="upload-modal">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td colspan="4">
+                          <span for="uploadInput"/>
+                          <label for="uploadInput">Add more files</label>
+                        </td>
+                      </tr>
+                    </tbody>
+                    <tbody id="upload-tbody"/>
+                  </tbody>
+                </table>
+                <div>
+                  <button onclick="uploadOps.upload();">Upload</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

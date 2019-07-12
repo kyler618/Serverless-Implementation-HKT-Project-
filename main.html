@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"/>
+  </script>
+  <script src="js/vendor/jquery-3.1.0.js"/>
+  </script>
+  <script src="js/vendor/bootstrap.min.js">
+  </script>
+  <script src="js/vendor/aws-cognito-sdk.min.js">
+  </script>
+  <script src="js/vendor/amazon-cognito-identity.min.js">
+  </script>
+  <script src="js/config.js">
+  </script>
+  <script src="js/jwt-decode.min.js">
+  </script>
+  <script src="js/cognito-auth.js">
+  </script>
+  <script src="js/main.js">
+  </script>
+</head>
+<title>Main Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body>
+  <style>
+    h1, h2{
+    font-family: "Calibri";
+  }
+  </style>
+  <div class="w3-white w3-container">
+    <h1 class="w3-left w3-text-blue" >IOT Inventory Portal</h1>
+    <h2 id="current" class="w3-right w3-hide-small w3-wide toptext"></h2>
+  </div>
+  <div>
+    <div id ="menu-bar" class="w3-bar w3-border w3-dark-grey" style="width:100%;overflow:hidden;height:44px">
+      <a href="#" class="w3-bar-item w3-button">Job</a>
+      <a id="Customer_and_Software" href="#" class="w3-bar-item w3-button">Customer</a>
+      <a id="Hardware" href="#" class="w3-bar-item w3-button">Hardware</a>
+      <a id="client_Information" href="#" class="w3-bar-item w3-button">Client Information</a>
+      <a href="#" class="w3-bar-item w3-button">Support Line Information</a>
+      <a id="document" href="#" class="w3-bar-item w3-button">Documents</a>
+      <a href="#" class="w3-bar-item w3-button">Roles</a>
+      <a href="#" class="w3-bar-item w3-button">Users</a>
+    </div>
+    <div id="contentBody" class="w3-container"></div>
+  </div>
+</body>
+</html>

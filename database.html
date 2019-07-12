@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js">
+  </script>
+  <script src="js/database.js">
+  </script>
+</head>
+<title>database</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/css/bootstrap4-toggle.min.css">
+<body>
+  <style>
+    .editMode {
+      display:hidden;
+    }
+    .tableContainer {
+      display: block;
+      width: 100%;
+      max-height: 580px;
+      overflow: auto;
+    }
+    .w3-modal-content{
+      border-radius: 10px;
+      border-style: solid;
+      padding: 32px 32px;
+    }
+    .btn-primary{
+      height:40px;
+    }
+    table td{
+      padding-left: 8px;
+    }
+    table thead td {
+      position: sticky;
+      top: 0;
+      border-right: 2px solid #657bbd;
+      font-size: 18px;
+      line-height: 1.2;
+      background: #657bbd;
+      height: 60px;
+      color: white;
+    }
+    table tbody tr {
+      height: 50px;
+    }
+    tbody tr:hover {
+      background-color: #f5f5f5;
+      cursor: pointer;
+    }
+    tbody tr:nth-child(even) {
+      background-color: #f5f5f5;
+    }
+    table tbody tr:last-child {
+      border: 0;
+    }
+    table tbody td {
+      border-right: 2px solid #808080;
+    }
+    table td, table th {
+      text-align: left;
+    }
+    tbody tr input {
+      border-style: none;
+      font-size: 20px;
+    }
+    tbody tr:hover input{
+      color: #555555;
+      background-color: #f5f5f5;
+      cursor: pointer;
+    }
+    tbody tr:nth-child(even) input{
+      background-color: #f5f5f5;
+    }
+    tbody tr input:focus{
+      outline: none;
+    }
+    .w3-container button {
+      border: none;
+      background: none;
+      font-size: large;
+    }
+    .w3-container #addButton {
+      margin-inline-start: 5%;
+      margin-bottom: 1%;
+    }
+    .w3-container #deleteButton {
+      margin-inline-end: 15%;
+    }
+    .w3-container #modalCancelButton{
+      font-size: 20px;
+    }
+    #showAll{
+      font-size: 16px;
+    }
+    #pager{
+      width: fit-content;
+      vertical-align: bottom;
+    }
+    #itemForm .input-group-text{
+      display: inline-block;
+      border: none;
+      border-right: 1px solid #dadcde;
+      border-radius: unset;
+    }
+    #itemForm .form-control[readonly] {
+      background-color: #e9ecef;
+    }
+    #itemForm .form-control {
+      display: inline-block;
+      width: 60%;
+      height: unset;
+      border-radius: unset;
+      border: none;
+      background-color: #ffdcb980;
+    }
+
+  </style>
+  <p>
+  <div id="selector">
+    <div>
+      <span></span>
+      <select class="select custom-select">
+      </select>
+    </div>
+    <br>
+    <div>
+      <span></span>
+      <select class="select custom-select" disabled>
+      </select>
+    </div>
+    <br>
+    <div>
+      <span></span>
+      <select class="select custom-select" disabled>
+      </select>
+    </div>
+  </div>
+  <div>
+    Show
+    <select id="pagerSize" class="custom-select" style="width:unset">
+      <option value=10>10</option>
+      <option value=25>25</option>
+      <option value=50>50</option>
+    </select>
+    entries
+    <input id="showAll" type="checkbox" checked data-toggle="toggle" data-on="All" data-off="Portion" data-offstyle="primary">
+    <div id="pager" class="w3-bar w3-border w3-round" style="display:inline-block">
+      <a href="#" class="w3-bar-item"><i class="fa fa-step-backward" aria-hidden="true"></i></a>
+      <a href="#" class="w3-bar-item"><i class="fa fa-step-forward" aria-hidden="true"></i></a>
+    </div>
+    <label for="searchBar" class="w3-right">Search : <input type="text" id="searchBar" class="search form-control" style="display:inline-block;width:unset"></label>
+    <button id="cancelEdit" class="editMode w3-right" style="font-size:22px;"><i class="fa fa-undo" aria-hidden="true"></i></button>
+    <button id="confirmUpdate" class="editMode w3-right" style="font-size:22px;"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+    <button id="addItem" class="editMode w3-right" style="font-size:22px;"><i class="fa fa-plus" aria-hidden="true"></i></button>
+    <button id="updateTable" class="readMode w3-right" style="font-size:22px;"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+    <button id="editTable" class="readMode w3-right" style="font-size:22px;"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+  </div>
+  <div class="tableContainer">
+    <table>
+      <thead>
+        <tr/>
+      </thead>
+      <tbody/>
+    </table>
+  </div>
+  <div id="itemModel" class="w3-modal" data-backdrop="true">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span id="modalCancelButton"class="w3-button w3-display-topright"><i class="fa fa-window-close" aria-hidden="true"></i></span>
+        <button id="addButton" class="addItem w3-display-bottomleft" style="display:none"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        <button id="confirmButton" class="addItem" style="display:none"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+        <button id="cancelButton" style="display:none"><i class="fa fa-undo" aria-hidden="true"></i></button>
+        <button id="editButton" class="editItem" style="display:none;"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+        <button id="deleteButton" class="editItem w3-right" style="display:none"><i class="fa fa-trash" aria-hidden="true"></i></button>
+        <button id="maintainButton" class="editItem">Maintain</button>
+        <p><form id="itemForm" onsubmit="return false;"/>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

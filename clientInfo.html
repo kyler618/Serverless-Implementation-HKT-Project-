@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="js/clientInfo.js">
+  </script>
+</head>
+<title>client_Information</title>
+<body>
+  <style>
+    #selector{
+      margin-top: 10px;
+    }
+    #selector select{
+      margin-top: 10px;
+    }
+    #content div{
+      margin-top: 20px;
+    }
+    h2{
+      margin-left: 100px;
+    }
+  </style>
+  <div id="selector" onchange="select_EndUser_Change(event)">
+    <span>Enduser Name :</span>
+    <select class="select custom-select">
+      <option disabled selected value> -- select an Enduser -- </option>
+    </select>
+  </div>
+  <div id="content"></div>
+</body>
+</html>

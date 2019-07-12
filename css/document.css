@@ -1,0 +1,42 @@
+  #current-Path{
+    display:inline;
+  }
+  #dropDown{
+    position: relative;
+    display: inline-block;
+  }
+  #dropDown button{
+    cursor: pointer;
+  }
+  #dropDownList{
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    overflow: auto;
+    z-index: 1;
+  }
+  #dropDiv{
+    border: 1px solid #CCCCCC;
+    box-sizing: border-box;
+    color: #CCCCCC;
+    display: block;
+    font-family: Arial;
+    margin-top: 20px;
+    padding: 80px 20px;
+    text-align: center;
+    width: 100%;
+  }
+  #dropDiv:focus{
+    outline: -webkit-focus-ring-color auto 1px;
+  }
+  #dropDiv.over{
+    border-color: #DE7E7E;
+    color: #DE7E7E;
+    background-color: #FFEDED;
+  }
+  #upload-modal-initial{
+    display: block;
+  }
+  #upload-modal{
+    display : none;
+  }
