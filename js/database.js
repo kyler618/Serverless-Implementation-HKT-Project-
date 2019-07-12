@@ -92,7 +92,6 @@ if (!_config.api.invokeUrl) {
         else {
           console.log("data", data);
           let users = (data.Users).map(user=>user.Username);
-
         }
       });
     }
