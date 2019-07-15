@@ -14,7 +14,6 @@ switch(targetTable){
     selectField2 = 'Physical_Site_Address';
     selectField3 = 'Device_Type';
     break;
-    console.log('hello atom');
 }
 var poolData = {
     UserPoolId : _config.cognito.userPoolId, // your user pool id here
@@ -93,6 +92,7 @@ if (!_config.api.invokeUrl) {
         else {
           console.log("data", data);
           let users = (data.Users).map(user=>user.Username);
+          $('.editItem').hide();
         }
       });
     }
