@@ -14,11 +14,7 @@ switch(targetTable){
     selectField2 = 'Physical_Site_Address';
     selectField3 = 'Device_Type';
     break;
-<<<<<<< HEAD
     console.log('hello atom');
-=======
-    console.log('here');
->>>>>>> f708068744984b1c23ec36725d6fd319847cca58
 }
 var poolData = {
     UserPoolId : _config.cognito.userPoolId, // your user pool id here
