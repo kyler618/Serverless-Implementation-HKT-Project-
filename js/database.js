@@ -122,7 +122,7 @@ if (!_config.api.invokeUrl) {
             option.value = users;
             $('#itemModel-maintain-select').append(option);
           });
-          console.log('user done 9');
+          console.log('user done 1');
         }
       });
     }
