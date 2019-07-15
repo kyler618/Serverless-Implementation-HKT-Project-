@@ -128,7 +128,7 @@ if (!_config.api.invokeUrl) {
             }
           });
           $('#itemModel-maintain-confirm').click( () => {
-            console.log('confirm');
+            console.log($('#itemModel-maintain-select').val());
           });
           users.forEach(user => {
             const option = document.createElement('option');
