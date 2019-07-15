@@ -108,7 +108,7 @@ if (!_config.api.invokeUrl) {
             option.value = users;
             $('#itemModel-maintain-select').append(option);
           });
-          console.log('there');
+          console.log('user done');
         }
       });
     }
