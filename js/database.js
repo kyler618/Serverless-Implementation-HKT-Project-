@@ -100,7 +100,7 @@ if (!_config.api.invokeUrl) {
             $('.editItem').show();
             $('#itemModel-maintain-Container').hide();
             $('#itemModel-maintain-select').empty();
-            $('#cancelButton').hide().unbind();
+            $(this).hide().unbind();
           });
           $('#modalCancelButton').unbind().click( () => {
             hideModel();
@@ -114,7 +114,7 @@ if (!_config.api.invokeUrl) {
           const default_Option = document.createElement('option');
           default_Option.appendChild( document.createTextNode(' -- Select Field Engineer -- ') );
           default_Option.disabled = true;
-          default_Option.select = true;
+          default_Option.selected = true;
           $('#itemModel-maintain-select').append(default_Option);
           users.forEach(user => {
             const option = document.createElement('option');
