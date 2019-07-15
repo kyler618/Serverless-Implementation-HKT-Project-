@@ -100,6 +100,7 @@ if (!_config.api.invokeUrl) {
             $('.editItem').show();
             $(this).hide().unbind();
           });
+          console.log('there');
         }
       });
     }
