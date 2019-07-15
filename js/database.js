@@ -98,7 +98,7 @@ if (!_config.api.invokeUrl) {
           $('#cancelButton').show().click(() => {
             $('#itemForm').show();
             $('.editItem').show();
-            $('#itemModel-maintain-Container').hide();
+            $('#itemModel-maintain-Container').empty().hide();
             $('#cancelButton').hide().unbind();
 
           });
@@ -106,21 +106,22 @@ if (!_config.api.invokeUrl) {
             hideModel();
             $('#itemForm').show();
             $('.editItem').unbind();
-            $('#itemModel-maintain-Container').hide();
+            $('#itemModel-maintain-Container').empty().hide();
             $('#cancelButton').unbind().hide();
             $(this).unbind();
           });
           const default_Option = document.createElement('option');
           default_Option.appendChild( document.createTextNode(' -- Select Field Engineer -- ') );
           default_Option.disabled = true;
-          $('#itemModel-maintain-select').empty().append(default_Option);
+          default_Option.selected = true;
+          $('#itemModel-maintain-select').append(default_Option);
           users.forEach(user => {
             const option = document.createElement('option');
             option.appendChild( document.createTextNode(users) );
             option.value = users;
             $('#itemModel-maintain-select').append(option);
           });
-          console.log('user done 6');
+          console.log('user done 7');
         }
       });
     }
