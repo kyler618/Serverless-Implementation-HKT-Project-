@@ -94,10 +94,12 @@ if (!_config.api.invokeUrl) {
           let users = (data.Users).map(user=>user.Username);
           $('#itemForm').hide();
           $('.editItem').hide();
+          $('#itemModel-maintain-Container').show();
           $('#cancelButton').show();
           $('#cancelButton').click(function(){
             $('#itemForm').show();
             $('.editItem').show();
+            $('#itemModel-maintain-Container').hide();
             $(this).hide().unbind();
           });
           console.log('there');
