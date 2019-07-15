@@ -95,8 +95,7 @@ if (!_config.api.invokeUrl) {
           $('#itemForm').hide();
           $('.editItem').hide();
           $('#itemModel-maintain-Container').show();
-          $('#cancelButton').show();
-          $('#cancelButton').click(() => {
+          $('#cancelButton').show().click(() => {
             $('#itemForm').show();
             $('.editItem').show();
             $('#itemModel-maintain-Container').hide();
@@ -104,9 +103,10 @@ if (!_config.api.invokeUrl) {
           });
           $('#modalCancelButton').unbind().click( () => {
             hideModel();
-            $('#cancelButton').unbind().hide();
+            $('#itemForm').show();
             $('.editItem').unbind();
-            $('#itemModel-maintain-Container').unbind().hide();
+            $('#itemModel-maintain-Container').hide();
+            $('#cancelButton').unbind().hide();
             $(this).unbind();
           });
           users.forEach(user => {
@@ -115,7 +115,7 @@ if (!_config.api.invokeUrl) {
             option.value = users;
             $('#itemModel-maintain-select').append(option);
           });
-          console.log('user done 2');
+          console.log('user done 3');
         }
       });
     }
