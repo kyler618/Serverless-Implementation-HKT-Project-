@@ -91,6 +91,7 @@ if (!_config.api.invokeUrl) {
         }
         else {
           console.log("data", data);
+          $('itemModel-maintain-sensorID').html($('#itemForm').children()[1].value);
           let users = (data.Users).map(user=>user.Username);
           $('#itemForm').hide();
           $('.editItem').hide();
@@ -99,8 +100,9 @@ if (!_config.api.invokeUrl) {
             $('#itemForm').show();
             $('.editItem').show();
             $('#itemModel-maintain-Container').hide();
+            $('itemModel-maintain-sensorID').html("");
             $('#itemModel-maintain-select').empty();
-            $('#cancelButton').hide().unbind();
+            $('#cancelButton').unbind().hide();
           });
           $('#modalCancelButton').unbind().click( () => {
             hideModel();
@@ -108,6 +110,7 @@ if (!_config.api.invokeUrl) {
             $('.editItem').unbind();
             $('#itemModel-maintain-Container').hide();
             $('#cancelButton').unbind().hide();
+            $('itemModel-maintain-sensorID').html("");
             $('#itemModel-maintain-select').empty();
             $(this).unbind();
           });
