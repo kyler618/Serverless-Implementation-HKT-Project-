@@ -113,7 +113,7 @@ if (!_config.api.invokeUrl) {
           const default_Option = document.createElement('option');
           default_Option.appendChild( document.createTextNode(' -- Select Field Engineer -- ') );
           default_Option.disabled = true;
-          $('#itemModel-maintain-select').append(default_Option);
+          $('#itemModel-maintain-select').empty().append(default_Option);
           users.forEach(user => {
             const option = document.createElement('option');
             option.appendChild( document.createTextNode(users) );
