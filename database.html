@@ -118,9 +118,14 @@
     }
     #itemModel #itemModel-maintain-Container{
       display:none;
+      width:fit-content;
     }
     #itemModel #itemModel-maintain-Container #itemModel-maintain-select{
       width: auto;
+    }
+    #itemModel #itemModel-maintain-Container #itemModel-maintain-confirm{
+      /* display: none; */
+      float:right;
     }
   </style>
   <p>
@@ -182,7 +187,6 @@
         <button id="deleteButton" class="editItem w3-right" style="display:none"><i class="fa fa-trash" aria-hidden="true"></i></button>
         <button id="maintainButton">Maintain</button>
         <div id="itemModel-maintain-Container">
-          <div>
             <span>Sensor ID : </span>
             <span id="itemModel-maintain-sensorID"></span>
             <p>
@@ -191,7 +195,6 @@
             </select>
             <p>
             <button id="itemModel-maintain-confirm">Confirm</button>
-          </div>
         </div>
         <p><form id="itemForm" onsubmit="return false;"/>
       </div>
