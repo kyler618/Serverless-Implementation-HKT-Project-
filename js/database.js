@@ -101,6 +101,7 @@ if (!_config.api.invokeUrl) {
             $('#itemForm').show();
             $('.editItem').show();
             $('#itemModel-maintain-Container').hide();
+            $('#itemModel-maintain-confirm').hide();
             $('#itemModel-maintain-sensorID').html("");
             $('#itemModel-maintain-select').empty();
             $('#cancelButton').unbind().hide();
@@ -110,6 +111,7 @@ if (!_config.api.invokeUrl) {
             $('#itemForm').show();
             $('.editItem').unbind();
             $('#itemModel-maintain-Container').hide();
+            $('#itemModel-maintain-confirm').hide();
             $('#cancelButton').unbind().hide();
             $('#itemModel-maintain-sensorID').html("");
             $('#itemModel-maintain-select').empty();
@@ -121,7 +123,12 @@ if (!_config.api.invokeUrl) {
           default_Option.selected = true;
           $('#itemModel-maintain-select').append(default_Option);
           $('#itemModel-maintain-select').change( (event) => {
-            console.log(event.target.value);
+            if(event.target.value != null){
+              $('#itemModel-maintain-confirm').show();
+            }
+          });
+          $('#itemModel-maintain-confirm').click( () => {
+            console.log('confirm');
           });
           users.forEach(user => {
             const option = document.createElement('option');
