@@ -95,6 +95,11 @@ if (!_config.api.invokeUrl) {
           $('#itemForm').hide();
           $('.editItem').hide();
           $('#cancelButton').show();
+          $('#cancelButton').click(function(){
+            $('#itemForm').show();
+            $('.editItem').show();
+            $(this).hide().unbind();
+          });
         }
       });
     }
@@ -783,7 +788,7 @@ if (!_config.api.invokeUrl) {
         $('#cancelButton').click(function(){
           $('#itemForm').empty();
           handleRowClick(event);
-        })
+        });
         $('#modalCancelButton').click(function(){
           hideModel();
           $('.addItem').unbind();
