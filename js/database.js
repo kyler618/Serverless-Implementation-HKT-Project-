@@ -98,7 +98,7 @@ if (!_config.api.invokeUrl) {
           $('#cancelButton').show().click(() => {
             $('#itemForm').show();
             $('.editItem').show();
-            $('#itemModel-maintain-Container').empty().hide();
+            $('#itemModel-maintain-select').empty().hide();
             $('#cancelButton').hide().unbind();
 
           });
@@ -106,7 +106,7 @@ if (!_config.api.invokeUrl) {
             hideModel();
             $('#itemForm').show();
             $('.editItem').unbind();
-            $('#itemModel-maintain-Container').empty().hide();
+            $('#itemModel-maintain-select').empty().hide();
             $('#cancelButton').unbind().hide();
             $(this).unbind();
           });
@@ -121,7 +121,7 @@ if (!_config.api.invokeUrl) {
             option.value = users;
             $('#itemModel-maintain-select').append(option);
           });
-          console.log('user done 7');
+          console.log('user done 8');
         }
       });
     }
