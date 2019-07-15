@@ -97,13 +97,13 @@ if (!_config.api.invokeUrl) {
           $('#itemForm').hide();
           $('.editItem').hide();
           $('#itemModel-maintain-Container').show();
-          $('#cancelButton').show().click(() => {
+          $('#cancelButton').show().click( () => {
             $('#itemForm').show();
             $('.editItem').show();
             $('#itemModel-maintain-Container').hide();
             $('#itemModel-maintain-sensorID').html("");
             $('#itemModel-maintain-select').empty();
-            $('#cancelButton').unbind().hide();
+            $(this).unbind().hide();
           });
           $('#modalCancelButton').unbind().click( () => {
             hideModel();
@@ -120,6 +120,9 @@ if (!_config.api.invokeUrl) {
           default_Option.disabled = true;
           default_Option.selected = true;
           $('#itemModel-maintain-select').append(default_Option);
+          $('#itemModel-maintain-select').change( (event) => {
+            console.log(event);
+          });
           users.forEach(user => {
             const option = document.createElement('option');
             option.appendChild( document.createTextNode(users) );
@@ -825,27 +828,6 @@ if (!_config.api.invokeUrl) {
       });
       $('#maintainButton').click( () => {
         user_Identity.listUsers();
-        // $('#itemForm').hide();
-        // $('.editItem').hide();
-        // $('#itemModel-maintain-Container').show();
-        // $('#cancelButton').show().click(() => {
-        //   $('#itemForm').show();
-        //   $('.editItem').show();
-        //   $('#itemModel-maintain-Container').hide();
-        //   $('#itemModel-maintain-sensorID').html("");
-        //   // $('#itemModel-maintain-select').empty();
-        //   $('#cancelButton').unbind().hide();
-        // });
-        // $('#modalCancelButton').unbind().click( () => {
-        //   hideModel();
-        //   $('#itemForm').show();
-        //   $('.editItem').unbind();
-        //   $('#itemModel-maintain-Container').hide();
-        //   $('#cancelButton').unbind().hide();
-        //   $('#itemModel-maintain-sensorID').html("");
-        //   $('#itemModel-maintain-select').empty();
-        //   $(this).unbind();
-        // });
       });
       $('#modalCancelButton').click(function(){
         hideModel();
