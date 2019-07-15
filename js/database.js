@@ -94,27 +94,27 @@ if (!_config.api.invokeUrl) {
           console.log("data", data);
           $('#itemModel-maintain-sensorID').html($('#itemForm').children()[1].value);
           let users = (data.Users).map(user=>user.Username);
-          $('#itemForm').hide();
-          $('.editItem').hide();
-          $('#itemModel-maintain-Container').show();
-          $('#cancelButton').show().click(() => {
-            $('#itemForm').show();
-            $('.editItem').show();
-            $('#itemModel-maintain-Container').hide();
-            $('#itemModel-maintain-sensorID').html("");
-            $('#itemModel-maintain-select').empty();
-            $('#cancelButton').unbind().hide();
-          });
-          $('#modalCancelButton').unbind().click( () => {
-            hideModel();
-            $('#itemForm').show();
-            $('.editItem').unbind();
-            $('#itemModel-maintain-Container').hide();
-            $('#cancelButton').unbind().hide();
-            $('#itemModel-maintain-sensorID').html("");
-            $('#itemModel-maintain-select').empty();
-            $(this).unbind();
-          });
+          // $('#itemForm').hide();
+          // $('.editItem').hide();
+          // $('#itemModel-maintain-Container').show();
+          // $('#cancelButton').show().click(() => {
+          //   $('#itemForm').show();
+          //   $('.editItem').show();
+          //   $('#itemModel-maintain-Container').hide();
+          //   $('#itemModel-maintain-sensorID').html("");
+          //   $('#itemModel-maintain-select').empty();
+          //   $('#cancelButton').unbind().hide();
+          // });
+          // $('#modalCancelButton').unbind().click( () => {
+          //   hideModel();
+          //   $('#itemForm').show();
+          //   $('.editItem').unbind();
+          //   $('#itemModel-maintain-Container').hide();
+          //   $('#cancelButton').unbind().hide();
+          //   $('#itemModel-maintain-sensorID').html("");
+          //   $('#itemModel-maintain-select').empty();
+          //   $(this).unbind();
+          // });
           const default_Option = document.createElement('option');
           default_Option.appendChild( document.createTextNode(' -- Select Field Engineer -- ') );
           default_Option.disabled = true;
@@ -126,7 +126,7 @@ if (!_config.api.invokeUrl) {
             option.value = users;
             $('#itemModel-maintain-select').append(option);
           });
-          console.log('user done 2');
+          console.log('user done 3');
         }
       });
     }
@@ -825,6 +825,27 @@ if (!_config.api.invokeUrl) {
       });
       $('#maintainButton').click( () => {
         user_Identity.listUsers();
+        $('#itemForm').hide();
+        $('.editItem').hide();
+        $('#itemModel-maintain-Container').show();
+        $('#cancelButton').show().click(() => {
+          $('#itemForm').show();
+          $('.editItem').show();
+          $('#itemModel-maintain-Container').hide();
+          $('#itemModel-maintain-sensorID').html("");
+          // $('#itemModel-maintain-select').empty();
+          $('#cancelButton').unbind().hide();
+        });
+        $('#modalCancelButton').unbind().click( () => {
+          hideModel();
+          $('#itemForm').show();
+          $('.editItem').unbind();
+          $('#itemModel-maintain-Container').hide();
+          $('#cancelButton').unbind().hide();
+          $('#itemModel-maintain-sensorID').html("");
+          $('#itemModel-maintain-select').empty();
+          $(this).unbind();
+        });
       });
       $('#modalCancelButton').click(function(){
         hideModel();
