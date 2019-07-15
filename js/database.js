@@ -96,11 +96,18 @@ if (!_config.api.invokeUrl) {
           $('.editItem').hide();
           $('#itemModel-maintain-Container').show();
           $('#cancelButton').show();
-          $('#cancelButton').click(function(){
+          $('#cancelButton').click(() => {
             $('#itemForm').show();
             $('.editItem').show();
             $('#itemModel-maintain-Container').hide();
             $(this).hide().unbind();
+          });
+          $('#modalCancelButton').unbind().click( () => {
+            hideModel();
+            $('#cancelButton').unbind().hide();
+            $('.editItem').unbind();
+            $('#itemModel-maintain-Container').unbind().hide();
+            $(this).unbind();
           });
           users.forEach(user => {
             const option = document.createElement('option');
