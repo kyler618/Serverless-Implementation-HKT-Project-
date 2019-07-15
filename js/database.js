@@ -102,6 +102,12 @@ if (!_config.api.invokeUrl) {
             $('#itemModel-maintain-Container').hide();
             $(this).hide().unbind();
           });
+          users.forEach(user => {
+            const option = document.createElement('option');
+            option.appendChild( document.createTextNode(users) );
+            option.value = users;
+            $('#itemModel-maintain-select').append(option);
+          });
           console.log('there');
         }
       });
