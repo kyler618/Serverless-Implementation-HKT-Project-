@@ -116,7 +116,9 @@
     #itemModel #itemModel-maintain-Container{
       display:none;
     }
-
+    #itemModel #itemModel-maintain-Container #itemModel-maintain-select{
+      width: auto;
+    }
   </style>
   <p>
   <div id="selector">
@@ -178,11 +180,9 @@
         <button id="maintainButton" class="editItem">Maintain</button>
         <div id="itemModel-maintain-Container">
           <div>
-            <form onsubmit="return false;">
-              <span>Field Engineer : </span>
-              <select id="itemModel-maintain-select" class="select custom-select">
-              </select>
-            </form>
+            <span>Field Engineer : </span>
+            <select id="itemModel-maintain-select" class="select custom-select">
+            </select>
           </div>
         </div>
         <p><form id="itemForm" onsubmit="return false;"/>
