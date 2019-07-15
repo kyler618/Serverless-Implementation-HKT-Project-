@@ -13,6 +13,7 @@ switch(targetTable){
     selectField1 = 'Enduser_name';
     selectField2 = 'Physical_Site_Address';
     selectField3 = 'Device_Type';
+    $('#maintainButton').addClass('editItem');
     break;
 }
 var poolData = {
