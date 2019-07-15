@@ -94,6 +94,7 @@ if (!_config.api.invokeUrl) {
           let users = (data.Users).map(user=>user.Username);
           $('#itemForm').hide();
           $('.editItem').hide();
+          $('#cancelButton').show();
         }
       });
     }
