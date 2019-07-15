@@ -100,7 +100,7 @@ if (!_config.api.invokeUrl) {
             $('.editItem').show();
             $('#itemModel-maintain-Container').hide();
             $('#itemModel-maintain-select').empty();
-            $(this).hide().unbind();
+            $('#cancelButton').hide().unbind();
           });
           $('#modalCancelButton').unbind().click( () => {
             hideModel();
