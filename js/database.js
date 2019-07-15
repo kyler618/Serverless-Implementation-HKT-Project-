@@ -99,7 +99,7 @@ if (!_config.api.invokeUrl) {
             $('#itemForm').show();
             $('.editItem').show();
             $('#itemModel-maintain-Container').hide();
-            $(this).hide().unbind();
+            $('#cancelButton').hide().unbind();
           });
           $('#modalCancelButton').unbind().click( () => {
             hideModel();
@@ -115,7 +115,7 @@ if (!_config.api.invokeUrl) {
             option.value = users;
             $('#itemModel-maintain-select').append(option);
           });
-          console.log('user done 3');
+          console.log('user done 4');
         }
       });
     }
