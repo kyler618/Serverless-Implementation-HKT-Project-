@@ -103,7 +103,7 @@ if (!_config.api.invokeUrl) {
             $('#itemModel-maintain-Container').hide();
             $('#itemModel-maintain-sensorID').html("");
             $('#itemModel-maintain-select').empty();
-            $(this).unbind().hide();
+            $('#cancelButton').unbind().hide();
           });
           $('#modalCancelButton').unbind().click( () => {
             hideModel();
@@ -121,7 +121,7 @@ if (!_config.api.invokeUrl) {
           default_Option.selected = true;
           $('#itemModel-maintain-select').append(default_Option);
           $('#itemModel-maintain-select').change( (event) => {
-            console.log(event);
+            console.log(event.target.value);
           });
           users.forEach(user => {
             const option = document.createElement('option');
