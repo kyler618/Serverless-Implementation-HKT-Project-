@@ -249,6 +249,7 @@ if (!_config.api.invokeUrl) {
           }
         }
         const itemForm = document.getElementById('itemForm');
+        console.log(constantAttributesIndex);
         for( let x = 0; x < constantAttributesIndex.length ; x++)
         {
           let fieldName = attributes[constantAttributesIndex[x]];
