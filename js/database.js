@@ -174,7 +174,7 @@ if (!_config.api.invokeUrl) {
           if(x==0)
           {
             // delete selector[3].searchKey;
-            _searchItem = '';
+            _searchItem = null;
             // $(selector[3].bar).val('');
           }
           $(selector[x+1].bar).children().first().html('All');
@@ -207,7 +207,7 @@ if (!_config.api.invokeUrl) {
       if ($(this).val() == "")
       {
         // delete selector[3].searchKey;
-        _searchItem = "";
+        _searchItem = null;
       }
       else
       {
