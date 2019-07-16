@@ -5,9 +5,9 @@ var selectField1, selectField2, selectField3;
 var targetTable = $('#current').val();
 switch(targetTable){
   case "Customer_and_Software":
-    selectField1 = 'Tenant_ID_number';
-    selectField2 = 'Billed_customer_name';
-    selectField3 = 'Order_no_or_identifier';
+    selectField1 = 'Billed_customer_name';
+    selectField2 = 'Billed_Customer_Contact';
+    selectField3 = 'Enduser_address_for_reference';
     break;
   case "Hardware":
     selectField1 = 'Enduser_name';
