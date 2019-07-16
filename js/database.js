@@ -200,10 +200,10 @@ if (!_config.api.invokeUrl) {
       selector.push({field:selectField[x], bar:selectBar[x]});
     }
     // selector.push({bar:input});
-
+    console.log('version 1');
     input.addEventListener("keyup", function(event) {
       event.preventDefault();
-      console.log(_searchItem);
+      // console.log(_searchItem);
       if ($(this).val() == "")
       {
         // delete selector[3].searchKey;
