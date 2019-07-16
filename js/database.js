@@ -213,6 +213,7 @@ if (!_config.api.invokeUrl) {
         // selector[3].searchKey = $(this).val();
         _searchItem = $(this).val();
       }
+      console.log(_searchItem);
       $(selector[0].bar).prop("selectedIndex", 0).change();
     });
 
