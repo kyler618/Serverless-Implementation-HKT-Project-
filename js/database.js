@@ -173,9 +173,7 @@ if (!_config.api.invokeUrl) {
         {
           if(x==0)
           {
-            // delete selector[3].searchKey;
             _searchItem = null;
-            // $(selector[3].bar).val('');
           }
           $(selector[x+1].bar).children().first().html('All');
           $(selector[x+1].bar).prop('disabled', false).change( event => {selectorChange(event, x+1)});
@@ -200,18 +198,14 @@ if (!_config.api.invokeUrl) {
       $(selectBarText[x]).html(name+" :");
       selector.push({field:selectField[x], bar:selectBar[x]});
     }
-    // selector.push({bar:input});
     input.addEventListener("keyup", function(event) {
       event.preventDefault();
-      // console.log(_searchItem);
       if ($(this).val() == "")
       {
-        // delete selector[3].searchKey;
         _searchItem = null;
       }
       else
       {
-        // selector[3].searchKey = $(this).val();
         _searchItem = $(this).val();
       }
       $(selector[0].bar).prop("selectedIndex", 0).change();
@@ -476,7 +470,6 @@ if (!_config.api.invokeUrl) {
         $("." + attributes[x]).show();
       }
     }
-    // if(selector[0].searchKey!==undefined || selector[3].searchKey!==undefined)
     if(selector[0].searchKey!==undefined || _searchItem!==null)
     {
       searchItem();
@@ -490,7 +483,6 @@ if (!_config.api.invokeUrl) {
     {
       const $row = $("#" + storedItem[record][attributes[0]]);
       $row.hide();
-      // if(searchKey[3]!==undefined)
       if(_searchItem!==null)
       {
         for(let field in storedItem[record])
@@ -509,7 +501,6 @@ if (!_config.api.invokeUrl) {
       else
       {
         let show = true;
-        // for(let x=0; x<searchKey.length-1;x++)
         for(let x=0; x<searchKey.length;x++)
         {
           if(searchKey[x] === undefined) continue;
