@@ -200,7 +200,7 @@ if (!_config.api.invokeUrl) {
       selector.push({field:selectField[x], bar:selectBar[x]});
     }
     // selector.push({bar:input});
-    console.log('version 1');
+    console.log('version 2');
     input.addEventListener("keyup", function(event) {
       event.preventDefault();
       // console.log(_searchItem);
@@ -214,7 +214,6 @@ if (!_config.api.invokeUrl) {
         // selector[3].searchKey = $(this).val();
         _searchItem = $(this).val();
       }
-      console.log(_searchItem);
       $(selector[0].bar).prop("selectedIndex", 0).change();
     });
 
@@ -486,6 +485,7 @@ if (!_config.api.invokeUrl) {
 
   function searchItem(){
     const searchKey = selector.map(({searchKey}) => searchKey);
+    console.log(searchKey);
     for(let record in storedItem)
     {
       const $row = $("#" + storedItem[record][attributes[0]]);
