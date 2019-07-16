@@ -172,8 +172,9 @@ if (!_config.api.invokeUrl) {
         {
           if(x==0)
           {
-            delete selector[3].searchKey;
-            $(selector[3].bar).val('');
+            // delete selector[3].searchKey;
+            _searchItem = '';
+            // $(selector[3].bar).val('');
           }
           $(selector[x+1].bar).children().first().html('All');
           $(selector[x+1].bar).prop('disabled', false).change( event => {selectorChange(event, x+1)});
@@ -204,11 +205,13 @@ if (!_config.api.invokeUrl) {
       event.preventDefault();
       if ($(this).val() == "")
       {
-        delete selector[3].searchKey;
+        // delete selector[3].searchKey;
+        _searchItem = null;
       }
       else
       {
-        selector[3].searchKey = $(this).val();
+        // selector[3].searchKey = $(this).val();
+        _searchItem = $(this).val();
       }
       $(selector[0].bar).prop("selectedIndex", 0).change();
     });
@@ -472,7 +475,8 @@ if (!_config.api.invokeUrl) {
         $("." + attributes[x]).show();
       }
     }
-    if(selector[0].searchKey!==undefined || selector[3].searchKey!==undefined)
+    // if(selector[0].searchKey!==undefined || selector[3].searchKey!==undefined)
+    if(selector[0].searchKey!==undefined || _searchItem!==null)
     {
       searchItem();
     }
