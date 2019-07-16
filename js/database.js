@@ -207,13 +207,14 @@ if (!_config.api.invokeUrl) {
       if ($(this).val() == "")
       {
         // delete selector[3].searchKey;
-        _searchItem = null;
+        _searchItem = "";
       }
       else
       {
         // selector[3].searchKey = $(this).val();
         _searchItem = $(this).val();
       }
+      console.log(_searchItem);
       $(selector[0].bar).prop("selectedIndex", 0).change();
     });
 
