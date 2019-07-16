@@ -490,12 +490,13 @@ if (!_config.api.invokeUrl) {
     {
       const $row = $("#" + storedItem[record][attributes[0]]);
       $row.hide();
-      if(searchKey[3]!==undefined)
+      // if(searchKey[3]!==undefined)
+      if(_searchItem!==null)
       {
         for(let field in storedItem[record])
         {
           const target = storedItem[record][field].toString().toUpperCase();
-          if(target.includes(searchKey[3].toString().toUpperCase()))
+          if(target.includes(_searchItem.toString().toUpperCase()))
           {
             $row.show();
           }
