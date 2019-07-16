@@ -478,7 +478,6 @@ if (!_config.api.invokeUrl) {
 
   function searchItem(){
     const searchKey = selector.map(({searchKey}) => searchKey);
-    console.log(searchKey);
     for(let record in storedItem)
     {
       const $row = $("#" + storedItem[record][attributes[0]]);
