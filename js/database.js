@@ -509,7 +509,8 @@ if (!_config.api.invokeUrl) {
       else
       {
         let show = true;
-        for(let x=0; x<searchKey.length-1;x++)
+        // for(let x=0; x<searchKey.length-1;x++)
+        for(let x=0; x<searchKey.length;x++)
         {
           if(searchKey[x] === undefined) continue;
           else
