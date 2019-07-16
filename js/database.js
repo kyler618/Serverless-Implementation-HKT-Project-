@@ -203,6 +203,7 @@ if (!_config.api.invokeUrl) {
 
     input.addEventListener("keyup", function(event) {
       event.preventDefault();
+      console.log(_searchItem);
       if ($(this).val() == "")
       {
         // delete selector[3].searchKey;
@@ -213,7 +214,6 @@ if (!_config.api.invokeUrl) {
         // selector[3].searchKey = $(this).val();
         _searchItem = $(this).val();
       }
-      console.log(_searchItem);
       $(selector[0].bar).prop("selectedIndex", 0).change();
     });
 
