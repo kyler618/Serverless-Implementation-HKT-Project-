@@ -497,7 +497,7 @@ if (!_config.api.invokeUrl) {
         {
           // const target = storedItem[record][field].toString().toUpperCase();
           const target = storedItem[record][field].toString();
-          if(target.includes(_searchItem.toString())
+          if(target.includes(_searchItem.toString()))
           // if(target.includes(_searchItem.toString().toUpperCase()))
           {
             $row.show();
