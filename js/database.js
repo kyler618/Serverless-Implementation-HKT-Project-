@@ -44,6 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
+  console.log('version 3');
 
   // on start
 
@@ -200,7 +201,6 @@ if (!_config.api.invokeUrl) {
       selector.push({field:selectField[x], bar:selectBar[x]});
     }
     // selector.push({bar:input});
-    console.log('version 2');
     input.addEventListener("keyup", function(event) {
       event.preventDefault();
       // console.log(_searchItem);
