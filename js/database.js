@@ -14,6 +14,7 @@ switch(targetTable){
     selectField2 = 'Physical_Site_Address';
     selectField3 = 'Device_Type';
     $('#maintainButton').addClass('editItem');
+    $('#selector').show();
     break;
 }
 var poolData = {
@@ -954,7 +955,7 @@ if (!_config.api.invokeUrl) {
 
           for(let field in storedItem[record])
           {
-            if(field==selectField1 && !options.includes(storedItem[record][field]))
+            if( targetTable=="Hardware" && field==selectField1 && !options.includes(storedItem[record][field]))
             {
               createOption(storedItem[record][field], 1);
             }
