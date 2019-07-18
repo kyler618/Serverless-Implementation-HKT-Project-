@@ -824,7 +824,8 @@ if (!_config.api.invokeUrl) {
             {
               data.delete = (deleteAttr.length!=0)? deleteAttr:null;
             }
-            request(data, handleUpdateResponse);
+            console.log('replace', data);
+            // request(data, handleUpdateResponse);
           }
           else
           {
@@ -832,7 +833,8 @@ if (!_config.api.invokeUrl) {
             {
               data.input = null;
               data.delete = deleteAttr;
-              request(data, handleUpdateResponse);
+              console.log('update', data);
+              // request(data, handleUpdateResponse);
             }
             else
             {
