@@ -44,7 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 1');
+  console.log('version 2');
 
   // on start
 
@@ -965,19 +965,33 @@ if (!_config.api.invokeUrl) {
             cell.classList.add(storedItem[record][attributes[0]]);
             bodyCell.push(cell);
           }
+          // storedItem[record].forEach( field => {
+          //   console.log(field, attributes[0]);
+          //   if(field!=attributes[0]){
+          //     if( targetTable=="Hardware" && field==selectField1 && !options.includes(storedItem[record][field])){
+          //       createOption(storedItem[record][field], 1);
+          //     }
+          //     const input = createFormInput("table_Input", storedItem[record][field],true);
+          //     input.classList.add(field);
+          //     input.classList.add(storedItem[record][attributes[0]]);
+          //     const index = $.inArray(field,attributes);
+          //     bodyCell[index].appendChild(input);
+          //   }
+          // });
 
           for(let field in storedItem[record])
           {
             console.log(field, attributes[0]);
-            if(field==attributes[0]) continue;
-            if( targetTable=="Hardware" && field==selectField1 && !options.includes(storedItem[record][field])){
-              createOption(storedItem[record][field], 1);
+            if(field!=attributes[0]){
+              if( targetTable=="Hardware" && field==selectField1 && !options.includes(storedItem[record][field])){
+                createOption(storedItem[record][field], 1);
+              }
+              const input = createFormInput("table_Input", storedItem[record][field],true);
+              input.classList.add(field);
+              input.classList.add(storedItem[record][attributes[0]]);
+              const index = $.inArray(field,attributes);
+              bodyCell[index].appendChild(input);          
             }
-            const input = createFormInput("table_Input", storedItem[record][field],true);
-            input.classList.add(field);
-            input.classList.add(storedItem[record][attributes[0]]);
-            const index = $.inArray(field,attributes);
-            bodyCell[index].appendChild(input);
           }
 
       }
