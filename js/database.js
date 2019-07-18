@@ -44,7 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 1');
+  console.log('version 2');
 
   // on start
 
@@ -796,6 +796,7 @@ if (!_config.api.invokeUrl) {
           }
           let changed, replace = false;
           const index = storedItem.map(x=>x[attributes[0]]).indexOf(pkey);
+          console.log('index', index);
           let deleteAttr = Object.keys(storedItem[index]);
 
           const data = {operation: "singleUpdate", pk: pkey};
