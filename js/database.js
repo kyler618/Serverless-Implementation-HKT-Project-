@@ -798,7 +798,8 @@ if (!_config.api.invokeUrl) {
             return;
           }
           let changed, replace = false;
-          const index = storedItem.map(x=>x[attributes[0]]).indexOf(pkey);
+          // const index = storedItem.map(x=>x[attributes[0]]).indexOf(pkey);
+          const index = storedItem.map(x=>x[attributes[0]]).indexOf(pk);
           console.log('pkey', pkey);
           console.log('index', index);
           let deleteAttr = Object.keys(storedItem[index]);
