@@ -934,9 +934,6 @@ if (!_config.api.invokeUrl) {
     }
     function insertHeaderRow(){
       const headerRow = document.querySelector("table thead tr");
-      // const headerCell = headerRow.insertCell();
-      // headerCell.innerHTML = attributes[0];
-      // headerCell.classList.add(attributes[0]);
       const attrs = storedItem.map(item => Object.keys(item));
       for(let x=0;x<attrs.length;x++)
       {
@@ -959,7 +956,7 @@ if (!_config.api.invokeUrl) {
       for (let record in storedItem) {
         if (storedItem.hasOwnProperty(record)) {
           const bodyRow = tableBody.insertRow();
-          // bodyRow.id = storedItem[record][attributes[0]];
+          bodyRow.id = storedItem[record][attributes[0]];
           const bodyCell = [];
           const options = Array.from(selector[0].bar.children).map(({value}) => value);
           for(let x = 0; x<attributes.length;x++)
