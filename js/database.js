@@ -240,6 +240,7 @@ if (!_config.api.invokeUrl) {
 
       $('#addItem').click( () => {
         function handlePutResponse(results){
+          console.log(results);
           if(results.status=="ok"){
             hideModel();
             handleScanResponse(results);
@@ -272,29 +273,6 @@ if (!_config.api.invokeUrl) {
           }
           itemForm.appendChild(document.createElement("P"));
         });
-
-        // for( let x = 0; x < selectFields.length ; x++)
-        // {
-        //   let fieldName = selectFields[x];
-        //   let field = createFormInput("field", fieldName, true);
-        //   let value = createFormInput("value", "", false);
-        //   field.classList.add('input-group-text');
-        //   value.classList.add('form-control');
-        //   itemForm.appendChild(field);
-        //   itemForm.appendChild(value);
-        //   if(x!=0)
-        //   {
-        //     let button = createRemoveButton();
-        //     button.onclick = event => {
-        //       event.preventDefault();
-        //       field.parentNode.removeChild(field);
-        //       value.parentNode.removeChild(value);
-        //       button.parentNode.removeChild(button);
-        //     };
-        //     itemForm.appendChild(button);
-        //   }
-        //   itemForm.appendChild(document.createElement("P"));
-        // }
 
         $('.addItem').show().unbind();
         $('#itemModel').show();
