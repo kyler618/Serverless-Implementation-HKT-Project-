@@ -44,7 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 3');
+  console.log('version 5');
 
   // on start
 
@@ -954,7 +954,6 @@ if (!_config.api.invokeUrl) {
     function insertBodyRow(){
       const tableBody = document.querySelector("table tbody");
       for (let record in storedItem) {
-        if (storedItem.hasOwnProperty(record)) {
           const bodyRow = tableBody.insertRow();
           bodyRow.id = storedItem[record][attributes[0]];
           const bodyCell = [];
@@ -969,9 +968,9 @@ if (!_config.api.invokeUrl) {
 
           for(let field in storedItem[record])
           {
-            if(field=='id') continue;
-            if( targetTable=="Hardware" && field==selectField1 && !options.includes(storedItem[record][field]))
-            {
+            console.log(field);
+            if(field==attributes[0]) continue;
+            if( targetTable=="Hardware" && field==selectField1 && !options.includes(storedItem[record][field])){
               createOption(storedItem[record][field], 1);
             }
             const input = createFormInput("table_Input", storedItem[record][field],true);
@@ -980,7 +979,7 @@ if (!_config.api.invokeUrl) {
             const index = $.inArray(field,attributes);
             bodyCell[index].appendChild(input);
           }
-        }
+
       }
     }
     // console.log('Response received from API: ', results);
