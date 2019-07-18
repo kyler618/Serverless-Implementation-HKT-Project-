@@ -44,7 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 8');
+  console.log('version 9');
 
   // on start
 
@@ -875,6 +875,7 @@ if (!_config.api.invokeUrl) {
     const item = storedItem[index];
     for( let x=Object.keys(item).length-1 ; x>=0 ; x-- ){
       const fieldName = Object.getOwnPropertyNames(item)[x];
+      if(fieldName == attributes[0]) continue;
       const field = createFormInput('form_Input', fieldName, true);
       const value = createFormInput('form_Input', Object.values(item)[x], true);
       field.classList.add('input-group-text');
