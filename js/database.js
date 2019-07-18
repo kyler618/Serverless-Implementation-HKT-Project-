@@ -44,7 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 1');
+  console.log('version 2');
 
   // on start
 
@@ -958,7 +958,7 @@ if (!_config.api.invokeUrl) {
       const tableBody = document.querySelector("table tbody");
       for (let record in storedItem) {
         if (storedItem.hasOwnProperty(record)) {
-          // const bodyRow = tableBody.insertRow();
+          const bodyRow = tableBody.insertRow();
           // bodyRow.id = storedItem[record][attributes[0]];
           const bodyCell = [];
           const options = Array.from(selector[0].bar.children).map(({value}) => value);
