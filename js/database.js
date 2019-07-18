@@ -802,7 +802,8 @@ if (!_config.api.invokeUrl) {
           const index = storedItem.map(x=>x[attributes[0]]).indexOf(pk);
           console.log('pkey', pkey);
           console.log('index', index);
-          let deleteAttr = Object.keys(storedItem[index]);
+          // let deleteAttr = Object.keys(storedItem[index]);
+          let deleteAttr;
 
           const data = {operation: "singleUpdate", pk: pkey};
           for(let x in inputs)
