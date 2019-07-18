@@ -517,6 +517,7 @@ if (!_config.api.invokeUrl) {
           let _show = false;
           for(let field in storedItem[record])
           {
+            if(field=='inventoryID')continue;
             const target = storedItem[record][field].toString().toUpperCase();
             if(show && target.includes(_searchItem.toString().toUpperCase()))
             {
