@@ -939,7 +939,7 @@ if (!_config.api.invokeUrl) {
       {
         for(let y=0;y<attrs[x].length;y++)
         {
-          if(!attributes.includes(attrs[x][y]) && attrs[x][y] != "id")
+          if(!attributes.includes(attrs[x][y]))
           {
             attributes.push(attrs[x][y]);
             const headerCell = headerRow.insertCell();
