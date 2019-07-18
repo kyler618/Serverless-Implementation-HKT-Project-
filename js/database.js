@@ -44,7 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 8');
+  console.log('version 9');
 
   // on start
 
@@ -295,7 +295,7 @@ if (!_config.api.invokeUrl) {
         //   }
         //   itemForm.appendChild(document.createElement("P"));
         // }
-        
+
         $('.addItem').show().unbind();
         $('#itemModel').show();
         $('#addButton').click( () => {
