@@ -493,12 +493,14 @@ if (!_config.api.invokeUrl) {
       //     }
       //   }
       // }
-      if(searchKey[0]===undefined)
-      {
-        $row.show();
-      }
-      else
-      {
+
+      // if(searchKey[0]===undefined)
+      // {
+      //   $row.show();
+      // }
+      // else
+      // {
+      
         let show = true;
         for(let x=0; x<searchKey.length;x++)
         {
@@ -537,7 +539,7 @@ if (!_config.api.invokeUrl) {
             }
           }
         }
-      }
+      // }
     }
     if(!$("#showAll").prop("checked") ){
       hideColumn();
