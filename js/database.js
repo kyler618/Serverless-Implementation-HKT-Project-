@@ -953,48 +953,55 @@ if (!_config.api.invokeUrl) {
     }
     function insertBodyRow(){
       const tableBody = document.querySelector("table tbody");
-      for (let record in storedItem) {
-          const bodyRow = tableBody.insertRow();
-          bodyRow.id = storedItem[record][attributes[0]];
-          const bodyCell = [];
-          const options = Array.from(selector[0].bar.children).map(({value}) => value);
-          for(let x = 1; x<attributes.length;x++)
-          {
-            const cell = bodyRow.insertCell();
-            cell.classList.add(attributes[x]);
-            cell.classList.add(storedItem[record][attributes[0]]);
-            bodyCell.push(cell);
-          }
-          // storedItem[record].forEach( field => {
-          //   console.log(field, attributes[0]);
-          //   if(field!=attributes[0]){
-          //     if( targetTable=="Hardware" && field==selectField1 && !options.includes(storedItem[record][field])){
-          //       createOption(storedItem[record][field], 1);
-          //     }
-          //     const input = createFormInput("table_Input", storedItem[record][field],true);
-          //     input.classList.add(field);
-          //     input.classList.add(storedItem[record][attributes[0]]);
-          //     const index = $.inArray(field,attributes);
-          //     bodyCell[index].appendChild(input);
-          //   }
-          // });
-
-          for(let field in storedItem[record])
-          {
-            console.log(field, attributes[0]);
-            if(field!=attributes[0]){
-              if( targetTable=="Hardware" && field==selectField1 && !options.includes(storedItem[record][field])){
-                createOption(storedItem[record][field], 1);
-              }
-              const input = createFormInput("table_Input", storedItem[record][field],true);
-              input.classList.add(field);
-              input.classList.add(storedItem[record][attributes[0]]);
-              const index = $.inArray(field,attributes);
-              bodyCell[index-1].appendChild(input);          
+      storedItem.forEach( item => {
+        const bodyRow = tableBody.insertRow();
+        bodyRow.id = item[attributes[0]];
+        const bodyCell = [];
+        const options = Array.from(selector[0].bar.children).map(({value}) => value);
+        for(let x = 1; x<attributes.length;x++){
+          const cell = bodyRow.insertCell();
+          cell.classList.add(attributes[x]);
+          cell.classList.add(item[attributes[0]]);
+          bodyCell.push(cell);
+        }
+        for(let field in item){
+          if(field!=attributes[0]){
+            if( targetTable=="Hardware" && field==selectField1 && !options.includes(item[field])){
+              createOption(item[field], 1);
             }
+            const input = createFormInput("table_Input", item[field],true);
+            input.classList.add(field);
+            input.classList.add(item[attributes[0]]);
+            const index = $.inArray(field,attributes);
+            bodyCell[index-1].appendChild(input);  // since there is no id field -> index - 1
           }
-
-      }
+        }
+      });
+      // for (let record in storedItem) {
+      //   const bodyRow = tableBody.insertRow();
+      //   bodyRow.id = item[attributes[0]];
+      //   const bodyCell = [];
+      //   const options = Array.from(selector[0].bar.children).map(({value}) => value);
+      //   for(let x = 1; x<attributes.length;x++){
+      //     const cell = bodyRow.insertCell();
+      //     cell.classList.add(attributes[x]);
+      //     cell.classList.add(storedItem[record][attributes[0]]);
+      //     bodyCell.push(cell);
+      //   }
+      //   for(let field in storedItem[record]){
+      //     if(field!=attributes[0]){
+      //       if( targetTable=="Hardware" && field==selectField1 && !options.includes(storedItem[record][field])){
+      //         createOption(storedItem[record][field], 1);
+      //       }
+      //       const input = createFormInput("table_Input", storedItem[record][field],true);
+      //       input.classList.add(field);
+      //       input.classList.add(storedItem[record][attributes[0]]);
+      //       const index = $.inArray(field,attributes);
+      //       bodyCell[index-1].appendChild(input);  // since there is no id field -> index - 1
+      //     }
+      //   }
+      //
+      // }
     }
     // console.log('Response received from API: ', results);
     clearTable();
