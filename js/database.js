@@ -44,7 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 1');
+  console.log('version 2');
 
   // on start
 
@@ -512,12 +512,14 @@ if (!_config.api.invokeUrl) {
           }
         }
         if(_searchItem!==null){
+          show = false;
           for(let field in storedItem[record])
           {
             const target = storedItem[record][field].toString().toUpperCase();
-            if(!target.includes(_searchItem.toString().toUpperCase()))
+            if(target.includes(_searchItem.toString().toUpperCase()))
             {
-              show = false;
+              show = true;
+              break;
             }
           }
         }
