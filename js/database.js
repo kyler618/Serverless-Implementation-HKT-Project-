@@ -44,7 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 5');
+  console.log('version 6');
 
   // on start
 
@@ -968,7 +968,7 @@ if (!_config.api.invokeUrl) {
 
           for(let field in storedItem[record])
           {
-            console.log(field);
+            console.log(field, attributes[0]);
             if(field==attributes[0]) continue;
             if( targetTable=="Hardware" && field==selectField1 && !options.includes(storedItem[record][field])){
               createOption(storedItem[record][field], 1);
