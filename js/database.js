@@ -252,17 +252,15 @@ if (!_config.api.invokeUrl) {
           }
         }
         const itemForm = document.getElementById('itemForm');
-        for( let x = 0; x < constantAttributesIndex.length ; x++)
-        {
-          let fieldName = attributes[constantAttributesIndex[x]];
-          let field = createFormInput("field", fieldName, true);
+        const selectFields = [selectField1, selectField2, selectField3];
+        selectFields.forEach( selectField => {
+          let field = createFormInput("field", selectField, true);
           let value = createFormInput("value", "", false);
           field.classList.add('input-group-text');
           value.classList.add('form-control');
           itemForm.appendChild(field);
           itemForm.appendChild(value);
-          if(x!=0)
-          {
+          if(selectField != selectField1){
             let button = createRemoveButton();
             button.onclick = event => {
               event.preventDefault();
@@ -273,7 +271,31 @@ if (!_config.api.invokeUrl) {
             itemForm.appendChild(button);
           }
           itemForm.appendChild(document.createElement("P"));
-        }
+        });
+
+        // for( let x = 0; x < selectFields.length ; x++)
+        // {
+        //   let fieldName = selectFields[x];
+        //   let field = createFormInput("field", fieldName, true);
+        //   let value = createFormInput("value", "", false);
+        //   field.classList.add('input-group-text');
+        //   value.classList.add('form-control');
+        //   itemForm.appendChild(field);
+        //   itemForm.appendChild(value);
+        //   if(x!=0)
+        //   {
+        //     let button = createRemoveButton();
+        //     button.onclick = event => {
+        //       event.preventDefault();
+        //       field.parentNode.removeChild(field);
+        //       value.parentNode.removeChild(value);
+        //       button.parentNode.removeChild(button);
+        //     };
+        //     itemForm.appendChild(button);
+        //   }
+        //   itemForm.appendChild(document.createElement("P"));
+        // }
+        
         $('.addItem').show().unbind();
         $('#itemModel').show();
         $('#addButton').click( () => {
