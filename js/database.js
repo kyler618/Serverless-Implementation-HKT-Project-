@@ -483,18 +483,17 @@ if (!_config.api.invokeUrl) {
     {
       const $row = $("#" + storedItem[record][attributes[0]]);
       $row.hide();
-      if(_searchItem!==null)
-      {
-        for(let field in storedItem[record])
-        {
-          const target = storedItem[record][field].toString().toUpperCase();
-          if(target.includes(_searchItem.toString().toUpperCase()))
-          {
-            $row.show();
-          }
-        }
-      }
-      else if(searchKey[0]===undefined)
+      // if(_searchItem!==null){
+      //   for(let field in storedItem[record])
+      //   {
+      //     const target = storedItem[record][field].toString().toUpperCase();
+      //     if(target.includes(_searchItem.toString().toUpperCase()))
+      //     {
+      //       $row.show();
+      //     }
+      //   }
+      // }
+      if(searchKey[0]===undefined)
       {
         $row.show();
       }
@@ -507,6 +506,16 @@ if (!_config.api.invokeUrl) {
           else
           {
             if(storedItem[record][selector[x].field] != searchKey[x])
+            {
+              show = false;
+            }
+          }
+        }
+        if(_searchItem!==null){
+          for(let field in storedItem[record])
+          {
+            const target = storedItem[record][field].toString().toUpperCase();
+            if(!target.includes(_searchItem.toString().toUpperCase()))
             {
               show = false;
             }
