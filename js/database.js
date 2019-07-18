@@ -966,7 +966,7 @@ if (!_config.api.invokeUrl) {
             bodyCell.push(cell);
           }
 
-          storedItem[record].forEach( field => {
+          storedItem[record].some( field => {
             console.log(field, attributes[0]);
             if(field==attributes[0]) continue;
             if( targetTable=="Hardware" && field==selectField1 && !options.includes(storedItem[record][field])){
