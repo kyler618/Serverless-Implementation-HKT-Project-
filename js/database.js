@@ -44,7 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 8');
+  console.log('version 9');
 
   // on start
 
@@ -208,7 +208,8 @@ if (!_config.api.invokeUrl) {
       {
         _searchItem = $(this).val();
       }
-      $(selector[0].bar).prop("selectedIndex", 0).change();
+      // $(selector[0].bar).prop("selectedIndex", 0).change();
+      searchItem();
     });
 
     $("#showAll").change( () => {
