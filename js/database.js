@@ -942,7 +942,7 @@ if (!_config.api.invokeUrl) {
       {
         for(let y=0;y<attrs[x].length;y++)
         {
-          if(!attributes.includes(attrs[x][y]))
+          if(!attributes.includes(attrs[x][y]) && attrs[x][y] != "inventoryID")
           {
             attributes.push(attrs[x][y]);
             const headerCell = headerRow.insertCell();
