@@ -808,7 +808,7 @@ if (!_config.api.invokeUrl) {
           const data = {operation: "singleUpdate", pk: pkey};
           for(let x in inputs)
           {
-            deleteAttr = deleteAttr.filter(attr=>attr!=x);
+            // deleteAttr = deleteAttr.filter(attr=>attr!=x);
             if(inputs[x]!=storedItem[index][x])
             {
               if(x==attributes[0])
@@ -841,7 +841,7 @@ if (!_config.api.invokeUrl) {
               data.input = null;
               data.delete = deleteAttr;
               console.log('update', data);
-              request(data, handleUpdateResponse);
+              // request(data, handleUpdateResponse);
             }
             else
             {
