@@ -44,7 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 3');
+  console.log('version 4');
 
   // on start
 
@@ -873,34 +873,35 @@ if (!_config.api.invokeUrl) {
     const itemForm = document.getElementById('itemForm');
     const index = Array.from($("td." + attributes[0])).map(x=>x.classList[1]).indexOf(event.target.classList[1]);
     const item = storedItem[index-1];
-    for( let x=Object.keys(item).length-1 ; x>=0 ; x-- )
-    {
-      const fieldName = Object.getOwnPropertyNames(item)[x];
-      const field = createFormInput('form_Input', fieldName, true);
-      const value = createFormInput('form_Input', Object.values(item)[x], true);
-      field.classList.add('input-group-text');
-      value.classList.add('form-control');
-      if(Object.getOwnPropertyNames(item)[x] == attributes[0])
-      {
-        field.id = attributes[0];
-        itemForm.insertBefore(field, itemForm.childNodes[0]);
-        itemForm.insertBefore(value, itemForm.childNodes[1]);
-        itemForm.insertBefore(document.createElement("P"), itemForm.childNodes[2]);
-      }
-      else
-      {
-        field.classList.add(fieldName);
-        value.classList.add(fieldName);
-        itemForm.appendChild(field);
-        itemForm.appendChild(value);
-        const button = createRemoveButton();
-        button.id = fieldName;
-        itemForm.appendChild(button);
-        itemForm.appendChild(document.createElement("P"));
-      }
-    }
-    document.getElementById('itemModel').style.display='block';
-    buttonClick();
+    console.log(item);
+    // for( let x=Object.keys(item).length-1 ; x>=0 ; x-- )
+    // {
+    //   const fieldName = Object.getOwnPropertyNames(item)[x];
+    //   const field = createFormInput('form_Input', fieldName, true);
+    //   const value = createFormInput('form_Input', Object.values(item)[x], true);
+    //   field.classList.add('input-group-text');
+    //   value.classList.add('form-control');
+    //   if(Object.getOwnPropertyNames(item)[x] == attributes[0])
+    //   {
+    //     field.id = attributes[0];
+    //     itemForm.insertBefore(field, itemForm.childNodes[0]);
+    //     itemForm.insertBefore(value, itemForm.childNodes[1]);
+    //     itemForm.insertBefore(document.createElement("P"), itemForm.childNodes[2]);
+    //   }
+    //   else
+    //   {
+    //     field.classList.add(fieldName);
+    //     value.classList.add(fieldName);
+    //     itemForm.appendChild(field);
+    //     itemForm.appendChild(value);
+    //     const button = createRemoveButton();
+    //     button.id = fieldName;
+    //     itemForm.appendChild(button);
+    //     itemForm.appendChild(document.createElement("P"));
+    //   }
+    // }
+    // document.getElementById('itemModel').style.display='block';
+    // buttonClick();
 
   }
 
@@ -977,31 +978,6 @@ if (!_config.api.invokeUrl) {
           }
         }
       });
-      // for (let record in storedItem) {
-      //   const bodyRow = tableBody.insertRow();
-      //   bodyRow.id = item[attributes[0]];
-      //   const bodyCell = [];
-      //   const options = Array.from(selector[0].bar.children).map(({value}) => value);
-      //   for(let x = 1; x<attributes.length;x++){
-      //     const cell = bodyRow.insertCell();
-      //     cell.classList.add(attributes[x]);
-      //     cell.classList.add(storedItem[record][attributes[0]]);
-      //     bodyCell.push(cell);
-      //   }
-      //   for(let field in storedItem[record]){
-      //     if(field!=attributes[0]){
-      //       if( targetTable=="Hardware" && field==selectField1 && !options.includes(storedItem[record][field])){
-      //         createOption(storedItem[record][field], 1);
-      //       }
-      //       const input = createFormInput("table_Input", storedItem[record][field],true);
-      //       input.classList.add(field);
-      //       input.classList.add(storedItem[record][attributes[0]]);
-      //       const index = $.inArray(field,attributes);
-      //       bodyCell[index-1].appendChild(input);  // since there is no id field -> index - 1
-      //     }
-      //   }
-      //
-      // }
     }
     // console.log('Response received from API: ', results);
     clearTable();
