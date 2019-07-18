@@ -973,6 +973,7 @@ if (!_config.api.invokeUrl) {
 
           for(let field in storedItem[record])
           {
+            if(field=='inventoryID') continue;
             if( targetTable=="Hardware" && field==selectField1 && !options.includes(storedItem[record][field]))
             {
               createOption(storedItem[record][field], 1);
