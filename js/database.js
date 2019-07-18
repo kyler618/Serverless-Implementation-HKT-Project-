@@ -829,25 +829,29 @@ if (!_config.api.invokeUrl) {
             }
             else
             {
-              data.delete = (deleteAttr.length!=0)? deleteAttr:null;
+              // data.delete = (deleteAttr.length!=0)? deleteAttr:null;
             }
             console.log('replace', data);
             request(data, handleUpdateResponse);
           }
           else
           {
-            if(deleteAttr.length!=0)
-            {
-              data.input = null;
-              data.delete = deleteAttr;
-              console.log('update', data);
-              // request(data, handleUpdateResponse);
-            }
-            else
-            {
-              $('#itemForm').empty();
-              handleRowClick(event);
-            }
+            data.input = null;
+            data.delete = deleteAttr;
+            console.log('update', data);
+
+            // if(deleteAttr.length!=0)
+            // {
+            //   data.input = null;
+            //   data.delete = deleteAttr;
+            //   console.log('update', data);
+            //   // request(data, handleUpdateResponse);
+            // }
+            // else
+            // {
+            //   $('#itemForm').empty();
+            //   handleRowClick(event);
+            // }
           }
         });
         $('#cancelButton').click(function(){
