@@ -990,7 +990,7 @@ if (!_config.api.invokeUrl) {
               input.classList.add(field);
               input.classList.add(storedItem[record][attributes[0]]);
               const index = $.inArray(field,attributes);
-              bodyCell[index].appendChild(input);          
+              bodyCell[index-1].appendChild(input);          
             }
           }
 
