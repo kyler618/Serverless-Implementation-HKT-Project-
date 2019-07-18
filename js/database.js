@@ -512,15 +512,17 @@ if (!_config.api.invokeUrl) {
           }
         }
         if(_searchItem!==null){
-          show = false;
+          let _show = false;
           for(let field in storedItem[record])
           {
             const target = storedItem[record][field].toString().toUpperCase();
-            if(target.includes(_searchItem.toString().toUpperCase()))
+            if(show && target.includes(_searchItem.toString().toUpperCase()))
             {
-              show = true;
-              break;
+              _show = true;
             }
+          }
+          if(!_show){
+            show = false;
           }
         }
         if(show)
