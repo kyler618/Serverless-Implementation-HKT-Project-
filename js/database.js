@@ -872,6 +872,7 @@ if (!_config.api.invokeUrl) {
     let previousPk;
     const itemForm = document.getElementById('itemForm');
     const index = Array.from($("td." + attributes[0])).map(x=>x.classList[1]).indexOf(event.target.classList[1]);
+    console.log(index);
     const item = storedItem[index-1];
     console.log(item);
     // for( let x=Object.keys(item).length-1 ; x>=0 ; x-- )
