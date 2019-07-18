@@ -44,7 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 5');
+  console.log('version 6');
 
   // on start
 
@@ -871,9 +871,9 @@ if (!_config.api.invokeUrl) {
     event.preventDefault();
     let previousPk;
     const itemForm = document.getElementById('itemForm');
-    console.log(Array.from($("tr")));
-
-    const index = Array.from($("td." + attributes[0])).map(x=>x.classList[1]).indexOf(event.target.classList[1]);
+    // console.log($('tr').not(':first'));
+    // const index = Array.from($("td." + attributes[0])).map(x=>x.classList[1]).indexOf(event.target.classList[1]);
+    const index = Array.from($('tr').not(':first')).map(x=>x.id).indexOf(event.target.classList[1]);
     console.log(index);
     const item = storedItem[index-1];
     console.log(item);
