@@ -44,7 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 9');
+  console.log('version 1');
 
   // on start
 
@@ -516,7 +516,7 @@ if (!_config.api.invokeUrl) {
           let _show = false;
           for(let field in storedItem[record])
           {
-            if(field=='inventoryID')continue;
+            if(field=='id')continue;
             const target = storedItem[record][field].toString().toUpperCase();
             if(show && target.includes(_searchItem.toString().toUpperCase()))
             {
@@ -942,7 +942,7 @@ if (!_config.api.invokeUrl) {
       {
         for(let y=0;y<attrs[x].length;y++)
         {
-          if(!attributes.includes(attrs[x][y]) && attrs[x][y] != "inventoryID")
+          if(!attributes.includes(attrs[x][y]) && attrs[x][y] != "id")
           {
             attributes.push(attrs[x][y]);
             const headerCell = headerRow.insertCell();
@@ -972,7 +972,7 @@ if (!_config.api.invokeUrl) {
 
           for(let field in storedItem[record])
           {
-            if(field=='inventoryID') continue;
+            if(field=='id') continue;
             if( targetTable=="Hardware" && field==selectField1 && !options.includes(storedItem[record][field]))
             {
               createOption(storedItem[record][field], 1);
