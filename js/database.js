@@ -44,7 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 7');
+  console.log('version 8');
 
   // on start
 
@@ -252,7 +252,6 @@ if (!_config.api.invokeUrl) {
           }
         }
         const itemForm = document.getElementById('itemForm');
-        console.log(constantAttributesIndex);
         for( let x = 0; x < constantAttributesIndex.length ; x++)
         {
           let fieldName = attributes[constantAttributesIndex[x]];
@@ -952,7 +951,7 @@ if (!_config.api.invokeUrl) {
           }
         }
       }
-      const constantAttributes = [attributes[0], selectField1, selectField2, selectField3];
+      const constantAttributes = [selectField1, selectField2, selectField3];
       constantAttributesIndex = constantAttributes.map(x => $.inArray(x,attributes));
     }
     function insertBodyRow(){
