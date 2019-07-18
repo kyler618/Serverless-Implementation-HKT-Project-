@@ -44,7 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 6');
+  console.log('version 7');
 
   // on start
 
@@ -958,7 +958,7 @@ if (!_config.api.invokeUrl) {
           bodyRow.id = storedItem[record][attributes[0]];
           const bodyCell = [];
           const options = Array.from(selector[0].bar.children).map(({value}) => value);
-          for(let x = 0; x<attributes.length;x++)
+          for(let x = 1; x<attributes.length;x++)
           {
             const cell = bodyRow.insertCell();
             cell.classList.add(attributes[x]);
@@ -968,7 +968,6 @@ if (!_config.api.invokeUrl) {
 
           for(let field in storedItem[record])
           {
-            console.log(field, attributes[0]);
             if(field==attributes[0]) continue;
             if( targetTable=="Hardware" && field==selectField1 && !options.includes(storedItem[record][field])){
               createOption(storedItem[record][field], 1);
