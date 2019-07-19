@@ -233,6 +233,7 @@ if (!_config.api.invokeUrl) {
           }
         }
         const itemForm = document.getElementById('itemForm');
+        console.log(constantAttributes);
         constantAttributes.forEach( constantAttribute => {
           let field = createFormInput("field", constantAttribute, true);
           let value = createFormInput("value", "", false);
@@ -599,7 +600,6 @@ if (!_config.api.invokeUrl) {
 
   function hideModel(){
     $('#itemForm').empty();
-    console.log('form emptied');
     $('.addItem').hide();
     $('.editItem').hide();
     $('#itemModel').hide();
