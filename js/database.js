@@ -44,7 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 5');
+  console.log('version 6');
 
   // on start
 
@@ -337,13 +337,11 @@ if (!_config.api.invokeUrl) {
           return;
         }
         const updateRecords = [];
-        // const replaceRecords = [];
         for( let x = 0 ; x < changedRecord.length ; x++ ){
           let changed, replace = false;
           const pk = changedRecord[x];
           const index = storedItem.map(x=>x[attributes[0]]).indexOf(pk);
           console.log(changedRecord, pk);
-          // const replaceRecord = {};
           const item = {};
           const record = Array.from($("input." + pk));
 
@@ -353,38 +351,19 @@ if (!_config.api.invokeUrl) {
               return;
             }
             if(record[y].value != storedItem[index][record[y].classList[0]]){
-              // if(record[y].classList[0] == attributes[0]){
-              //   if(storedItem.map(x=>x[attributes[0]]).includes(record[y].value)){
-              //     alert("Duplicate Error");
-              //     return;
-              //   }
-              //   replace = true;
-              //   replaceRecord.pk = storedItem[index][record[y].classList[0]];
-              // }
-              // else{
                 changed = true;
-              // }
             }
             item[record[y].classList[0]] = record[y].value;
           }
 
           item.id = pk;
-
-          // if(replace){
-          //   replaceRecord.record = item;
-          //   replaceRecords.push(replaceRecord);
-          // }
-          // else {
-            if(changed){
-              updateRecords.push(item);
-            }
-          // }
+          if(changed){
+            updateRecords.push(item);
+          }
         }
         var data = {operation:'multipleUpdate'};
         data.input = (updateRecords.length!=0)? updateRecords:null;
-        // data.replace = (replaceRecords.length!=0)? replaceRecords:null;
         if(data.input!=null||data.replace!=null){
-          console.log(data);
           request(data, handleMultipleUpdateResponse);
         }
         else{
