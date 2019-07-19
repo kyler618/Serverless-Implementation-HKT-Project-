@@ -44,7 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 1');
+  console.log('version 2');
 
   // on start
 
@@ -332,15 +332,13 @@ if (!_config.api.invokeUrl) {
             alert("Update Items Failed.");
           }
         }
-        if(changedRecord.length==0)
-        {
+        if(changedRecord.length==0){
           readMode();
           return;
         }
         const updateRecords = [];
         const replaceRecords = [];
-        for( let x = 0 ; x < changedRecord.length ; x++ )
-        {
+        for( let x = 0 ; x < changedRecord.length ; x++ ){
           let changed, replace = false;
           const pkey = changedRecord[x];
           const index = storedItem.map(x=>x[attributes[0]]).indexOf(pkey);
@@ -386,17 +384,15 @@ if (!_config.api.invokeUrl) {
         var data = {operation:'multipleUpdate'};
         data.input = (updateRecords.length!=0)? updateRecords:null;
         data.replace = (replaceRecords.length!=0)? replaceRecords:null;
-        if(data.input!=null||data.replace!=null)
-        {
+        if(data.input!=null||data.replace!=null){
           request(data, handleMultipleUpdateResponse);
         }
-        else
-        {
+        else{
           readMode();
         }
 
       });
-      $('table tbody').unbind().click( (event) => {
+      $('table tbody').unbind().click( event => {
         const target = event.target;
         if(target.innerHTML=="" && target.tagName == "TD")
         {
@@ -413,34 +409,29 @@ if (!_config.api.invokeUrl) {
           $(cell).append(input);
         }
       });
-      $('#cancelEdit').click(function(){
+      $('#cancelEdit').click( () => {
         $(this).unbind();
         $('table tbody').unbind();
-        if(changedRecord.length!=0)
-        {
-          for(let x=0; x<changedRecord.length; x++)
-          {
+        if(changedRecord.length!=0){
+          for(let x=0; x<changedRecord.length; x++){
             const pkey = changedRecord[x];
             const index = storedItem.map(x=>x[attributes[0]]).indexOf(pkey);
             const attrs = Object.keys(storedItem[index]);
             const record = Array.from($("input." + pkey));
-            for(let y=0; y<record.length; y++)
-            {
+            for(let y=0; y<record.length; y++){
               const field = record[y].classList[0];
               const cell = "input." + field + "." + pkey;
-              if(attrs.includes(field))
-              {
+              if(attrs.includes(field)){
                 $(cell)[0].value = storedItem[index][field];
               }
-              else
-              {
+              else{
                 $(cell)[0].remove();
               }
             }
           }
         }
         readMode();
-      })
+      });
     }
 
     $('.readMode').show();
