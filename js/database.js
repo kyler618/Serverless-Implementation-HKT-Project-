@@ -13,6 +13,7 @@ switch(targetTable){
     selectField3 = 'Enduser_address_for_reference';
     break;
   case "Hardware":
+    selectFields.push('Enduser_name', 'Physical_Site_Address', 'Device_Type');
     selectField1 = 'Enduser_name';
     selectField2 = 'Physical_Site_Address';
     selectField3 = 'Device_Type';
