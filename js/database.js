@@ -340,11 +340,12 @@ if (!_config.api.invokeUrl) {
         const replaceRecords = [];
         for( let x = 0 ; x < changedRecord.length ; x++ ){
           let changed, replace = false;
-          const pkey = changedRecord[x];
-          const index = storedItem.map(x=>x[attributes[0]]).indexOf(pkey);
+          const pk = changedRecord[attributes[0]];
+          const index = storedItem.map(x=>x[attributes[0]]).indexOf(pk);
           const replaceRecord = {};
           const item = {};
-          const record = Array.from($("input." + pkey));
+          const record = Array.from($("input." + pk));
+
           for( let y = 0 ; y < record.length ; y++ ){
             if(record[y].value == ""){
               alert("Incompleted Error.");
@@ -365,6 +366,9 @@ if (!_config.api.invokeUrl) {
             }
             item[record[y].classList[0]] = record[y].value;
           }
+
+          item.pk = pk;
+
           if(replace){
             replaceRecord.record = item;
             replaceRecords.push(replaceRecord);
