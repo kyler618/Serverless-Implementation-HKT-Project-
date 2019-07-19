@@ -368,7 +368,7 @@ if (!_config.api.invokeUrl) {
             item[record[y].classList[0]] = record[y].value;
           }
 
-          item.pk = pk;
+          item.id = pk;
 
           // if(replace){
           //   replaceRecord.record = item;
