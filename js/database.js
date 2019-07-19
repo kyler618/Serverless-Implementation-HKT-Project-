@@ -833,7 +833,7 @@ if (!_config.api.invokeUrl) {
             else
             {
               // check user whether delete any record
-              // data.delete = (deleteAttr.length!=0)? deleteAttr:null;
+              data.delete = (deleteAttr.length!=0)? deleteAttr:null;
             }
             console.log('update', data);
             request(data, handleUpdateResponse);
