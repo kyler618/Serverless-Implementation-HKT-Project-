@@ -440,6 +440,7 @@ if (!_config.api.invokeUrl) {
         }
       }
       if(_searchItem!==null){
+        console.log(_searchItem);
         let _show = false;
         for(let field in storedItem[record]){
           if(field=='id')continue;
