@@ -240,7 +240,7 @@ if (!_config.api.invokeUrl) {
           value.classList.add('form-control');
           itemForm.appendChild(field);
           itemForm.appendChild(value);
-          if(constantAttribute != selectFields[0]){
+          if(constantAttribute != constantAttributes[0]){
             let button = createRemoveButton();
             button.onclick = event => {
               event.preventDefault();
