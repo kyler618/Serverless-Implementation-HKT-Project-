@@ -820,21 +820,25 @@ if (!_config.api.invokeUrl) {
               changed = true;
             }
           }
-          if(changed)
+
+          inputs.id = storedItem[index][pk];
+
+          if(changed) // user have changed records.
           {
             data.input = inputs;
             if(replace)
             {
               data.operation = "singleReplace";
+              console.log('replace', data);
             }
             else
             {
-              // data.delete = (deleteAttr.length!=0)? deleteAttr:null;
+              // check user whether delete any record
+              data.delete = (deleteAttr.length!=0)? deleteAttr:null;
             }
-            console.log('replace', data);
             // request(data, handleUpdateResponse);
           }
-          else
+          else // user not change but may delete records
           {
             data.input = null;
             data.delete = deleteAttr;
