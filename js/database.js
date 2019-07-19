@@ -356,15 +356,9 @@ if (!_config.api.invokeUrl) {
             updateRecords.push(items);
           }
         });
-        var data = {operation:'multipleUpdate'};
+        const data = {operation:'multipleUpdate'};
         data.input = (updateRecords.length!=0)? updateRecords:null;
-        return (data.input!=null)? request(data, handleMultipleUpdateResponse): readMode();
-        // if(data.input!=null){
-        //   request(data, handleMultipleUpdateResponse);
-        // }
-        // else{
-        //   readMode();
-        // }
+        return (data.input!=null)? request(data, handleMultipleUpdateResponse):readMode();
 
       });
       $('table tbody').unbind().click( event => {
@@ -429,83 +423,58 @@ if (!_config.api.invokeUrl) {
   }
 
   function showColumn(){
-    for(let x=0;x<attributes.length;x++)
-    {
-      if(!constantAttributesIndex.includes(x))
-      {
+    for(let x=0;x<attributes.length;x++){
+      if(!constantAttributesIndex.includes(x)){
         $("." + attributes[x]).show();
       }
     }
-    if(selector[0].searchKey!==undefined || _searchItem!==null)
-    {
+    if(selector[0].searchKey!==undefined || _searchItem!==null){
+      console.log(selector[0].searchKey, _searchItem);
       searchItem();
     }
   }
 
   function searchItem(){
     const searchKey = selector.map(({searchKey}) => searchKey);
-    for(let record in storedItem)
-    {
+    for(let record in storedItem){
       const $row = $("#" + storedItem[record][attributes[0]]);
       $row.hide();
-      // if(_searchItem!==null){
-      //   for(let field in storedItem[record])
-      //   {
-      //     const target = storedItem[record][field].toString().toUpperCase();
-      //     if(target.includes(_searchItem.toString().toUpperCase()))
-      //     {
-      //       $row.show();
-      //     }
-      //   }
-      // }
-
-      // if(searchKey[0]===undefined)
-      // {
-      //   $row.show();
-      // }
-      // else
-      // {
-
-        let show = true;
-        for(let x=0; x<searchKey.length;x++)
-        {
-          if(searchKey[x] === undefined) continue;
-          else
-          {
-            if(storedItem[record][selector[x].field] != searchKey[x])
-            {
-              show = false;
-            }
-          }
-        }
-        if(_searchItem!==null){
-          let _show = false;
-          for(let field in storedItem[record])
-          {
-            if(field=='id')continue;
-            const target = storedItem[record][field].toString().toUpperCase();
-            if(show && target.includes(_searchItem.toString().toUpperCase()))
-            {
-              _show = true;
-            }
-          }
-          if(!_show){
+      let show = true;
+      for(let x=0; x<searchKey.length;x++){
+        if(searchKey[x] === undefined) continue;
+        else{
+          if(storedItem[record][selector[x].field] != searchKey[x]){
             show = false;
           }
         }
-        if(show)
+      }
+      if(_searchItem!==null){
+        let _show = false;
+        for(let field in storedItem[record])
         {
-          $row.show();
-          for(let x=1;x<3;x++)
+          if(field=='id')continue;
+          const target = storedItem[record][field].toString().toUpperCase();
+          if(show && target.includes(_searchItem.toString().toUpperCase()))
           {
-            const options = Array.from(selector[x].bar.children).map(({value}) => value);
-            if(searchKey[x-1]!==undefined&&!options.includes(storedItem[record][selector[x].field]))
-            {
-              createOption(storedItem[record][selector[x].field], x+1);
-            }
+            _show = true;
           }
         }
-      // }
+        if(!_show){
+          show = false;
+        }
+      }
+      if(show)
+      {
+        $row.show();
+        for(let x=1;x<3;x++)
+        {
+          const options = Array.from(selector[x].bar.children).map(({value}) => value);
+          if(searchKey[x-1]!==undefined&&!options.includes(storedItem[record][selector[x].field]))
+          {
+            createOption(storedItem[record][selector[x].field], x+1);
+          }
+        }
+      }
     }
     if(!$("#showAll").prop("checked") ){
       hideColumn();
