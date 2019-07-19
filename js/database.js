@@ -30,7 +30,7 @@ if (!_config.api.invokeUrl) {
   user_Identity();
   const selector = [];
   const attributes = [];
-  let _searchItem;
+  let _searchItem = null;
   let storedItem;
   let constantAttributesIndex;
   var httpRequest = {
@@ -428,7 +428,7 @@ if (!_config.api.invokeUrl) {
         $("." + attributes[x]).show();
       }
     }
-    if(selector[0].searchKey!==undefined || _searchItem!==null){
+    if(selector[0].searchKey!==undefined || _searchItem!==undefined){
       console.log(selector[0].searchKey, _searchItem);
       searchItem();
     }
