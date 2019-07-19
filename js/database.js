@@ -838,6 +838,7 @@ if (!_config.api.invokeUrl) {
       }
       // const constantAttributes = [selectField1, selectField2, selectField3];
       constantAttributes = constantAttributes.concat(selectFields);
+      console.log(constantAttributes);
       constantAttributesIndex = constantAttributes.map(selectField => $.inArray(selectField,attributes));
     }
     function insertBodyRow(){
