@@ -800,12 +800,11 @@ if (!_config.api.invokeUrl) {
           let changed, replace = false;
           // const index = storedItem.map(x=>x[attributes[0]]).indexOf(pkey);
           const index = storedItem.map(x=>x[attributes[0]]).indexOf(pk);
-          console.log('pkey', pkey);
           console.log('index', index);
           // let deleteAttr = Object.keys(storedItem[index]);
           let deleteAttr;
 
-          const data = {operation: "singleUpdate", pk: pkey};
+          const data = {operation: "singleUpdate", pk: pk};
           for(let x in inputs)
           {
             // deleteAttr = deleteAttr.filter(attr=>attr!=x);
@@ -813,7 +812,7 @@ if (!_config.api.invokeUrl) {
             {
               if(x==attributes[0])
               {
-                event.target.classList.remove(pkey);
+                // event.target.classList.remove(pkey);
                 event.target.classList.add(inputs[x]);
                 replace = true;
               }
@@ -821,7 +820,7 @@ if (!_config.api.invokeUrl) {
             }
           }
 
-          inputs.id = storedItem[index][attributes[0]];
+          // inputs.id = storedItem[index][attributes[0]];
 
           if(changed) // user have changed records.
           {
