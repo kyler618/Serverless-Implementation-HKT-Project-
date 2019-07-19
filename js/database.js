@@ -836,6 +836,7 @@ if (!_config.api.invokeUrl) {
               // check user whether delete any record
               // data.delete = (deleteAttr.length!=0)? deleteAttr:null;
             }
+            console.log('update', data);
             // request(data, handleUpdateResponse);
           }
           else // user not change but may delete records
