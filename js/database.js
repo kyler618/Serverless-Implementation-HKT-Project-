@@ -1,11 +1,14 @@
 // Backup2
 // Goal : , Bug:
 var Users = window.Users || {};
+var selectFields = [];
 var selectField1, selectField2, selectField3;
 // pre-defined
 var targetTable = $('#current').val();
 switch(targetTable){
   case "Customer_and_Software":
+    selectFields.push('Billed_customer_name', 'Billed_Customer_Contact', 'Enduser_address_for_reference');
+    console.log(selectField);
     selectField1 = 'Billed_customer_name';
     selectField2 = 'Billed_Customer_Contact';
     selectField3 = 'Enduser_address_for_reference';
@@ -44,7 +47,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 3');
+  console.log('version 5');
 
   // on start
 
@@ -166,9 +169,6 @@ if (!_config.api.invokeUrl) {
       }
       else{
         if(x<=1){
-          // if(x==0){
-          //   _searchItem = null;
-          // }
           $(selector[x+1].bar).children().first().html('All');
           $(selector[x+1].bar).prop('disabled', false).change( event => {selectorChange(event, x+1)});
         }
@@ -182,7 +182,8 @@ if (!_config.api.invokeUrl) {
         event.preventDefault();
       }
     });
-    const selectField = [selectField1, selectField2, selectField3];
+    // const selectField = [selectField1, selectField2, selectField3];
+    const selectField = selectFields;
     const selectBarText = $('#selector div span');
     const selectBar = $('#selector div select');
     const input = document.getElementById('searchBar');
@@ -245,7 +246,7 @@ if (!_config.api.invokeUrl) {
           }
         }
         const itemForm = document.getElementById('itemForm');
-        const selectFields = [selectField1, selectField2, selectField3];
+        // const selectFields = [selectField1, selectField2, selectField3];
         selectFields.forEach( selectField => {
           let field = createFormInput("field", selectField, true);
           let value = createFormInput("value", "", false);
@@ -253,7 +254,7 @@ if (!_config.api.invokeUrl) {
           value.classList.add('form-control');
           itemForm.appendChild(field);
           itemForm.appendChild(value);
-          if(selectField != selectField1){
+          if(selectField != selectFields[0]){
             let button = createRemoveButton();
             button.onclick = event => {
               event.preventDefault();
@@ -683,8 +684,7 @@ if (!_config.api.invokeUrl) {
           itemForm.appendChild(document.createElement("P"));
         });
         $('button.removeAttr').click( function(){
-          if(this.id==="")
-          {
+          if(this.id===""){
             return;
           }
           const attr = "#itemForm input." + this.id;
@@ -723,8 +723,8 @@ if (!_config.api.invokeUrl) {
               changed = true;
             }
           }
-          // deleteAttr = deleteAttr.filter(attr=>attr!=attributes[0]);
 
+          // user not change but may delete records
           if(changed){
             // user have changed records
             data.input = inputs;
@@ -732,7 +732,6 @@ if (!_config.api.invokeUrl) {
             data.delete = (deleteAttr.length!=0)? deleteAttr:null;
             request(data, handleUpdateResponse);
           }
-          // user not change but may delete records
           else{
             if(deleteAttr.length!=0){
               // user have delete records
@@ -839,12 +838,9 @@ if (!_config.api.invokeUrl) {
     function insertHeaderRow(){
       const headerRow = document.querySelector("table thead tr");
       const attrs = storedItem.map(item => Object.keys(item));
-      for(let x=0;x<attrs.length;x++)
-      {
-        for(let y=0;y<attrs[x].length;y++)
-        {
-          if(!attributes.includes(attrs[x][y]))
-          {
+      for(let x=0;x<attrs.length;x++){
+        for(let y=0;y<attrs[x].length;y++){
+          if(!attributes.includes(attrs[x][y])){
             attributes.push(attrs[x][y]);
             const headerCell = headerRow.insertCell();
             headerCell.innerHTML = attrs[x][y];
@@ -852,8 +848,8 @@ if (!_config.api.invokeUrl) {
           }
         }
       }
-      const constantAttributes = [selectField1, selectField2, selectField3];
-      constantAttributesIndex = constantAttributes.map(x => $.inArray(x,attributes));
+      // const constantAttributes = [selectField1, selectField2, selectField3];
+      constantAttributesIndex = selectFields.map(selectField => $.inArray(selectField,attributes));
     }
     function insertBodyRow(){
       const tableBody = document.querySelector("table tbody");
@@ -870,7 +866,7 @@ if (!_config.api.invokeUrl) {
         }
         for(let field in item){
           if(field!=attributes[0]){
-            if( targetTable=="Hardware" && field==selectField1 && !options.includes(item[field])){
+            if( targetTable=="Hardware" && field==selectFields[0] && !options.includes(item[field])){
               createOption(item[field], 1);
             }
             const input = createFormInput("table_Input", item[field],true);
