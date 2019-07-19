@@ -183,25 +183,18 @@ if (!_config.api.invokeUrl) {
       }
     });
     // const selectField = [selectField1, selectField2, selectField3];
-    const selectField = selectFields;
+    // const selectField = selectFields;
     const selectBarText = $('#selector div span');
     const selectBar = $('#selector div select');
     const input = document.getElementById('searchBar');
     for(let x=0;x<selectBar.length;x++){
-      let name = selectField[x].replace(/\_+/g, ' ');
+      let name = selectFields[x].replace(/\_+/g, ' ');
       $(selectBarText[x]).html(name+" :");
-      selector.push({field:selectField[x], bar:selectBar[x]});
+      selector.push({field:selectFields[x], bar:selectBar[x]});
     }
     input.addEventListener("keyup", function(event) {
       event.preventDefault();
       _searchItem = ($(this).val() != "")? $(this).val():null;
-      // if ($(this).val() == ""){
-      //   _searchItem = null;
-      // }
-      // else{
-      //   _searchItem = $(this).val();
-      // }
-      // $(selector[0].bar).prop("selectedIndex", 0).change();
       searchItem();
     });
 
