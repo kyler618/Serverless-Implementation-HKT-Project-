@@ -713,7 +713,6 @@ if (!_config.api.invokeUrl) {
   function handleRowClick(event) {
     function buttonClick(){
       pk = event.target.classList[1];
-      // previousPk = event.target.classList[1];
       $('.addItem').hide().unbind();
       $('#cancelButton').hide();
       $('.editItem').show().unbind();
@@ -744,8 +743,6 @@ if (!_config.api.invokeUrl) {
         $('#modalCancelButton').unbind();
         $("input[name='form_Input']").removeAttr("readOnly");
         $('input#pk').attr('readOnly', true);
-
-        // const pkey = $('#itemForm')[0][1].value;
 
         $('#addButton').click( () => {
           const field = createFormInput("form_Input", "", false);
@@ -857,7 +854,6 @@ if (!_config.api.invokeUrl) {
     handleRowClick.rollback = rollback;
 
     event.preventDefault();
-    // let previousPk;
     let pk;
     const itemForm = document.getElementById('itemForm');
     const index = Array.from($('tr').not(':first')).map(x=>x.id).indexOf(event.target.classList[1]);
