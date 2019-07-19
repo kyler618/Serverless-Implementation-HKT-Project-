@@ -342,6 +342,7 @@ if (!_config.api.invokeUrl) {
           let changed, replace = false;
           const pk = changedRecord[attributes[0]];
           const index = storedItem.map(x=>x[attributes[0]]).indexOf(pk);
+          console.log(changedRecord, pk);
           const replaceRecord = {};
           const item = {};
           const record = Array.from($("input." + pk));
