@@ -233,15 +233,14 @@ if (!_config.api.invokeUrl) {
           }
         }
         const itemForm = document.getElementById('itemForm');
-        // const selectFields = [selectField1, selectField2, selectField3];
-        selectFields.forEach( selectField => {
-          let field = createFormInput("field", selectField, true);
+        constantAttributes.forEach( constantAttribute => {
+          let field = createFormInput("field", constantAttribute, true);
           let value = createFormInput("value", "", false);
           field.classList.add('input-group-text');
           value.classList.add('form-control');
           itemForm.appendChild(field);
           itemForm.appendChild(value);
-          if(selectField != selectFields[0]){
+          if(constantAttribute != selectFields[0]){
             let button = createRemoveButton();
             button.onclick = event => {
               event.preventDefault();
