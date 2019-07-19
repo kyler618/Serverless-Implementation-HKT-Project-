@@ -840,22 +840,18 @@ if (!_config.api.invokeUrl) {
           }
           else // user not change but may delete records
           {
-            data.input = null;
-            data.delete = deleteAttr;
-            console.log('update', data);
-
-            // if(deleteAttr.length!=0)
-            // {
-            //   data.input = null;
-            //   data.delete = deleteAttr;
-            //   console.log('update', data);
-            //   // request(data, handleUpdateResponse);
-            // }
-            // else
-            // {
-            //   $('#itemForm').empty();
-            //   handleRowClick(event);
-            // }
+            if(deleteAttr.length!=0)
+            {
+              data.input = null;
+              data.delete = deleteAttr;
+              console.log('update', data);
+              // request(data, handleUpdateResponse);
+            }
+            else
+            {
+              $('#itemForm').empty();
+              handleRowClick(event);
+            }
           }
         });
         $('#cancelButton').click(function(){
