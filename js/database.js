@@ -345,39 +345,31 @@ if (!_config.api.invokeUrl) {
           const replaceRecord = {};
           const item = {};
           const record = Array.from($("input." + pkey));
-          for( let y = 0 ; y < record.length ; y++ )
-          {
-            if(record[y].value == "")
-            {
+          for( let y = 0 ; y < record.length ; y++ ){
+            if(record[y].value == ""){
               alert("Incompleted Error.");
               return;
             }
-            if(record[y].value != storedItem[index][record[y].classList[0]])
-            {
-              if(record[y].classList[0] == attributes[0])
-              {
-                if(storedItem.map(x=>x[attributes[0]]).includes(record[y].value))
-                {
+            if(record[y].value != storedItem[index][record[y].classList[0]]){
+              if(record[y].classList[0] == attributes[0]){
+                if(storedItem.map(x=>x[attributes[0]]).includes(record[y].value)){
                   alert("Duplicate Error");
                   return;
                 }
                 replace = true;
                 replaceRecord.pk = storedItem[index][record[y].classList[0]];
               }
-              else
-              {
+              else{
                 changed = true;
               }
             }
             item[record[y].classList[0]] = record[y].value;
           }
-          if(replace)
-          {
+          if(replace){
             replaceRecord.record = item;
             replaceRecords.push(replaceRecord);
           }
-          else if(changed)
-          {
+          else if(changed){
             updateRecords.push(item);
           }
         }
@@ -385,7 +377,8 @@ if (!_config.api.invokeUrl) {
         data.input = (updateRecords.length!=0)? updateRecords:null;
         data.replace = (replaceRecords.length!=0)? replaceRecords:null;
         if(data.input!=null||data.replace!=null){
-          request(data, handleMultipleUpdateResponse);
+          console.log(data);
+          // request(data, handleMultipleUpdateResponse);
         }
         else{
           readMode();
