@@ -340,7 +340,7 @@ if (!_config.api.invokeUrl) {
         const replaceRecords = [];
         for( let x = 0 ; x < changedRecord.length ; x++ ){
           let changed, replace = false;
-          const pk = changedRecord[attributes[0]];
+          const pk = changedRecord[x];
           const index = storedItem.map(x=>x[attributes[0]]).indexOf(pk);
           console.log(changedRecord, pk);
           const replaceRecord = {};
