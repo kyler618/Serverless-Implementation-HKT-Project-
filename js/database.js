@@ -833,6 +833,7 @@ if (!_config.api.invokeUrl) {
             const headerCell = headerRow.insertCell();
             headerCell.innerHTML = field;
             headerCell.classList.add(field);
+          }
         });
       });
       // for(let x=0;x<attrs.length;x++){
