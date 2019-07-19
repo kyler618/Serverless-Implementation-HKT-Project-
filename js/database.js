@@ -344,7 +344,6 @@ if (!_config.api.invokeUrl) {
             items[record.classList[0]] = record.value;
           });
           if(changed){
-            // items.id = recordPk;
             items[attributes[0]] = recordPk;
             updateRecords.push(items);
           }
