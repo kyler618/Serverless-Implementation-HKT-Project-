@@ -382,7 +382,7 @@ if (!_config.api.invokeUrl) {
         var data = {operation:'multipleUpdate'};
         data.input = (updateRecords.length!=0)? updateRecords:null;
         if(data.input!=null){
-          // request(data, handleMultipleUpdateResponse);
+          request(data, handleMultipleUpdateResponse);
           console.log(data);
         }
         else{
