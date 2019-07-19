@@ -385,7 +385,7 @@ if (!_config.api.invokeUrl) {
         // data.replace = (replaceRecords.length!=0)? replaceRecords:null;
         if(data.input!=null||data.replace!=null){
           console.log(data);
-          // request(data, handleMultipleUpdateResponse);
+          request(data, handleMultipleUpdateResponse);
         }
         else{
           readMode();
