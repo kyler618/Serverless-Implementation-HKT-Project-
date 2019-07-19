@@ -1,22 +1,18 @@
 // Backup2
 // Goal : , Bug:
 var Users = window.Users || {};
-var selectFields = [];
-var selectField1, selectField2, selectField3;
+const constantAttributes = [];
+const selectFields = [];
 // pre-defined
 var targetTable = $('#current').val();
 switch(targetTable){
   case "Customer_and_Software":
     selectFields.push('Billed_customer_name', 'Billed_Customer_Contact', 'Enduser_address_for_reference');
-    // selectField1 = 'Billed_customer_name';
-    // selectField2 = 'Billed_Customer_Contact';
-    // selectField3 = 'Enduser_address_for_reference';
     break;
   case "Hardware":
+    constantAttributes.push('Sensor_ID');
     selectFields.push('Enduser_name', 'Physical_Site_Address', 'Device_Type');
-    // selectField1 = 'Enduser_name';
-    // selectField2 = 'Physical_Site_Address';
-    // selectField3 = 'Device_Type';
+
     $('#maintainButton').addClass('editItem');
     $('#selector').show();
     break;
@@ -841,7 +837,8 @@ if (!_config.api.invokeUrl) {
         }
       }
       // const constantAttributes = [selectField1, selectField2, selectField3];
-      constantAttributesIndex = selectFields.map(selectField => $.inArray(selectField,attributes));
+      constantAttributes = constantAttributes.concat(selectFields);
+      constantAttributesIndex = constantAttributes.map(selectField => $.inArray(selectField,attributes));
     }
     function insertBodyRow(){
       const tableBody = document.querySelector("table tbody");
