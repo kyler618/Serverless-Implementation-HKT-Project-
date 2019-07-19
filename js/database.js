@@ -845,7 +845,7 @@ if (!_config.api.invokeUrl) {
               data.input = null;
               data.delete = deleteAttr;
               console.log('update', data);
-              // request(data, handleUpdateResponse);
+              request(data, handleUpdateResponse);
             }
             else
             {
