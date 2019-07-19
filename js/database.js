@@ -832,7 +832,7 @@ if (!_config.api.invokeUrl) {
               // data.delete = (deleteAttr.length!=0)? deleteAttr:null;
             }
             console.log('replace', data);
-            request(data, handleUpdateResponse);
+            // request(data, handleUpdateResponse);
           }
           else
           {
