@@ -428,7 +428,7 @@ if (!_config.api.invokeUrl) {
         $("." + attributes[x]).show();
       }
     }
-    if(selector[0].searchKey!==undefined || _searchItem!==undefined){
+    if(selector[0].searchKey!==undefined || _searchItem!==null){
       console.log(selector[0].searchKey, _searchItem);
       searchItem();
     }
