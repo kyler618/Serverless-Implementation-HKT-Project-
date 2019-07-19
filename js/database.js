@@ -441,12 +441,10 @@ if (!_config.api.invokeUrl) {
       }
       if(_searchItem!==null){
         let _show = false;
-        for(let field in storedItem[record])
-        {
+        for(let field in storedItem[record]){
           if(field=='id')continue;
           const target = storedItem[record][field].toString().toUpperCase();
-          if(show && target.includes(_searchItem.toString().toUpperCase()))
-          {
+          if(show && target.includes(_searchItem.toString().toUpperCase())){
             _show = true;
           }
         }
