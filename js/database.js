@@ -44,7 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 1');
+  console.log('version 2');
 
   // on start
 
@@ -157,6 +157,7 @@ if (!_config.api.invokeUrl) {
         clearOption(3);
       }
       if( event.target.selectedIndex == 0 ){
+        // 'all' selected
         if(x==0||x==1){
           // $(selector[x+1].bar).children().first().html('');
           $(selector[x+1].bar).prop('disabled', 'disabled').unbind();
@@ -165,9 +166,9 @@ if (!_config.api.invokeUrl) {
       }
       else{
         if(x<=1){
-          if(x==0){
-            _searchItem = null;
-          }
+          // if(x==0){
+          //   _searchItem = null;
+          // }
           $(selector[x+1].bar).children().first().html('All');
           $(selector[x+1].bar).prop('disabled', false).change( event => {selectorChange(event, x+1)});
         }
