@@ -8,7 +8,6 @@ var targetTable = $('#current').val();
 switch(targetTable){
   case "Customer_and_Software":
     selectFields.push('Billed_customer_name', 'Billed_Customer_Contact', 'Enduser_address_for_reference');
-    console.log(selectField);
     selectField1 = 'Billed_customer_name';
     selectField2 = 'Billed_Customer_Contact';
     selectField3 = 'Enduser_address_for_reference';
