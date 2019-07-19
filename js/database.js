@@ -821,7 +821,7 @@ if (!_config.api.invokeUrl) {
             }
           }
 
-          inputs.id = storedItem[index][pk];
+          inputs.id = storedItem[index][attributes[0]];
 
           if(changed) // user have changed records.
           {
