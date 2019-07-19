@@ -1,7 +1,7 @@
 // Backup2
 // Goal : , Bug:
 var Users = window.Users || {};
-const constantAttributes = [];
+var constantAttributes = [];
 const selectFields = [];
 // pre-defined
 var targetTable = $('#current').val();
