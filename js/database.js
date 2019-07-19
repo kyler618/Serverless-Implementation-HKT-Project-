@@ -341,7 +341,6 @@ if (!_config.api.invokeUrl) {
           let changed, replace = false;
           const pk = changedRecord[x];
           const index = storedItem.map(x=>x[attributes[0]]).indexOf(pk);
-          console.log(changedRecord, pk);
           const item = {};
           const record = Array.from($("input." + pk));
 
@@ -363,7 +362,7 @@ if (!_config.api.invokeUrl) {
         }
         var data = {operation:'multipleUpdate'};
         data.input = (updateRecords.length!=0)? updateRecords:null;
-        if(data.input!=null||data.replace!=null){
+        if(data.input!=null){
           request(data, handleMultipleUpdateResponse);
         }
         else{
