@@ -8,15 +8,15 @@ var targetTable = $('#current').val();
 switch(targetTable){
   case "Customer_and_Software":
     selectFields.push('Billed_customer_name', 'Billed_Customer_Contact', 'Enduser_address_for_reference');
-    selectField1 = 'Billed_customer_name';
-    selectField2 = 'Billed_Customer_Contact';
-    selectField3 = 'Enduser_address_for_reference';
+    // selectField1 = 'Billed_customer_name';
+    // selectField2 = 'Billed_Customer_Contact';
+    // selectField3 = 'Enduser_address_for_reference';
     break;
   case "Hardware":
     selectFields.push('Enduser_name', 'Physical_Site_Address', 'Device_Type');
-    selectField1 = 'Enduser_name';
-    selectField2 = 'Physical_Site_Address';
-    selectField3 = 'Device_Type';
+    // selectField1 = 'Enduser_name';
+    // selectField2 = 'Physical_Site_Address';
+    // selectField3 = 'Device_Type';
     $('#maintainButton').addClass('editItem');
     $('#selector').show();
     break;
@@ -47,7 +47,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 6');
+  console.log('version 7');
 
   // on start
 
@@ -183,8 +183,6 @@ if (!_config.api.invokeUrl) {
         event.preventDefault();
       }
     });
-    // const selectField = [selectField1, selectField2, selectField3];
-    // const selectField = selectFields;
     const selectBarText = $('#selector div span');
     const selectBar = $('#selector div select');
     const input = document.getElementById('searchBar');
