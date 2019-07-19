@@ -44,7 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 7');
+  console.log('version 8');
 
   // on start
 
@@ -356,38 +356,15 @@ if (!_config.api.invokeUrl) {
             updateRecords.push(items);
           }
         });
-        // for( let x = 0 ; x < changedRecord.length ; x++ ){
-        //   let changed,  = false;
-        //   const pk = changedRecord[x];
-        //   const index = storedItem.map(x=>x[attributes[0]]).indexOf(pk);
-        //   const items = {};
-        //   const record = Array.from($("input." + pk));
-        //
-        //   for( let y = 0 ; y < record.length ; y++ ){
-        //     if(record[y].value == ""){
-        //       alert("Incompleted Error.");
-        //       return;
-        //     }
-        //     if(record[y].value != storedItem[index][record[y].classList[0]]){
-        //         changed = true;
-        //     }
-        //     items[record[y].classList[0]] = record[y].value;
-        //   }
-        //
-        //   items.id = pk;
-        //   if(changed){
-        //     updateRecords.push(items);
-        //   }
-        // }
         var data = {operation:'multipleUpdate'};
         data.input = (updateRecords.length!=0)? updateRecords:null;
-        if(data.input!=null){
-          request(data, handleMultipleUpdateResponse);
-          console.log(data);
-        }
-        else{
-          readMode();
-        }
+        return (data.input!=null)? request(data, handleMultipleUpdateResponse): readMode();
+        // if(data.input!=null){
+        //   request(data, handleMultipleUpdateResponse);
+        // }
+        // else{
+        //   readMode();
+        // }
 
       });
       $('table tbody').unbind().click( event => {
