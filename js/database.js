@@ -745,7 +745,7 @@ if (!_config.api.invokeUrl) {
         $("input[name='form_Input']").removeAttr("readOnly");
         $('input#pk').attr('readOnly', true);
 
-        const pkey = $('#itemForm')[0][1].value;
+        // const pkey = $('#itemForm')[0][1].value;
 
         $('#addButton').click( () => {
           const field = createFormInput("form_Input", "", false);
@@ -801,13 +801,13 @@ if (!_config.api.invokeUrl) {
           // const index = storedItem.map(x=>x[attributes[0]]).indexOf(pkey);
           const index = storedItem.map(x=>x[attributes[0]]).indexOf(pk);
           console.log('index', index);
-          // let deleteAttr = Object.keys(storedItem[index]);
-          let deleteAttr;
+          // let deleteAttr;
+          let deleteAttr = Object.keys(storedItem[index]);
 
           const data = {operation: "singleUpdate", pk: pk};
           for(let x in inputs)
           {
-            // deleteAttr = deleteAttr.filter(attr=>attr!=x);
+            deleteAttr = deleteAttr.filter(attr=>attr!=x);
             if(inputs[x]!=storedItem[index][x])
             {
               if(x==attributes[0])
@@ -819,7 +819,7 @@ if (!_config.api.invokeUrl) {
               changed = true;
             }
           }
-
+          deleteAttr = deleteAttr.filter(attr=>attr!=attributes[0]);
           // inputs.id = storedItem[index][attributes[0]];
 
           if(changed) // user have changed records.
