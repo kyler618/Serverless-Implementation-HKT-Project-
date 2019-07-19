@@ -44,7 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 9');
+  console.log('version 1');
 
   // on start
 
@@ -851,7 +851,6 @@ if (!_config.api.invokeUrl) {
     }
     function rollback(){
       event.target.classList.remove(event.target.classList[1]);
-      // event.target.classList.add(previousPk);
       event.target.classList.add(pk);
     }
     handleRowClick.buttonClick = buttonClick;
