@@ -44,7 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 6');
+  console.log('version 7');
 
   // on start
 
@@ -333,37 +333,57 @@ if (!_config.api.invokeUrl) {
           }
         }
         if(changedRecord.length==0){
-          readMode();
-          return;
+          return readMode();
         }
         const updateRecords = [];
-        for( let x = 0 ; x < changedRecord.length ; x++ ){
-          let changed, replace = false;
-          const pk = changedRecord[x];
-          const index = storedItem.map(x=>x[attributes[0]]).indexOf(pk);
-          const item = {};
-          const record = Array.from($("input." + pk));
-
-          for( let y = 0 ; y < record.length ; y++ ){
-            if(record[y].value == ""){
+        changedRecord.forEach( recordPk => {
+          let changed = false;
+          const index = storedItem.map(item=>item[attributes[0]]).indexOf(recordPk);
+          const items = {};
+          const item = Array.from($("input." + recordPk));
+          item.forEach( record => {
+            if(record.value == ""){
               alert("Incompleted Error.");
               return;
             }
-            if(record[y].value != storedItem[index][record[y].classList[0]]){
+            if(record.value != storedItem[index][record.classList[0]]){
                 changed = true;
             }
-            item[record[y].classList[0]] = record[y].value;
-          }
-
-          item.id = pk;
+            items[record.classList[0]] = record.value;
+          });
           if(changed){
-            updateRecords.push(item);
+            items.id = recordPk;
+            updateRecords.push(items);
           }
-        }
+        });
+        // for( let x = 0 ; x < changedRecord.length ; x++ ){
+        //   let changed,  = false;
+        //   const pk = changedRecord[x];
+        //   const index = storedItem.map(x=>x[attributes[0]]).indexOf(pk);
+        //   const items = {};
+        //   const record = Array.from($("input." + pk));
+        //
+        //   for( let y = 0 ; y < record.length ; y++ ){
+        //     if(record[y].value == ""){
+        //       alert("Incompleted Error.");
+        //       return;
+        //     }
+        //     if(record[y].value != storedItem[index][record[y].classList[0]]){
+        //         changed = true;
+        //     }
+        //     items[record[y].classList[0]] = record[y].value;
+        //   }
+        //
+        //   items.id = pk;
+        //   if(changed){
+        //     updateRecords.push(items);
+        //   }
+        // }
         var data = {operation:'multipleUpdate'};
         data.input = (updateRecords.length!=0)? updateRecords:null;
         if(data.input!=null){
-          request(data, handleMultipleUpdateResponse);
+          // request(data, handleMultipleUpdateResponse);
+          console.log(data);
         }
         else{
           readMode();
