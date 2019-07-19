@@ -1,23 +1,5 @@
-// Backup2
 // Goal : , Bug:
 var Users = window.Users || {};
-// var constantAttributes = [];
-// const selectFields = [];
-// pre-defined
-// var targetTable = $('#current').val();
-// switch(targetTable){
-//   case "Customer_and_Software":
-//     constantAttributes.push('Sensor_ID');
-//     selectFields.push('Billed_customer_name', 'Billed_Customer_Contact', 'Enduser_address_for_reference');
-//     break;
-//   case "Hardware":
-//     constantAttributes.push('Sensor_ID');
-//     selectFields.push('Enduser_name', 'Physical_Site_Address', 'Device_Type');
-//
-//     $('#maintainButton').addClass('editItem');
-//     $('#selector').show();
-//     break;
-// }
 var poolData = {
     UserPoolId : _config.cognito.userPoolId, // your user pool id here
     ClientId : _config.cognito.userPoolClientId // your client id here
@@ -50,7 +32,7 @@ if (!_config.api.invokeUrl) {
   var targetTable = $('#current').val();
   switch(targetTable){
     case "Customer_and_Software":
-      constantAttributes.push('Sensor_ID');
+      constantAttributes.push('Tenant_ID_number');
       selectFields.push('Billed_customer_name', 'Billed_Customer_Contact', 'Enduser_address_for_reference');
       break;
     case "Hardware":
@@ -61,7 +43,7 @@ if (!_config.api.invokeUrl) {
       $('#selector').show();
       break;
   }
-  console.log('version 9');
+  console.log('version 1');
 
   // on start
 
