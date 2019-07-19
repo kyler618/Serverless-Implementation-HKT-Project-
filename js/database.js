@@ -44,7 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 9');
+  console.log('version 1');
 
   // on start
 
@@ -149,30 +149,23 @@ if (!_config.api.invokeUrl) {
 
   function initialize(){
     function selectorChange(event, x){
-      if(x<=1)
-      {
-        if(x==0)
-        {
+      if(x<=1){
+        if(x==0){
           clearOption(2);
           $(selector[2].bar).prop('disabled', 'disabled').unbind();
         }
         clearOption(3);
       }
-      if( event.target.selectedIndex == 0 )
-      {
-        if(x==0||x==1)
-        {
+      if( event.target.selectedIndex == 0 ){
+        if(x==0||x==1){
           // $(selector[x+1].bar).children().first().html('');
           $(selector[x+1].bar).prop('disabled', 'disabled').unbind();
         }
         delete selector[x].searchKey;
       }
-      else
-      {
-        if(x<=1)
-        {
-          if(x==0)
-          {
+      else{
+        if(x<=1){
+          if(x==0){
             _searchItem = null;
           }
           $(selector[x+1].bar).children().first().html('All');
@@ -192,22 +185,20 @@ if (!_config.api.invokeUrl) {
     const selectBarText = $('#selector div span');
     const selectBar = $('#selector div select');
     const input = document.getElementById('searchBar');
-    for(let x=0;x<selectBar.length;x++)
-    {
+    for(let x=0;x<selectBar.length;x++){
       let name = selectField[x].replace(/\_+/g, ' ');
       $(selectBarText[x]).html(name+" :");
       selector.push({field:selectField[x], bar:selectBar[x]});
     }
     input.addEventListener("keyup", function(event) {
       event.preventDefault();
-      if ($(this).val() == "")
-      {
-        _searchItem = null;
-      }
-      else
-      {
-        _searchItem = $(this).val();
-      }
+      _searchItem = ($(this).val() != "")? $(this).val():null;
+      // if ($(this).val() == ""){
+      //   _searchItem = null;
+      // }
+      // else{
+      //   _searchItem = $(this).val();
+      // }
       // $(selector[0].bar).prop("selectedIndex", 0).change();
       searchItem();
     });
@@ -429,13 +420,13 @@ if (!_config.api.invokeUrl) {
       }
     }
     if(selector[0].searchKey!==undefined || _searchItem!==null){
-      console.log(selector[0].searchKey, _searchItem);
       searchItem();
     }
   }
 
   function searchItem(){
     const searchKey = selector.map(({searchKey}) => searchKey);
+    console.log(searchKey);
     for(let record in storedItem){
       const $row = $("#" + storedItem[record][attributes[0]]);
       $row.hide();
