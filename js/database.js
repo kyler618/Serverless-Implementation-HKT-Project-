@@ -1,22 +1,23 @@
 // Backup2
 // Goal : , Bug:
 var Users = window.Users || {};
-var constantAttributes = [];
-const selectFields = [];
+// var constantAttributes = [];
+// const selectFields = [];
 // pre-defined
-var targetTable = $('#current').val();
-switch(targetTable){
-  case "Customer_and_Software":
-    selectFields.push('Billed_customer_name', 'Billed_Customer_Contact', 'Enduser_address_for_reference');
-    break;
-  case "Hardware":
-    constantAttributes.push('Sensor_ID');
-    selectFields.push('Enduser_name', 'Physical_Site_Address', 'Device_Type');
-
-    $('#maintainButton').addClass('editItem');
-    $('#selector').show();
-    break;
-}
+// var targetTable = $('#current').val();
+// switch(targetTable){
+//   case "Customer_and_Software":
+//     constantAttributes.push('Sensor_ID');
+//     selectFields.push('Billed_customer_name', 'Billed_Customer_Contact', 'Enduser_address_for_reference');
+//     break;
+//   case "Hardware":
+//     constantAttributes.push('Sensor_ID');
+//     selectFields.push('Enduser_name', 'Physical_Site_Address', 'Device_Type');
+//
+//     $('#maintainButton').addClass('editItem');
+//     $('#selector').show();
+//     break;
+// }
 var poolData = {
     UserPoolId : _config.cognito.userPoolId, // your user pool id here
     ClientId : _config.cognito.userPoolClientId // your client id here
@@ -29,6 +30,8 @@ if (!_config.api.invokeUrl) {
   user_Identity();
   const selector = [];
   const attributes = [];
+  const selectFields = [];
+  let constantAttributes = [];
   let _searchItem = null;
   let storedItem;
   let constantAttributesIndex;
@@ -43,7 +46,22 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 8');
+
+  var targetTable = $('#current').val();
+  switch(targetTable){
+    case "Customer_and_Software":
+      constantAttributes.push('Sensor_ID');
+      selectFields.push('Billed_customer_name', 'Billed_Customer_Contact', 'Enduser_address_for_reference');
+      break;
+    case "Hardware":
+      constantAttributes.push('Sensor_ID');
+      selectFields.push('Enduser_name', 'Physical_Site_Address', 'Device_Type');
+
+      $('#maintainButton').addClass('editItem');
+      $('#selector').show();
+      break;
+  }
+  console.log('version 9');
 
   // on start
 
@@ -812,6 +830,7 @@ if (!_config.api.invokeUrl) {
   // handle Response
 
   function handleScanResponse(results){
+    // console.log('Response received from API: ', results);
     function clearTable(){
       $("table thead tr").empty();
 
@@ -835,16 +854,6 @@ if (!_config.api.invokeUrl) {
           }
         });
       });
-      // for(let x=0;x<attrs.length;x++){
-      //   for(let y=0;y<attrs[x].length;y++){
-      //     if(!attributes.includes(attrs[x][y])){
-      //       attributes.push(attrs[x][y]);
-      //       const headerCell = headerRow.insertCell();
-      //       headerCell.innerHTML = attrs[x][y];
-      //       headerCell.classList.add(attrs[x][y]);
-      //     }
-      //   }
-      // }
       constantAttributes = constantAttributes.concat(selectFields);
       constantAttributesIndex = constantAttributes.map(attribute => $.inArray(attribute,attributes));
     }
@@ -875,7 +884,6 @@ if (!_config.api.invokeUrl) {
         }
       });
     }
-    // console.log('Response received from API: ', results);
     clearTable();
     attributes.length = 0;
     storedItem = results.Items;
