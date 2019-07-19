@@ -440,7 +440,6 @@ if (!_config.api.invokeUrl) {
         }
       }
       if(_searchItem!==null){
-        console.log(_searchItem);
         let _show = false;
         for(let field in storedItem[record]){
           if(field=='id')continue;
@@ -453,14 +452,11 @@ if (!_config.api.invokeUrl) {
           show = false;
         }
       }
-      if(show)
-      {
+      if(show){
         $row.show();
-        for(let x=1;x<3;x++)
-        {
+        for(let x=1;x<3;x++){
           const options = Array.from(selector[x].bar.children).map(({value}) => value);
-          if(searchKey[x-1]!==undefined&&!options.includes(storedItem[record][selector[x].field]))
-          {
+          if(searchKey[x-1]!==undefined&&!options.includes(storedItem[record][selector[x].field])){
             createOption(storedItem[record][selector[x].field], x+1);
           }
         }
