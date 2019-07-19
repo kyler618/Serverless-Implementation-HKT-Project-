@@ -48,7 +48,6 @@ if (!_config.api.invokeUrl) {
   // on start
 
   $( document ).ready(function() {
-      console.log(selectFields);
       initialize();
       pagination();
   });
