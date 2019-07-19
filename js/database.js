@@ -827,7 +827,7 @@ if (!_config.api.invokeUrl) {
       const attrs = storedItem.map(item => Object.keys(item));
       attrs.forEach( attr => {
         attr.forEach( field => {
-          if(!attributes.includes(field){
+          if( !attributes.includes(field) ){
             attributes.push(field);
             const headerCell = headerRow.insertCell();
             headerCell.innerHTML = field;
