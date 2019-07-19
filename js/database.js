@@ -44,7 +44,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 8');
+  console.log('version 9');
 
   // on start
 
@@ -797,36 +797,21 @@ if (!_config.api.invokeUrl) {
           }
           let changed = false;
           const index = storedItem.map(x=>x[attributes[0]]).indexOf(pk);
-          let deleteAttr = Object.keys(storedItem[index]);
+          let deleteAttr = Object.keys(storedItem[index]).filter(attr=>attr!=attributes[0]);
           const data = {operation: "singleUpdate", pk: pk};
           for(let x in inputs){
             deleteAttr = deleteAttr.filter(attr=>attr!=x);
             if(inputs[x]!=storedItem[index][x]){
-              // if(x==attributes[0]){
-              //   event.target.classList.add(inputs[x]);
-              //   replace = true;
-              // }
               changed = true;
             }
           }
-          deleteAttr = deleteAttr.filter(attr=>attr!=attributes[0]);
+          // deleteAttr = deleteAttr.filter(attr=>attr!=attributes[0]);
 
-          if(changed) // user have changed records.
-          {
+          if(changed){
+            // user have changed records
             data.input = inputs;
-            // if(replace)
-            // {
-            //   data.operation = "singleReplace";
-            //   console.log('replace', data);
-            // }
-            // else
-            // {
-
-              // check user whether delete any record
-              data.delete = (deleteAttr.length!=0)? deleteAttr:null;
-
-            // }
-            console.log('update', data);
+            // check user whether delete any record
+            data.delete = (deleteAttr.length!=0)? deleteAttr:null;
             request(data, handleUpdateResponse);
           }
           // user not change but may delete records
@@ -835,7 +820,6 @@ if (!_config.api.invokeUrl) {
               // user have delete records
               data.input = null;
               data.delete = deleteAttr;
-              console.log('update', data);
               request(data, handleUpdateResponse);
             }
             else{
