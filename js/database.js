@@ -43,7 +43,7 @@ if (!_config.api.invokeUrl) {
       alert('An error occured:\n' + jqXHR.responseText);
     }
   };
-  console.log('version 7');
+  console.log('version 8');
 
   // on start
 
@@ -826,20 +826,27 @@ if (!_config.api.invokeUrl) {
     function insertHeaderRow(){
       const headerRow = document.querySelector("table thead tr");
       const attrs = storedItem.map(item => Object.keys(item));
-      for(let x=0;x<attrs.length;x++){
-        for(let y=0;y<attrs[x].length;y++){
-          if(!attributes.includes(attrs[x][y])){
-            attributes.push(attrs[x][y]);
+      attrs.forEach( attr => {
+        attr.forEach( field => {
+          if(!attributes.includes(field){
+            attributes.push(field);
             const headerCell = headerRow.insertCell();
-            headerCell.innerHTML = attrs[x][y];
-            headerCell.classList.add(attrs[x][y]);
-          }
-        }
-      }
-      // const constantAttributes = [selectField1, selectField2, selectField3];
+            headerCell.innerHTML = field;
+            headerCell.classList.add(field);
+        });
+      });
+      // for(let x=0;x<attrs.length;x++){
+      //   for(let y=0;y<attrs[x].length;y++){
+      //     if(!attributes.includes(attrs[x][y])){
+      //       attributes.push(attrs[x][y]);
+      //       const headerCell = headerRow.insertCell();
+      //       headerCell.innerHTML = attrs[x][y];
+      //       headerCell.classList.add(attrs[x][y]);
+      //     }
+      //   }
+      // }
       constantAttributes = constantAttributes.concat(selectFields);
-      console.log(constantAttributes);
-      constantAttributesIndex = constantAttributes.map(selectField => $.inArray(selectField,attributes));
+      constantAttributesIndex = constantAttributes.map(attribute => $.inArray(attribute,attributes));
     }
     function insertBodyRow(){
       const tableBody = document.querySelector("table tbody");
