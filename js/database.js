@@ -787,68 +787,59 @@ if (!_config.api.invokeUrl) {
             }
           }
           const inputs = getInputData();
-          if(inputs.incompleteError!==undefined)
-          {
+          if(inputs.incompleteError!==undefined){
             alert("Incompleted Error");
             return;
           }
-          if(inputs.DuplicateError!==undefined)
-          {
+          if(inputs.DuplicateError!==undefined){
             alert("Duplicate Error");
             return;
           }
-          let changed, replace = false;
-          // const index = storedItem.map(x=>x[attributes[0]]).indexOf(pkey);
+          let changed = false;
           const index = storedItem.map(x=>x[attributes[0]]).indexOf(pk);
-          console.log('index', index);
-          // let deleteAttr;
           let deleteAttr = Object.keys(storedItem[index]);
-
           const data = {operation: "singleUpdate", pk: pk};
-          for(let x in inputs)
-          {
+          for(let x in inputs){
             deleteAttr = deleteAttr.filter(attr=>attr!=x);
-            if(inputs[x]!=storedItem[index][x])
-            {
-              if(x==attributes[0])
-              {
-                // event.target.classList.remove(pkey);
-                event.target.classList.add(inputs[x]);
-                replace = true;
-              }
+            if(inputs[x]!=storedItem[index][x]){
+              // if(x==attributes[0]){
+              //   event.target.classList.add(inputs[x]);
+              //   replace = true;
+              // }
               changed = true;
             }
           }
           deleteAttr = deleteAttr.filter(attr=>attr!=attributes[0]);
-          // inputs.id = storedItem[index][attributes[0]];
 
           if(changed) // user have changed records.
           {
             data.input = inputs;
-            if(replace)
-            {
-              data.operation = "singleReplace";
-              console.log('replace', data);
-            }
-            else
-            {
+            // if(replace)
+            // {
+            //   data.operation = "singleReplace";
+            //   console.log('replace', data);
+            // }
+            // else
+            // {
+
               // check user whether delete any record
               data.delete = (deleteAttr.length!=0)? deleteAttr:null;
-            }
+
+            // }
             console.log('update', data);
             request(data, handleUpdateResponse);
           }
-          else // user not change but may delete records
-          {
-            if(deleteAttr.length!=0)
-            {
+          // user not change but may delete records
+          else{
+            if(deleteAttr.length!=0){
+              // user have delete records
               data.input = null;
               data.delete = deleteAttr;
               console.log('update', data);
               request(data, handleUpdateResponse);
             }
-            else
-            {
+            else{
+              // user nothing to do
               $('#itemForm').empty();
               handleRowClick(event);
             }
