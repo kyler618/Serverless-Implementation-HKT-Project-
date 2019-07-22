@@ -142,7 +142,7 @@ if (!_config.api.invokeUrl) {
             inputs.field_Engineer = $('#itemModel-maintain-select').val();
             const data = {operation: "maintainRequest", input: inputs};
             console.log('requesting...');
-            request('Maintenance', data, handleResponse);
+            request(data, handleResponse, 'Maintenance');
           });
           users.forEach(user => {
             const option = document.createElement('option');
