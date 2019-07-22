@@ -54,7 +54,7 @@ if (!_config.api.invokeUrl) {
 
   // basic functions
 
-  function user_Identity(test){
+  function user_Identity(){
     let region = _config.cognito.region;
     let key = 'cognito-idp.' + region + '.amazonaws.com/' + _config.cognito.userPoolId;
     let logins = {};
