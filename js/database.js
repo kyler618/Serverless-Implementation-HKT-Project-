@@ -619,6 +619,7 @@ if (!_config.api.invokeUrl) {
     data.table = (table===undefined)?targetTable:table;
     httpRequest.data = JSON.stringify(data);
     httpRequest.success = success;
+    console.log(data);
     $.ajax(httpRequest);
   }
 
