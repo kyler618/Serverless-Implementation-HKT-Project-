@@ -43,7 +43,7 @@ if (!_config.api.invokeUrl) {
       $('#selector').show();
       break;
   }
-  console.log('version 3');
+  console.log('version 4');
 
   // on start
 
@@ -141,6 +141,7 @@ if (!_config.api.invokeUrl) {
             inputs.sensor_ID = $('#itemModel input.Sensor_ID')[1].value;
             inputs.field_Engineer = $('#itemModel-maintain-select').val();
             const data = {operation: "maintainRequest", input: inputs};
+            console.log('requesting...');
             request(data, handleResponse);
           });
           users.forEach(user => {
@@ -149,7 +150,6 @@ if (!_config.api.invokeUrl) {
             option.value = users;
             $('#itemModel-maintain-select').append(option);
           });
-          console.log('user done 3');
         }
       });
     }
