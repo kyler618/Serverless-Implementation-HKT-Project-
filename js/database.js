@@ -132,10 +132,8 @@ if (!_config.api.invokeUrl) {
           });
           $('#itemModel-maintain-confirm').click( () => {
             function handleResponse(results){
-              console.log(results);
+              alert('Request Confirm');
             }
-            // console.log($('#itemModel-maintain-select').val());
-            // console.log(id);
             const inputs = {};
             inputs.inventory_ID = id;
             inputs.sensor_ID = $('#itemModel-maintain-sensorID').html();
