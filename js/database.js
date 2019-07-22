@@ -134,7 +134,7 @@ if (!_config.api.invokeUrl) {
             console.log($('#itemModel-maintain-select').val());
             console.log(id);
             const inputs = {};
-            $('#itemModel input.Sensor_ID').forEach( item => {
+            Array.from($('#itemModel input.Sensor_ID')).forEach( item => {
               console.log(item);
             });
           });
