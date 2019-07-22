@@ -43,7 +43,7 @@ if (!_config.api.invokeUrl) {
       $('#selector').show();
       break;
   }
-  console.log('version 6');
+  console.log('version 7');
 
   // on start
 
@@ -148,6 +148,7 @@ if (!_config.api.invokeUrl) {
             option.value = user;
             if(user==field_Engineer){
               option.selected = true;
+              $('#itemModel-maintain-select').prop('disabled', 'disabled');
             }
             $('#itemModel-maintain-select').append(option);
           });
