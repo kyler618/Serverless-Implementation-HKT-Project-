@@ -146,9 +146,9 @@ if (!_config.api.invokeUrl) {
             const option = document.createElement('option');
             option.appendChild( document.createTextNode(users) );
             option.value = users;
-            if(users==field_Engineer){
-              option.selected = true;
-            }
+            // if(users==field_Engineer){
+            //   option.selected = true;
+            // }
             $('#itemModel-maintain-select').append(option);
           });
         }
