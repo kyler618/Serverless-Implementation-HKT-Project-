@@ -131,13 +131,17 @@ if (!_config.api.invokeUrl) {
             }
           });
           $('#itemModel-maintain-confirm').click( () => {
+            function handleUpdateResponse(results){
+              console.log(results);
+            }
             // console.log($('#itemModel-maintain-select').val());
             // console.log(id);
             const inputs = {};
             inputs.inventory_ID = id;
             inputs.sensor_ID = $('#itemModel input.Sensor_ID')[1].value;
             inputs.field_Engineer = $('#itemModel-maintain-select').val();
-            console.log(inputs);
+            const data = {operation: "maintainRequest", input: inputs};
+            request(data, handleUpdateResponse);
           });
           users.forEach(user => {
             const option = document.createElement('option');
