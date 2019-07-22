@@ -88,7 +88,7 @@ if (!_config.api.invokeUrl) {
       });
       userPool = new AWS.CognitoIdentityServiceProvider();
     }
-    function listUsers(test){
+    function listUsers(id){
       userPool.listUsers(params, (err, data) => {
         if (err) {
           console.log(err);
@@ -132,7 +132,11 @@ if (!_config.api.invokeUrl) {
           });
           $('#itemModel-maintain-confirm').click( () => {
             console.log($('#itemModel-maintain-select').val());
-            console.log(test);
+            console.log(id);
+            const inputs = {};
+            $('#itemModel input.Sensor_ID').forEach( item => {
+              console.log(item);
+            });
           });
           users.forEach(user => {
             const option = document.createElement('option');
