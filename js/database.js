@@ -88,7 +88,7 @@ if (!_config.api.invokeUrl) {
       });
       userPool = new AWS.CognitoIdentityServiceProvider();
     }
-    function listUsers(id){
+    function listUsers(id, field_Engineer){
       userPool.listUsers(params, (err, data) => {
         if (err) {
           console.log(err);
@@ -124,7 +124,7 @@ if (!_config.api.invokeUrl) {
           const default_Option = document.createElement('option');
           default_Option.appendChild( document.createTextNode(' -- Select Field Engineer -- ') );
           default_Option.disabled = true;
-          default_Option.selected = true;
+          // default_Option.selected = true;
           $('#itemModel-maintain-select').append(default_Option);
           $('#itemModel-maintain-select').change( (event) => {
             if(event.target.value != null){
@@ -146,6 +146,9 @@ if (!_config.api.invokeUrl) {
             const option = document.createElement('option');
             option.appendChild( document.createTextNode(users) );
             option.value = users;
+            if(users==field_Engineer){
+              option.selected = true;
+            }
             $('#itemModel-maintain-select').append(option);
           });
         }
@@ -755,7 +758,12 @@ if (!_config.api.invokeUrl) {
       $('#maintainButton').click( () => {
         function handleResponse(results){
           console.log(results);
-          user_Identity.listUsers(id);
+          if(results.Items.length!=0){
+            user_Identity.listUsers(id, results.Items[0].field_Engineer);
+          }
+          else{
+            user_Identity.listUsers(id);
+          }
         }
         const id = event.target.classList[1];
         const data = {operation: "getMaintenanceRecord", target: id};
