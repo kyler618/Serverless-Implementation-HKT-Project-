@@ -104,7 +104,7 @@ if (!_config.api.invokeUrl) {
             $('#itemForm').show();
             $('.editItem').show();
             $('#itemModel-maintain-Container').hide();
-            $('#itemModel-maintain-confirm').hide();
+            $('#itemModel-maintain-confirm').unbind().hide();
             $('#itemModel-maintain-sensorID').html("");
             $('#itemModel-maintain-select').empty();
             $('itemModel-maintain-cancel').unbind().hide();
@@ -115,7 +115,7 @@ if (!_config.api.invokeUrl) {
             $('#itemForm').show();
             $('.editItem').unbind();
             $('#itemModel-maintain-Container').hide();
-            $('#itemModel-maintain-confirm').hide();
+            $('#itemModel-maintain-confirm').unbind().hide();
             $('#cancelButton').unbind().hide();
             $('#itemModel-maintain-sensorID').html("");
             $('#itemModel-maintain-select').empty();
@@ -768,7 +768,6 @@ if (!_config.api.invokeUrl) {
       });
       $('#maintainButton').click( () => {
         function handleResponse(results){
-          console.log(results);
           if(results.Items.length!=0){
             user_Identity.listUsers(id, results.Items[0]);
           }
