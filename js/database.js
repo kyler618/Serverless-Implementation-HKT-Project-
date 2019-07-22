@@ -43,7 +43,7 @@ if (!_config.api.invokeUrl) {
       $('#selector').show();
       break;
   }
-  console.log('version 4');
+  console.log('version 5');
 
   // on start
 
@@ -615,7 +615,7 @@ if (!_config.api.invokeUrl) {
     $('#itemModel').hide();
   }
 
-  function request(data, success) {
+  function request(data, success, table) {
     data.table = targetTable;
     httpRequest.data = JSON.stringify(data);
     httpRequest.success = success;
