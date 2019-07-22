@@ -146,7 +146,6 @@ if (!_config.api.invokeUrl) {
             const option = document.createElement('option');
             option.appendChild( document.createTextNode(user) );
             option.value = user;
-            // console.log(user, field_Engineer);
             if(user==field_Engineer){
               option.selected = true;
             }
