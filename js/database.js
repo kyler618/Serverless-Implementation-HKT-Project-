@@ -150,8 +150,9 @@ if (!_config.api.invokeUrl) {
             if(user==field_Engineer){
               option.selected = true;
               $('#itemModel-maintain-select').prop('disabled', 'disabled');
-              const button = document.createElement("BUTTON");
-              button.innerHTML = "<i class='fa fa-close'></i>";
+              $('itemModel-maintain-cancel').show().click( () => {
+                
+              });
               $('#itemModel-maintain-select').after(button);
             }
           });
