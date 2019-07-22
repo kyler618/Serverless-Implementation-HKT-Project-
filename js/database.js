@@ -43,7 +43,7 @@ if (!_config.api.invokeUrl) {
       $('#selector').show();
       break;
   }
-  console.log('version 8');
+  console.log('version 9');
 
   // on start
 
@@ -152,7 +152,7 @@ if (!_config.api.invokeUrl) {
               $('#itemModel-maintain-select').prop('disabled', 'disabled');
               const button = document.createElement("BUTTON");
               button.innerHTML = "<i class='fa fa-close'></i>";
-              $('#itemModel-maintain-select').append(button);
+              button.appendAfter('#itemModel-maintain-select');
             }
           });
         }
