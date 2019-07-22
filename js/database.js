@@ -135,7 +135,7 @@ if (!_config.api.invokeUrl) {
             console.log(id);
             const inputs = {};
             Array.from($('#itemModel input.Sensor_ID')).forEach( item => {
-              console.log(item);
+              console.log(item.value);
             });
           });
           users.forEach(user => {
