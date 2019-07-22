@@ -43,7 +43,7 @@ if (!_config.api.invokeUrl) {
       $('#selector').show();
       break;
   }
-  console.log('version 1');
+  console.log('version 2');
 
   // on start
 
@@ -151,7 +151,8 @@ if (!_config.api.invokeUrl) {
             if(user==oldRecord.field_Engineer){
               option.selected = true;
               $('#itemModel-maintain-select').prop('disabled', 'disabled').after(button);
-              $('itemModel-maintain-cancel').show().click( () => {
+              $('itemModel-maintain-cancel').show();
+              $('itemModel-maintain-cancel').click( () => {
                 function handleResponse(results){
                   alert('Maintenance Request Canceled');
                 }
