@@ -148,7 +148,7 @@ if (!_config.api.invokeUrl) {
             option.appendChild( document.createTextNode(user) );
             option.value = user;
             $('#itemModel-maintain-select').append(option);
-            if(user==oldRecord.field_Engineer){
+            if(oldRecord!==undefined && user==oldRecord.field_Engineer){
               option.selected = true;
               $('#itemModel-maintain-select').prop('disabled', 'disabled');
               $('#itemModel-maintain-cancel').show().click( () => {
