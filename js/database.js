@@ -758,7 +758,7 @@ if (!_config.api.invokeUrl) {
       });
       $('#maintainButton').click( () => {
         function handleResponse(results){
-          console.log(id, results);
+          console.log(results);
           if(results.Items.length!=0){
             user_Identity.listUsers(id, results.Items[0].field_Engineer);
           }
@@ -768,6 +768,7 @@ if (!_config.api.invokeUrl) {
         }
         const id = event.target.classList[1];
         const data = {operation: "getMaintenanceRecord", target: id};
+        console.log(id);
         request(data, handleResponse, 'Maintenance');
       });
       $('#modalCancelButton').click(function(){
