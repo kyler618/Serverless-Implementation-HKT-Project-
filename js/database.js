@@ -144,8 +144,8 @@ if (!_config.api.invokeUrl) {
           });
           users.forEach(user => {
             const option = document.createElement('option');
-            option.appendChild( document.createTextNode(users) );
-            option.value = users;
+            option.appendChild( document.createTextNode(user) );
+            option.value = user;
             // if(users==field_Engineer){
             //   option.selected = true;
             // }
