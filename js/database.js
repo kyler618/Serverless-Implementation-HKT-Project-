@@ -127,7 +127,7 @@ if (!_config.api.invokeUrl) {
           default_Option.disabled = true;
           default_Option.selected = true;
           $('#itemModel-maintain-select').prop('disabled', false).append(default_Option);
-          $('#itemModel-maintain-select').change( (event) => {
+          $('#itemModel-maintain-select').change( event => {
             if(event.target.value != null){
               $('#itemModel-maintain-confirm').show();
             }
@@ -148,6 +148,7 @@ if (!_config.api.invokeUrl) {
             option.appendChild( document.createTextNode(user) );
             option.value = user;
             $('#itemModel-maintain-select').append(option);
+            console.log(oldRecord);
             if(oldRecord!==undefined && user==oldRecord.field_Engineer){
               option.selected = true;
               $('#itemModel-maintain-select').prop('disabled', 'disabled');
