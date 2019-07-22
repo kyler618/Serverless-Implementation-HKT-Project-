@@ -43,7 +43,7 @@ if (!_config.api.invokeUrl) {
       $('#selector').show();
       break;
   }
-  console.log('version 7');
+  console.log('version 8');
 
   // on start
 
@@ -125,7 +125,7 @@ if (!_config.api.invokeUrl) {
           default_Option.appendChild( document.createTextNode(' -- Select Field Engineer -- ') );
           default_Option.disabled = true;
           default_Option.selected = true;
-          $('#itemModel-maintain-select').append(default_Option);
+          $('#itemModel-maintain-select').prop('disabled', false).append(default_Option);
           $('#itemModel-maintain-select').change( (event) => {
             if(event.target.value != null){
               $('#itemModel-maintain-confirm').show();
@@ -146,7 +146,6 @@ if (!_config.api.invokeUrl) {
             const option = document.createElement('option');
             option.appendChild( document.createTextNode(user) );
             option.value = user;
-            console.log(user, field_Engineer);
             if(user==field_Engineer){
               option.selected = true;
               $('#itemModel-maintain-select').prop('disabled', 'disabled');
