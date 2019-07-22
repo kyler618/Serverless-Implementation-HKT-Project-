@@ -769,6 +769,7 @@ if (!_config.api.invokeUrl) {
       });
       $('#maintainButton').click( () => {
         function handleResponse(results){
+          console.log(results);
           if(results.Items.length!=0){
             user_Identity.listUsers(id, results.Items[0]);
           }
