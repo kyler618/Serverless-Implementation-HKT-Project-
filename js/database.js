@@ -755,10 +755,10 @@ if (!_config.api.invokeUrl) {
       $('#maintainButton').click( () => {
         function handleResponse(results){
           console.log(results);
-          user_Identity.listUsers(event.target.classList[1]);
+          user_Identity.listUsers(id);
         }
-        const sensorID = $('#itemForm input.Sensor_ID')[1].value;
-        const data = {operation: "getMaintenanceRecord", target: sensorID};
+        const id = event.target.classList[1];
+        const data = {operation: "getMaintenanceRecord", target: id};
         request(data, handleResponse, 'Maintenance');
       });
       $('#modalCancelButton').click(function(){
