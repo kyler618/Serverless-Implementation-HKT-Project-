@@ -43,7 +43,7 @@ if (!_config.api.invokeUrl) {
       $('#selector').show();
       break;
   }
-  console.log('version 6');
+  console.log('version 7');
 
   // on start
 
@@ -616,8 +616,7 @@ if (!_config.api.invokeUrl) {
   }
 
   function request(data, success, table) {
-    console.log(table);
-    data.table = (table==null)?table:targetTable;
+    data.table = (table==undefined)?table:targetTable;
     httpRequest.data = JSON.stringify(data);
     httpRequest.success = success;
     $.ajax(httpRequest);
