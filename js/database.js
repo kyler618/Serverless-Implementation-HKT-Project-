@@ -152,7 +152,7 @@ if (!_config.api.invokeUrl) {
               $('#itemModel-maintain-select').prop('disabled', 'disabled');
               const button = document.createElement("BUTTON");
               button.innerHTML = "<i class='fa fa-close'></i>";
-              button.appendAfter('#itemModel-maintain-select');
+              $('#itemModel-maintain-select').after(button);
             }
           });
         }
