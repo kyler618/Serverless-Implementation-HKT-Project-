@@ -138,7 +138,7 @@ if (!_config.api.invokeUrl) {
             // console.log(id);
             const inputs = {};
             inputs.inventory_ID = id;
-            inputs.sensor_ID = $('#itemModel input.Sensor_ID')[1].value;
+            inputs.sensor_ID = $('#itemModel-maintain-sensorID').html();
             inputs.field_Engineer = $('#itemModel-maintain-select').val();
             const data = {operation: "maintainRequest", input: inputs};
             console.log('requesting...');
