@@ -131,7 +131,7 @@ if (!_config.api.invokeUrl) {
             }
           });
           $('#itemModel-maintain-confirm').click( () => {
-            function handleUpdateResponse(results){
+            function handleResponse(results){
               console.log(results);
             }
             // console.log($('#itemModel-maintain-select').val());
@@ -141,7 +141,7 @@ if (!_config.api.invokeUrl) {
             inputs.sensor_ID = $('#itemModel input.Sensor_ID')[1].value;
             inputs.field_Engineer = $('#itemModel-maintain-select').val();
             const data = {operation: "maintainRequest", input: inputs};
-            request(data, handleUpdateResponse);
+            request(data, handleResponse);
           });
           users.forEach(user => {
             const option = document.createElement('option');
