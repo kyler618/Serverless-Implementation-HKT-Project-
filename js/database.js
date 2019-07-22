@@ -107,6 +107,7 @@ if (!_config.api.invokeUrl) {
             $('#itemModel-maintain-confirm').hide();
             $('#itemModel-maintain-sensorID').html("");
             $('#itemModel-maintain-select').empty();
+            $('itemModel-maintain-cancel').unbind().hide();
             $('#cancelButton').unbind().hide();
           });
           $('#modalCancelButton').unbind().click( () => {
@@ -118,6 +119,7 @@ if (!_config.api.invokeUrl) {
             $('#cancelButton').unbind().hide();
             $('#itemModel-maintain-sensorID').html("");
             $('#itemModel-maintain-select').empty();
+            $('itemModel-maintain-cancel').unbind().hide();
             $(this).unbind();
           });
           const default_Option = document.createElement('option');
@@ -150,9 +152,13 @@ if (!_config.api.invokeUrl) {
               option.selected = true;
               $('#itemModel-maintain-select').prop('disabled', 'disabled');
               $('itemModel-maintain-cancel').show().click( () => {
+                function handleResponse(results){
+                  alert('Maintenance Request Canceled');
+                }
                 const data = {operation: "cancelMaintainRequest", target: oldRecord.id};
                 console.log(data);
                 request(data, handleResponse, 'Maintenance');
+                $('itemModel-maintain-cancel').unbind().hide();
               });
               $('#itemModel-maintain-select').after(button);
             }
