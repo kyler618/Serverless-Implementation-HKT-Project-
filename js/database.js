@@ -150,7 +150,7 @@ if (!_config.api.invokeUrl) {
             $('#itemModel-maintain-select').append(option);
             if(user==oldRecord.field_Engineer){
               option.selected = true;
-              $('#itemModel-maintain-select').prop('disabled', 'disabled');
+              $('#itemModel-maintain-select').prop('disabled', 'disabled').after(button);
               $('itemModel-maintain-cancel').show().click( () => {
                 function handleResponse(results){
                   alert('Maintenance Request Canceled');
@@ -160,7 +160,6 @@ if (!_config.api.invokeUrl) {
                 request(data, handleResponse, 'Maintenance');
                 $('itemModel-maintain-cancel').unbind().hide();
               });
-              $('#itemModel-maintain-select').after(button);
             }
           });
         }
