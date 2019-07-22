@@ -43,7 +43,7 @@ if (!_config.api.invokeUrl) {
       $('#selector').show();
       break;
   }
-  console.log('version 5');
+  console.log('version 6');
 
   // on start
 
@@ -768,7 +768,6 @@ if (!_config.api.invokeUrl) {
         }
         const id = event.target.classList[1];
         const data = {operation: "getMaintenanceRecord", target: id};
-        console.log(id);
         request(data, handleResponse, 'Maintenance');
       });
       $('#modalCancelButton').click(function(){
