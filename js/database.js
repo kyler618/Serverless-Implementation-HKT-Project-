@@ -746,7 +746,7 @@ if (!_config.api.invokeUrl) {
         });
       });
       $('#maintainButton').click( () => {
-        user_Identity.listUsers(event.target);
+        user_Identity.listUsers(event.target.classList[1]);
       });
       $('#modalCancelButton').click(function(){
         hideModel();
