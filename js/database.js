@@ -94,7 +94,7 @@ if (!_config.api.invokeUrl) {
           console.log(err);
         }
         else {
-          console.log("data", data);
+          // console.log("data", data);
           $('#itemModel-maintain-sensorID').html($('#itemForm').children()[1].value);
           let users = (data.Users).map(user=>user.Username);
           $('#itemForm').hide();
@@ -131,12 +131,13 @@ if (!_config.api.invokeUrl) {
             }
           });
           $('#itemModel-maintain-confirm').click( () => {
-            console.log($('#itemModel-maintain-select').val());
-            console.log(id);
+            // console.log($('#itemModel-maintain-select').val());
+            // console.log(id);
             const inputs = {};
-            Array.from($('#itemModel input.Sensor_ID')).forEach( item => {
-              console.log(item.value);
-            });
+            inputs.inventory_ID = id;
+            inputs.sensor_ID = $('#itemModel input.Sensor_ID')[1].value;
+            inputs.field_Engineer = $('#itemModel-maintain-select').val();
+            console.log(inputs);
           });
           users.forEach(user => {
             const option = document.createElement('option');
