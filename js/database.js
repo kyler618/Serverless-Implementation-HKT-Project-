@@ -43,7 +43,7 @@ if (!_config.api.invokeUrl) {
       $('#selector').show();
       break;
   }
-  console.log('version 3');
+  console.log('version 4');
 
   // on start
 
@@ -146,9 +146,9 @@ if (!_config.api.invokeUrl) {
             const option = document.createElement('option');
             option.appendChild( document.createTextNode(user) );
             option.value = user;
-            // if(users==field_Engineer){
-            //   option.selected = true;
-            // }
+            if(user==field_Engineer){
+              option.selected = true;
+            }
             $('#itemModel-maintain-select').append(option);
           });
         }
