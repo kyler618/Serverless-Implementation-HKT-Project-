@@ -146,7 +146,7 @@ if (!_config.api.invokeUrl) {
             const option = document.createElement('option');
             option.appendChild( document.createTextNode(user) );
             option.value = user;
-            console.log(user, field_Engineer);
+            // console.log(user, field_Engineer);
             if(user==field_Engineer){
               option.selected = true;
             }
@@ -758,7 +758,7 @@ if (!_config.api.invokeUrl) {
       });
       $('#maintainButton').click( () => {
         function handleResponse(results){
-          console.log(results);
+          console.log(id, results);
           if(results.Items.length!=0){
             user_Identity.listUsers(id, results.Items[0].field_Engineer);
           }
