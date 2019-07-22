@@ -146,11 +146,14 @@ if (!_config.api.invokeUrl) {
             const option = document.createElement('option');
             option.appendChild( document.createTextNode(user) );
             option.value = user;
+            $('#itemModel-maintain-select').append(option);
             if(user==field_Engineer){
               option.selected = true;
               $('#itemModel-maintain-select').prop('disabled', 'disabled');
+              const button = document.createElement("BUTTON");
+              button.innerHTML = "<i class='fa fa-close'></i>";
+              $('#itemModel-maintain-select').append(button);
             }
-            $('#itemModel-maintain-select').append(option);
           });
         }
       });
