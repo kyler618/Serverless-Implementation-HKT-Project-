@@ -43,7 +43,7 @@ if (!_config.api.invokeUrl) {
       $('#selector').show();
       break;
   }
-  console.log('version 5');
+  console.log('version 6');
 
   // on start
 
@@ -142,7 +142,7 @@ if (!_config.api.invokeUrl) {
             inputs.field_Engineer = $('#itemModel-maintain-select').val();
             const data = {operation: "maintainRequest", input: inputs};
             console.log('requesting...');
-            request(data, handleResponse);
+            request('Maintenance', data, handleResponse);
           });
           users.forEach(user => {
             const option = document.createElement('option');
@@ -616,7 +616,8 @@ if (!_config.api.invokeUrl) {
   }
 
   function request(data, success, table) {
-    data.table = targetTable;
+    console.log(table);
+    data.table = (table==null)?table:targetTable;
     httpRequest.data = JSON.stringify(data);
     httpRequest.success = success;
     $.ajax(httpRequest);
