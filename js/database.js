@@ -106,7 +106,7 @@ if (!_config.api.invokeUrl) {
             $('#itemModel-maintain-Container').hide();
             $('#itemModel-maintain-confirm').unbind().hide();
             $('#itemModel-maintain-sensorID').html("");
-            $('#itemModel-maintain-select').empty();
+            $('#itemModel-maintain-select').unbind().empty();
             $('itemModel-maintain-cancel').unbind().hide();
             $('#cancelButton').unbind().hide();
           });
@@ -118,7 +118,7 @@ if (!_config.api.invokeUrl) {
             $('#itemModel-maintain-confirm').unbind().hide();
             $('#cancelButton').unbind().hide();
             $('#itemModel-maintain-sensorID').html("");
-            $('#itemModel-maintain-select').empty();
+            $('#itemModel-maintain-select').unbind().empty();
             $('itemModel-maintain-cancel').unbind().hide();
             $(this).unbind();
           });
