@@ -54,7 +54,7 @@ if (!_config.api.invokeUrl) {
 
   // basic functions
 
-  function user_Identity(){
+  function user_Identity(test){
     let region = _config.cognito.region;
     let key = 'cognito-idp.' + region + '.amazonaws.com/' + _config.cognito.userPoolId;
     let logins = {};
@@ -132,6 +132,7 @@ if (!_config.api.invokeUrl) {
           });
           $('#itemModel-maintain-confirm').click( () => {
             console.log($('#itemModel-maintain-select').val());
+            console.log(test);
           });
           users.forEach(user => {
             const option = document.createElement('option');
@@ -745,7 +746,7 @@ if (!_config.api.invokeUrl) {
         });
       });
       $('#maintainButton').click( () => {
-        user_Identity.listUsers();
+        user_Identity.listUsers(event.target);
       });
       $('#modalCancelButton').click(function(){
         hideModel();
