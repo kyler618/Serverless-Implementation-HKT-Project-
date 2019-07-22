@@ -88,7 +88,7 @@ if (!_config.api.invokeUrl) {
       });
       userPool = new AWS.CognitoIdentityServiceProvider();
     }
-    function listUsers(){
+    function listUsers(test){
       userPool.listUsers(params, (err, data) => {
         if (err) {
           console.log(err);
