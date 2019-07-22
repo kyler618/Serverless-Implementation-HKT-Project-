@@ -95,7 +95,8 @@ if (!_config.api.invokeUrl) {
         }
         else {
           // console.log("data", data);
-          $('#itemModel-maintain-sensorID').html($('#itemForm').children()[1].value);
+          // $('#itemModel-maintain-sensorID').html($('#itemForm').children()[1].value);
+          $('#itemModel-maintain-sensorID').html($('#itemForm input.Sensor_ID')[1].value);
           let users = (data.Users).map(user=>user.Username);
           $('#itemForm').hide();
           $('.editItem').hide();
@@ -139,7 +140,6 @@ if (!_config.api.invokeUrl) {
             inputs.sensor_ID = $('#itemModel-maintain-sensorID').html();
             inputs.field_Engineer = $('#itemModel-maintain-select').val();
             const data = {operation: "maintainRequest", input: inputs};
-            console.log('requesting...');
             request(data, handleResponse, 'Maintenance');
           });
           users.forEach(user => {
@@ -753,7 +753,13 @@ if (!_config.api.invokeUrl) {
         });
       });
       $('#maintainButton').click( () => {
-        user_Identity.listUsers(event.target.classList[1]);
+        function handleResponse(results){
+          console.log(results);
+          user_Identity.listUsers(event.target.classList[1]);
+        }
+        const sensorID = $('#itemForm input.Sensor_ID')[1].value;
+        const data = {operation: "getMaintenanceRecord", target: sensorID};
+        request(data, handleResponse, 'Maintenance');
       });
       $('#modalCancelButton').click(function(){
         hideModel();
