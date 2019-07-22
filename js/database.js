@@ -150,9 +150,8 @@ if (!_config.api.invokeUrl) {
             $('#itemModel-maintain-select').append(option);
             if(user==oldRecord.field_Engineer){
               option.selected = true;
-              $('#itemModel-maintain-select').prop('disabled', 'disabled').after(button);
-              $('itemModel-maintain-cancel').show();
-              $('itemModel-maintain-cancel').click( () => {
+              $('#itemModel-maintain-select').prop('disabled', 'disabled');
+              $('itemModel-maintain-cancel').show().click( () => {
                 function handleResponse(results){
                   alert('Maintenance Request Canceled');
                 }
