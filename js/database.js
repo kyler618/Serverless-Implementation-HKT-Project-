@@ -43,7 +43,7 @@ if (!_config.api.invokeUrl) {
       $('#selector').show();
       break;
   }
-  console.log('version 9');
+  console.log('version 1');
 
   // on start
 
@@ -88,14 +88,13 @@ if (!_config.api.invokeUrl) {
       });
       userPool = new AWS.CognitoIdentityServiceProvider();
     }
-    function listUsers(id, field_Engineer){
+    function listUsers(id, oldRecord){
       userPool.listUsers(params, (err, data) => {
         if (err) {
           console.log(err);
         }
         else {
           // console.log("data", data);
-          // $('#itemModel-maintain-sensorID').html($('#itemForm').children()[1].value);
           $('#itemModel-maintain-sensorID').html($('#itemForm input.Sensor_ID')[1].value);
           let users = (data.Users).map(user=>user.Username);
           $('#itemForm').hide();
@@ -147,11 +146,13 @@ if (!_config.api.invokeUrl) {
             option.appendChild( document.createTextNode(user) );
             option.value = user;
             $('#itemModel-maintain-select').append(option);
-            if(user==field_Engineer){
+            if(user==oldRecord.field_Engineer){
               option.selected = true;
               $('#itemModel-maintain-select').prop('disabled', 'disabled');
               $('itemModel-maintain-cancel').show().click( () => {
-                
+                const data = {operation: "cancelMaintainRequest", target: oldRecord.id};
+                console.log(data);
+                request(data, handleResponse, 'Maintenance');
               });
               $('#itemModel-maintain-select').after(button);
             }
@@ -764,7 +765,7 @@ if (!_config.api.invokeUrl) {
         function handleResponse(results){
           console.log(results);
           if(results.Items.length!=0){
-            user_Identity.listUsers(id, results.Items[0].field_Engineer);
+            user_Identity.listUsers(id, results.Items[0]);
           }
           else{
             user_Identity.listUsers(id);
