@@ -43,7 +43,7 @@ if (!_config.api.invokeUrl) {
       $('#selector').show();
       break;
   }
-  console.log('version 2');
+  console.log('version 3');
 
   // on start
 
