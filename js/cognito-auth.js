@@ -14,7 +14,6 @@ var poolData = {
 
 (function ($) {
   var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-
   Users.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
       var cognitoUser = userPool.getCurrentUser();
       if (cognitoUser) {
@@ -34,8 +33,6 @@ var poolData = {
   Users.signOut = function signOut() {
       userPool.getCurrentUser().signOut();
     };
-
-  // Event Handlers
 
   $(function onDocReady() {
       $('#signinForm').submit(handleSignin);
@@ -66,38 +63,39 @@ var poolData = {
         }
     });
   }
-  function handleChangePassword(event) {
-      var oldPassword = $('#oldPasswordInputChangePassword').val();
-      var newPassword = $('#newPasswordInputChangePassword').val();
-      var newPassword2 = $('#newPassword2InputChangePassword').val();
-      event.preventDefault();
-      if (newPassword === newPassword2) {
-        var cognitoUser = userPool.getCurrentUser();
-        if(cognitoUser != null){
-          var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
-              Username: cognitoUser.getUsername,
-              Password: oldPassword
-          });
-          cognitoUser.authenticateUser(authenticationDetails, {
-              onSuccess: () => {
-                cognitoUser.changePassword(oldPassword, newPassword, (err, result) => {
-                  if (err) {
-                    alert('Fail to change password');
-                    console.log(err);
-                  }
-                  else {
-                      alert('Password Successfully Changed');
-                  }
-              })}
-          });
-        }
-        else {
-          alert("No Current User");
-        }
+  // Prepare for future use
+  function handleChangePassword(event){
+    var oldPassword = $('#oldPasswordInputChangePassword').val();
+    var newPassword = $('#newPasswordInputChangePassword').val();
+    var newPassword2 = $('#newPassword2InputChangePassword').val();
+    event.preventDefault();
+    if (newPassword === newPassword2) {
+      var cognitoUser = userPool.getCurrentUser();
+      if(cognitoUser != null){
+        var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
+            Username: cognitoUser.getUsername,
+            Password: oldPassword
+        });
+        cognitoUser.authenticateUser(authenticationDetails, {
+            onSuccess: () => {
+              cognitoUser.changePassword(oldPassword, newPassword, (err, result) => {
+                if (err) {
+                  alert('Fail to change password');
+                  console.log(err);
+                }
+                else {
+                    alert('Password Successfully Changed');
+                }
+            })}
+        });
       }
       else {
-          alert('Passwords do not match');
+        alert("No Current User");
       }
-  } // prepare for future use
+    }
+    else {
+        alert('Passwords do not match');
+    }
+  }
 
 }(jQuery));
