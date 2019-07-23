@@ -99,4 +99,5 @@ var poolData = {
           alert('Passwords do not match');
       }
   } // prepare for future use
+  
 }(jQuery));

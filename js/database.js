@@ -4,9 +4,6 @@ var poolData = {
     UserPoolId : _config.cognito.userPoolId, // your user pool id here
     ClientId : _config.cognito.userPoolClientId // your client id here
 };
-// if (!_config.api.invokeUrl) {
-//   $('#noApiMessage').show();
-// }
 
 (function ($) {
   user_Identity();
