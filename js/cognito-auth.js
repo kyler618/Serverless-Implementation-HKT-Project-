@@ -39,7 +39,7 @@ var poolData = {
       $('#signinForm').submit(signin);
   });
 
-  function signin(event) {
+  function signin(event){
     console.log('signin');
     event.preventDefault();
     var email = $('#emailInputSignin').val();
