@@ -30,15 +30,17 @@ var poolData = {
           resolve(null);
       }
   });
+  Users.userPool = userPool;
   Users.signOut = function signOut() {
       userPool.getCurrentUser().signOut();
     };
 
   $(function onDocReady() {
-      $('#signinForm').submit(handleSignin);
+      // $('#signinForm').submit(signin);
   });
 
-  function handleSignin(event) {
+  function signin(event) {
+    console.log('signin');
     event.preventDefault();
     var email = $('#emailInputSignin').val();
     var password = $('#passwordInputSignin').val();
