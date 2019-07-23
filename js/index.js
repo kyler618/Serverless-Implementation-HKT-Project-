@@ -2,8 +2,7 @@
 $(function onDocReady() {
   $('#signinForm').submit(signin);
   function signin(event){
-      console.log('signin');
-      event.preventDefault();
+    event.preventDefault();
       var email = $('#emailInputSignin').val();
       var password = $('#passwordInputSignin').val();
       var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
@@ -12,7 +11,7 @@ $(function onDocReady() {
       });
       var cognitoUser = new AmazonCognitoIdentity.CognitoUser({
           Username: email,
-          Pool: userPool
+          Pool: User.userPool
       });
       cognitoUser.authenticateUser(authenticationDetails, {
           onSuccess: function(){
