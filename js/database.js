@@ -43,7 +43,7 @@ if (!_config.api.invokeUrl) {
       $('#selector').show();
       break;
   }
-  console.log('version 6');
+  console.log('version 7');
 
   // on start
 
@@ -145,7 +145,7 @@ if (!_config.api.invokeUrl) {
               $('#itemModel-maintain-confirm').show();
             }
           });
-          $('#itemModel-maintain-confirm').click( () => {
+          $('#itemModel-maintain-confirm').click( funciton() {
             function handleResponse(results){
               show_Maintain_Cancel_Button(results);
               $(this).hide();
