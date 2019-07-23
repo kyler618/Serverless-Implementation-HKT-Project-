@@ -13,7 +13,6 @@ var openOnce = false;
       switch(target){
         case 'Job':
           contentBody.load( "job.html" );
-          console.log('load');
           break;
         case 'Customer': case 'Hardware':
           contentBody.load( "database.html", () => {
