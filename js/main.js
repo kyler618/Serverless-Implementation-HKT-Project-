@@ -4,6 +4,9 @@ var openOnce = false;
   $(function onDocReady() {
     const contentBody = $( "#contentBody" );
     $('#menu-bar').on( "click", "a", event => {
+      if (!_config.api.invokeUrl) {
+        $('#noApiMessage').show();
+      }
       let target = event.target.innerHTML;
       $('#current').html(target);
       $('#current').val(event.target.id);
@@ -23,7 +26,6 @@ var openOnce = false;
           break;
         case 'Documents':
           contentBody.load( "document.html", () => {
-            // $.getScript("https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js");
             $.getScript("js/document.js");
           });
           break;
