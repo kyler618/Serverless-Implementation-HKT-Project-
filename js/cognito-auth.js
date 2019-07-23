@@ -95,7 +95,7 @@ var Users = window.Users || {};
       var password = $('#passwordInputSignin').val();
       // event.preventDefault();
       signin(email, password,
-          () => {
+          function {
             window.location.href = 'main.html';
           },
           function signinError(err) {
