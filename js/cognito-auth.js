@@ -39,24 +39,6 @@ var Users = window.Users || {};
       userPool.getCurrentUser().signOut();
     };
 
-
-  function register(email, password, onSuccess, onFailure) {
-      var dataEmail = {
-          Name: 'email',
-          Value: email
-      };
-      var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
-
-      userPool.signUp(email, password, [attributeEmail], null,
-          function signUpCallback(err, result) {
-              if (!err) {
-                  onSuccess(result);
-              } else {
-                  onFailure(err);
-              }
-          }
-      );
-  }
   function signin(email, password, onSuccess, onFailure) {
       var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
           Username: email,
@@ -68,15 +50,6 @@ var Users = window.Users || {};
           onFailure: onFailure,
           newPasswordRequired: function(userAttributes, requiredAttributes) {
             cognitoUser.completeNewPasswordChallenge(password, {}, this)
-          }
-      });
-  }
-  function verify(email, code, onSuccess, onFailure) {
-      createCognitoUser(email).confirmRegistration(code, true, function confirmCallback(err, result) {
-          if (!err) {
-              onSuccess(result);
-          } else {
-              onFailure(err);
           }
       });
   }
@@ -102,27 +75,12 @@ var Users = window.Users || {};
       else {
         alert("No Current User");
       }
-
   }
   function createCognitoUser(email) {
       return new AmazonCognitoIdentity.CognitoUser({
           Username: email,
           Pool: userPool
       });
-  }
-
-  // Determine groups
-  function identifyGroup(){
-    var cognitoUser = userPool.getCurrentUser();
-    cognitoUser.getSession(function(err, session) {
-      if (err) {
-        return alert(err);
-      }
-      var sessionIdInfo = jwt_decode(session.getIdToken().jwtToken);
-      var group = sessionIdInfo['cognito:groups'];
-      console.log(group);
-      return group;
-    });
   }
 
   // Event Handlers
@@ -135,56 +93,15 @@ var Users = window.Users || {};
       $('#forgetPassword').submit(handleForgetPassword);
   });
 
-  function handleSignin(event) {
+  function handleSignin() {
       var email = $('#emailInputSignin').val();
       var password = $('#passwordInputSignin').val();
-      event.preventDefault();
+      // event.preventDefault();
       signin(email, password,
-          function signinSuccess() {
-              console.log('Successfully Logged In');
-              window.location.href = 'main.html';
+          () => {
+            window.location.href = 'main.html';
           },
           function signinError(err) {
-              alert(err);
-          }
-      );
-  }
-  function handleRegister(event) {
-      var email = $('#emailInputRegister').val();
-      var password = $('#passwordInputRegister').val();
-      var password2 = $('#password2InputRegister').val();
-
-      var onSuccess = function registerSuccess(result) {
-          var cognitoUser = result.user;
-          console.log('user name is ' + cognitoUser.getUsername());
-          var confirmation = ('Registration successful. Please check your email inbox or spam folder for your verification code.');
-          if (confirmation) {
-              window.location.href = 'verify.html';
-          }
-      };
-      var onFailure = function registerFailure(err) {
-          alert(err);
-      };
-      event.preventDefault();
-
-      if (password === password2) {
-          register(email, password, onSuccess, onFailure);
-      } else {
-          alert('Passwords do not match');
-      }
-  }
-  function handleVerify(event) {
-      var email = $('#emailInputVerify').val();
-      var code = $('#codeInputVerify').val();
-      event.preventDefault();
-      verify(email, code,
-          function verifySuccess(result) {
-              console.log('call result: ' + result);
-              console.log('Successfully verified');
-              alert('Verification successful. You will now be redirected to the login page.');
-              window.location.href = signinUrl;
-          },
-          function verifyError(err) {
               alert(err);
           }
       );
@@ -208,24 +125,4 @@ var Users = window.Users || {};
           alert('Passwords do not match');
       }
   }
-  function handleForgetPassword(event) {
-    event.preventDefault();
-    var email = prompt('Please input your email ' ,'');
-    var cognitoUser = createCognitoUser(email);
-
-    cognitoUser.forgotPassword({
-          onSuccess: function (result) {
-              console.log('call result: ' + result);
-          },
-          onFailure: function(err) {
-              alert(err);
-          },
-          inputVerificationCode() {
-              var verificationCode = prompt('Please input verification code ' ,'');
-              var newPassword = bootbox.prompt('Enter new password ' ,'');
-              cognitoUser.confirmPassword(verificationCode, newPassword, this);
-          }
-      });
-
-    }
 }(jQuery));
