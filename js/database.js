@@ -43,7 +43,6 @@ var poolData = {
       $('#selector').show();
       break;
   }
-  console.log('Back Up');
 
   // on start
 
