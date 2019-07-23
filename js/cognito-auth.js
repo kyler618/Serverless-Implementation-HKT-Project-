@@ -1,5 +1,6 @@
 
 var Users = window.Users || {};
+console.log('version 1');
 
 (function scopeWrapper($) {
   var signinUrl = 'index.html';
@@ -94,14 +95,34 @@ var Users = window.Users || {};
       var email = $('#emailInputSignin').val();
       var password = $('#passwordInputSignin').val();
       event.preventDefault();
-      signin(email, password,
-           () => {
+      var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
+          Username: email,
+          Password: password
+      });
+      var cognitoUser = new AmazonCognitoIdentity.CognitoUser({
+          Username: email,
+          Pool: userPool
+      });
+      cognitoUser.authenticateUser(authenticationDetails, {
+          onSuccess: function(){
             window.location.href = 'main.html';
           },
-          err => {
-              alert(err);
+          onFailure: function(err){
+            alert('Login Failed');
+            console.log(err);
+          },
+          newPasswordRequired: function(userAttributes, requiredAttributes) {
+            cognitoUser.completeNewPasswordChallenge(password, {}, this)
           }
-      );
+      });
+      // signin(email, password,
+      //      () => {
+      //       window.location.href = 'main.html';
+      //     },
+      //     err => {
+      //         alert(err);
+      //     }
+      // );
   }
   function handleChangePassword(event) {
       var oldPassword = $('#oldPasswordInputChangePassword').val();
