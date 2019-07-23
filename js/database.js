@@ -107,7 +107,6 @@ if (!_config.api.invokeUrl) {
               request(data, handleResponse, 'Maintenance');
             });
           }
-          // console.log("data", data);
           $('#itemModel-maintain-sensorID').html($('#itemForm input.Sensor_ID')[1].value);
           let users = (data.Users).map(user=>user.Username);
           $('#itemForm').hide();
@@ -163,20 +162,9 @@ if (!_config.api.invokeUrl) {
             option.appendChild( document.createTextNode(user) );
             option.value = user;
             $('#itemModel-maintain-select').append(option);
-            console.log(oldRecord);
             if(oldRecord!==undefined && user==oldRecord.field_Engineer){
               option.selected = true;
               show_Maintain_Cancel_Button(oldRecord.id);
-              // $('#itemModel-maintain-select').prop('disabled', 'disabled');
-              // $('#itemModel-maintain-cancel').show().click( () => {
-              //   function handleResponse(results){
-              //     $('#itemModel-maintain-cancel').unbind().hide();
-              //     $('#itemModel-maintain-select').prop('disabled', false);
-              //     alert('Maintenance Request Canceled');
-              //   }
-              //   const data = {operation: "cancelMaintainRequest", target: oldRecord.id};
-              //   request(data, handleResponse, 'Maintenance');
-              // });
             }
           });
         }
