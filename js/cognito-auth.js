@@ -90,10 +90,10 @@ var Users = window.Users || {};
       $('#changePassword').submit(handleChangePassword);
   });
 
-  function handleSignin() {
+  function handleSignin(event) {
       var email = $('#emailInputSignin').val();
       var password = $('#passwordInputSignin').val();
-      // event.preventDefault();
+      event.preventDefault();
       signin(email, password,
           function {
             window.location.href = 'main.html';
