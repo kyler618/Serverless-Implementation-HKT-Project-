@@ -10,7 +10,7 @@ $(function onDocReady() {
       });
       var cognitoUser = new AmazonCognitoIdentity.CognitoUser({
           Username: email,
-          Pool: User.userPool
+          Pool: Users.userPool
       });
       cognitoUser.authenticateUser(authenticationDetails, {
           onSuccess: function(){
