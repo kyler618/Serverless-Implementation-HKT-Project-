@@ -36,7 +36,7 @@ var poolData = {
     };
 
   $(function onDocReady() {
-      // $('#signinForm').submit(signin);
+      $('#signinForm').submit(signin);
   });
 
   function signin(event) {
