@@ -2,7 +2,7 @@
 var Users = window.Users || {};
 
 (function scopeWrapper($) {
-  var signinUrl = 'signin.html';
+  var signinUrl = 'index.html';
   var poolData = {
     UserPoolId: _config.cognito.userPoolId,
     ClientId: _config.cognito.userPoolClientId
@@ -18,9 +18,6 @@ var Users = window.Users || {};
   if (typeof AWSCognito !== 'undefined') {
       AWSCognito.config.region = _config.cognito.region;
   }
-  Users.signOut = function signOut() {
-      userPool.getCurrentUser().signOut();
-  };
 
   Users.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
       var cognitoUser = userPool.getCurrentUser();
@@ -38,27 +35,10 @@ var Users = window.Users || {};
           resolve(null);
       }
   });
+  Users.signOut = function signOut() {
+      userPool.getCurrentUser().signOut();
+    };
 
-  // Users.group = new Promise(function (resolve, reject) {
-  //     var cognitoUser = userPool.getCurrentUser();
-  //     if (cognitoUser) {
-  //         cognitoUser.getSession(function sessionCallback(err, session) {
-  //             if (err) {
-  //                 reject(err);
-  //             } else if (!session.isValid()) {
-  //                 resolve(null);
-  //             } else {
-  //                 let sessionInfo = jwt_decode(session.getIdToken().jwtToken);
-  //                 let group = sessionInfo['cognito:groups'];
-  //                 resolve(group);
-  //             }
-  //         });
-  //     } else {
-  //         resolve(null);
-  //     }
-  // });
-
-  // Cognito User Pool functions
 
   function register(email, password, onSuccess, onFailure) {
       var dataEmail = {
