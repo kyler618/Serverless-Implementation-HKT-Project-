@@ -43,7 +43,7 @@ if (!_config.api.invokeUrl) {
       $('#selector').show();
       break;
   }
-  console.log('version 4');
+  console.log('version 5');
 
   // on start
 
@@ -94,6 +94,18 @@ if (!_config.api.invokeUrl) {
           console.log(err);
         }
         else {
+          function show_Maintain_Cancel_Button(id){
+            $('#itemModel-maintain-select').prop('disabled', 'disabled');
+            $('#itemModel-maintain-cancel').show().click( () => {
+              function handleResponse(results){
+                $('#itemModel-maintain-cancel').unbind().hide();
+                $('#itemModel-maintain-select').prop('disabled', false);
+                alert('Maintenance Request Canceled');
+              }
+              const data = {operation: "cancelMaintainRequest", target: id};
+              request(data, handleResponse, 'Maintenance');
+            });
+          }
           // console.log("data", data);
           $('#itemModel-maintain-sensorID').html($('#itemForm input.Sensor_ID')[1].value);
           let users = (data.Users).map(user=>user.Username);
@@ -134,6 +146,8 @@ if (!_config.api.invokeUrl) {
           });
           $('#itemModel-maintain-confirm').click( () => {
             function handleResponse(results){
+              console.log(results);
+              // show_Maintain_Cancel_Button()
               alert('Request Confirm');
             }
             const inputs = {};
@@ -151,16 +165,17 @@ if (!_config.api.invokeUrl) {
             console.log(oldRecord);
             if(oldRecord!==undefined && user==oldRecord.field_Engineer){
               option.selected = true;
-              $('#itemModel-maintain-select').prop('disabled', 'disabled');
-              $('#itemModel-maintain-cancel').show().click( () => {
-                function handleResponse(results){
-                  $('#itemModel-maintain-cancel').unbind().hide();
-                  alert('Maintenance Request Canceled');
-                }
-                const data = {operation: "cancelMaintainRequest", target: oldRecord.id};
-                console.log(data);
-                request(data, handleResponse, 'Maintenance');
-              });
+              show_Maintain_Cancel_Button(oldRecord.id);
+              // $('#itemModel-maintain-select').prop('disabled', 'disabled');
+              // $('#itemModel-maintain-cancel').show().click( () => {
+              //   function handleResponse(results){
+              //     $('#itemModel-maintain-cancel').unbind().hide();
+              //     $('#itemModel-maintain-select').prop('disabled', false);
+              //     alert('Maintenance Request Canceled');
+              //   }
+              //   const data = {operation: "cancelMaintainRequest", target: oldRecord.id};
+              //   request(data, handleResponse, 'Maintenance');
+              // });
             }
           });
         }
