@@ -2,7 +2,8 @@
 var Users = window.Users || {};
 
 if (!(_config.cognito.userPoolId && _config.cognito.userPoolClientId && _config.cognito.region)) {
-    return alert('No Cognito Configuration');
+    alert('No Cognito Configuration');
+    return;
 }
 if (typeof AWSCognito !== 'undefined') {
   AWSCognito.config.region = _config.cognito.region;
@@ -99,5 +100,5 @@ var poolData = {
           alert('Passwords do not match');
       }
   } // prepare for future use
-  
+
 }(jQuery));
