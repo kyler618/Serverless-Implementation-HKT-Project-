@@ -1,8 +1,8 @@
 var Users = window.Users || {};
 Users.authToken.then((token) => {   // check user authority
-  console.log('here2', token);
+  console.log('here2');
   if (token) {
-    httpRequest.headers = {Authorization: token};
+    // httpRequest.headers = {Authorization: token};
     let x = jwt_decode(token);
     console.log('yes');
   } else {
