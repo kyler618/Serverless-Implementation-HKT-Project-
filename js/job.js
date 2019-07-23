@@ -1,5 +1,5 @@
 var Users = window.Users || {};
-
+console.log('here');
 Users.authToken.then((token) => {   // check user authority
   if (token) {
     httpRequest.headers = {Authorization: token};
