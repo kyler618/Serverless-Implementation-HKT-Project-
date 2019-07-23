@@ -148,7 +148,7 @@ if (!_config.api.invokeUrl) {
           $('#itemModel-maintain-confirm').click( () => {
             function handleResponse(results){
               show_Maintain_Cancel_Button(results);
-              $('#itemModel-maintain-confirm').unbind().hide();
+              $(this).hide();
               alert('Request Confirm');
             }
             const inputs = {};
