@@ -12,8 +12,7 @@ console.log('version 1');
   if (!(_config.cognito.userPoolId &&
         _config.cognito.userPoolClientId &&
         _config.cognito.region)) {
-      $('#noCognitoMessage').show();
-      return;
+      return $('#noCognitoMessage').show();
   }
   userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
   if (typeof AWSCognito !== 'undefined') {
