@@ -146,7 +146,7 @@ if (!_config.api.invokeUrl) {
           });
           $('#itemModel-maintain-confirm').click( () => {
             function handleResponse(results){
-              console.log(results);
+              console.log('id: ', results);
               // show_Maintain_Cancel_Button()
               alert('Request Confirm');
             }
