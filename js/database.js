@@ -155,11 +155,11 @@ if (!_config.api.invokeUrl) {
               $('#itemModel-maintain-cancel').show().click( () => {
                 function handleResponse(results){
                   alert('Maintenance Request Canceled');
+                  $('itemModel-maintain-cancel').unbind().hide();
                 }
                 const data = {operation: "cancelMaintainRequest", target: oldRecord.id};
                 console.log(data);
                 request(data, handleResponse, 'Maintenance');
-                $('itemModel-maintain-cancel').unbind().hide();
               });
             }
           });
