@@ -8,7 +8,7 @@ var openOnce = false;
       $('#current').html(target);
       $('#current').val(event.target.id);
       switch(target){
-        case 'job':
+        case 'Job':
           contentBody.load( "job.html" );
           console.log('load');
           break;
