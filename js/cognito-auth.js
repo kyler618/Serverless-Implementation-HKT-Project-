@@ -87,10 +87,7 @@ var Users = window.Users || {};
 
   $(function onDocReady() {
       $('#signinForm').submit(handleSignin);
-      $('#registrationForm').submit(handleRegister);
-      $('#verifyForm').submit(handleVerify);
       $('#changePassword').submit(handleChangePassword);
-      $('#forgetPassword').submit(handleForgetPassword);
   });
 
   function handleSignin() {
