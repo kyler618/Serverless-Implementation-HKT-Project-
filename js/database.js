@@ -43,7 +43,7 @@ if (!_config.api.invokeUrl) {
       $('#selector').show();
       break;
   }
-  console.log('version 5');
+  console.log('version 6');
 
   // on start
 
@@ -100,6 +100,7 @@ if (!_config.api.invokeUrl) {
               function handleResponse(results){
                 $('#itemModel-maintain-cancel').unbind().hide();
                 $('#itemModel-maintain-select').prop('disabled', false);
+                default_Option.selected = true;
                 alert('Maintenance Request Canceled');
               }
               const data = {operation: "cancelMaintainRequest", target: id};
@@ -147,7 +148,7 @@ if (!_config.api.invokeUrl) {
           $('#itemModel-maintain-confirm').click( () => {
             function handleResponse(results){
               console.log('id: ', results);
-              // show_Maintain_Cancel_Button()
+              show_Maintain_Cancel_Button(results);
               alert('Request Confirm');
             }
             const inputs = {};
