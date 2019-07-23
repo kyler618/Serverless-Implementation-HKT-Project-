@@ -6,6 +6,7 @@ Users.authToken.then((token) => {   // check user authority
     let x = jwt_decode(token);
     console.log(x);
   } else {
+    console.log('not here');
     // window.location.href = '/signin.html';
   }
 }).catch((error) => {
