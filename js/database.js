@@ -107,7 +107,7 @@ if (!_config.api.invokeUrl) {
             $('#itemModel-maintain-confirm').unbind().hide();
             $('#itemModel-maintain-sensorID').html("");
             $('#itemModel-maintain-select').unbind().empty();
-            $('itemModel-maintain-cancel').unbind().hide();
+            $('#itemModel-maintain-cancel').unbind().hide();
             $('#cancelButton').unbind().hide();
           });
           $('#modalCancelButton').unbind().click( () => {
@@ -119,7 +119,7 @@ if (!_config.api.invokeUrl) {
             $('#cancelButton').unbind().hide();
             $('#itemModel-maintain-sensorID').html("");
             $('#itemModel-maintain-select').unbind().empty();
-            $('itemModel-maintain-cancel').unbind().hide();
+            $('#itemModel-maintain-cancel').unbind().hide();
             $(this).unbind();
           });
           const default_Option = document.createElement('option');
