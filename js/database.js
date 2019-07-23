@@ -145,10 +145,10 @@ if (!_config.api.invokeUrl) {
               $('#itemModel-maintain-confirm').show();
             }
           });
-          $('#itemModel-maintain-confirm').click( function(){
+          $('#itemModel-maintain-confirm').click( () => {
             function handleResponse(results){
               show_Maintain_Cancel_Button(results);
-              $(this).hide();
+              $('#itemModel-maintain-confirm').hide();
               alert('Request Confirm');
             }
             const inputs = {};
