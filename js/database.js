@@ -154,7 +154,7 @@ if (!_config.api.invokeUrl) {
               $('#itemModel-maintain-select').prop('disabled', 'disabled');
               $('#itemModel-maintain-cancel').show().click( () => {
                 function handleResponse(results){
-                  $('itemModel-maintain-cancel').unbind().hide();
+                  $('#itemModel-maintain-cancel').unbind().hide();
                   alert('Maintenance Request Canceled');
                 }
                 const data = {operation: "cancelMaintainRequest", target: oldRecord.id};
