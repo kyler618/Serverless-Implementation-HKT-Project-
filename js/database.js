@@ -64,7 +64,6 @@ var Users = window.Users || {};
       Users.authToken.then((token) => {   // check user authority
         if (token) {
           let identityCode = jwt_decode(token).iss.replace('https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_', '');
-          console.log(x++);
           switch(identityCode){
             case '8oxVNNeyb':
               httpRequest.url += '/hkt-support-resource';
@@ -86,6 +85,7 @@ var Users = window.Users || {};
       });
     }
     function initialize(){
+                console.log(x++);
       user_Identity.listUsers = listUsers;
       authorize();
       AWS.config.credentials = new AWS.CognitoIdentityCredentials({
