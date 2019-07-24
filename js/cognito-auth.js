@@ -9,7 +9,7 @@ if (typeof AWSCognito !== 'undefined') {
 }
 
 (function ($) {
-  var poolData = localStorage.getItem("poolData");
+  var poolData = JSON.parse(localStorage.getItem("poolData"));
   var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
   Users.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
       var cognitoUser = userPool.getCurrentUser();

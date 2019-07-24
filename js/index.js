@@ -1,5 +1,5 @@
 var Users = window.Users || {};
-console.log('version 2');
+console.log('version 3');
 (function ($) {
   if (!(_config.cognito.userPoolId && _config.cognito.userPoolClientId && _config.cognito.region)) {
     alert('No Cognito Configuration');
@@ -35,7 +35,7 @@ console.log('version 2');
           alert('Invaild Email account');
           return;
       }
-      localStorage.setItem("poolData", poolData);
+      localStorage.setItem("poolData", JSON.stringify(poolData));
       console.log(localStorage.getItem("poolData"));
       // sessionStorage.poolData = poolData;
       let userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
