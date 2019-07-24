@@ -7,9 +7,9 @@ if (!(_config.cognito.userPoolId && _config.cognito.userPoolClientId && _config.
 if (typeof AWSCognito !== 'undefined') {
   AWSCognito.config.region = _config.cognito.region;
 }
-var poolData = localStorage.getItem("poolData ");
 
 (function ($) {
+  var poolData = localStorage.getItem("poolData ");
   var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
   Users.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
       var cognitoUser = userPool.getCurrentUser();

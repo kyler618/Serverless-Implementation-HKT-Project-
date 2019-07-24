@@ -1,7 +1,6 @@
 // Goal : , Bug:
 
 var Users = window.Users || {};
-console.log(Users);
 
 (function ($) {
   user_Identity();
