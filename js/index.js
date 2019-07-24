@@ -37,6 +37,7 @@ console.log('version 2');
           return;
       }
       let userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+      window.user.b = "b";
       window.user.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
         var cognitoUser = userPool.getCurrentUser();
         if (cognitoUser) {
