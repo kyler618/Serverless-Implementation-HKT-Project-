@@ -57,12 +57,14 @@ var Users = window.Users || {};
       Filter: "",
       UserPoolId: _config.cognito.fieldEng_userPoolId
     };
+    let x = 1;
     AWS.config.region = region;
     AWS.config.correctClockSkew = true;
     function authorize(){
       Users.authToken.then((token) => {   // check user authority
         if (token) {
           let identityCode = jwt_decode(token).iss.replace('https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_', '');
+          console.log(x++);
           switch(identityCode){
             case '8oxVNNeyb':
               httpRequest.url += '/hkt-support-resource';
