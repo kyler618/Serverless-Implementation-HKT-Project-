@@ -1,6 +1,14 @@
 var Users = window.Users || {};
-console.log('version 2');
-$(function onDocReady() {
+console.log('version 3');
+
+(function ($) {
+  if (!(_config.cognito.userPoolId && _config.cognito.userPoolClientId && _config.cognito.region)) {
+    alert('No Cognito Configuration');
+  }
+  if (typeof AWSCognito !== 'undefined') {
+    AWSCognito.config.region = _config.cognito.region;
+  }
+  $(function onDocReady() {
   $('#signinForm').submit(signin);
   function signin(event){
       event.preventDefault();
@@ -29,6 +37,25 @@ $(function onDocReady() {
           return;
       }
       Users.userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+      Users.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
+        var cognitoUser = Users.userPool.getCurrentUser();
+        if (cognitoUser) {
+          cognitoUser.getSession(function sessionCallback(err, session) {
+            if (err) {
+              reject(err);
+            } else if (!session.isValid()) {
+              resolve(null);
+            } else {
+              resolve(session.getIdToken().getJwtToken());
+            }
+          });
+        } else {
+          resolve(null);
+        }
+      });
+      Users.signOut = function signOut() {
+        Users.userPool.getCurrentUser().signOut();
+      };
       let cognitoUser = new AmazonCognitoIdentity.CognitoUser({
           Username: email,
           Pool: Users.userPool
@@ -47,7 +74,7 @@ $(function onDocReady() {
       });
     }
 });
-
+}(jQuery));
 // Prepare for future use
 // function handleChangePassword(event){
 //   var oldPassword = $('#oldPasswordInputChangePassword').val();
