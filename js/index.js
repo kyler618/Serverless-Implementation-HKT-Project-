@@ -1,7 +1,8 @@
 var Users = window.Users || {};
-console.log('version 4');
+console.log('version 5');
 (function ($) {
   Users.a = 'a';
+  Users.b ='b';
   if (!(_config.cognito.userPoolId && _config.cognito.userPoolClientId && _config.cognito.region)) {
     alert('No Cognito Configuration');
   }
