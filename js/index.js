@@ -58,7 +58,7 @@ console.log('version 4');
       };
       let cognitoUser = new AmazonCognitoIdentity.CognitoUser({
           Username: email,
-          Pool: Users.userPool
+          Pool: userPool
       });
       cognitoUser.authenticateUser(authenticationDetails, {
           onSuccess: function(){
