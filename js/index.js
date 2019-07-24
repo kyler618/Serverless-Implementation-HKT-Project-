@@ -1,5 +1,5 @@
 var Users = window.Users || {};
-console.log('version 9');
+console.log('version 1');
 (function ($) {
   if (!(_config.cognito.userPoolId && _config.cognito.userPoolClientId && _config.cognito.region)) {
     alert('No Cognito Configuration');
@@ -38,25 +38,25 @@ console.log('version 9');
       localStorage.setItem("poolData", poolData);
       // sessionStorage.poolData = poolData;
       let userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-      Users.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
-        var cognitoUser = userPool.getCurrentUser();
-        if (cognitoUser) {
-          cognitoUser.getSession(function sessionCallback(err, session) {
-            if (err) {
-              reject(err);
-            } else if (!session.isValid()) {
-              resolve(null);
-            } else {
-              resolve(session.getIdToken().getJwtToken());
-            }
-          });
-        } else {
-          resolve(null);
-        }
-      });
-      Users.signOut = function signOut() {
-        userPool.getCurrentUser().signOut();
-      };
+      // Users.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
+      //   var cognitoUser = userPool.getCurrentUser();
+      //   if (cognitoUser) {
+      //     cognitoUser.getSession(function sessionCallback(err, session) {
+      //       if (err) {
+      //         reject(err);
+      //       } else if (!session.isValid()) {
+      //         resolve(null);
+      //       } else {
+      //         resolve(session.getIdToken().getJwtToken());
+      //       }
+      //     });
+      //   } else {
+      //     resolve(null);
+      //   }
+      // });
+      // Users.signOut = function signOut() {
+      //   userPool.getCurrentUser().signOut();
+      // };
       let cognitoUser = new AmazonCognitoIdentity.CognitoUser({
           Username: email,
           Pool: userPool
