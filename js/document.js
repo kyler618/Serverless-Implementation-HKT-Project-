@@ -5,7 +5,9 @@ var s3;
 var path;
 
 Users.authToken.then((token) => {
-  let key;
+  let region = _config.cognito.region;
+  let key = 'cognito-idp.' + region + '.amazonaws.com/';
+  let logins = {};
   function loadSelectBarData(token){
     let identityCode = jwt_decode(token).iss.replace('https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_', '');
     let xhttp = new XMLHttpRequest();
@@ -21,6 +23,7 @@ Users.authToken.then((token) => {
         key +=  _config.cognito.fieldEng_userPoolId;
         break;
     }
+    logins[key] = token;
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         let selectBar = document.getElementById('select-folder');
@@ -38,12 +41,6 @@ Users.authToken.then((token) => {
     xhttp.setRequestHeader("Authorization", token);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(data);
-  }
-  if (token) {
-    let region = _config.cognito.region;
-    key = 'cognito-idp.' + region + '.amazonaws.com/';
-    let logins = {};
-    logins[key] = token;
     AWS.config.region = region;
     AWS.config.credentials = new AWS.CognitoIdentityCredentials({
       IdentityPoolId: _config.cognito.identityPoolId,
@@ -53,7 +50,7 @@ Users.authToken.then((token) => {
       if (error) {
         console.error(error);
       } else {
-        loadSelectBarData(token);
+        // loadSelectBarData(token);
         objectOps();
         s3 = new AWS.S3({
           apiVersion: '2006-03-01',
@@ -61,6 +58,29 @@ Users.authToken.then((token) => {
         });
       }
     });
+  }
+  if (token) {
+    loadSelectBarData(token);
+    // let region = _config.cognito.region;
+    // key = 'cognito-idp.' + region + '.amazonaws.com/';
+    // logins[key] = token;
+    // AWS.config.region = region;
+    // AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    //   IdentityPoolId: _config.cognito.identityPoolId,
+    //   Logins: logins
+    // });
+    // AWS.config.credentials.refresh((error) => {
+    //   if (error) {
+    //     console.error(error);
+    //   } else {
+    //     loadSelectBarData(token);
+    //     objectOps();
+    //     s3 = new AWS.S3({
+    //       apiVersion: '2006-03-01',
+    //       params: {Bucket: bucket}
+    //     });
+    //   }
+    // });
   } else {
     // window.location.href = '/signin.html';
   }
