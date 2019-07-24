@@ -1,5 +1,5 @@
 var Users = window.Users || {};
-console.log('version 1');
+console.log('version 2');
 (function ($) {
   if (!(_config.cognito.userPoolId && _config.cognito.userPoolClientId && _config.cognito.region)) {
     alert('No Cognito Configuration');
@@ -36,6 +36,7 @@ console.log('version 1');
           return;
       }
       localStorage.setItem("poolData", poolData);
+      console.log(localStorage.getItem("poolData"));
       // sessionStorage.poolData = poolData;
       let userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
       // Users.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
