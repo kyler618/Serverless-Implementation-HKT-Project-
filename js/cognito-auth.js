@@ -7,10 +7,7 @@ if (!(_config.cognito.userPoolId && _config.cognito.userPoolClientId && _config.
 if (typeof AWSCognito !== 'undefined') {
   AWSCognito.config.region = _config.cognito.region;
 }
-var poolData = {
-  UserPoolId: _config.cognito.userPoolId,
-  ClientId: _config.cognito.userPoolClientId
-};
+var poolData = sessionStorage.poolData;
 
 (function ($) {
   var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
@@ -30,7 +27,6 @@ var poolData = {
           resolve(null);
       }
   });
-  Users.userPool = userPool;
   Users.signOut = function signOut() {
       userPool.getCurrentUser().signOut();
     };
