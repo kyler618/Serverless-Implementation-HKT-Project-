@@ -50,7 +50,6 @@ Users.authToken.then((token) => {
       if (error) {
         console.error(error);
       } else {
-        // loadSelectBarData(token);
         objectOps();
         s3 = new AWS.S3({
           apiVersion: '2006-03-01',
@@ -61,26 +60,6 @@ Users.authToken.then((token) => {
   }
   if (token) {
     loadSelectBarData(token);
-    // let region = _config.cognito.region;
-    // key = 'cognito-idp.' + region + '.amazonaws.com/';
-    // logins[key] = token;
-    // AWS.config.region = region;
-    // AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    //   IdentityPoolId: _config.cognito.identityPoolId,
-    //   Logins: logins
-    // });
-    // AWS.config.credentials.refresh((error) => {
-    //   if (error) {
-    //     console.error(error);
-    //   } else {
-    //     loadSelectBarData(token);
-    //     objectOps();
-    //     s3 = new AWS.S3({
-    //       apiVersion: '2006-03-01',
-    //       params: {Bucket: bucket}
-    //     });
-    //   }
-    // });
   } else {
     // window.location.href = '/signin.html';
   }
