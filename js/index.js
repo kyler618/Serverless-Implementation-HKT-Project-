@@ -36,7 +36,7 @@ console.log('version 3');
           return;
       }
       localStorage.setItem("poolData", JSON.stringify(poolData));
-      console.log(localStorage.getItem("poolData"));
+      console.log(JSON.parse(localStorage.getItem("poolData")));
       // sessionStorage.poolData = poolData;
       let userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
       // Users.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
@@ -62,18 +62,18 @@ console.log('version 3');
           Username: email,
           Pool: userPool
       });
-      cognitoUser.authenticateUser(authenticationDetails, {
-          onSuccess: function(){
-            window.location.href = 'main.html';
-          },
-          onFailure: function(err){
-            alert('Login Failed');
-            console.log(err);
-          },
-          newPasswordRequired: function(userAttributes, requiredAttributes) {
-            cognitoUser.completeNewPasswordChallenge(password, {}, this)
-          }
-      });
+      // cognitoUser.authenticateUser(authenticationDetails, {
+      //     onSuccess: function(){
+      //       window.location.href = 'main.html';
+      //     },
+      //     onFailure: function(err){
+      //       alert('Login Failed');
+      //       console.log(err);
+      //     },
+      //     newPasswordRequired: function(userAttributes, requiredAttributes) {
+      //       cognitoUser.completeNewPasswordChallenge(password, {}, this)
+      //     }
+      // });
     }
   });
 }(jQuery));
