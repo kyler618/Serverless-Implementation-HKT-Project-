@@ -94,6 +94,7 @@ var Users = window.Users || {};
       });
       userPool = new AWS.CognitoIdentityServiceProvider();
     }
+    console.log('initialize before');
     function listUsers(id, oldRecord){
       userPool.listUsers(params, (err, data) => {
         if (err) {
