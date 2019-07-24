@@ -1,5 +1,5 @@
 var Users = window.Users || {};
-console.log('version 3');
+console.log('version 4');
 
 (function ($) {
   if (!(_config.cognito.userPoolId && _config.cognito.userPoolClientId && _config.cognito.region)) {
