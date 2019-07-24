@@ -2,7 +2,7 @@ var Users = window.Users || {};
 var openOnce = false;
 (function ($) {
   $(function onDocReady() {
-    const data = (localStorage.getItem('poolData')) ? JSON.parse(localStorage.getItem('poolData')):{};
+    const data = (localStorage.getItem('poolData')) ? JSON.parse(localStorage.getItem('poolData')):{a:'a'};
     console.log(data);
     const contentBody = $( "#contentBody" );
     $('#menu-bar').on( "click", "a", event => {
