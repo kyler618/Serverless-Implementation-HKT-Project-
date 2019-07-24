@@ -1,4 +1,4 @@
-var Users = window.Users || {};
+// var Users = window.Users || {};
 console.log('version 5');
 
 (function ($) {
@@ -36,8 +36,9 @@ console.log('version 5');
           alert('Invaild Email account');
           return;
       }
+      let user = {};
       let userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-      window.Users.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
+      user.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
         var cognitoUser = userPool.getCurrentUser();
         if (cognitoUser) {
           cognitoUser.getSession(function sessionCallback(err, session) {
@@ -53,7 +54,7 @@ console.log('version 5');
           resolve(null);
         }
       });
-      window.Users.signOut = function signOut() {
+      user.signOut = function signOut() {
         userPool.getCurrentUser().signOut();
       };
       let cognitoUser = new AmazonCognitoIdentity.CognitoUser({
@@ -63,6 +64,7 @@ console.log('version 5');
       cognitoUser.authenticateUser(authenticationDetails, {
           onSuccess: function(){
             window.location.href = 'main.html';
+            window.Users = user;
           },
           onFailure: function(err){
             alert('Login Failed');
