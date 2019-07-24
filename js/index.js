@@ -37,7 +37,7 @@ console.log('version 4');
           return;
       }
       let userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-      Users.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
+      window.Users.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
         var cognitoUser = userPool.getCurrentUser();
         if (cognitoUser) {
           cognitoUser.getSession(function sessionCallback(err, session) {
@@ -53,7 +53,7 @@ console.log('version 4');
           resolve(null);
         }
       });
-      Users.signOut = function signOut() {
+      window.Users.signOut = function signOut() {
         userPool.getCurrentUser().signOut();
       };
       let cognitoUser = new AmazonCognitoIdentity.CognitoUser({
