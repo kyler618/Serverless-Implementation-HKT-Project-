@@ -179,6 +179,7 @@ var Users = window.Users || {};
         }
       });
     }
+    console.log('initialize');
     initialize();
   }
 
