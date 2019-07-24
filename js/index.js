@@ -1,6 +1,7 @@
 // var Users = window.Users || {};
-console.log('version 6');
-
+console.log('version 7');
+window.Users = {};
+window.Users.a = 'a';
 (function ($) {
   if (!(_config.cognito.userPoolId && _config.cognito.userPoolClientId && _config.cognito.region)) {
     alert('No Cognito Configuration');
@@ -64,7 +65,7 @@ console.log('version 6');
       cognitoUser.authenticateUser(authenticationDetails, {
           onSuccess: function(){
             window.location.href = 'main.html';
-            window.Users = user;
+            // window.Users = user;
           },
           onFailure: function(err){
             alert('Login Failed');
