@@ -52,7 +52,7 @@ var Users = window.Users || {};
     let key = 'cognito-idp.' + region + '.amazonaws.com/';
     let logins = {};
     let userPool;
-    var params = {
+    let params = {
       AttributesToGet: [],
       Filter: "",
       UserPoolId: _config.cognito.fieldEng_userPoolId
@@ -93,6 +93,7 @@ var Users = window.Users || {};
       userPool = new AWS.CognitoIdentityServiceProvider();
     }
     function listUsers(id, oldRecord){
+      console.log(userPool);
       userPool.listUsers(params, (err, data) => {
         if (err) {
           console.log(err);
