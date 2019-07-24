@@ -13,7 +13,7 @@ var Users = window.Users || {};
   let constantAttributesIndex;
   var httpRequest = {
     method: 'POST',
-    url: _config.api.invokeUrl + '/hkt-resource',
+    url: _config.api.invokeUrl,
     contentType: 'application/json',
     async: true ,
     error: (jqXHR, textStatus, errorThrown) => {
@@ -62,7 +62,16 @@ var Users = window.Users || {};
     function authorize(){
       Users.authToken.then((token) => {   // check user authority
         if (token) {
-          console.log(jwt_decode(token));
+          let identityCode = jwt_decode(token).iss.replace('https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_', '');
+          console.log(identityCode);
+          switch(identityCode){
+            case '8oxVNNeyb':
+              httpRequest.url += '/hkt-support-resource';
+              break;
+            case 'InROTeRsW':
+              httpRequest.url += '/hkt-fieldeng-resource';
+              break;
+          }
           httpRequest.headers = {Authorization: token};
           logins[key] = token;
         } else {
