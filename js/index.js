@@ -1,14 +1,35 @@
+var Users = window.Users || {};
+
 $(function onDocReady() {
   $('#signinForm').submit(signin);
   function signin(event){
-    event.preventDefault();
-      var email = $('#emailInputSignin').val();
-      var password = $('#passwordInputSignin').val();
-      var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
+      event.preventDefault();
+      let poolData;
+      let email = $('#emailInputSignin').val();
+      let password = $('#passwordInputSignin').val();
+      let authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
           Username: email,
           Password: password
       });
-      var cognitoUser = new AmazonCognitoIdentity.CognitoUser({
+      switch(email.charAt(0)){
+        case 'f':
+          poolData = {
+          UserPoolId: _config.cognito.fieldEng_userPoolId,
+          ClientId: _config.cognito.fieldEng_userPoolClientId
+        };
+          break;
+        case 's':
+          poolData = {
+          UserPoolId: _config.cognito.support_userPoolId,
+          ClientId: _config.cognito.support_userPoolClientId
+        };
+          break;
+        default:
+          alert('Invaild Email account');
+          return;
+      }
+      Users.userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+      let cognitoUser = new AmazonCognitoIdentity.CognitoUser({
           Username: email,
           Pool: Users.userPool
       });
