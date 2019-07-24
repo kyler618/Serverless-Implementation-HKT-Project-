@@ -49,13 +49,13 @@ var Users = window.Users || {};
 
   function user_Identity(){
     let region = _config.cognito.region;
-    let key = 'cognito-idp.' + region + '.amazonaws.com/' + _config.cognito.userPoolId;
+    let key = 'cognito-idp.' + region + '.amazonaws.com/';
     let logins = {};
     let userPool;
     var params = {
       AttributesToGet: [],
       Filter: "",
-      UserPoolId: _config.cognito.userPoolId
+      UserPoolId: _config.cognito.fieldEng_userPoolId
     };
     AWS.config.region = region;
     AWS.config.correctClockSkew = true;
@@ -63,13 +63,14 @@ var Users = window.Users || {};
       Users.authToken.then((token) => {   // check user authority
         if (token) {
           let identityCode = jwt_decode(token).iss.replace('https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_', '');
-          console.log(identityCode);
           switch(identityCode){
             case '8oxVNNeyb':
               httpRequest.url += '/hkt-support-resource';
+              key +=  _config.cognito.support_userPoolId;
               break;
             case 'InROTeRsW':
               httpRequest.url += '/hkt-fieldeng-resource';
+              key +=  _config.cognito.fieldEng_userPoolId;
               break;
           }
           httpRequest.headers = {Authorization: token};

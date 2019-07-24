@@ -36,28 +36,7 @@ console.log('version 5');
           return;
       }
       localStorage.setItem("poolData", JSON.stringify(poolData));
-      console.log(JSON.parse(localStorage.getItem("poolData")));
-      // sessionStorage.poolData = poolData;
       let userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-      // Users.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
-      //   var cognitoUser = userPool.getCurrentUser();
-      //   if (cognitoUser) {
-      //     cognitoUser.getSession(function sessionCallback(err, session) {
-      //       if (err) {
-      //         reject(err);
-      //       } else if (!session.isValid()) {
-      //         resolve(null);
-      //       } else {
-      //         resolve(session.getIdToken().getJwtToken());
-      //       }
-      //     });
-      //   } else {
-      //     resolve(null);
-      //   }
-      // });
-      // Users.signOut = function signOut() {
-      //   userPool.getCurrentUser().signOut();
-      // };
       let cognitoUser = new AmazonCognitoIdentity.CognitoUser({
           Username: email,
           Pool: userPool
