@@ -230,9 +230,9 @@ var Users = window.Users || {};
       pagination.case_changeSize(this.value);
     })
 
-    // handleUpdateTable();
-    // readMode();
-    // $('#test').click(handleTestClick);
+    handleUpdateTable();
+    readMode();
+    $('#test').click(handleTestClick);
   }
 
   function readMode(){
