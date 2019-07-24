@@ -5,10 +5,22 @@ var s3;
 var path;
 
 Users.authToken.then((token) => {
+  let key;
   function loadSelectBarData(token){
+    let identityCode = jwt_decode(token).iss.replace('https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_', '');
     let xhttp = new XMLHttpRequest();
-    let url = _config.api.invokeUrl + '/hkt-resource';
+    let url = _config.api.invokeUrl;
     let data = JSON.stringify({table: "Customer_and_Software", operation: "s3Query"});
+    switch(identityCode){
+      case '8oxVNNeyb':
+        url += '/hkt-support-resource';
+        key +=  _config.cognito.support_userPoolId;
+        break;
+      case 'InROTeRsW':
+        url += '/hkt-fieldeng-resource';
+        key +=  _config.cognito.fieldEng_userPoolId;
+        break;
+    }
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         let selectBar = document.getElementById('select-folder');
@@ -29,7 +41,7 @@ Users.authToken.then((token) => {
   }
   if (token) {
     let region = _config.cognito.region;
-    let key = 'cognito-idp.' + region + '.amazonaws.com/' + _config.cognito.userPoolId;
+    key = 'cognito-idp.' + region + '.amazonaws.com/';
     let logins = {};
     logins[key] = token;
     AWS.config.region = region;
