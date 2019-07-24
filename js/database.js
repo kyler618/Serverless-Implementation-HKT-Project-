@@ -641,7 +641,7 @@ var Users = window.Users || {};
     data.table = (table===undefined)?targetTable:table;
     httpRequest.data = JSON.stringify(data);
     httpRequest.success = success;
-    console.log(httpRequest.url);
+    console.log(httpRequest);
     $.ajax(httpRequest);
   }
 
