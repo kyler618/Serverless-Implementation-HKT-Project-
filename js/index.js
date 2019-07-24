@@ -1,5 +1,5 @@
 var Users = window.Users || {};
-console.log('version 7');
+console.log('version 8');
 (function ($) {
   if (!(_config.cognito.userPoolId && _config.cognito.userPoolClientId && _config.cognito.region)) {
     alert('No Cognito Configuration');
@@ -11,7 +11,7 @@ console.log('version 7');
     $('#signinForm').submit(signin);
     function signin(event){
       event.preventDefault();
-      let poolData;
+      var poolData;
       let email = $('#emailInputSignin').val();
       let password = $('#passwordInputSignin').val();
       let authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
