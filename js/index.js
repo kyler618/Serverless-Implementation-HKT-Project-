@@ -1,5 +1,5 @@
 var Users = window.Users || {};
-console.log('version 3');
+console.log('version 4');
 (function ($) {
   if (!(_config.cognito.userPoolId && _config.cognito.userPoolClientId && _config.cognito.region)) {
     alert('No Cognito Configuration');
@@ -62,18 +62,18 @@ console.log('version 3');
           Username: email,
           Pool: userPool
       });
-      // cognitoUser.authenticateUser(authenticationDetails, {
-      //     onSuccess: function(){
-      //       window.location.href = 'main.html';
-      //     },
-      //     onFailure: function(err){
-      //       alert('Login Failed');
-      //       console.log(err);
-      //     },
-      //     newPasswordRequired: function(userAttributes, requiredAttributes) {
-      //       cognitoUser.completeNewPasswordChallenge(password, {}, this)
-      //     }
-      // });
+      cognitoUser.authenticateUser(authenticationDetails, {
+          onSuccess: function(){
+            window.location.href = 'main.html';
+          },
+          onFailure: function(err){
+            alert('Login Failed');
+            console.log(err);
+          },
+          newPasswordRequired: function(userAttributes, requiredAttributes) {
+            cognitoUser.completeNewPasswordChallenge(password, {}, this)
+          }
+      });
     }
   });
 }(jQuery));
