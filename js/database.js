@@ -62,7 +62,7 @@ var Users = window.Users || {};
     function authorize(){
       Users.authToken.then((token) => {   // check user authority
         if (token) {
-          jwt_decode(token);
+          console.log(jwt_decode(token));
           httpRequest.headers = {Authorization: token};
           logins[key] = token;
         } else {
