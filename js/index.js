@@ -35,7 +35,8 @@ console.log('version 6');
           alert('Invaild Email account');
           return;
       }
-      sessionStorage.poolData = poolData;
+      localStorage.setItem("poolData", poolData);
+      // sessionStorage.poolData = poolData;
       let userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
       Users.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
         var cognitoUser = userPool.getCurrentUser();
