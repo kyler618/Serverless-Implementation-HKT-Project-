@@ -128,7 +128,9 @@ var Users = window.Users || {};
             $('#itemModel-maintain-cancel').unbind().hide();
             $('#cancelButton').unbind().hide();
           });
-          $('#modalCancelButton').unbind().click( () => {
+          $('#modalCancelButton').unbind();
+          $('#modalCancelButton').click( () => {
+            console.log('bUTTON');
             hideModel();
             $('#itemForm').show();
             $('.editItem').unbind();
