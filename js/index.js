@@ -1,8 +1,5 @@
 console.log('version 7');
 (function ($) {
-  if (!(_config.cognito.userPoolId && _config.cognito.userPoolClientId && _config.cognito.region)) {
-    alert('No Cognito Configuration');
-  }
   if (typeof AWSCognito !== 'undefined') {
     AWSCognito.config.region = _config.cognito.region;
   }
