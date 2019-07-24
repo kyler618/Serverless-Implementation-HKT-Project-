@@ -1,6 +1,6 @@
 var Users = window.Users || {};
 Users.authToken.then((token) => {   // check user authority
-  console.log('here2');
+  console.log('JobJS');
   if (token) {
     // httpRequest.headers = {Authorization: token};
     let x = jwt_decode(token);
