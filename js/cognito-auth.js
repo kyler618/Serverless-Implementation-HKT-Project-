@@ -1,4 +1,3 @@
-
 var Users = window.Users || {};
 
 if (!(_config.cognito.userPoolId && _config.cognito.userPoolClientId && _config.cognito.region)) {
