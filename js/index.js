@@ -1,5 +1,5 @@
 var Users = window.Users || {};
-console.log('version 1');
+console.log('version 2');
 (function ($) {
   Users.a = 'a';
   if (!(_config.cognito.userPoolId && _config.cognito.userPoolClientId && _config.cognito.region)) {
@@ -37,7 +37,7 @@ console.log('version 1');
           return;
       }
       let userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-      Users.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
+      window.user.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
         var cognitoUser = userPool.getCurrentUser();
         if (cognitoUser) {
           cognitoUser.getSession(function sessionCallback(err, session) {
@@ -53,7 +53,7 @@ console.log('version 1');
           resolve(null);
         }
       });
-      Users.signOut = function signOut() {
+      window.user.signOut = function signOut() {
         userPool.getCurrentUser().signOut();
       };
       let cognitoUser = new AmazonCognitoIdentity.CognitoUser({
