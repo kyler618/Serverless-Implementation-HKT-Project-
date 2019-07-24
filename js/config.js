@@ -18,4 +18,4 @@ window._config = {
         invokeUrl: 'https://1b72t055la.execute-api.ap-southeast-1.amazonaws.com/prod'
     }
 };
-window.user = {a:"a"};
+// window.user = {a:"a"};
