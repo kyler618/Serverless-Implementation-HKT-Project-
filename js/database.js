@@ -1,5 +1,5 @@
 // Goal : , Bug:
-
+console.log('version 1')
 var Users = window.Users || {};
 
 (function ($) {
