@@ -93,7 +93,6 @@ var Users = window.Users || {};
       userPool = new AWS.CognitoIdentityServiceProvider();
     }
     function listUsers(id, oldRecord){
-      console.log(userPool);
       userPool.listUsers(params, (err, data) => {
         if (err) {
           console.log(err);
@@ -779,7 +778,6 @@ var Users = window.Users || {};
       });
       $('#maintainButton').click( () => {
         function handleResponse(results){
-          console.log(results);
           if(results.Items.length!=0){
             user_Identity.listUsers(id, results.Items[0]);
           }
