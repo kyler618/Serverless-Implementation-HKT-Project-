@@ -1,9 +1,9 @@
 // Goal : , Bug:
 var Users = window.Users || {};
-var poolData = {
-    UserPoolId : _config.cognito.userPoolId, // your user pool id here
-    ClientId : _config.cognito.userPoolClientId // your client id here
-};
+// var poolData = {
+//     UserPoolId : _config.cognito.userPoolId, // your user pool id here
+//     ClientId : _config.cognito.userPoolClientId // your client id here
+// };
 
 (function ($) {
   user_Identity();

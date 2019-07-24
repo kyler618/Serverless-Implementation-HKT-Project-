@@ -36,9 +36,9 @@ console.log('version 3');
           alert('Invaild Email account');
           return;
       }
-      Users.userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+      let userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
       Users.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
-        var cognitoUser = Users.userPool.getCurrentUser();
+        var cognitoUser = userPool.getCurrentUser();
         if (cognitoUser) {
           cognitoUser.getSession(function sessionCallback(err, session) {
             if (err) {
@@ -54,7 +54,7 @@ console.log('version 3');
         }
       });
       Users.signOut = function signOut() {
-        Users.userPool.getCurrentUser().signOut();
+        userPool.getCurrentUser().signOut();
       };
       let cognitoUser = new AmazonCognitoIdentity.CognitoUser({
           Username: email,
