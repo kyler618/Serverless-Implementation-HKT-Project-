@@ -85,7 +85,6 @@ var Users = window.Users || {};
       });
     }
     function initialize(){
-                console.log(x++);
       user_Identity.listUsers = listUsers;
       authorize();
       AWS.config.credentials = new AWS.CognitoIdentityCredentials({
@@ -94,7 +93,6 @@ var Users = window.Users || {};
       });
       userPool = new AWS.CognitoIdentityServiceProvider();
     }
-    console.log('initialize before');
     function listUsers(id, oldRecord){
       userPool.listUsers(params, (err, data) => {
         if (err) {
@@ -180,7 +178,6 @@ var Users = window.Users || {};
         }
       });
     }
-    console.log('initialize');
     initialize();
   }
 
@@ -332,11 +329,10 @@ var Users = window.Users || {};
           request(data, handlePutResponse);
         });
         $('#modalCancelButton').click( () => {
-          $(this).unbind();
           hideModel();
           $('#addButton').unbind();
           $('#confirmButton').unbind();
-          $(this).unbind();
+          $('#modalCancelButton').unbind();
         });
       });
       $('#confirmUpdate').click( () => {
@@ -397,7 +393,7 @@ var Users = window.Users || {};
         }
       });
       $('#cancelEdit').click( () => {
-        $(this).unbind();
+        $('#cancelEdit').unbind();
         $('table tbody').unbind();
         if(changedRecord.length!=0){
           for(let x=0; x<changedRecord.length; x++){
@@ -799,7 +795,7 @@ var Users = window.Users || {};
       $('#modalCancelButton').click(function(){
         hideModel();
         $('.editItem').unbind();
-        $(this).unbind();
+        $('#modalCancelButton').unbind();
       });
     }
     function rollback(){
