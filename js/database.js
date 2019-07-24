@@ -141,7 +141,7 @@ var Users = window.Users || {};
             $('#itemModel-maintain-sensorID').html("");
             $('#itemModel-maintain-select').unbind().empty();
             $('#itemModel-maintain-cancel').unbind().hide();
-            $(this).unbind();
+            $('#modalCancelButton').unbind();
             return console.log('BUTTON END');
           });
           const default_Option = document.createElement('option');
