@@ -62,6 +62,7 @@ var Users = window.Users || {};
     function authorize(){
       Users.authToken.then((token) => {   // check user authority
         if (token) {
+          jwt_decode(token);
           httpRequest.headers = {Authorization: token};
           logins[key] = token;
         } else {
@@ -220,9 +221,9 @@ var Users = window.Users || {};
       pagination.case_changeSize(this.value);
     })
 
-    handleUpdateTable();
-    readMode();
-    $('#test').click(handleTestClick);
+    // handleUpdateTable();
+    // readMode();
+    // $('#test').click(handleTestClick);
   }
 
   function readMode(){
@@ -629,7 +630,6 @@ var Users = window.Users || {};
     data.table = (table===undefined)?targetTable:table;
     httpRequest.data = JSON.stringify(data);
     httpRequest.success = success;
-    console.log(httpRequest);
     $.ajax(httpRequest);
   }
 
