@@ -1,5 +1,5 @@
 var Users = window.Users || {};
-console.log('version 1');
+console.log('version 2');
 $(function onDocReady() {
   $('#signinForm').submit(signin);
   function signin(event){

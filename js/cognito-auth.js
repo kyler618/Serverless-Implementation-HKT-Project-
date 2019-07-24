@@ -12,27 +12,28 @@ if (typeof AWSCognito !== 'undefined') {
 //   ClientId: _config.cognito.userPoolClientId
 // };
 
+Users.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
+  var cognitoUser = Users.userPool.getCurrentUser();
+  if (cognitoUser) {
+    cognitoUser.getSession(function sessionCallback(err, session) {
+      if (err) {
+        reject(err);
+      } else if (!session.isValid()) {
+        resolve(null);
+      } else {
+        resolve(session.getIdToken().getJwtToken());
+      }
+    });
+  } else {
+    resolve(null);
+  }
+});
+Users.signOut = function signOut() {
+  Users.userPool.getCurrentUser().signOut();
+};
+
 (function ($) {
   // var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-  Users.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
-    var cognitoUser = Users.userPool.getCurrentUser();
-    if (cognitoUser) {
-        cognitoUser.getSession(function sessionCallback(err, session) {
-            if (err) {
-                reject(err);
-            } else if (!session.isValid()) {
-                resolve(null);
-            } else {
-                resolve(session.getIdToken().getJwtToken());
-            }
-        });
-    } else {
-        resolve(null);
-    }
-  });
   // Users.userPool = userPool;
-  Users.signOut = function signOut() {
-      Users.userPool.getCurrentUser().signOut();
-    };
 
 }(jQuery));
