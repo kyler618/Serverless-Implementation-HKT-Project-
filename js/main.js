@@ -2,6 +2,7 @@ var Users = window.Users || {};
 var openOnce = false;
 (function ($) {
   $(function onDocReady() {
+    console.log(localStorage.getItem("poolData"));
     const contentBody = $( "#contentBody" );
     $('#menu-bar').on( "click", "a", event => {
       if (!_config.api.invokeUrl) {
