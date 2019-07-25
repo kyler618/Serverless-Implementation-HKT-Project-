@@ -4,8 +4,14 @@ Users.authToken.then( token => {
   if (token) {
     function handleResponse(results){
       let current_Jobs = results.Items;
+      let count = 0;
       current_Jobs.forEach( current_Job => {
-        console.log(current_Job.end_time);
+        if(current_Job.end_time === undefined){
+          if(count++%4==0){
+
+          }
+
+        }
       });
 
     }
