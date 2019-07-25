@@ -787,7 +787,7 @@ var Users = window.Users || {};
           }
         }
         const id = event.target.classList[1];
-        const data = {operation: "getMaintenanceRecord", target: id};
+        const data = {operation: "scanMaintenanceRecord", target: id};
         request(data, handleResponse, 'Maintenance');
       });
       $('#modalCancelButton').click(function(){
