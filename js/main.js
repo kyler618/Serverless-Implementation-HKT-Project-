@@ -26,6 +26,7 @@ var openOnce = false;
               if(identityCode=="InROTeRsW"){
                 contentBody.load( "job.html" );
               }
+                console.log('version 1');
               break;
             case 'Customer': case 'Hardware':
               contentBody.load( "database.html", () => {

@@ -1,6 +1,6 @@
 var Users = window.Users || {};
+  console.log('version 2');
 Users.authToken.then((token) => {   // check user authority
-  console.log('version 1');
   if (token) {
     function handleResponse(results){
       console.log(results);
