@@ -5,12 +5,16 @@ Users.authToken.then( token => {
     function handleResponse(results){
       let current_Jobs = results.Items;
       let count = 0;
+      let $row;
       current_Jobs.forEach( current_Job => {
         if(current_Job.end_time === undefined){
           if(count++%4==0){
-
+            $row = document.createElement("div");
           }
-
+          let $div = document.createElement("div");
+          $div.classList.add('card','col-sm-3');
+          $div
+          $row.appendChild();
         }
       });
 
