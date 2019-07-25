@@ -1,12 +1,13 @@
 var Users = window.Users || {};
 let poolData;
-console.log('version 8');
+console.log(poolData);
+console.log('version 9');
 (function ($) {
   if (typeof AWSCognito !== 'undefined') {
     AWSCognito.config.region = _config.cognito.region;
   }
   poolData = JSON.parse(localStorage.getItem("poolData"));
-  if(poolData){
+  if(poolData!==undefined){
     Users.authToken.then((token) => {   // check user authority
       if (token) {
         window.location.href = 'main.html';
