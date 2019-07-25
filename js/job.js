@@ -3,7 +3,11 @@ var Users = window.Users || {};
 Users.authToken.then( token => {
   if (token) {
     function handleResponse(results){
-      console.log(results);
+      let current_Jobs = results.Items;
+      current_Jobs.forEach( current_Job => {
+        console.log(current_Job.end_time);
+      });
+
     }
     let user = jwt_decode(token);
     let data = {operation: "getMaintenanceRecord", table: "Maintenance", target:user['cognito:username']};
@@ -21,7 +25,6 @@ Users.authToken.then( token => {
         alert('An error occured:\n' + jqXHR.responseText);
       }
     };
-    console.log(httpRequest);
     $.ajax(httpRequest);
   }
   else {
