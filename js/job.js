@@ -1,6 +1,18 @@
 var Users = window.Users || {};
 
-// Users.authToken.then((token) => {   // check user authority
+Users.authToken.then((token) => {   // check user authority
+  if (token) {
+    console.log('here');
+  }
+  else{
+    // window.location.href = '/signin.html';
+  }
+}).catch((error) => {
+  console.log(error);
+  // siginout
+});
+
+// Users.authToken.then( token => {
 //   if (token) {
 //     function handleResponse(results){
 //       console.log(results);
@@ -20,7 +32,8 @@ var Users = window.Users || {};
 //         alert('An error occured:\n' + jqXHR.responseText);
 //       }
 //     };
-//   } else {
+//   }
+//   else {
 //     // window.location.href = '/signin.html';
 //   }
 // }).catch((error) => {
