@@ -1,14 +1,14 @@
 // var Users = window.Users || {};
 let poolData;
 console.log(poolData);
-console.log('version 1');
+console.log('version 2');
 (function ($) {
   if (typeof AWSCognito !== 'undefined') {
     AWSCognito.config.region = _config.cognito.region;
   }
   poolData = JSON.parse(localStorage.getItem("poolData"));
   if(poolData!==undefined){
-    contentBody.load( "js/cognito-auth.js", () => {
+    $.getScript( "js/cognito-auth.js", () => {
       Users.authToken.then((token) => {   // check user authority
         if (token) {
           window.location.href = 'main.html';
