@@ -1,6 +1,5 @@
 // var Users = window.Users || {};
 let poolData;
-console.log('version 4');
 (function ($) {
   if (typeof AWSCognito !== 'undefined') {
     AWSCognito.config.region = _config.cognito.region;
