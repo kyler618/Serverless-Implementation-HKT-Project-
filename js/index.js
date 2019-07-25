@@ -1,7 +1,7 @@
 // var Users = window.Users || {};
 let poolData;
 console.log(poolData);
-console.log('version 9');
+console.log('version 1');
 (function ($) {
   if (typeof AWSCognito !== 'undefined') {
     AWSCognito.config.region = _config.cognito.region;
