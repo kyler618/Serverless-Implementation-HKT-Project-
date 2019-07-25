@@ -5,16 +5,15 @@ console.log('version 1');
   Users.authToken.then((token) => {   // check user authority
     if (token) {
       let identityCode = jwt_decode(token).iss.replace('https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_', '');
-      switch (identityCode){
-        case '8oxVNNeyb':
-
-          break;
-        case 'InROTeRsW':
-          console.log('here');
-          $('#Job').show();
-          break;
-      }
       $(function onDocReady() {
+        switch (identityCode){
+          case '8oxVNNeyb':
+
+            break;
+          case 'InROTeRsW':
+            $('#Job').show();
+            break;
+        }
         const contentBody = $( "#contentBody" );
         $('#menu-bar').on( "click", "a", event => {
           if (!_config.api.invokeUrl) {
@@ -25,7 +24,9 @@ console.log('version 1');
           $('#current').val(event.target.id);
           switch(target){
             case 'Job':
-              contentBody.load( "job.html" );
+              if(identityCode=="InROTeRsW"){
+                contentBody.load( "job.html" );                
+              }
               break;
             case 'Customer': case 'Hardware':
               contentBody.load( "database.html", () => {
