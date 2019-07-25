@@ -3,7 +3,15 @@ var openOnce = false;
 (function ($) {
   Users.authToken.then((token) => {   // check user authority
     if (token) {
-      
+      let identityCode = jwt_decode(token).iss.replace('https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_', '');
+      switch (identityCode){
+        case '8oxVNNeyb':
+
+          break;
+        case 'InROTeRsW':
+          $('#Job').show();
+          break;
+      }
       $(function onDocReady() {
         const contentBody = $( "#contentBody" );
         $('#menu-bar').on( "click", "a", event => {
