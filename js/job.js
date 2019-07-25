@@ -22,7 +22,7 @@ Users.authToken.then( token => {
       }
     };
     console.log(httpRequest);
-    // $.ajax(httpRequest);
+    $.ajax(httpRequest);
   }
   else {
     // window.location.href = '/signin.html';
