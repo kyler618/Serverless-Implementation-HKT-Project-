@@ -1,6 +1,5 @@
 var Users = window.Users || {};
 var openOnce = false;
-console.log('version 1');
 (function ($) {
   Users.authToken.then((token) => {   // check user authority
     if (token) {
