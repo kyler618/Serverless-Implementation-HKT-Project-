@@ -1,4 +1,4 @@
-var Users = window.Users || {};
+// var Users = window.Users || {};
 let poolData;
 console.log(poolData);
 console.log('version 9');
@@ -8,15 +8,17 @@ console.log('version 9');
   }
   poolData = JSON.parse(localStorage.getItem("poolData"));
   if(poolData!==undefined){
-    Users.authToken.then((token) => {   // check user authority
-      if (token) {
-        window.location.href = 'main.html';
-      } else {
+    contentBody.load( "js/cognito-auth.js", () => {
+      Users.authToken.then((token) => {   // check user authority
+        if (token) {
+          window.location.href = 'main.html';
+        } else {
+          // signout
+        }
+      }).catch((error) => {
+        console.log(error);
         // signout
-      }
-    }).catch((error) => {
-      console.log(error);
-      // signout
+      });
     });
   }
   else{
