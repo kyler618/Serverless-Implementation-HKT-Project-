@@ -5,8 +5,8 @@ if (typeof AWSCognito !== 'undefined') {
 }
 
 (function ($) {
-  var poolData = JSON.parse(localStorage.getItem("poolData"));
-  var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+  let poolData = JSON.parse(localStorage.getItem("poolData"));
+  let userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
   Users.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
       var cognitoUser = userPool.getCurrentUser();
       if (cognitoUser) {
@@ -24,7 +24,7 @@ if (typeof AWSCognito !== 'undefined') {
       }
   });
   Users.signOut = function signOut() {
-      userPool.getCurrentUser().signOut();
-    };
+    userPool.getCurrentUser().signOut();
+  };
 
 }(jQuery));

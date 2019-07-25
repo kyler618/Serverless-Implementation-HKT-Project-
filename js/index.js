@@ -1,13 +1,28 @@
-console.log('version 7');
+var Users = window.Users || {};
+let poolData;
+console.log('version 8');
 (function ($) {
   if (typeof AWSCognito !== 'undefined') {
     AWSCognito.config.region = _config.cognito.region;
   }
-  $(function onDocReady() {
+  poolData = JSON.parse(localStorage.getItem("poolData"));
+  if(poolData){
+    Users.authToken.then((token) => {   // check user authority
+      if (token) {
+        window.location.href = 'main.html';
+      } else {
+        // signout
+      }
+    }).catch((error) => {
+      console.log(error);
+      // signout
+    });
+  }
+  else{
+    $(function onDocReady() {
     $('#signinForm').submit(signin);
     function signin(event){
       event.preventDefault();
-      var poolData;
       let email = $('#emailInputSignin').val();
       let password = $('#passwordInputSignin').val();
       let authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
@@ -51,6 +66,7 @@ console.log('version 7');
       });
     }
   });
+  }
 }(jQuery));
 // Prepare for future use
 // function handleChangePassword(event){
