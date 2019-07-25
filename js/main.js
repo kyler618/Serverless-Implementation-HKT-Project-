@@ -8,7 +8,7 @@ console.log('version 1');
       $(function onDocReady() {
         switch (identityCode){
           case '8oxVNNeyb':
-
+            $('#client_Information').show();
             break;
           case 'InROTeRsW':
             $('#Job').show();
@@ -25,7 +25,7 @@ console.log('version 1');
           switch(target){
             case 'Job':
               if(identityCode=="InROTeRsW"){
-                contentBody.load( "job.html" );                
+                contentBody.load( "job.html" );
               }
               break;
             case 'Customer': case 'Hardware':
