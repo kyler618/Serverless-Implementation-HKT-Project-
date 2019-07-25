@@ -6,12 +6,13 @@ Users.authToken.then( token => {
       console.log(results);
     }
     let user = jwt_decode(token);
+    let data = {operation: "getMaintenanceRecord", target:user['cognito:username']};
     var httpRequest = {
       method: 'POST',
       url: _config.api.invokeUrl +'/hkt-fieldeng-resource',
       headers: {Authorization: token},
       contentType: 'application/json',
-      data : {operation: "getMaintenanceRecord", target:user['cognito:username']},
+      data : JSON.stringify(data),
       async: true,
       success: handleResponse,
       error: (jqXHR, textStatus, errorThrown) => {
