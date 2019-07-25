@@ -20,6 +20,7 @@ Users.authToken.then( token => {
         alert('An error occured:\n' + jqXHR.responseText);
       }
     };
+    $.ajax(httpRequest);
   }
   else {
     // window.location.href = '/signin.html';
