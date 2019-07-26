@@ -44,13 +44,13 @@ Users.authToken.then( token => {
             $cardHeader,
             $cardContent,
           ]);
-          return $card.innerHTML;
+          return $card;
           // $card.appendChild(createCardHeader(current_Job.sensor_ID));
           // $row.appendChild();
         }
       });
       console.log(getHtml($jobs));
-      $('#container').html($jobs);
+      $('#container').html(getHtml($jobs));
     }
     let user = jwt_decode(token);
     let data = {operation: "getMaintenanceRecord", table: "Maintenance", target:user['cognito:username']};
