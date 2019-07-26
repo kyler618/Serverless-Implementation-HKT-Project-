@@ -73,9 +73,9 @@ var Users = window.Users || {};
               key +=  _config.cognito.fieldEng_userPoolId;
               break;
           }
-          httpRequest.headers = {Authorization: token};
-          a='eyJraWQiOiJhUnpjWXB2SXA5UUp5NDU4dXFtVFY3eGkrQ2J0UkxUOVlSSVJ3YlwvXC9obkE9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiI0YzQ1MDMyYi1kYWJkLTQxYzctOGI4MC1mOTMzNjcxODVkNGIiLCJhdWQiOiI1NW9ubnAxbXNkMTI0NWFiY2FkdWxibTdobCIsImV2ZW50X2lkIjoiOTBhOGRiOWYtM2Y5Yy00NDRkLWFmYjItZTIyMGZlMWNhNDA3IiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE1NjQxMTMxMDIsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC5hcC1zb3V0aGVhc3QtMS5hbWF6b25hd3MuY29tXC9hcC1zb3V0aGVhc3QtMV9JblJPVGVSc1ciLCJjb2duaXRvOnVzZXJuYW1lIjoiZjEyMzQ1IiwiZXhwIjoxNTY0MTE2NzAyLCJpYXQiOjE1NjQxMTMxMDJ9.JyCt1mdNaeLr3ql2PN_QiJfatGihl92AXUn98_YCXrRNpfrEblHwM_k8Dk7xLAjVHWmmhxrueoCpkFzmh-h269BFqhZy3p700WZiVPPOkrr70KHO5BvPf6hMDONDclOQnSxhR5KkHl3Yt35qgWj-qQtXFjeBEzW5R25xZbNK96yRDS7EGTfSvFkPqzgSJJAasbgR5TN40hHj8QjCURclBrYMF05iNij2B5oaDKL0ePBCw-Ms4NgOi9fI5dtiKRawa0BxfZVTVGV_Gv_n4KX4qJ_gN-6v5r-cDSZFVyNKBbQvEuARKnG1FFW2yQxd8cCn8xUWuEST3X2UDValhoocnQ';
-          // httpRequest.headers = {Authorization: a};
+          // httpRequest.headers = {Authorization: token};
+          a='eyJraWQiOiI3a2ZKc2IxWmdzaGJ4ZktnNDRPQnZpaEZBT2lnOGFTRkpcLzdjSVR5UXZKVT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJiNTVhMTQ0My05MGZjLTQ1MjItYTZlOC04ODI3MzRmMDBiZjAiLCJhdWQiOiI0Z2Y4NGJhOWIxcjk4Y2hzdHZpazhldWY1dSIsImV2ZW50X2lkIjoiN2FkMzg2Y2UtNjQ0ZS00MjBlLWEyODEtOWI2MTRiZjc1NDUwIiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE1NjQxMTM4OTgsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC5hcC1zb3V0aGVhc3QtMS5hbWF6b25hd3MuY29tXC9hcC1zb3V0aGVhc3QtMV84b3hWTk5leWIiLCJjb2duaXRvOnVzZXJuYW1lIjoiczEyMzQ1IiwiZXhwIjoxNTY0MTE3NDk4LCJpYXQiOjE1NjQxMTM4OTl9.OdE3uii_ldr5_cB40w84WPO_ZCDakmv8zRu2_xDEurAY98fdTXITFrmaumwi06jVyAdxVs4IOKllTuejnMPqc7Jmo1_eauAETaLx8sPd7pMr7A4Xeqw9MJRRXw_DzWolnt-YnBOwAYz-6rVGFEtW0ZdYLVfGC8X6DUwmWAL8Y6MCIXipa0QKRQnHjUfXVrR210Q6zWFE--ZjtnevA0qb2h_w4aDSI6o2E8cfdQpc1YHPp35QutrMOYN_K98etVs0g5RI1FjyT3igPi5uOgh6YkJgPph54G__kN6OQ2oJ_6UVFxaYNEoGUMHWi9W1EEJ5fQWdzY2tSnZoEhIzw0bI9w';
+          httpRequest.headers = {Authorization: a};
           logins[key] = token;
         } else {
           // window.location.href = '/signin.html';

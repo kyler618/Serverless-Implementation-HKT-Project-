@@ -31,8 +31,8 @@ if (typeof AWSCognito !== 'undefined') {
     //   console.log('here');
     // });
     //console.log(au);
-    cognitoUser.globalSignOut(  {   onFailure: e =>   console.log(e)
-                               , onSuccess: r =>   console.log('Logout success' + r)  })
+    // cognitoUser.globalSignOut(  {   onFailure: e =>   console.log(e)
+    //                            , onSuccess: r =>   console.log('Logout success' + r)  })
 
     localStorage.removeItem('poolData');
     alert("You have been signed out.");
