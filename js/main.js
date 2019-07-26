@@ -22,6 +22,7 @@ console.log('version 1');
           let target = event.target.innerHTML;
           $('#current').html(target);
           $('#current').val(event.target.id);
+          console.log(target);
           switch(target){
             case 'Job':
               if(identityCode=="InROTeRsW"){
