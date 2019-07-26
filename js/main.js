@@ -14,7 +14,7 @@ var openOnce = false;
             break;
         }
         const contentBody = $( "#contentBody" );
-        $('#menu-bar').on( "click", "a", event => {
+        $('#Menu-bar').on( "click", "a", event => {
           if (!_config.api.invokeUrl) {
             $('#noApiMessage').show();
           }
@@ -40,6 +40,9 @@ var openOnce = false;
               contentBody.load( "document.html", () => {
                 $.getScript("js/document.js");
               });
+              break;
+            case 'Signout':
+              Users.signOut();
               break;
           }
         });
