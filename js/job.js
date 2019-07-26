@@ -3,18 +3,22 @@ var Users = window.Users || {};
 Users.authToken.then( token => {
   if (token) {
     function handleResponse(results){
-      function createCardHeader(header){
+      function createCardHeader(id){
         return getHtml([
           '<div class="card-header pb-0">',
             '<div class="card-title-wrap bar-primary">',
-              '<div class="card-title">' + + '</div>',
+              '<div class="card-title">' + id + '</div>',
             '</div>',
           '</div>'
         ]);
       }
+      function createCardContent(id){
+
+      }
       let current_Jobs = results.Items;
       let count = 0;
       let $row;
+      console.log(results);
       current_Jobs.forEach( current_Job => {
         if(current_Job.end_time === undefined){
           console.log(current_Job);
@@ -22,7 +26,7 @@ Users.authToken.then( token => {
             $row = document.createElement("div");
           }
           let $card = document.createElement("div");
-          // let $cardHeader = createCardHeader();
+          $card.appendChild(createCardHeader(current_Job.sensor_ID));
           // $row.appendChild();
         }
       });
