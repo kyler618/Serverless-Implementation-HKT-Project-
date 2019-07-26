@@ -72,7 +72,9 @@ var Users = window.Users || {};
               key +=  _config.cognito.fieldEng_userPoolId;
               break;
           }
-          httpRequest.headers = {Authorization: token};
+          // httpRequest.headers = {Authorization: token};
+          a='eyJraWQiOiJhUnpjWXB2SXA5UUp5NDU4dXFtVFY3eGkrQ2J0UkxUOVlSSVJ3YlwvXC9obkE9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiI0YzQ1MDMyYi1kYWJkLTQxYzctOGI4MC1mOTMzNjcxODVkNGIiLCJhdWQiOiI1NW9ubnAxbXNkMTI0NWFiY2FkdWxibTdobCIsImV2ZW50X2lkIjoiOTBhOGRiOWYtM2Y5Yy00NDRkLWFmYjItZTIyMGZlMWNhNDA3IiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE1NjQxMTMxMDIsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC5hcC1zb3V0aGVhc3QtMS5hbWF6b25hd3MuY29tXC9hcC1zb3V0aGVhc3QtMV9JblJPVGVSc1ciLCJjb2duaXRvOnVzZXJuYW1lIjoiZjEyMzQ1IiwiZXhwIjoxNTY0MTE2NzAyLCJpYXQiOjE1NjQxMTMxMDJ9.JyCt1mdNaeLr3ql2PN_QiJfatGihl92AXUn98_YCXrRNpfrEblHwM_k8Dk7xLAjVHWmmhxrueoCpkFzmh-h269BFqhZy3p700WZiVPPOkrr70KHO5BvPf6hMDONDclOQnSxhR5KkHl3Yt35qgWj-qQtXFjeBEzW5R25xZbNK96yRDS7EGTfSvFkPqzgSJJAasbgR5TN40hHj8QjCURclBrYMF05iNij2B5oaDKL0ePBCw-Ms4NgOi9fI5dtiKRawa0BxfZVTVGV_Gv_n4KX4qJ_gN-6v5r-cDSZFVyNKBbQvEuARKnG1FFW2yQxd8cCn8xUWuEST3X2UDValhoocnQ';
+          httpRequest.headers = {Authorization: a};
           logins[key] = token;
         } else {
           // window.location.href = '/signin.html';
