@@ -12,16 +12,19 @@ Users.authToken.then( token => {
           '</div>'
         ]);
       }
-      function createCardContent(id){
+      function createCardContent(id, start_time){
         let record = results.records.find(item => item.id == id);
         console.log(record);
-        // return getHtml([
-        //   '<div class="card-header pb-0">',
-        //     '<div class="card-title-wrap bar-primary">',
-        //       '<div class="card-title">' + id + '</div>',
-        //     '</div>',
-        //   '</div>'
-        // ]);
+        return getHtml([
+          '<div class="card-content">',
+            '<div class="card-body">',
+              record.Enduser_name,
+              record.Physical_Site_Address,
+              record.Device_Type,
+              start_time,
+            '</div>',
+          '</div>'
+        ]);
       }
       let current_Jobs = results.Items;
       let count = 0;
@@ -35,7 +38,7 @@ Users.authToken.then( token => {
           }
           let $card = document.createElement("div");
           let $cardHeader = createCardHeader(current_Job.sensor_ID);
-          createCardContent(current_Job.inventory_ID);
+          createCardContent(current_Job.inventory_ID, current_Job.start_time);
           // $card.appendChild(createCardHeader(current_Job.sensor_ID));
           // $row.appendChild();
         }
