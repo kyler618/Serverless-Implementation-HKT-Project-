@@ -26,7 +26,8 @@ Users.authToken.then( token => {
             $row = document.createElement("div");
           }
           let $card = document.createElement("div");
-          $card.appendChild(createCardHeader(current_Job.sensor_ID));
+          let $cardHeader = createCardHeader(current_Job.sensor_ID);
+          // $card.appendChild(createCardHeader(current_Job.sensor_ID));
           // $row.appendChild();
         }
       });
