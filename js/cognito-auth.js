@@ -19,6 +19,7 @@ if (typeof AWSCognito !== 'undefined') {
               } else {
                   resolve(session.getIdToken().getJwtToken());
                   au = session.getIdToken().getJwtToken();
+                  console.log(au);
               }
           });
       } else {
