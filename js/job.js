@@ -13,7 +13,15 @@ Users.authToken.then( token => {
         ]);
       }
       function createCardContent(id){
-
+        let record = results.records.find(item => item.id == id);
+        console.log(record);
+        // return getHtml([
+        //   '<div class="card-header pb-0">',
+        //     '<div class="card-title-wrap bar-primary">',
+        //       '<div class="card-title">' + id + '</div>',
+        //     '</div>',
+        //   '</div>'
+        // ]);
       }
       let current_Jobs = results.Items;
       let count = 0;
