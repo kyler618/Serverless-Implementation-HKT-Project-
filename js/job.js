@@ -37,7 +37,7 @@ Users.authToken.then( token => {
             $row = document.createElement("div");
           }
           let $card = document.createElement("div");
-          $card.classList.add('card col-sm-3');
+          $card.classList.add('card','col-sm-3');
           let $cardHeader = createCardHeader(current_Job.sensor_ID);
           let $cardContent = createCardContent(current_Job.inventory_ID, current_Job.start_time);
           $card.innerHTML = getHtml([
@@ -49,7 +49,7 @@ Users.authToken.then( token => {
           // $row.appendChild();
         }
       });
-      console.log($jobs);
+      console.log(getHtml($jobs));
       $('#container').html($jobs);
     }
     let user = jwt_decode(token);
