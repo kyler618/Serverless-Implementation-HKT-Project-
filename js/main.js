@@ -43,7 +43,7 @@ console.log('version 1');
                 $.getScript("js/document.js");
               });
               break;
-            case 'Signout':
+            case 'Sign out':
               console.log('clicked');
               Users.signOut();
               break;
