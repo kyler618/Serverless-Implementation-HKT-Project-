@@ -48,7 +48,7 @@ Users.authToken.then( token => {
         }
       });
       console.log($jobs);
-
+      $('#container').html($jobs);
     }
     let user = jwt_decode(token);
     let data = {operation: "getMaintenanceRecord", table: "Maintenance", target:user['cognito:username']};
