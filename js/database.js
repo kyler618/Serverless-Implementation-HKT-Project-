@@ -72,7 +72,7 @@ var Users = window.Users || {};
               key +=  _config.cognito.fieldEng_userPoolId;
               break;
           }
-          httpRequest.headers = {Authorization: token};
+          // httpRequest.headers = {Authorization: token};
           logins[key] = token;
         } else {
           // window.location.href = '/signin.html';
