@@ -3,6 +3,15 @@ var Users = window.Users || {};
 Users.authToken.then( token => {
   if (token) {
     function handleResponse(results){
+      function createCardHeader(header){
+        return getHtml([
+          '<div class="card-header pb-0">',
+            '<div class="card-title-wrap bar-primary">',
+              '<div class="card-title">' + + '</div>',
+            '</div>',
+          '</div>'
+        ]);
+      }
       let current_Jobs = results.Items;
       let count = 0;
       let $row;
@@ -11,10 +20,9 @@ Users.authToken.then( token => {
           if(count++%4==0){
             $row = document.createElement("div");
           }
-          let $div = document.createElement("div");
-          $div.classList.add('card','col-sm-3');
-          $div
-          $row.appendChild();
+          let $card = document.createElement("div");
+          // let $cardHeader = createCardHeader();
+          // $row.appendChild();
         }
       });
 
@@ -44,3 +52,7 @@ Users.authToken.then( token => {
   // alert(error);
   // window.location.href = '/signin.html';
 });
+
+function getHtml(template) {
+  return template.join('\n');
+}
