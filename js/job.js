@@ -32,7 +32,7 @@ Users.authToken.then( token => {
       // console.log(results);
       let $jobs = current_Jobs.map( current_Job => {
         if(current_Job.end_time === undefined){
-          console.log(current_Job);
+          // console.log(current_Job);
           if(count++%4==0){
             $row = document.createElement("div");
           }
