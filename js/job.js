@@ -26,7 +26,7 @@ Users.authToken.then( token => {
       let current_Jobs = results.Items;
       let count = 0;
       let $row;
-      console.log(results);
+      // console.log(results);
       current_Jobs.forEach( current_Job => {
         if(current_Job.end_time === undefined){
           console.log(current_Job);
@@ -35,6 +35,7 @@ Users.authToken.then( token => {
           }
           let $card = document.createElement("div");
           let $cardHeader = createCardHeader(current_Job.sensor_ID);
+          createCardContent(current_Job.inventory_ID);
           // $card.appendChild(createCardHeader(current_Job.sensor_ID));
           // $row.appendChild();
         }
