@@ -1,5 +1,5 @@
 var Users = window.Users || {};
-
+console.log('version 2');
 Users.authToken.then( token => {
   if (token) {
     function handleResponse(results){
@@ -39,16 +39,16 @@ Users.authToken.then( token => {
           let $card = document.createElement("div");
           let $cardHeader = createCardHeader(current_Job.sensor_ID);
           let $cardContent = createCardContent(current_Job.inventory_ID, current_Job.start_time);
-          return [
-            getHtml($cardHeader),
-            getHtml($cardContent),
-          ];
+          return getHtml([
+            $cardHeader,
+            $cardContent,
+          ]);
           // $card.appendChild(createCardHeader(current_Job.sensor_ID));
           // $row.appendChild();
         }
       });
       console.log($jobs);
-      $('#container').html($jobs);
+
     }
     let user = jwt_decode(token);
     let data = {operation: "getMaintenanceRecord", table: "Maintenance", target:user['cognito:username']};
