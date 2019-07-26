@@ -37,6 +37,7 @@ Users.authToken.then( token => {
             $row = document.createElement("div");
           }
           let $card = document.createElement("div");
+          $card.classList.add('card col-sm-3');
           let $cardHeader = createCardHeader(current_Job.sensor_ID);
           let $cardContent = createCardContent(current_Job.inventory_ID, current_Job.start_time);
           return getHtml([
