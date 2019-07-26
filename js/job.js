@@ -3,6 +3,14 @@ console.log('version 2');
 Users.authToken.then( token => {
   if (token) {
     function handleResponse(results){
+      function createCard(header, content){
+        return getHtml([
+          '<div class="card col-sm-3">',
+            header,
+            content,
+          '</div>'
+        ]);
+      }
       function createCardHeader(id){
         return getHtml([
           '<div class="card-header pb-0">',
@@ -36,15 +44,9 @@ Users.authToken.then( token => {
           if(count++%4==0){
             $row = document.createElement("div");
           }
-          let $card = document.createElement("div");
-          $card.classList.add('card','col-sm-3');
           let $cardHeader = createCardHeader(current_Job.sensor_ID);
           let $cardContent = createCardContent(current_Job.inventory_ID, current_Job.start_time);
-          $card.innerHTML = getHtml([
-            $cardHeader,
-            $cardContent,
-          ]);
-          return $card;
+          return createCard($cardHeader, $cardContent);
           // $card.appendChild(createCardHeader(current_Job.sensor_ID));
           // $row.appendChild();
         }
