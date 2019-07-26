@@ -17,6 +17,7 @@ Users.authToken.then( token => {
       let $row;
       current_Jobs.forEach( current_Job => {
         if(current_Job.end_time === undefined){
+          console.log(current_Job);
           if(count++%4==0){
             $row = document.createElement("div");
           }
