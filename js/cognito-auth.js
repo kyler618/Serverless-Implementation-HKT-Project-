@@ -24,7 +24,6 @@ if (typeof AWSCognito !== 'undefined') {
       }
   });
   Users.signOut = function signOut() {
-    console.log('version 2');
     userPool.getCurrentUser().signOut();
     localStorage.removeItem('poolData');
     alert("You have been signed out.");
