@@ -110,7 +110,7 @@ function listFolder() {
     var htmlTemplate = [
         getHtml(folder),
         getHtml(files),
-    ]
+    ];
     document.getElementById('list-item').innerHTML = getHtml(htmlTemplate);
   });
 }
