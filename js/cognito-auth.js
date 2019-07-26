@@ -18,8 +18,6 @@ if (typeof AWSCognito !== 'undefined') {
                   resolve(null);
               } else {
                   resolve(session.getIdToken().getJwtToken());
-                  au = session.getIdToken().getJwtToken();
-                  console.log(au);
               }
           });
       } else {
@@ -27,16 +25,12 @@ if (typeof AWSCognito !== 'undefined') {
       }
   });
   Users.signOut = function signOut() {
-    // userPool.getCurrentUser().globalSignOut( function(){
-    //   console.log('here');
-    // });
-    //console.log(au);
+    userPool.getCurrentUser().signOut();
     // cognitoUser.globalSignOut(  {   onFailure: e =>   console.log(e)
     //                            , onSuccess: r =>   console.log('Logout success' + r)  })
-
     localStorage.removeItem('poolData');
     alert("You have been signed out.");
-    // window.location = "index.html";
+    window.location = "index.html";
   };
 
 }(jQuery));
