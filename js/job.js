@@ -41,7 +41,6 @@ Users.authToken.then( token => {
       let $jobs = current_Jobs.map( current_Job => {
         if(current_Job.end_time === undefined){
           // console.log(current_Job);
-          count++;
           // if(count++%4==0){
           //   $row = document.createElement("div");
           // }
@@ -53,7 +52,23 @@ Users.authToken.then( token => {
         }
 
       });
+      let jobsTemp = [];
+      for(let x=0; x<$jobs.length; x++){
+        if(x%4==0){
 
+        }
+      }
+      $jobs = $jobs.map( job => {
+        jobsTemp.push(job);
+        if(count++%4==0){
+          return getHtml([
+            '<div class="row">',
+            jobsTemp.forEach(),
+            '</div>'
+          ]);
+        }
+
+      });
       console.log(getHtml($jobs));
       // $('#container').html(getHtml($jobs));
     }
