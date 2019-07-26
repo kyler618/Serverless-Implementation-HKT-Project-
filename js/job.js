@@ -41,18 +41,21 @@ Users.authToken.then( token => {
       let $jobs = current_Jobs.map( current_Job => {
         if(current_Job.end_time === undefined){
           // console.log(current_Job);
-          if(count++%4==0){
-            $row = document.createElement("div");
-          }
+          count++;
+          // if(count++%4==0){
+          //   $row = document.createElement("div");
+          // }
           let $cardHeader = createCardHeader(current_Job.sensor_ID);
           let $cardContent = createCardContent(current_Job.inventory_ID, current_Job.start_time);
           return createCard($cardHeader, $cardContent);
           // $card.appendChild(createCardHeader(current_Job.sensor_ID));
           // $row.appendChild();
         }
+
       });
+
       console.log(getHtml($jobs));
-      $('#container').html(getHtml($jobs));
+      // $('#container').html(getHtml($jobs));
     }
     let user = jwt_decode(token);
     let data = {operation: "getMaintenanceRecord", table: "Maintenance", target:user['cognito:username']};
