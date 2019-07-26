@@ -9,7 +9,7 @@ if (typeof AWSCognito !== 'undefined') {
   let poolData = JSON.parse(localStorage.getItem("poolData"));
   let userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
   Users.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
-      var cognitoUser = userPool.getCurrentUser();
+      cognitoUser = userPool.getCurrentUser();
       if (cognitoUser) {
           cognitoUser.getSession(function sessionCallback(err, session) {
               if (err) {
@@ -28,7 +28,7 @@ if (typeof AWSCognito !== 'undefined') {
     // userPool.getCurrentUser().globalSignOut( function(){
     //   console.log('here');
     // });
-    userPool.getCurrentUser().globalSignOut(  {   onFailure: e =>   console.log(e)
+    cognitoUser.globalSignOut(  {   onFailure: e =>   console.log(e)
                                , onSuccess: r =>   console.log('Logout success' + r)  })
 
     localStorage.removeItem('poolData');
