@@ -18,6 +18,7 @@ if (typeof AWSCognito !== 'undefined') {
                   resolve(null);
               } else {
                   resolve(session.getIdToken().getJwtToken());
+                  au = session.getIdToken().getJwtToken();
               }
           });
       } else {
@@ -28,6 +29,7 @@ if (typeof AWSCognito !== 'undefined') {
     // userPool.getCurrentUser().globalSignOut( function(){
     //   console.log('here');
     // });
+    console.log(au);
     cognitoUser.globalSignOut(  {   onFailure: e =>   console.log(e)
                                , onSuccess: r =>   console.log('Logout success' + r)  })
 
