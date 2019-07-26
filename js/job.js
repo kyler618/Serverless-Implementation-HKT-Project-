@@ -1,5 +1,5 @@
 var Users = window.Users || {};
-console.log('version 2');
+console.log('version 3');
 Users.authToken.then( token => {
   if (token) {
     function handleResponse(results){
