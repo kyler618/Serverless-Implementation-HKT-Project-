@@ -40,10 +40,11 @@ Users.authToken.then( token => {
           $card.classList.add('card col-sm-3');
           let $cardHeader = createCardHeader(current_Job.sensor_ID);
           let $cardContent = createCardContent(current_Job.inventory_ID, current_Job.start_time);
-          return getHtml([
+          $card.innerHTML = getHtml([
             $cardHeader,
             $cardContent,
           ]);
+          return $card.innerHTML;
           // $card.appendChild(createCardHeader(current_Job.sensor_ID));
           // $row.appendChild();
         }
