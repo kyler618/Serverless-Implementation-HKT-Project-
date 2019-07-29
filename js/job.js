@@ -4,8 +4,11 @@ Users.authToken.then( token => {
   if (token) {
     function handleResponse(results){
       function createCard(header, content){
+        function onclick(event){
+          $('#card').show();
+        }
         return getHtml([
-          '<div class="card col-sm-3">',
+          '<div class="card col-sm-3" onclick="onclick()">',
             header,
             content,
           '</div>'
