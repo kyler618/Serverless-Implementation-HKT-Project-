@@ -121,7 +121,8 @@ function card(){
         $input.val(item[key]);
       }
       else{
-        console.log(createInput(key, item[key]));  
+        console.log(createInput(key, item[key]));
+        $('#form').append(createInput(key, item[key]));
       }
     }
     console.log(item);
