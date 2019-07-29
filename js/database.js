@@ -79,7 +79,7 @@ try{
             Users.signOut();
           }
         }).catch((error) => {
-          window.location.href = '/signin.html';
+          window.location.href = 'index.html';
         });
       }
       function initialize(){
