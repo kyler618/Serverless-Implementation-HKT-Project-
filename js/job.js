@@ -22,7 +22,7 @@ Users.authToken.then( token => {
       }
       function createCardContent(id, start_time){
         let record = results.records.find(item => item.id == id);
-        console.log(record);
+        // console.log(record);
         return getHtml([
           '<div class="card-content">',
             '<div class="card-body">',
@@ -54,6 +54,7 @@ Users.authToken.then( token => {
       });
       let jobsTemp = [];
       $jobs = $jobs.map( (job, index) => {
+        console.log(jobsTemp, index);
         jobsTemp.push(job);
         if((count++%4==0 || index == $jobs.length - 1) && jobsTemp.length != 0){
           let template = getHtml([
