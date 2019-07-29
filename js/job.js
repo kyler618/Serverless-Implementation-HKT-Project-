@@ -95,8 +95,9 @@ function card(){
   function initialize(){
     card.card_Show = card_Show;
   }
-  function card_Show(event){
-    console.log(event);
+  function card_Show(id){
+    console.log(id);
+    console.log(records);
     function undo(){
       $('#card .edit').show();
       $('#undo').click( () => {
