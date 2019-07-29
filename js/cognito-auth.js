@@ -31,5 +31,12 @@ if (typeof AWSCognito !== 'undefined') {
     alert("You have been signed out.");
     window.location = "index.html";
   };
-
+  Users.authToken.then( token => {   // check user authority
+    if (!token) {
+      Users.signOut();
+    }
+  }).catch((error) => {
+    console.log(error);
+    window.location.href = 'index.html';
+  });
 }(jQuery));

@@ -54,7 +54,6 @@ var openOnce = false;
               });
               break;
             case 'Sign out':
-              console.log('clicked');
               Users.signOut();
               break;
           }
@@ -62,10 +61,10 @@ var openOnce = false;
       });
     }
     else{
-      // window.location.href = '/signin.html';
+      Users.signOut();
     }
   }).catch((error) => {
     console.log(error);
-    // siginout
+    // window.location.href = '/signin.html';
   });
 }(jQuery));
