@@ -24,7 +24,7 @@ var openOnce = false;
           console.log(target);
           switch(target){
             case 'Job':
-              window.history.pushState(null, null, "job");
+              // window.history.pushState(null, null, "job");
               if(identityCode=="InROTeRsW"){
                 contentBody.load( "job.html" );
               }
