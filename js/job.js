@@ -32,7 +32,7 @@ Users.authToken.then( token => {
               '<p>',
               record.Device_Type,
               '</p>',
-              '<span class=""w3-right">',
+              '<span class="w3-right">',
               start_time,
               '</span>',
             '</div>',
