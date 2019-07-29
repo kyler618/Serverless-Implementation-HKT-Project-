@@ -27,19 +27,18 @@
     .edit{
       display:none;
     }
-    #card .input-group-text{
+    #card .attribute{
       display: inline-block;
       border: none;
       border-right: 1px solid #dadcde;
       border-radius: unset;
     }
-    #card .form-control[readonly] {
+    #card .record[readonly]{
       background-color: #e9ecef;
     }
-    #card .form-control {
+    #card .record{
       display: inline-block;
       width: 60%;
-      height: unset;
       border-radius: unset;
       border: none;
       background-color: #ffdcb980;
@@ -58,8 +57,8 @@
         <p>
         <form id="form" onsubmit="return false;">
           <p>
-          <input type="text" class="" value="Sensor_ID" readonly>
-          <input type="text" class="" readonly>
+          <input type="text" class="attribute" value="Sensor_ID" readonly>
+          <input type="text" class="record" readonly>
           <p>
           <input type="text" value="Enduser_name" readonly>
           <input type="text" readonly>
