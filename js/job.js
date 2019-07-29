@@ -109,7 +109,13 @@ function card(){
     })
     for(let key in item){
       if(key=="id") continue;
-      let $key = $('#card input.input-group-text[value=\'' + key + '\']');
+      let $input = $('#card input.form-control[name=\'' + key + '\']');
+      if($input.length != 0){
+        $input.val(item[key]);
+      }
+      else{
+
+      }
       console.log($key);
     }
     console.log(item);
