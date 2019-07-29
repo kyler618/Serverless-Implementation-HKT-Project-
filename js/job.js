@@ -97,7 +97,10 @@ function card(){
   }
   function card_Show(id){
     console.log(id);
-    console.log(records);
+    let item = records.find(record => {
+      return record.Sensor_ID == id
+    })
+    console.log(item);
     function undo(){
       $('#card .edit').show();
       $('#undo').click( () => {
