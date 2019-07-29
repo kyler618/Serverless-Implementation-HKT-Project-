@@ -4,11 +4,8 @@ Users.authToken.then( token => {
   if (token) {
     function handleResponse(results){
       function createCard(header, content){
-        function card_Click(event){
-          $('#card').show();
-        }
         return getHtml([
-          '<div class="card col-sm-3" onclick="card_Click(event)">',
+          '<div class="card col-sm-3" onclick="card.card_Show(event)">',
             header,
             content,
           '</div>'
@@ -83,6 +80,7 @@ Users.authToken.then( token => {
       }
     };
     $.ajax(httpRequest);
+    card();
   }
   else {
     // window.location.href = '/signin.html';
@@ -91,6 +89,16 @@ Users.authToken.then( token => {
   // alert(error);
   // window.location.href = '/signin.html';
 });
+
+function card(){
+  function initialize(){
+    card.card_Show = card_Show;
+  }
+  function card_Show(event){
+    $('#card').show();
+  }
+  initialize();
+}
 
 function getHtml(template) {
   return template.join('\n');
