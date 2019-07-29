@@ -104,6 +104,13 @@ function card(){
       });
       $('#edit').unbind().hide();
     }
+    function createInput(attribute, record){
+      return getHtml([
+        '<input type="text" class="input-group-text" value=\'' + attribute + '\' readonly">',
+        '<input type="text" class="form-control" name=\'' + attribute + '\' value=\'' + record + '\' readonly">',
+        '<p></p>'
+      ]);
+    }
     let item = records.find(record => {
       return record.id == id
     })
@@ -111,12 +118,11 @@ function card(){
       if(key=="id") continue;
       let $input = $('#card input.form-control[name=\'' + key + '\']');
       if($input.length != 0){
-        $input.val(item[key]);
+        $input.val(item.key);
       }
       else{
-
+        console.log(createInput(key, item.key));  
       }
-      console.log($input);
     }
     console.log(item);
     $('#card').show();
