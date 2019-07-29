@@ -101,12 +101,19 @@ function card(){
       $('#undo').click( () => {
         $('#card .edit').unbind().hide();
         $('#edit').show().click(edit);
-        $('#card .form-control').attr('readonly', true);
-        $('#card .input-group-text:not([value=Sensor_ID])').attr('readonly', true);
+        $('#card input).attr('readonly', true);
         createForm();
       });
-      $('#edit').unbind().hide();
+      $('#add').click( () => {
+        $('#form').append(getHtml([
+          '<input type="text" class="input-group-text temporary">',
+          '<input type="text" class="form-control temporary">',
+          '<p></p>'
+        ]));
+      })
       $('#card .form-control').removeAttr('readonly');
+      $('#card .input-group-text:not([value=Sensor_ID])').removeAttr('readonly');
+      $('#edit').unbind().hide();
     }
     function createForm(){
       function createInput(attribute, record){
