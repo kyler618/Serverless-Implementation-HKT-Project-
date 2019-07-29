@@ -96,7 +96,6 @@ function card(){
     card.card_Show = card_Show;
   }
   function card_Show(id){
-    console.log(id);
     let item = records.find(record => {
       return record.id == id
     })

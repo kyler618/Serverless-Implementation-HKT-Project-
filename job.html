@@ -29,60 +29,6 @@
     }
   </style>
   <div id="container">
-    <div class="row">
-      <div class="card col-sm-3">
-        <div class="card-header pb-0">
-          <div class="card-title-wrap bar-primary">
-            <div class="card-title">Header 1</div>
-          </div>
-        </div>
-        <div class="card-content">
-          <div class="card-body">Basic card</div>
-        </div>
-      </div>
-      <div class="card col-sm-3">
-        <div class="card-header pb-0">
-          <div class="card-title-wrap bar-primary">
-            <div class="card-title">Header 1</div>
-          </div>
-        </div>
-        <div class="card-content">
-          <div class="card-body">Basic card</div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="card col-sm-3">
-        <div class="card-header pb-0">
-          <div class="card-title-wrap bar-primary">
-            <div class="card-title">Header 1</div>
-          </div>
-        </div>
-        <div class="card-content">
-          <div class="card-body">Basic card</div>
-        </div>
-      </div>
-      <div class="card col-sm-3">
-        <div class="card-header pb-0">
-          <div class="card-title-wrap bar-primary">
-            <div class="card-title">Header 1</div>
-          </div>
-        </div>
-        <div class="card-content">
-          <div class="card-body">Basic card</div>
-        </div>
-      </div>
-      <div class="card col-sm-3">
-        <div class="card-header pb-0">
-          <div class="card-title-wrap bar-primary">
-            <div class="card-title">Header 1</div>
-          </div>
-        </div>
-        <div class="card-content">
-          <div class="card-body">Basic card</div>
-        </div>
-      </div>
-    </div>
   </div>
   <div id="card" class="w3-modal" data-backdrop="true">
     <div class="w3-modal-content">
@@ -92,7 +38,20 @@
         <button id="confirm" class="edit"><i class="fa fa-floppy-o"></i></button>
         <button id="undo" class="edit"><i class="fa fa-undo"></i></button>
         <button id="edit"><i class="fa fa-pencil"></i></button>
-        <p><form id="form" onsubmit="return false;"/>
+        <p>
+        <form id="form" onsubmit="return false;">
+          <input type="text" value="Sensor_ID" readonly>
+          <input type="text" readonly>
+          <p>
+          <input type="text" value="Enduser_name" readonly>
+          <input type="text" readonly>
+          <p>
+          <input type="text" value="Physical_Site_Address" readonly>
+          <input type="text" readonly>
+          <p>
+          <input type="text" value="Device_Type" readonly>
+          <input type="text" readonly>
+        </form>
       </div>
     </div>
   </div>
