@@ -103,6 +103,19 @@ function card(){
         $('#edit').show().click(undo);
       });
       $('#edit').unbind().hide();
+      createForm();
+    }
+    function createForm(){
+      for(let key in item){
+        if(key=="id") continue;
+        let $input = $('#card input.form-control[name=\'' + key + '\']');
+        if($input.length != 0){
+          $input.val(item[key]);
+        }
+        else{
+          $('#form').append(createInput(key, item[key]));
+        }
+      }
     }
     function createInput(attribute, record){
       return getHtml([
@@ -114,17 +127,6 @@ function card(){
     let item = records.find(record => {
       return record.id == id
     })
-    for(let key in item){
-      if(key=="id") continue;
-      let $input = $('#card input.form-control[name=\'' + key + '\']');
-      if($input.length != 0){
-        $input.val(item[key]);
-      }
-      else{
-        console.log(createInput(key, item[key]));
-        $('#form').append(createInput(key, item[key]));
-      }
-    }
     $('#card').show();
     $('#edit').click(undo);
     $('#quit').click( () => {
@@ -133,6 +135,7 @@ function card(){
       $('#card').hide();
       $('#quit').unbind();
     });
+    createForm();
   }
   initialize();
 }
