@@ -26,10 +26,11 @@ Users.authToken.then( token => {
         return getHtml([
           '<div class="card-content">',
             '<div class="card-body">',
+              '<br>',
               record.Enduser_name,
-              '<p>',
+              '<br>',
               record.Physical_Site_Address,
-              '<p>',
+              '<br>',
               record.Device_Type,
               '<p>',
               start_time,
