@@ -31,8 +31,9 @@ Users.authToken.then( token => {
               record.Physical_Site_Address,
               '<p>',
               record.Device_Type,
-              '</p>',
+              '<span class=""w3-right">',
               start_time,
+              '</span>',
             '</div>',
           '</div>'
         ]);
