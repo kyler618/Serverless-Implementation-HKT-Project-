@@ -125,7 +125,6 @@ function card(){
         $('#form').append(createInput(key, item[key]));
       }
     }
-    console.log(item);
     $('#card').show();
     $('#edit').click(undo);
     $('#quit').click( () => {
