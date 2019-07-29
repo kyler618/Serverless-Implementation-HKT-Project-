@@ -102,7 +102,7 @@ function card(){
         $('#card .edit').unbind().hide();
         $('#edit').show().click(edit);
         $('#card .form-control').attr('readonly', true);
-        $('.input-group-text:not([value=Sensor_ID])').attr('readonly', true);
+        $('#card .input-group-text:not([value=Sensor_ID])').attr('readonly', true);
         createForm();
       });
       $('#edit').unbind().hide();
