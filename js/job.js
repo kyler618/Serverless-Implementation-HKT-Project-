@@ -99,7 +99,7 @@ function card(){
     console.log(id);
     let item = records.find(record => {
       console.log(record);
-      return record.Sensor_ID == id
+      return record.Sensor_ID.toString() == id
     })
     console.log(item);
     function undo(){
