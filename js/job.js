@@ -101,6 +101,7 @@ function card(){
       $('#undo').click( () => {
         $('#card .edit').unbind().hide();
         $('#edit').show().click(edit);
+        $('#card .form-control').attr('readonly', 'readonly');
       });
       $('#edit').unbind().hide();
       createForm();
