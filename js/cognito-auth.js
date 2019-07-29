@@ -37,7 +37,6 @@ if (typeof AWSCognito !== 'undefined') {
         Users.signOut();
       }
     });
-
   }
   catch(error){
     window.location.href = 'index.html';

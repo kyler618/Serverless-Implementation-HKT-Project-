@@ -61,7 +61,6 @@ var Users = window.Users || {};
     function authorize(){
       Users.authToken.then((token) => {   // check user authority
         if (token) {
-          console.log(token);
           let identityCode = jwt_decode(token).iss.replace('https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_', '');
           switch(identityCode){
             case '8oxVNNeyb':
@@ -75,12 +74,12 @@ var Users = window.Users || {};
           }
           httpRequest.headers = {Authorization: token};
           logins[key] = token;
-        } else {
-          // window.location.href = '/signin.html';
+        }
+        else {
+          Users.signOut();
         }
       }).catch((error) => {
-        // alert(error);
-        // window.location.href = '/signin.html';
+        window.location.href = '/signin.html';
       });
     }
     function initialize(){

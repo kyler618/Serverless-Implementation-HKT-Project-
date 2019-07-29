@@ -5,7 +5,6 @@ let poolData;
     AWSCognito.config.region = _config.cognito.region;
   }
   poolData = JSON.parse(localStorage.getItem("poolData"));
-  console.log(poolData);
   if(poolData!==null){
     $.getScript( "js/cognito-auth.js", () => {
       Users.authToken.then((token) => {   // check user authority
