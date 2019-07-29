@@ -29,9 +29,8 @@ Users.authToken.then( token => {
               record.Enduser_name,
               '<br>',
               record.Physical_Site_Address,
-              '<br>',
-              record.Device_Type,
               '<p>',
+              record.Device_Type,
               start_time,
             '</div>',
           '</div>'
