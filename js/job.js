@@ -4,9 +4,9 @@ console.log('version 3');
 Users.authToken.then( token => {
   if (token) {
     function handleResponse(results){
-      function createCard(header, content){
+      function createCard(id, header, content){
         return getHtml([
-          '<div class="card col-sm-3" onclick="card.card_Show(event)">',
+          '<div id="' + id + '" class="card col-sm-3" onclick="card.card_Show(event)">',
             header,
             content,
           '</div>'
@@ -46,7 +46,7 @@ Users.authToken.then( token => {
         if(current_Job.end_time === undefined){
           let $cardHeader = createCardHeader(current_Job.sensor_ID);
           let $cardContent = createCardContent(current_Job.inventory_ID, current_Job.start_time);
-          return createCard($cardHeader, $cardContent);
+          return createCard(current_Job.id, $cardHeader, $cardContent);
         }
       });
       let jobsTemp = [];
