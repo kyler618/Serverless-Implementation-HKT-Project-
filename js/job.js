@@ -54,7 +54,7 @@ Users.authToken.then( token => {
       });
       let jobsTemp = [];
       $jobs = $jobs.map( (job, index) => {
-        console.log(jobsTemp, index);
+        console.log(job, index);
         jobsTemp.push(job);
         if((count++%4==0 || index == $jobs.length - 1) && jobsTemp.length != 0){
           let template = getHtml([
