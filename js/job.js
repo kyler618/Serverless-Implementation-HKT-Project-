@@ -1,5 +1,6 @@
 var Users = window.Users || {};
 console.log('version 3');
+
 Users.authToken.then( token => {
   if (token) {
     function handleResponse(results){
@@ -39,8 +40,9 @@ Users.authToken.then( token => {
         ]);
       }
       let current_Jobs = results.Items;
+      console.log(results);
+      records = results.Records;
       let count = 0;
-      let $row;
       let $jobs = current_Jobs.map( current_Job => {
         if(current_Job.end_time === undefined){
           let $cardHeader = createCardHeader(current_Job.sensor_ID);
