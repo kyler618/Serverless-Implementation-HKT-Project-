@@ -96,6 +96,10 @@ function card(){
   }
   function card_Show(event){
     $('#card').show();
+    $('#quit').click( () => {
+      $('#card').hide();
+      $('#quit').unbind();
+    });
   }
   initialize();
 }
