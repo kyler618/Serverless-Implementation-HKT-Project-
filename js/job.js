@@ -53,19 +53,16 @@ Users.authToken.then( token => {
 
       });
       let jobsTemp = [];
-      for(let x=0; x<$jobs.length; x++){
-        if(x%4==0){
-
-        }
-      }
-      $jobs = $jobs.map( job => {
+      $jobs = $jobs.map( (job, index) => {
         jobsTemp.push(job);
-        if(count++%4==0){
-          return getHtml([
+        if(count++%4==0 || index == $jobs.length - 1){
+          let template = getHtml([
             '<div class="row">',
-            jobsTemp.forEach(),
+            jobsTemp,
             '</div>'
           ]);
+          jobsTemp.length = 0;
+          return template;
         }
 
       });
