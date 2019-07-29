@@ -26,7 +26,6 @@ Users.authToken.then( token => {
         return getHtml([
           '<div class="card-content">',
             '<div class="card-body">',
-              '<br>',
               record.Enduser_name,
               '<br>',
               record.Physical_Site_Address,
