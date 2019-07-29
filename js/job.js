@@ -118,10 +118,10 @@ function card(){
       if(key=="id") continue;
       let $input = $('#card input.form-control[name=\'' + key + '\']');
       if($input.length != 0){
-        $input.val(item.key);
+        $input.val(item[key]);
       }
       else{
-        console.log(createInput(key, item.key));  
+        console.log(createInput(key, item[key]));  
       }
     }
     console.log(item);
