@@ -101,10 +101,11 @@ function card(){
       $('#undo').click( () => {
         $('#card .edit').unbind().hide();
         $('#edit').show().click(edit);
-        $('#card .form-control').attr('readonly', 'readonly');
+        $('#card .form-control').attr('readonly', true);
+        $('.input-group-text:not([value=Sensor_ID])').attr('readonly', true);
+        createForm();
       });
       $('#edit').unbind().hide();
-      createForm();
       $('#card .form-control').removeAttr('readonly');
     }
     function createForm(){
