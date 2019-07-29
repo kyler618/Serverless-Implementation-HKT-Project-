@@ -99,12 +99,12 @@ function card(){
       $('#card .edit').show();
       $('#undo').click( () => {
         $('#card .edit').unbind().hide();
-        $('#edit').show().click(undo());
+        $('#edit').show().click(undo);
       });
       $('#edit').unbind().hide();
     }
     $('#card').show();
-    $('#edit').click(undo());
+    $('#edit').click(undo);
     $('#quit').click( () => {
       $('#edit').show();
       $('#card .edit').unbind().hide();
