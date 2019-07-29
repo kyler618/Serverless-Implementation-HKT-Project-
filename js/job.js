@@ -96,10 +96,6 @@ function card(){
     card.card_Show = card_Show;
   }
   function card_Show(id){
-    let item = records.find(record => {
-      return record.id == id
-    })
-    console.log(item);
     function undo(){
       $('#card .edit').show();
       $('#undo').click( () => {
@@ -108,6 +104,15 @@ function card(){
       });
       $('#edit').unbind().hide();
     }
+    let item = records.find(record => {
+      return record.id == id
+    })
+    for(let key in item){
+      if(key=="id") continue;
+      let $key = $('#card input.input-group-text[value=\'' + key + \'']');
+      if()
+    }
+    console.log(item);
     $('#card').show();
     $('#edit').click(undo);
     $('#quit').click( () => {
