@@ -110,7 +110,7 @@ function card(){
           '<input type="text" class="form-control temporary">',
           '<p></p>'
         ]));
-      })
+      });
       $('#card .form-control').removeAttr('readonly');
       $('#card .input-group-text:not([value=Sensor_ID])').removeAttr('readonly');
       $('#edit').unbind().hide();
