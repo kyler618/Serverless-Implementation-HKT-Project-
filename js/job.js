@@ -6,7 +6,7 @@ Users.authToken.then( token => {
     function handleResponse(results){
       function createCard(id, header, content){
         return getHtml([
-          '<div id="' + id + '" class="card col-sm-3" onclick="card.card_Show(this)">',
+          '<div class="card col-sm-3" onclick="card.card_Show(id)">',
             header,
             content,
           '</div>'
