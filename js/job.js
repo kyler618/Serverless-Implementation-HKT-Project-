@@ -97,7 +97,8 @@ function card(){
   function card_Show(event){
     $('#card').show();
     $('#edit').click( () => {
-      $('#card .edit').show()
+      $('#card .edit').show();
+      $('#edit').unbind().hide();
     });
     $('#quit').click( () => {
       $('#card').hide();
