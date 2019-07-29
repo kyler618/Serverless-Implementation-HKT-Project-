@@ -116,7 +116,7 @@ function card(){
       else{
 
       }
-      console.log($key);
+      console.log($input);
     }
     console.log(item);
     $('#card').show();
