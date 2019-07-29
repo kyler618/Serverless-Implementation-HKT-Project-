@@ -266,7 +266,6 @@ try{
             }
           }
           const itemForm = document.getElementById('itemForm');
-          console.log(constantAttributes);
           constantAttributes.forEach( constantAttribute => {
             let field = createFormInput("field", constantAttribute, true);
             let value = createFormInput("value", "", false);

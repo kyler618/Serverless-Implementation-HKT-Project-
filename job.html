@@ -32,18 +32,18 @@
       border-style: solid;
       padding: 32px 32px;
     }
-    #card .attribute{
+    #card input{
       display: inline-block;
       border: none;
-      border-right: 1px solid #dadcde;
-    }
-    #card .record[readonly]{
       background-color: #e9ecef;
     }
+    #card .attribute{
+      border-right: 1px solid #dadcde;
+    }
     #card .record{
-      display: inline-block;
       width: 60%;
-      border: none;
+    }
+    #card .record :not([readonly]){
       background-color: #ffdcb980;
     }
   </style>
