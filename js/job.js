@@ -96,16 +96,24 @@ function card(){
     card.card_Show = card_Show;
   }
   function card_Show(id){
-    function undo(){
+    function edit(){
       $('#card .edit').show();
       $('#undo').click( () => {
         $('#card .edit').unbind().hide();
-        $('#edit').show().click(undo);
+        $('#edit').show().click(edit);
       });
       $('#edit').unbind().hide();
       createForm();
+      $('#card .form-control').removeAttr('readonly');
     }
     function createForm(){
+      function createInput(attribute, record){
+        return getHtml([
+          '<input type="text" class="input-group-text" value=\'' + attribute + '\' readonly>',
+          '<input type="text" class="form-control" name=\'' + attribute + '\' value=\'' + record + '\' readonly>',
+          '<p></p>'
+        ]);
+      }
       for(let key in item){
         if(key=="id") continue;
         let $input = $('#card input.form-control[name=\'' + key + '\']');
@@ -117,18 +125,11 @@ function card(){
         }
       }
     }
-    function createInput(attribute, record){
-      return getHtml([
-        '<input type="text" class="input-group-text" value=\'' + attribute + '\' readonly">',
-        '<input type="text" class="form-control" name=\'' + attribute + '\' value=\'' + record + '\' readonly">',
-        '<p></p>'
-      ]);
-    }
     let item = records.find(record => {
       return record.id == id
     })
     $('#card').show();
-    $('#edit').click(undo);
+    $('#edit').click(edit);
     $('#quit').click( () => {
       $('#edit').show();
       $('#card .edit').unbind().hide();
