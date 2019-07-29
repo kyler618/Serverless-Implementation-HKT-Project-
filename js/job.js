@@ -110,7 +110,7 @@ function card(){
     for(let key in item){
       if(key=="id") continue;
       let $key = $('#card input.input-group-text[value=\'' + key + \'']');
-      if()
+      console.log($key);
     }
     console.log(item);
     $('#card').show();
