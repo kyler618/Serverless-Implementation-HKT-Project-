@@ -924,5 +924,5 @@ try{
   }(jQuery));
 }
 catch(error){
-  window.location.href = '/signin.html';
+  window.location.href = 'index.html';
 }
