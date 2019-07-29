@@ -41,7 +41,7 @@ Users.authToken.then( token => {
       }
       let current_Jobs = results.Items;
       console.log(results);
-      records = results.Records;
+      records = results.records;
       let count = 0;
       let $jobs = current_Jobs.map( current_Job => {
         if(current_Job.end_time === undefined){
