@@ -40,7 +40,6 @@ Users.authToken.then( token => {
         ]);
       }
       let current_Jobs = results.Items;
-      console.log(results);
       records = results.records;
       let count = 0;
       let $jobs = current_Jobs.map( current_Job => {
@@ -97,6 +96,7 @@ function card(){
     card.card_Show = card_Show;
   }
   function card_Show(event){
+    console.log(event);
     function undo(){
       $('#card .edit').show();
       $('#undo').click( () => {
