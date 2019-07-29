@@ -46,7 +46,7 @@ Users.authToken.then( token => {
         if(current_Job.end_time === undefined){
           let $cardHeader = createCardHeader(current_Job.sensor_ID);
           let $cardContent = createCardContent(current_Job.inventory_ID, current_Job.start_time);
-          return createCard(current_Job.id, $cardHeader, $cardContent);
+          return createCard(current_Job.inventory_ID, $cardHeader, $cardContent);
         }
       });
       let jobsTemp = [];
