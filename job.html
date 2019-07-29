@@ -27,6 +27,23 @@
     .edit{
       display:none;
     }
+    #card .input-group-text{
+      display: inline-block;
+      border: none;
+      border-right: 1px solid #dadcde;
+      border-radius: unset;
+    }
+    #card .form-control[readonly] {
+      background-color: #e9ecef;
+    }
+    #card .form-control {
+      display: inline-block;
+      width: 60%;
+      height: unset;
+      border-radius: unset;
+      border: none;
+      background-color: #ffdcb980;
+    }
   </style>
   <div id="container">
   </div>
@@ -40,8 +57,9 @@
         <button id="edit"><i class="fa fa-pencil"></i></button>
         <p>
         <form id="form" onsubmit="return false;">
-          <input type="text" value="Sensor_ID" readonly>
-          <input type="text" readonly>
+          <p>
+          <input type="text" class="" value="Sensor_ID" readonly>
+          <input type="text" class="" readonly>
           <p>
           <input type="text" value="Enduser_name" readonly>
           <input type="text" readonly>
