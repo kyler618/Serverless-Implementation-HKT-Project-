@@ -98,8 +98,7 @@ function card(){
   function card_Show(id){
     console.log(id);
     let item = records.find(record => {
-      console.log(record);
-      return record.Sensor_ID.toString() == id
+      return record.id == id
     })
     console.log(item);
     function undo(){
