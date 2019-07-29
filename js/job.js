@@ -5,7 +5,7 @@ Users.authToken.then( token => {
     function handleResponse(results){
       function createCard(header, content){
         return getHtml([
-          '<div class="card col-sm-3">',
+          '<div class="card col-sm-4">',
             header,
             content,
           '</div>'
