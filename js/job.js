@@ -95,12 +95,19 @@ function card(){
     card.card_Show = card_Show;
   }
   function card_Show(event){
-    $('#card').show();
-    $('#edit').click( () => {
+    function undo(){
       $('#card .edit').show();
+      $('#undo').click( () => {
+        $('#card .edit').unbind().hide();
+        $('#edit').show().click(undo());
+      });
       $('#edit').unbind().hide();
-    });
+    }
+    $('#card').show();
+    $('#edit').click(undo());
     $('#quit').click( () => {
+      $('#edit').show();
+      $('#card .edit').unbind().hide();
       $('#card').hide();
       $('#quit').unbind();
     });
