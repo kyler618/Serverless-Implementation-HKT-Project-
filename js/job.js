@@ -150,8 +150,8 @@ function card(){
         }
         let deleteItem = Object.keys(item).map( a => {
           console.log(a);
-          if( attribute!="id" && !attributes.includes(attribute)){
-            return attribute;
+          if( a!="id" && !attributes.includes(a)){
+            return a;
           }
         });
         console.log(deleteItem);
