@@ -102,6 +102,7 @@ function card(){
         $('#card .edit').unbind().hide();
         $('#edit').show().click(edit);
         $('#card input').attr('readonly', true);
+        $('.temporary').remove();
         createForm();
       });
       $('#add').click( () => {
@@ -126,7 +127,8 @@ function card(){
       for(let key in item){
         if(key=="id") continue;
         let $input = $('#card input.form-control[name=\'' + key + '\']');
-        if($input.length != 0){
+        if($input.length != 0 ){
+          $('#card input.input-group-text[value=\'' + key + '\']').val(key);
           $input.val(item[key]);
         }
         else{
@@ -143,6 +145,7 @@ function card(){
       $('#edit').show();
       $('#card .edit').unbind().hide();
       $('#card').hide();
+      $('.temporary').remove();
       $('#quit').unbind();
     });
     createForm();
