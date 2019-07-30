@@ -110,7 +110,7 @@ function card(){
           '<p>',
           '<input type="text" class="input-group-text temporary">',
           '<input type="text" class="form-control temporary">',
-          '<button class="form-control temporary"><i class="fa fa-close"></i></button>',
+          '<button class=""><i class="fa fa-close"></i></button>',
           '</p>'
         ]));
       });
