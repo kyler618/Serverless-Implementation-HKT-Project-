@@ -94,13 +94,10 @@ Users.authToken.then( token => {
 function card(){
   function initialize(){
     card.card_Show = card_Show;
-    card.remove_Input = remove_Input;
-  }
-  function finalize(){
-    card.remove_Input = null;
   }
   function card_Show(id){
     function edit(){
+      card.remove_Input = remove_Input;
       $('#card .edit').show();
       $('#undo').click( () => {
         $('#card .edit').unbind().hide();
@@ -108,6 +105,7 @@ function card(){
         $('#card input').attr('readonly', true);
         $('.temporary').remove();
         createForm();
+        card.remove_Input = null;
       });
       $('#add').click( () => {
         $('#form').append(getHtml([
@@ -177,6 +175,9 @@ function card(){
         }
       }
     }
+    function remove_Input(event){
+      console.log(event);
+    }
     let item = records.find(record => {
       return record.id == id
     })
@@ -189,13 +190,10 @@ function card(){
       $('.addition').remove();
       $('.temporary').remove();
       $('#card .form-control').val('');
-      finalize();
+      card.remove_Input = null;
       $('#quit').unbind();
     });
     createForm();
-  }
-  function remove_Input(event){
-    console.log(event);
   }
   initialize();
 }
