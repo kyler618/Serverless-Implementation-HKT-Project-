@@ -157,9 +157,9 @@ function card(){
     function createForm(){
       function createInput(attribute, record){
         return getHtml([
-          '<p>',
-          '<input type="text" class="input-group-text addition" value=\'' + attribute + '\' readonly>',
-          '<input type="text" class="form-control addition" name=\'' + attribute + '\' value=\'' + record + '\' readonly>',
+          '<p class="addition">',
+          '<input type="text" class="input-group-text" value=\'' + attribute + '\' readonly>',
+          '<input type="text" class="form-control" name=\'' + attribute + '\' value=\'' + record + '\' readonly>',
           '<button onclick="card.remove_Input(this)"><i class="edit fa fa-close"></i></button>',
           '</p>'
         ]);
