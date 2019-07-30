@@ -133,6 +133,7 @@ function card(){
           attributes.push(attribute.value);
           items[attribute.value] = record.value;
         }
+        items.id = id;
         console.log(items, item);
         console.log(items == item);
 
