@@ -154,6 +154,7 @@ function card(){
             return a;
           }
         });
+        console.log(deleteItem);
       });
       $('#card .form-control').removeAttr('readonly');
       $('#card .input-group-text:not([value=Sensor_ID])').removeAttr('readonly');
