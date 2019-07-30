@@ -156,7 +156,7 @@ function card(){
         if( !changed && deleteItem.length==0){
           return $('#undo').click();
         }
-        const data = {table:"Hardware", operation: "fieldeng_Sensor_Update", pk: id};
+        const data = {table:"Hardware", operation: "maintainSensor", pk: id};
         data.input = (changed)? items:null;
         data.delete = (deleteItem.length!=0)? deleteItem:null;
         request(data, handleResponse);
