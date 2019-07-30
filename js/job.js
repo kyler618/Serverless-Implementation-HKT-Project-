@@ -148,7 +148,8 @@ function card(){
         if(changed){
 
         }
-
+        console.log(attributes);
+        console.log(Object.keys(item));
       });
       $('#card .form-control').removeAttr('readonly');
       $('#card .input-group-text:not([value=Sensor_ID])').removeAttr('readonly');
