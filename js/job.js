@@ -94,6 +94,7 @@ Users.authToken.then( token => {
 function card(){
   function initialize(){
     card.card_Show = card_Show;
+    card.remove_Input = remove_Input;
   }
   function card_Show(id){
     function edit(){
@@ -110,7 +111,7 @@ function card(){
           '<p>',
           '<input type="text" class="input-group-text temporary">',
           '<input type="text" class="form-control temporary">',
-          '<button onclick="remove(event)"><i class="fa fa-close"></i></button>',
+          '<button onclick="card.remove_Input(event)"><i class="fa fa-close"></i></button>',
           '</p>'
         ]));
       });
@@ -173,9 +174,6 @@ function card(){
         }
       }
     }
-    function remove(event){
-      console.log(event);
-    }
     let item = records.find(record => {
       return record.id == id
     })
@@ -191,6 +189,9 @@ function card(){
       $('#quit').unbind();
     });
     createForm();
+  }
+  function remove_Input(event){
+    console.log(event);
   }
   initialize();
 }
