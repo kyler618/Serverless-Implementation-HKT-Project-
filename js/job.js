@@ -113,6 +113,28 @@ function card(){
         ]));
       });
       $('save').click( () => {
+        const items = {};
+        const attributes = [];
+        const input = $('#card input');
+        let changed = false;
+        for( let x = 0 ; x < input.length ; x++ ){
+          const attribute = input[x++];
+          const record = input[x];
+          if(attribute.value==""||record.value==""){
+            // items.incompleteError = x-1;
+            alert("Incompleted Error");
+            break;
+          }
+          if(attributes.includes(attribute.value)){
+            // items.DuplicateError = x-1;
+            alert("Duplicate Error");
+            break;
+          }
+          attributes.push(attribute.value);
+          items[attribute.value] = record.value;
+        }
+        console.log(items);
+        console.log(Object.keys(items));
 
       });
       $('#card .form-control').removeAttr('readonly');
