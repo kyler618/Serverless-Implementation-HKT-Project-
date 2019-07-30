@@ -148,8 +148,12 @@ function card(){
         if(changed){
 
         }
-        console.log(attributes);
-        console.log(Object.keys(item));
+        let deleteItem = Object.keys(item).map( attribute => {
+          if( attribute!="id" && !attributes.includes(attribute)){
+            return attribute;
+          }
+        });
+        console.log(deleteItem);
       });
       $('#card .form-control').removeAttr('readonly');
       $('#card .input-group-text:not([value=Sensor_ID])').removeAttr('readonly');
