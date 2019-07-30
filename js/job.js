@@ -117,6 +117,9 @@ function card(){
         ]));
       });
       $('#save').click( () => {
+        function handleResponse(results){
+          console.log(results);
+        }
         const items = {};
         const attributes = [];
         const input = $('#card input');
@@ -145,16 +148,18 @@ function card(){
             }
           }
         }
-        if(changed){
-
-        }
-        let deleteItem = Object.keys(item).filter( a => {
-          if( a!="id" && !(attributes.includes(a))){
-            console.log(a!="id" && !(attributes.includes(a)));
-            return a;
+        let deleteItem = Object.keys(item).filter( attribute => {
+          if( attribute!="id" && !(attributes.includes(attribute)) ){
+            return attribute;
           }
         });
-        console.log(deleteItem);
+        if( !changed && deleteItem.length==0){
+          return $('#undo').click();
+        }
+        const data = {table:"Hardware", operation: "fieldeng_Sensor_Update", pk: id};
+        data.input = (changed)? items:null;
+        data.delete = (deleteItem.length!=0)? deleteItem:null;
+        request(data, handleResponse);
       });
       $('#card .form-control').removeAttr('readonly');
       $('#card .input-group-text:not([value=Sensor_ID])').removeAttr('readonly');

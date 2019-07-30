@@ -571,7 +571,6 @@ try{
       button.innerHTML = "<i class='fa fa-close'></i>";
       button.classList.add('addItem', 'removeAttr');
       return button;
-
     }
 
     function createOption(item, number){
