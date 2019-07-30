@@ -132,10 +132,17 @@ function card(){
           }
           attributes.push(attribute.value);
           items[attribute.value] = record.value;
+          if(!changed){
+            if(item[attribute.value]===undefined){
+              changed = true;
+            }
+            if(items[attribute.value]!=item[attribute.value]){
+              changed = true;
+            }
+          }
         }
         items.id = id;
-        console.log(items, item);
-        console.log();
+        console.log(changed);
 
       });
       $('#card .form-control').removeAttr('readonly');
