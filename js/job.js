@@ -107,9 +107,11 @@ function card(){
       });
       $('#add').click( () => {
         $('#form').append(getHtml([
+          '<p>',
           '<input type="text" class="input-group-text temporary">',
           '<input type="text" class="form-control temporary">',
-          '<p></p>'
+          '<button class="form-control temporary"><i class="fa fa-close"></i></button>',
+          '</p>'
         ]));
       });
       $('#save').click( () => {
@@ -141,8 +143,9 @@ function card(){
             }
           }
         }
-        items.id = id;
-        console.log(changed);
+        if(changed){
+
+        }
 
       });
       $('#card .form-control').removeAttr('readonly');
@@ -152,9 +155,10 @@ function card(){
     function createForm(){
       function createInput(attribute, record){
         return getHtml([
+          '<p>',
           '<input type="text" class="input-group-text" value=\'' + attribute + '\' readonly>',
           '<input type="text" class="form-control" name=\'' + attribute + '\' value=\'' + record + '\' readonly>',
-          '<p></p>'
+          '</p>'
         ]);
       }
       for(let key in item){
