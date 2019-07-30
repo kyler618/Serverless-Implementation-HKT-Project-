@@ -96,6 +96,10 @@ function card(){
     card.card_Show = card_Show;
     card.remove_Input = remove_Input;
   }
+  function finalize(){
+    card.card_Show = null;
+    card.remove_Input = null;
+  }
   function card_Show(id){
     function edit(){
       $('#card .edit').show();
@@ -185,7 +189,8 @@ function card(){
       $('#card').hide();
       $('.addition').remove();
       $('.temporary').remove();
-      $('#card .form-control').val('')
+      $('#card .form-control').val('');
+      finalize();
       $('#quit').unbind();
     });
     createForm();
