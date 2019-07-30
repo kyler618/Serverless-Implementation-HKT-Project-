@@ -112,9 +112,12 @@ function card(){
           '<p></p>'
         ]));
       });
+      $('save').click( () => {
+
+      });
       $('#card .form-control').removeAttr('readonly');
       $('#card .input-group-text:not([value=Sensor_ID])').removeAttr('readonly');
-      $('#edit').unbind().hide();
+      $('.edit').unbind().hide();
     }
     function createForm(){
       function createInput(attribute, record){
@@ -128,7 +131,7 @@ function card(){
         if(key=="id") continue;
         let $input = $('#card input.form-control[name=\'' + key + '\']');
         if($input.length != 0 ){
-          $('#card input.input-group-text[value=\'' + key + '\']').val(key);
+          $('#card input.input-group-text[value=\'' + key + '\']').val(key); // for undo
           $input.val(item[key]);
         }
         else{
