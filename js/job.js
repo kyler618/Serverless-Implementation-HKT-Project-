@@ -106,9 +106,6 @@ function card(){
         createForm();
       });
       $('#add').click( () => {
-        function remove(event){
-          console.log(event);
-        }
         $('#form').append(getHtml([
           '<p>',
           '<input type="text" class="input-group-text temporary">',
@@ -175,6 +172,9 @@ function card(){
           $('#form').append(createInput(key, item[key]));
         }
       }
+    }
+    function remove(event){
+      console.log(event);
     }
     let item = records.find(record => {
       return record.id == id
