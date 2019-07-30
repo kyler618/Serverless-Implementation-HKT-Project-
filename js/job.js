@@ -98,6 +98,7 @@ function card(){
   function card_Show(id){
     function edit(){
       $('#card .edit').show();
+      console.log('undo addEventListener');
       $('#undo').click( () => {
         $('#card .edit').unbind().hide();
         $('#edit').show().click(edit);
@@ -112,7 +113,7 @@ function card(){
           '<p></p>'
         ]));
       });
-      $('save').click( () => {
+      $('#save').click( () => {
         const items = {};
         const attributes = [];
         const input = $('#card input');
