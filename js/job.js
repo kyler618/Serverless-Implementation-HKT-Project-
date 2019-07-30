@@ -106,14 +106,14 @@ function card(){
         createForm();
       });
       $('#add').click( () => {
-        function delete(event){
+        function remove(event){
           console.log(event);
         }
         $('#form').append(getHtml([
           '<p>',
           '<input type="text" class="input-group-text temporary">',
           '<input type="text" class="form-control temporary">',
-          '<button onclick="delete(event)"><i class="fa fa-close"></i></button>',
+          '<button onclick="remove(event)"><i class="fa fa-close"></i></button>',
           '</p>'
         ]));
       });
