@@ -97,7 +97,6 @@ function card(){
     card.remove_Input = remove_Input;
   }
   function finalize(){
-    card.card_Show = null;
     card.remove_Input = null;
   }
   function card_Show(id){
