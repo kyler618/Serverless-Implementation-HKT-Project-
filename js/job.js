@@ -153,6 +153,9 @@ function card(){
             console.log(a!="id" && !(attributes.includes(a)));
             return a;
           }
+          else{
+            return;
+          }
         });
         console.log(deleteItem);
       });
