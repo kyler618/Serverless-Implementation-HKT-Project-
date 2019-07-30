@@ -66,7 +66,7 @@ Users.authToken.then( token => {
     }
     let user = jwt_decode(token);
     let data = {operation: "getMaintenanceRecord", table: "Maintenance", target:user['cognito:username']};
-    var httpRequest = {
+    httpRequest = {
       method: 'POST',
       url: _config.api.invokeUrl +'/hkt-fieldeng-resource',
       headers: {Authorization: token},
@@ -159,7 +159,9 @@ function card(){
         const data = {table:"Hardware", operation: "maintainSensor", pk: id};
         data.input = (changed)? items:null;
         data.delete = (deleteItem.length!=0)? deleteItem:null;
-        request(data, handleResponse);
+        httpRequest.data = JSON.stringify(data);
+        httpRequest.success = handleResponse;
+        $.ajax(httpRequest);
       });
       $('#card .form-control').removeAttr('readonly');
       $('#card .input-group-text:not([value=Sensor_ID])').removeAttr('readonly');
