@@ -139,7 +139,7 @@ function card(){
       });
       $('#card .form-control').removeAttr('readonly');
       $('#card .input-group-text:not([value=Sensor_ID])').removeAttr('readonly');
-      $('.edit').unbind().hide();
+      $('#edit').unbind().hide();
     }
     function createForm(){
       function createInput(attribute, record){
