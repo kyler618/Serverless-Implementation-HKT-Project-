@@ -156,8 +156,8 @@ function card(){
       function createInput(attribute, record){
         return getHtml([
           '<p>',
-          '<input type="text" class="input-group-text" value=\'' + attribute + '\' readonly>',
-          '<input type="text" class="form-control" name=\'' + attribute + '\' value=\'' + record + '\' readonly>',
+          '<input type="text" class="input-group-text addition" value=\'' + attribute + '\' readonly>',
+          '<input type="text" class="form-control addition" name=\'' + attribute + '\' value=\'' + record + '\' readonly>',
           '</p>'
         ]);
       }
@@ -182,6 +182,7 @@ function card(){
       $('#edit').unbind().show();
       $('#card .edit').unbind().hide();
       $('#card').hide();
+      $('.addition').remove();
       $('.temporary').remove();
       $('#quit').unbind();
     });
