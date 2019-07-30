@@ -184,6 +184,7 @@ function card(){
       $('#card').hide();
       $('.addition').remove();
       $('.temporary').remove();
+      $('#card .form-control').val('')
       $('#quit').unbind();
     });
     createForm();
