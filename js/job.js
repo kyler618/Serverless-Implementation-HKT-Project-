@@ -135,7 +135,7 @@ function card(){
         }
         items.id = id;
         console.log(items, item);
-        console.log(items == item);
+        console.log(_.isEqual(items, item), 'lodash');
 
       });
       $('#card .form-control').removeAttr('readonly');
