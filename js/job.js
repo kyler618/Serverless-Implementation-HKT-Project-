@@ -125,6 +125,12 @@ function card(){
             alert("Incompleted Error");
             break;
           }
+          console.log(attribute.value, Object.keys(items).hasOwnProperty(attribute.value));
+          if(Object.keys(items).hasOwnProperty(attribute.value)){
+            // items.DuplicateError = x-1;
+            alert("Duplicate Error");
+            break;
+          }
           if(attributes.includes(attribute.value)){
             // items.DuplicateError = x-1;
             alert("Duplicate Error");
@@ -133,7 +139,6 @@ function card(){
           attributes.push(attribute.value);
           items[attribute.value] = record.value;
         }
-        console.log(items);
         console.log(Object.keys(items));
 
       });
