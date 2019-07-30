@@ -109,9 +109,9 @@ function card(){
       });
       $('#add').click( () => {
         $('#form').append(getHtml([
-          '<p>',
-          '<input type="text" class="input-group-text temporary">',
-          '<input type="text" class="form-control temporary">',
+          '<p class="temporary">',
+          '<input type="text" class="input-group-text">',
+          '<input type="text" class="form-control">',
           '<button onclick="card.remove_Input(this)"><i class="fa fa-close"></i></button>',
           '</p>'
         ]));
