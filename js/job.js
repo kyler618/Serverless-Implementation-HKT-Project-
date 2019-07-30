@@ -176,7 +176,7 @@ function card(){
       }
     }
     function remove_Input(event){
-      console.log(event);
+      console.log($(event));
     }
     let item = records.find(record => {
       return record.id == id
