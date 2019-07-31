@@ -112,7 +112,7 @@ function card(){
           '<p class="temporary">',
           '<input type="text" class="input-group-text">',
           '<input type="text" class="form-control">',
-          '<button onclick="card.remove_Input(this)"><i class="edit fa fa-close"></i></button>',
+          '<button onclick="card.remove_Input(this)"><i class="fa fa-close"></i></button>',
           '</p>'
         ]));
       });
