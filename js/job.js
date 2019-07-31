@@ -125,7 +125,7 @@ function card(){
             items.id = id;
             records[index] = items;
             $('#card .temporary').removeClass('temporary');
-            console.log(items);
+            $('#undo').click();
             httpRequest.data = JSON.stringify(data_getRecord);
             httpRequest.success = success_getRecord;
             $.ajax(httpRequest);
