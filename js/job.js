@@ -65,15 +65,16 @@ Users.authToken.then( token => {
       $('#container').html(getHtml($jobs));
     }
     let user = jwt_decode(token);
-    let data = {operation: "getMaintenanceRecord", table: "Maintenance", target:user['cognito:username']};
+    data_getRecord = {operation: "getMaintenanceRecord", table: "Maintenance", target:user['cognito:username']};
+    success_getRecord = handleResponse;
     httpRequest = {
       method: 'POST',
       url: _config.api.invokeUrl +'/hkt-fieldeng-resource',
       headers: {Authorization: token},
       contentType: 'application/json',
-      data : JSON.stringify(data),
+      data : JSON.stringify(data_getRecord),
       async: true,
-      success: handleResponse,
+      success: success_getRecord,
       error: (jqXHR, textStatus, errorThrown) => {
         console.error('Error requesting: ', textStatus, ', Details: ', errorThrown);
         console.error('Response: ', jqXHR.responseText);
@@ -123,6 +124,9 @@ function card(){
             items.id = id;
             records[index] = items;
             console.log(items);
+            httpRequest.data = JSON.stringify(data_getRecord);
+            httpRequest.success = success_getRecord;
+            $.ajax(httpRequest);
           }
         }
         const items = {};
