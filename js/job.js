@@ -118,7 +118,12 @@ function card(){
       });
       $('#save').click( () => {
         function handleResponse(results){
-          console.log(results);
+          if(results=="ok"){
+            let index = records.indexOf(item);
+            items.id = id;
+            records[index] = items;
+            console.log(items);
+          }
         }
         const items = {};
         const attributes = [];
@@ -194,7 +199,7 @@ function card(){
     }
     let item = records.find(record => {
       return record.id == id
-    })
+    });
     $('#card').show();
     $('#edit').click(edit);
     $('#quit').click( () => {
