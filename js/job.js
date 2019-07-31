@@ -41,6 +41,7 @@ Users.authToken.then( token => {
       }
       let current_Jobs = results.Items;
       records = results.records;
+      console.log(results);
       let count = 0;
       let $jobs = current_Jobs.map( current_Job => {
         if(current_Job.end_time === undefined){
@@ -201,6 +202,9 @@ function card(){
         }
       }
     }
+    function confirm(){
+
+    };
     function remove_Input(button){
       $(button).parent().remove();
     }
@@ -209,6 +213,7 @@ function card(){
     });
     $('#card').show();
     $('#edit').click(edit);
+    $('#confirm').click(confirm);
     $('#quit').click( () => {
       $('#edit').unbind().show();
       $('#card .edit').unbind().hide();
