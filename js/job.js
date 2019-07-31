@@ -116,6 +116,7 @@ function card(){
           '<button class="edit" onclick="card.remove_Input(this) style="display:inline"><i class="fa fa-close"></i></button>',
           '</p>'
         ]));
+        $('.temporary button.edit').show();
       });
       $('#save').click( () => {
         function handleResponse(results){
