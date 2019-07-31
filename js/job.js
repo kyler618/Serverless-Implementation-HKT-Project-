@@ -174,7 +174,7 @@ function card(){
         $.ajax(httpRequest);
       });
       $('#card .form-control').removeAttr('readonly');
-      $('#card .input-group-text:not([value=Sensor_ID])').removeAttr('readonly');
+      $('#card .input-group-text:not(.readonly)').removeAttr('readonly');
       $('#edit').unbind().hide();
     }
     function createForm(){
