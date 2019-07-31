@@ -123,6 +123,7 @@ function card(){
           if(results=="ok"){
             let index = records.indexOf(item);
             items.id = id;
+            item = items;
             records[index] = items;
             $('#card .temporary').removeClass('temporary');
             $('#undo').click();
