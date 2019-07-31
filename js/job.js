@@ -123,6 +123,7 @@ function card(){
             let index = records.indexOf(item);
             items.id = id;
             records[index] = items;
+            $('#card .temporary').removeClass('temporary');
             console.log(items);
             httpRequest.data = JSON.stringify(data_getRecord);
             httpRequest.success = success_getRecord;
