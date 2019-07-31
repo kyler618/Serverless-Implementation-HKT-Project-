@@ -39,7 +39,7 @@ Users.authToken.then( token => {
           '</div>'
         ]);
       }
-      let current_Jobs = results.Items;
+      current_Jobs = results.Items;
       records = results.records;
       console.log(results);
       let count = 0;
@@ -203,7 +203,13 @@ function card(){
       }
     }
     function confirm(){
-
+      let target = current_Jobs.find(current_Job => {
+        return current_Job.inventory_ID == id
+      });
+      console.log(target.id);
+      data_confirm = {operation: "completeMaintenance", table: "Maintenance", target:target.id};
+      httpRequest.data = JSON.stringify(data_confirm);
+      
     };
     function remove_Input(button){
       $(button).parent().remove();
