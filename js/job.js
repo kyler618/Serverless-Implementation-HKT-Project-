@@ -52,7 +52,7 @@ Users.authToken.then( token => {
       });
       console.log($jobs);
       let jobsTemp = [];
-      $jobs = $jobs.filter( (job, index) => {
+      $jobs = $jobs.map( (job, index) => {
         jobsTemp.push(job);
         console.log(index, ($jobs.length-1));
         if((++count%3==0 || index == ($jobs.length-1)) && jobsTemp.length != 0){
