@@ -204,7 +204,7 @@ function card(){
         }
       }
     }
-    function conplete(){
+    function complete(){
       function handleResponse(results){
         console.log(results);
       }
@@ -225,7 +225,7 @@ function card(){
     });
     $('#card').show();
     $('#edit').click(edit);
-    $('#complete').click(confirm);
+    $('#complete').click(complete);
     $('#quit').click( () => {
       $('#edit').unbind().show();
       $('#complete').unbind().show();
