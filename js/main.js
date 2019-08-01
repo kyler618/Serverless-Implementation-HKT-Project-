@@ -5,14 +5,6 @@ var openOnce = false;
     if (token) {
       let identityCode = jwt_decode(token).iss.replace('https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_', '');
       $(function onDocReady() {
-        switch (identityCode){
-          case '8oxVNNeyb':
-            $('#support_Line_Information').show();
-            break;
-          case 'InROTeRsW':
-            $('#Job').show();
-            break;
-        }
         const contentBody = $( "#contentBody" );
         $('#Menu-bar').on( "click", "a", event => {
           if (!_config.api.invokeUrl) {
@@ -23,7 +15,7 @@ var openOnce = false;
           $('#current').val(event.target.id);
           switch(target){
             case 'Job':
-              // window.history.pushState(null, null, "job");
+              window.history.pushState(null, null, "job");
               if(identityCode=="InROTeRsW"){
                 contentBody.load( "job.html" );
               }
@@ -57,6 +49,16 @@ var openOnce = false;
               break;
           }
         });
+        switch (identityCode){
+          case '8oxVNNeyb':
+          $('#support_Line_Information').show();
+          $('#Customer_and_Software').click();
+          break;
+          case 'InROTeRsW':
+          $('#Job').show().click();
+          break;
+        }
+
       });
     }
     else{
