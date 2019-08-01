@@ -4,7 +4,6 @@ console.log('version 7');
 Users.authToken.then( token => {
   if (token) {
     function handleResponse(results){
-      console.log('here');
       function createCard(id, header, content){
         return getHtml([
           '<div class="card col-sm-3" onclick="card.card_Show(\'' + id + '\')">',
@@ -103,8 +102,8 @@ function card(){
       $('#card .edit').show();
       $('#undo').click( () => {
         $('#card .edit').unbind().hide();
-        $('#edit').show().click(complete);
-        $('#complete').show().click(edit);
+        $('#edit').show().click(edit);
+        $('#complete').show().click(complete);
         $('#card input').attr('readonly', true);
         $('.temporary').remove();
         createForm();
