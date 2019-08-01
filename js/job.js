@@ -1,5 +1,5 @@
 var Users = window.Users || {};
-console.log('version 5');
+console.log('version 6');
 
 Users.authToken.then( token => {
   if (token) {
@@ -209,7 +209,7 @@ function card(){
         if(results=="ok"){
           httpRequest.data = JSON.stringify(data_getRecord);
           httpRequest.success = function(results){
-            success_getRecord();
+            success_getRecord(results);
             $('#quit').click();
           }
           $.ajax(httpRequest);
