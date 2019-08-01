@@ -4,6 +4,7 @@ console.log('version 3');
 Users.authToken.then( token => {
   if (token) {
     function handleResponse(results){
+      console.log('here');
       function createCard(id, header, content){
         return getHtml([
           '<div class="card col-sm-3" onclick="card.card_Show(\'' + id + '\')">',
@@ -218,7 +219,6 @@ function card(){
       httpRequest.data = JSON.stringify(data_confirm);
       httpRequest.success = handleResponse;
       $.ajax(httpRequest);
-
     };
     function remove_Input(button){
       $(button).parent().remove();
