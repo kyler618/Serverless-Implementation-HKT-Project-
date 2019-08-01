@@ -50,10 +50,11 @@ Users.authToken.then( token => {
           return createCard(current_Job.inventory_ID, $cardHeader, $cardContent);
         }
       });
+      console.log($jobs);
       let jobsTemp = [];
       $jobs = $jobs.filter( (job, index) => {
         jobsTemp.push(job);
-        console.log(index, ($jobs.length));
+        console.log(index, ($jobs.length-1));
         if((++count%3==0 || index == ($jobs.length-1)) && jobsTemp.length != 0){
           let template = getHtml([
             '<div class="row">',
