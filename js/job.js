@@ -44,7 +44,8 @@ Users.authToken.then( token => {
       records = results.records;
       let count = 0;
       let $jobs = current_Jobs.reduce( current_Job => {
-        if(current_Job.end_time === undefined){
+        let x = current_Job.end_time;
+        if(x === undefined){
           let $cardHeader = createCardHeader(current_Job.sensor_ID);
           let $cardContent = createCardContent(current_Job.inventory_ID, current_Job.start_time);
           return createCard(current_Job.inventory_ID, $cardHeader, $cardContent);
