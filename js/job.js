@@ -1,5 +1,5 @@
 var Users = window.Users || {};
-console.log('version 6');
+console.log('version 7');
 
 Users.authToken.then( token => {
   if (token) {
@@ -53,7 +53,7 @@ Users.authToken.then( token => {
       let jobsTemp = [];
       $jobs = $jobs.filter( (job, index) => {
         jobsTemp.push(job);
-        console.log(index, ($jobs.length - 1));
+        console.log(index, ($jobs.length));
         if((++count%3==0 || index == ($jobs.length-1)) && jobsTemp.length != 0){
           let template = getHtml([
             '<div class="row">',
