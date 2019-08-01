@@ -41,7 +41,6 @@ Users.authToken.then( token => {
       }
       current_Jobs = results.Items;
       records = results.records;
-      console.log(results);
       let count = 0;
       let $jobs = current_Jobs.map( current_Job => {
         if(current_Job.end_time === undefined){
@@ -206,7 +205,11 @@ function card(){
     }
     function complete(){
       function handleResponse(results){
-        console.log(results);
+        if(results=="ok"){
+          httpRequest.data = JSON.stringify(data_getRecord);
+          httpRequest.success = success_getRecord;
+          $('#quit').click();
+        }
       }
       let target = current_Jobs.find(current_Job => {
         return current_Job.inventory_ID == id;
