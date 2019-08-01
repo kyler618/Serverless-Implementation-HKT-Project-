@@ -103,7 +103,8 @@ function card(){
       $('#card .edit').show();
       $('#undo').click( () => {
         $('#card .edit').unbind().hide();
-        $('#edit').show().click(edit);
+        $('#edit').show().click(conplete);
+        $('#complete').show().click(edit);
         $('#card input').attr('readonly', true);
         $('.temporary').remove();
         createForm();
@@ -179,6 +180,7 @@ function card(){
       $('#card .form-control').removeAttr('readonly');
       $('#card .input-group-text:not(.readonly)').removeAttr('readonly');
       $('#edit').unbind().hide();
+      $('#complete').unbind().hide();
     }
     function createForm(){
       function createInput(attribute, record){
@@ -202,13 +204,18 @@ function card(){
         }
       }
     }
-    function confirm(){
+    function conplete(){
+      function handleResponse(results){
+        console.log(results);
+      }
       let target = current_Jobs.find(current_Job => {
-        return current_Job.inventory_ID == id
+        return current_Job.inventory_ID == id;
       });
       console.log(target.id);
       data_confirm = {operation: "completeMaintenance", table: "Maintenance", target:target.id};
       httpRequest.data = JSON.stringify(data_confirm);
+      httpRequest.success = handleResponse;
+      console.log(httpRequest);
       
     };
     function remove_Input(button){
@@ -219,9 +226,10 @@ function card(){
     });
     $('#card').show();
     $('#edit').click(edit);
-    $('#confirm').click(confirm);
+    $('#conplete').click(confirm);
     $('#quit').click( () => {
       $('#edit').unbind().show();
+      $('#conplete').unbind().show();
       $('#card .edit').unbind().hide();
       $('#card').hide();
       $('.addition').remove();
