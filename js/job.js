@@ -214,7 +214,7 @@ function card(){
       data_confirm = {operation: "completeMaintenance", table: "Maintenance", target:target.id};
       httpRequest.data = JSON.stringify(data_confirm);
       httpRequest.success = handleResponse;
-      console.log(httpRequest);
+      $.ajax(httpRequest);
 
     };
     function remove_Input(button){
