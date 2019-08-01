@@ -209,6 +209,7 @@ function card(){
         if(results=="ok"){
           httpRequest.data = JSON.stringify(data_getRecord);
           httpRequest.success = success_getRecord;
+          $.ajax(httpRequest);
           $('#quit').click();
         }
       }
