@@ -43,14 +43,15 @@ Users.authToken.then( token => {
       current_Jobs = results.Items;
       records = results.records;
       let count = 0;
-      let jobsTemp = [];
       let $jobs = current_Jobs.map( current_Job => {
         if(current_Job.end_time === undefined){
           let $cardHeader = createCardHeader(current_Job.sensor_ID);
           let $cardContent = createCardContent(current_Job.inventory_ID, current_Job.start_time);
           return createCard(current_Job.inventory_ID, $cardHeader, $cardContent);
         }
-      }).filter( current_Job => current_Job ).map( (job, index) => {
+      }).filter( current_Job => current_Job );
+      let jobsTemp = [];
+      $jobs = $jobs.map( (job, index) => {
         jobsTemp.push(job);
         if((++count%3==0 || index == ($jobs.length-1)) && jobsTemp.length != 0){
           let template = getHtml([
