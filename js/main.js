@@ -21,7 +21,6 @@ var openOnce = false;
           let target = event.target.innerHTML;
           $('#current').html(target);
           $('#current').val(event.target.id);
-          console.log(target);
           switch(target){
             case 'Job':
               // window.history.pushState(null, null, "job");
