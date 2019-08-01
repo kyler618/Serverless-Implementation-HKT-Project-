@@ -211,12 +211,11 @@ function card(){
       let target = current_Jobs.find(current_Job => {
         return current_Job.inventory_ID == id;
       });
-      console.log(target.id);
       data_confirm = {operation: "completeMaintenance", table: "Maintenance", target:target.id};
       httpRequest.data = JSON.stringify(data_confirm);
       httpRequest.success = handleResponse;
       console.log(httpRequest);
-      
+
     };
     function remove_Input(button){
       $(button).parent().remove();
