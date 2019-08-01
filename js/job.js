@@ -45,11 +45,11 @@ Users.authToken.then( token => {
       let count = 0;
       let $jobs = current_Jobs.reduce( current_Job => {
         console.log(Object.keys(current_Job));
-        if(Object.keys(current_Job).includes('end_time')){
-          let $cardHeader = createCardHeader(current_Job.sensor_ID);
-          let $cardContent = createCardContent(current_Job.inventory_ID, current_Job.start_time);
-          return createCard(current_Job.inventory_ID, $cardHeader, $cardContent);
-        }
+        // if(Object.keys(current_Job).includes('end_time')){
+        //   let $cardHeader = createCardHeader(current_Job.sensor_ID);
+        //   let $cardContent = createCardContent(current_Job.inventory_ID, current_Job.start_time);
+        //   return createCard(current_Job.inventory_ID, $cardHeader, $cardContent);
+        // }
       });
       console.log($jobs);
       let jobsTemp = [];
