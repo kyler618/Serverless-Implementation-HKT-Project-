@@ -53,8 +53,8 @@ Users.authToken.then( token => {
       let jobsTemp = [];
       $jobs = $jobs.filter( (job, index) => {
         jobsTemp.push(job);
-        console.log(index, $jobs.length - 1)
-        if((++count%3==0 || index == $jobs.length - 1) && jobsTemp.length != 0){
+        console.log(index, ($jobs.length - 1));
+        if((++count%3==0 || index == ($jobs.length-1)) && jobsTemp.length != 0){
           let template = getHtml([
             '<div class="row">',
             jobsTemp,
