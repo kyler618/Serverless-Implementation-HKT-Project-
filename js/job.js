@@ -103,7 +103,7 @@ function card(){
       $('#card .edit').show();
       $('#undo').click( () => {
         $('#card .edit').unbind().hide();
-        $('#edit').show().click(conplete);
+        $('#edit').show().click(complete);
         $('#complete').show().click(edit);
         $('#card input').attr('readonly', true);
         $('.temporary').remove();
