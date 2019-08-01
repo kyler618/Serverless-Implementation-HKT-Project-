@@ -9,7 +9,7 @@ Users.authToken.then((token) => {
     authToken = token;
     let httpRequest = {
       method: 'POST',
-      url: _config.api.invokeUrl + '/support',
+      url: _config.api.invokeUrl + '/hkt-support-resource',
       data: JSON.stringify({table: "Client_Information", operation: "clientInfoQuery"}),
       contentType: 'application/json',
       headers: {Authorization: authToken},
