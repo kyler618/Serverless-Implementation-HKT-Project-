@@ -225,7 +225,7 @@ function card(){
     });
     $('#card').show();
     $('#edit').click(edit);
-    $('#conplete').click(confirm);
+    $('#complete').click(confirm);
     $('#quit').click( () => {
       $('#edit').unbind().show();
       $('#conplete').unbind().show();
