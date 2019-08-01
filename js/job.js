@@ -63,6 +63,7 @@ Users.authToken.then( token => {
           return template;
         }
       });
+      console.log($jobs);
       $('#container').html(getHtml($jobs));
     }
     let user = jwt_decode(token);
