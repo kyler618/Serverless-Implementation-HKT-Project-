@@ -69,7 +69,7 @@ Users.authToken.then( token => {
     success_getRecord = handleResponse;
     httpRequest = {
       method: 'POST',
-      url: _config.api.invokeUrl +'/field-engineer',
+      url: _config.api.invokeUrl +'/hkt-fieldeng-resource',
       headers: {Authorization: token},
       contentType: 'application/json',
       data : JSON.stringify(data_getRecord),
