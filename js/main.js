@@ -13,7 +13,6 @@ var openOnce = false;
           }
           let target = event.target.innerHTML;
           if( $('#current').html() == target ) {
-            console.log('here');
             return;
           }
           $('#current').html(target);

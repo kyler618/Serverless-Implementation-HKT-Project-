@@ -853,10 +853,8 @@ var Users = window.Users || {};
   function handleScanResponse(results){
     function clearTable(){
       $("table thead tr").empty();
-
       $('table tbody').empty();
-      for(let x=1;x<=selector.length-1;x++)
-      {
+      for(let x=1;x<=selector.length-1;x++){
         clearOption(x);
       }
       $(selector[0].bar).children().first().html('All');
