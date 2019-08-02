@@ -22,25 +22,25 @@ var openOnce = false;
               }
               break;
             case 'Customer and Software':
-              window.history.pushState(null, null, "customer-and-Software");
+              window.history.pushState(null, null, "main.html#customer-and-Software");
               contentBody.load( "database.html", () => {
                 if(openOnce) $.getScript("https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"); // it is a bug
                 openOnce = true;
               });
               break;
             case 'Hardware':
-              window.history.pushState(null, null, "hardware");
+              window.history.pushState(null, null, "main.html#hardware");
               contentBody.load( "database.html", () => {
                 if(openOnce) $.getScript("https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"); // it is a bug
                 openOnce = true;
               });
               break;
             case 'Client Information':
-              window.history.pushState(null, null, "client-Infomation");
+              window.history.pushState(null, null, "main.html#client-Infomation");
               contentBody.load( "clientInfo.html" );
               break;
             case 'Documents':
-              window.history.pushState(null, null, "documents");
+              window.history.pushState(null, null, "main.html#documents");
               contentBody.load( "document.html", () => {
                 $.getScript("js/document.js");
               });
