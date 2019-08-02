@@ -49,7 +49,7 @@ var openOnce = false;
               break;
           }
         });
-        // console.log(window.history);
+        console.log(window.history);
         window.onpopstate = function(event) {
           alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
         };
