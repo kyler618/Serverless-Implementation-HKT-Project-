@@ -61,7 +61,7 @@ Users.authToken.then((token) => {
   if (token) {
     loadSelectBarData(token);
   } else {
-    // window.location.href = '/signin.html';
+    window.location.href = '/signin.html';
   }
 })
 

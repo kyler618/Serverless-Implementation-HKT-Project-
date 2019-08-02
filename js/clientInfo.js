@@ -33,12 +33,11 @@ Users.authToken.then((token) => {
     console.log(httpRequest);
     $.ajax(httpRequest);
   } else {
-    // window.location.href = '/signin.html';
+    window.location.href = '/signin.html';
   }
 }).catch((error) => {
-  // alert(error);
-  // window.location.href = '/signin.html';
-});
+    window.location.href = '/signin.html';
+  });
 
 function list_EndUser_Name(results){
   info = results.Items;
