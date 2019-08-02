@@ -53,7 +53,6 @@ var openOnce = false;
         });
         let path = window.location.href;
         path = path.slice(path.lastIndexOf("#") + 1, path.length);
-        console.log(path);
         if( path != "https://itletsgo.github.io/main.html" ){
           switch (identityCode){
             case 'DevfD3lWf':
@@ -67,7 +66,6 @@ var openOnce = false;
           $(path).click();
         }
         else{
-          console.log('here');
           switch (identityCode){
           case 'DevfD3lWf':
           $('#support-Line-Information').show();
@@ -85,6 +83,6 @@ var openOnce = false;
     }
   }).catch((error) => {
     console.log(error);
-    // window.location.href = '/signin.html';
+    window.location.href = '/signin.html';
   });
 }(jQuery));

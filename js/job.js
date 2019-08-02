@@ -1,5 +1,3 @@
-// var Users = window.Users || {};
-
 Users.authToken.then( token => {
   if (token) {
     function handleResponse(results){
@@ -80,7 +78,6 @@ Users.authToken.then( token => {
         alert('An error occured:\n' + jqXHR.responseText);
       }
     };
-    console.log(httpRequest);
     $.ajax(httpRequest);
     card();
   }
