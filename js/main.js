@@ -69,11 +69,11 @@ var openOnce = false;
           console.log('here', identityCode);
           switch (identityCode){
           case 'DevfD3lWf':
-          $('#support_Line_Information').show();
-            $('#Customer_and_Software').click();
+          $('#support-Line-Information').show();
+            $('#customer-and-Software').click();
             break;
           case 'p7IxZwAdF':
-            $('#Job').show().click();
+            $('#job').show().click();
             break;
         }
         }
