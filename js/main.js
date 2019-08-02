@@ -1,4 +1,9 @@
 var Users = window.Users || {};
+
+window.onpopstate = function(event) {
+  alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
+};
+
 var openOnce = false;
 (function ($) {
   Users.authToken.then((token) => {   // check user authority
@@ -50,9 +55,6 @@ var openOnce = false;
           }
         });
         console.log(window.history);
-        window.onpopstate = function(event) {
-          alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
-        };
         switch (identityCode){
           case 'DevfD3lWf':
             $('#support_Line_Information').show();
