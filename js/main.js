@@ -52,17 +52,17 @@ var openOnce = false;
         });
         let path = window.location.href;
         path = path.slice(path.lastIndexOf("/") + 1, path.length);
-        if(path!="main.html"){
-          path = "#" + path;
-          $(path).click();
+        if( path != "main.html" ){
           switch (identityCode){
             case 'DevfD3lWf':
-              $('#support_Line_Information').show();
+              $('#support-Line-Information').show();
               break;
             case 'p7IxZwAdF':
-              $('#Job').show();
+              $('#job').show();
               break;
           }
+          path = "#" + path;
+          $(path).click();
         }
         else{
           switch (identityCode){
