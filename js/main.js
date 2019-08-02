@@ -7,6 +7,7 @@ var openOnce = false;
       let identityCode = jwt_decode(token).iss.replace('https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_', '');
       $(function onDocReady() {
         const contentBody = $( "#contentBody" );
+
         $('#Menu-bar').on( "click", "a", event => {
           if (!_config.api.invokeUrl) {
             $('#noApiMessage').show();
@@ -23,25 +24,25 @@ var openOnce = false;
               break;
             case 'Customer':
               window.history.pushState(null, null, "customer.html");
-              contentBody.load( "database.html", () => {
+              contentBody.load( "database", () => {
                 if(openOnce) $.getScript("https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"); // it is a bug
                 openOnce = true;
               });
               break;
             case 'Hardware':
               window.history.pushState(null, null, "hardware.html");
-              contentBody.load( "database.html", () => {
+              contentBody.load( "database", () => {
                 if(openOnce) $.getScript("https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"); // it is a bug
                 openOnce = true;
               });
               break;
             case 'Client Information':
               window.history.pushState(null, null, "ClientInfomation.html");
-              contentBody.load( "clientInfo.html" );
+              contentBody.load( "clientInfo" );
               break;
             case 'Documents':
               window.history.pushState(null, null, "documents.html");
-              contentBody.load( "document.html", () => {
+              contentBody.load( "document", () => {
                 $.getScript("js/document.js");
               });
               break;
@@ -49,9 +50,9 @@ var openOnce = false;
               Users.signOut();
               break;
           }
-          console.log(window.location.href);
         });
-        //console.log(window.location.href);
+        let x = window.location.href;
+        console.log(typeof(x));
         switch (identityCode){
           case 'DevfD3lWf':
             $('#support_Line_Information').show();
