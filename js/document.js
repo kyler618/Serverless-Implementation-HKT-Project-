@@ -63,7 +63,9 @@ Users.authToken.then((token) => {
   } else {
     window.location.href = '/signin.html';
   }
-})
+}).catch((error) => {
+  window.location.href = 'index.html';
+});
 
 function getHtml(template) {
   return template.join('\n');
