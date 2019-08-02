@@ -15,53 +15,65 @@ var openOnce = false;
           $('#current').html(target);
           $('#current').val(event.target.id);
           switch(target){
-            case 'Job':
-              window.history.pushState({ foo: "job" }, "job", "job.html");
+            case 'job':
+              window.history.pushState(null, null, "job");
               if(identityCode=="p7IxZwAdF"){
                 contentBody.load( "job.html" );
               }
               break;
-            case 'Customer':
-              window.history.pushState(null, null, "customer.html");
-              contentBody.load( "database", () => {
+            case 'customer':
+              window.history.pushState(null, null, "customer");
+              contentBody.load( "database.html", () => {
                 if(openOnce) $.getScript("https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"); // it is a bug
                 openOnce = true;
               });
               break;
-            case 'Hardware':
-              window.history.pushState(null, null, "hardware.html");
-              contentBody.load( "database", () => {
+            case 'hardware':
+              window.history.pushState(null, null, "hardware");
+              contentBody.load( "database.html", () => {
                 if(openOnce) $.getScript("https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"); // it is a bug
                 openOnce = true;
               });
               break;
-            case 'Client Information':
-              window.history.pushState(null, null, "ClientInfomation.html");
-              contentBody.load( "clientInfo" );
+            case 'client-Information':
+              window.history.pushState(null, null, "client-Infomation");
+              contentBody.load( "clientInfo.html" );
               break;
-            case 'Documents':
-              window.history.pushState(null, null, "documents.html");
-              contentBody.load( "document", () => {
+            case 'documents':
+              window.history.pushState(null, null, "documents");
+              contentBody.load( "document.html", () => {
                 $.getScript("js/document.js");
               });
               break;
-            case 'Sign out':
+            case 'sign out':
               Users.signOut();
               break;
           }
         });
-        let x = window.location.href;
-        let index = x.lastIndexOf("/") + 1;
-        x = x.slice(index, x.length);
-        console.log(x);
-        switch (identityCode){
+        let path = window.location.href;
+        path = path.slice(path.lastIndexOf("/") + 1, path.length);
+        if(path!="main"){
+          path = "#" + path;
+          $(path).click();
+          switch (identityCode){
+            case 'DevfD3lWf':
+              $('#support_Line_Information').show();
+              break;
+            case 'p7IxZwAdF':
+              $('#Job').show();
+              break;
+          }
+        }
+        else{
+          switch (identityCode){
           case 'DevfD3lWf':
-            $('#support_Line_Information').show();
+          $('#support_Line_Information').show();
             $('#Customer_and_Software').click();
             break;
           case 'p7IxZwAdF':
             $('#Job').show().click();
             break;
+        }
         }
       });
     }
