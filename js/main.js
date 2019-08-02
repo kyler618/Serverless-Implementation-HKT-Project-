@@ -12,7 +12,10 @@ var openOnce = false;
             $('#noApiMessage').show();
           }
           let target = event.target.innerHTML;
-          if( $('#current').html() == target ) return;
+          if( $('#current').html() == target ) {
+            console.log('here');
+            return;
+          }
           $('#current').html(target);
           $('#current').val(event.target.id);
           switch(target){
