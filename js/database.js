@@ -23,7 +23,7 @@ try{
 
     var targetTable = $('#current').html();
     switch(targetTable){
-      case "Customer_and_Software":
+      case "Customer and Software":
       constantAttributes.push('Tenant_ID_number');
       selectFields.push('Billed_customer_name', 'Billed_Customer_Contact', 'Enduser_address_for_reference');
       break;

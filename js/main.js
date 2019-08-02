@@ -21,7 +21,7 @@ var openOnce = false;
                 contentBody.load( "job.html" );
               }
               break;
-            case 'Customer':
+            case 'Customer and Software':
               window.history.pushState(null, null, "customer");
               contentBody.load( "database.html", () => {
                 if(openOnce) $.getScript("https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"); // it is a bug
