@@ -11,11 +11,13 @@ let poolData;
         if (token) {
           window.location.href = 'main.html';
         } else {
-          // signout
+          localStorage.removeItem('poolData');
+          window.location = "index.html";
         }
       }).catch((error) => {
         console.log(error);
-        // signout
+        localStorage.removeItem('poolData');
+        window.location = "index.html";
       });
     });
   }
