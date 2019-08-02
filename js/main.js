@@ -15,37 +15,37 @@ var openOnce = false;
           $('#current').html(target);
           $('#current').val(event.target.id);
           switch(target){
-            case 'job':
+            case 'Job':
               window.history.pushState(null, null, "job");
               if(identityCode=="p7IxZwAdF"){
                 contentBody.load( "job.html" );
               }
               break;
-            case 'customer':
+            case 'Customer':
               window.history.pushState(null, null, "customer");
               contentBody.load( "database.html", () => {
                 if(openOnce) $.getScript("https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"); // it is a bug
                 openOnce = true;
               });
               break;
-            case 'hardware':
+            case 'Hardware':
               window.history.pushState(null, null, "hardware");
               contentBody.load( "database.html", () => {
                 if(openOnce) $.getScript("https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"); // it is a bug
                 openOnce = true;
               });
               break;
-            case 'client-Information':
+            case 'Client Information':
               window.history.pushState(null, null, "client-Infomation");
               contentBody.load( "clientInfo.html" );
               break;
-            case 'documents':
+            case 'Documents':
               window.history.pushState(null, null, "documents");
               contentBody.load( "document.html", () => {
                 $.getScript("js/document.js");
               });
               break;
-            case 'sign out':
+            case 'Sign out':
               Users.signOut();
               break;
           }
