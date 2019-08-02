@@ -66,6 +66,7 @@ var openOnce = false;
           }
         }
         else{
+          console.log('here');
           switch (identityCode){
           case 'DevfD3lWf':
           $('#support_Line_Information').show();
