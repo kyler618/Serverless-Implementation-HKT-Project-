@@ -7,16 +7,16 @@ let poolData;
   poolData = JSON.parse(localStorage.getItem("poolData"));
   if(poolData!==null){
     $.getScript( "js/cognito-auth.js", () => {
-      Users.authToken.then((token) => {   // check user authority
-        if (token) {
-          window.location.href = 'main.html';
-        } else {
-          localStorage.removeItem('poolData');
-          // window.location = "index.html";
-        }
-      }).catch((error) => {
-        localStorage.removeItem('poolData');
-      });
+      if(Users){
+        Users.authToken.then((token) => {   // check user authority
+          if (token) {
+            window.location.href = 'main.html';
+          } else {
+            localStorage.removeItem('poolData');
+            // window.location = "index.html";
+          }
+        });    
+      }
     });
   }
   else{
