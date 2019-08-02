@@ -1,16 +1,16 @@
 window._config = {
     cognito: {
-        support_userPoolId: 'ap-southeast-1_8oxVNNeyb',
-        fieldEng_userPoolId: 'ap-southeast-1_InROTeRsW',
-        support_userPoolClientId: '4gf84ba9b1r98chstvik8euf5u',
-        fieldEng_userPoolClientId: '55onnp1msd1245abcadulbm7hl',
-        identityPoolId: 'ap-southeast-1:06cc96a6-6ea8-44a8-89f4-83a22f73ffd0',
+        support_userPoolId: 'ap-southeast-1_DevfD3lWf',
+        fieldEng_userPoolId: 'ap-southeast-1_p7IxZwAdF',
+        support_userPoolClientId: 'umpfu8dsf5r0ujksi8227cmom',
+        fieldEng_userPoolClientId: '3fqvl926edndqsail4hk0ovugr',
+        identityPoolId: 'ap-southeast-1:5328da0e-b843-448f-bb4b-1b58328fb5dd',
         region: 'ap-southeast-1'
     },
     s3: {
-        bucket: 'hkt-new-portal',
+        bucket: 'iot-inventory-portal',
     },
     api: {
-        invokeUrl: 'https://1b72t055la.execute-api.ap-southeast-1.amazonaws.com/prod'
+        invokeUrl: 'https://cnekmnt98d.execute-api.ap-southeast-1.amazonaws.com/prod'
     }
 };

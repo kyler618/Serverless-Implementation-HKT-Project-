@@ -14,12 +14,12 @@ Users.authToken.then((token) => {
     let url = _config.api.invokeUrl;
     let data = JSON.stringify({table: "Customer_and_Software", operation: "s3Query"});
     switch(identityCode){
-      case '8oxVNNeyb':
-        url += '/hkt-support-resource';
+      case 'DevfD3lWf':
+        url += '/support';
         key +=  _config.cognito.support_userPoolId;
         break;
-      case 'InROTeRsW':
-        url += '/hkt-fieldeng-resource';
+      case 'p7IxZwAdF':
+        url += '/field-engineer';
         key +=  _config.cognito.fieldEng_userPoolId;
         break;
     }

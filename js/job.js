@@ -69,7 +69,7 @@ Users.authToken.then( token => {
     success_getRecord = handleResponse;
     httpRequest = {
       method: 'POST',
-      url: _config.api.invokeUrl +'/hkt-fieldeng-resource',
+      url: _config.api.invokeUrl +'/field-engineer',
       headers: {Authorization: token},
       contentType: 'application/json',
       data : JSON.stringify(data_getRecord),
@@ -81,6 +81,7 @@ Users.authToken.then( token => {
         alert('An error occured:\n' + jqXHR.responseText);
       }
     };
+    console.log(httpRequest);
     $.ajax(httpRequest);
     card();
   }

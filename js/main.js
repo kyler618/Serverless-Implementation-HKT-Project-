@@ -16,7 +16,7 @@ var openOnce = false;
           switch(target){
             case 'Job':
               window.history.pushState(null, null, "job");
-              if(identityCode=="InROTeRsW"){
+              if(identityCode=="p7IxZwAdF"){
                 contentBody.load( "job.html" );
               }
               break;
@@ -50,11 +50,11 @@ var openOnce = false;
           }
         });
         switch (identityCode){
-          case '8oxVNNeyb':
+          case 'DevfD3lWf':
           $('#support_Line_Information').show();
           $('#Customer_and_Software').click();
           break;
-          case 'InROTeRsW':
+          case 'p7IxZwAdF':
           $('#Job').show().click();
           break;
         }

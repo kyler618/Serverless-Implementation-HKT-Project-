@@ -63,12 +63,12 @@ try{
           if (token) {
             let identityCode = jwt_decode(token).iss.replace('https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_', '');
             switch(identityCode){
-              case '8oxVNNeyb':
-              httpRequest.url += '/hkt-support-resource';
+              case 'DevfD3lWf':
+              httpRequest.url += '/support';
               key +=  _config.cognito.support_userPoolId;
               break;
-              case 'InROTeRsW':
-              httpRequest.url += '/hkt-fieldeng-resource';
+              case 'p7IxZwAdF':
+              httpRequest.url += '/field-engineer';
               key +=  _config.cognito.fieldEng_userPoolId;
               break;
             }
@@ -127,7 +127,6 @@ try{
             });
             $('#modalCancelButton').unbind();
             $('#modalCancelButton').click( () => {
-              console.log('bUTTON');
               hideModel();
               $('#itemForm').show();
               $('.editItem').unbind();

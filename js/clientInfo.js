@@ -23,13 +23,14 @@ Users.authToken.then((token) => {
       }
     };
     switch(identityCode){
-      case '8oxVNNeyb':
-      httpRequest.url += '/hkt-support-resource';
+      case 'DevfD3lWf':
+      httpRequest.url += '/support';
       break;
-      case 'InROTeRsW':
-      httpRequest.url += '/hkt-fieldeng-resource';
+      case 'p7IxZwAdF':
+      httpRequest.url += '/field-engineer';
       break;
     }
+    console.log(httpRequest);
     $.ajax(httpRequest);
   } else {
     // window.location.href = '/signin.html';
