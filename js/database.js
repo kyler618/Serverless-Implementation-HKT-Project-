@@ -253,7 +253,6 @@ var Users = window.Users || {};
 
       $('#addItem').click( () => {
         function handlePutResponse(results){
-          console.log(results);
           if(results.status=="ok"){
             hideModel();
             handleScanResponse(results);
@@ -639,7 +638,6 @@ var Users = window.Users || {};
     data.table = (table===undefined)?targetTable:table;
     httpRequest.data = JSON.stringify(data);
     httpRequest.success = success;
-    console.log(httpRequest);
     $.ajax(httpRequest);
   }
 
@@ -853,7 +851,6 @@ var Users = window.Users || {};
   // handle Response
 
   function handleScanResponse(results){
-    // console.log('Response received from API: ', results);
     function clearTable(){
       $("table thead tr").empty();
 
