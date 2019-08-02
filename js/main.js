@@ -22,7 +22,7 @@ var openOnce = false;
               }
               break;
             case 'Customer and Software':
-              window.history.pushState(null, null, "main.html#customer-and-Software");
+              window.history.pushState(null, null, "main.html#customer-and-software");
               contentBody.load( "database.html", () => {
                 if(openOnce) $.getScript("https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"); // it is a bug
                 openOnce = true;
