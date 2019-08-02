@@ -49,8 +49,9 @@ var openOnce = false;
               Users.signOut();
               break;
           }
+          console.log(window.location.href);
         });
-        console.log(window.location.href);
+        //console.log(window.location.href);
         switch (identityCode){
           case 'DevfD3lWf':
             $('#support_Line_Information').show();
