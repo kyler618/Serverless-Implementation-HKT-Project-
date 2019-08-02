@@ -1,4 +1,4 @@
-// var Users = window.Users || {};
+var Users = window.Users || {};
 let poolData;
 (function ($) {
   if (typeof AWSCognito !== 'undefined') {
