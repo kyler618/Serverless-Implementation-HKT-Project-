@@ -15,31 +15,31 @@ var openOnce = false;
           $('#current').val(event.target.id);
           switch(target){
             case 'Job':
-              window.history.pushState(null, null, "job");
+              window.history.pushState({ foo: "job" }, "job", "job.html");
               if(identityCode=="p7IxZwAdF"){
                 contentBody.load( "job.html" );
               }
               break;
             case 'Customer':
-              window.history.pushState(null, null, "customer");
+              window.history.pushState(null, null, "customer.html");
               contentBody.load( "database.html", () => {
                 if(openOnce) $.getScript("https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"); // it is a bug
                 openOnce = true;
               });
               break;
             case 'Hardware':
-              window.history.pushState(null, null, "hardware");
+              window.history.pushState(null, null, "hardware.html");
               contentBody.load( "database.html", () => {
                 if(openOnce) $.getScript("https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"); // it is a bug
                 openOnce = true;
               });
               break;
             case 'Client Information':
-              window.history.pushState(null, null, "ClientInfomation");
+              window.history.pushState(null, null, "ClientInfomation.html");
               contentBody.load( "clientInfo.html" );
               break;
             case 'Documents':
-              window.history.pushState(null, null, "documents");
+              window.history.pushState(null, null, "documents.html");
               contentBody.load( "document.html", () => {
                 $.getScript("js/document.js");
               });
