@@ -49,6 +49,7 @@ var openOnce = false;
               break;
           }
         });
+        console.log(window.history);
         switch (identityCode){
           case 'DevfD3lWf':
           $('#support_Line_Information').show();
@@ -58,7 +59,6 @@ var openOnce = false;
           $('#Job').show().click();
           break;
         }
-
       });
     }
     else{
