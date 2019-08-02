@@ -8,6 +8,7 @@ let poolData;
   if(poolData!==null){
     $.getScript( "js/cognito-auth.js", () => {
       if(Users){
+        console.log(Users);
         Users.authToken.then((token) => {   // check user authority
           if (token) {
             window.location.href = 'main.html';
@@ -15,7 +16,7 @@ let poolData;
             localStorage.removeItem('poolData');
             // window.location = "index.html";
           }
-        });    
+        });
       }
     });
   }
