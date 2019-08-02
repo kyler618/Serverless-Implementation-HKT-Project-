@@ -7,7 +7,6 @@ var openOnce = false;
       let identityCode = jwt_decode(token).iss.replace('https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_', '');
       $(function onDocReady() {
         const contentBody = $( "#contentBody" );
-
         $('#Menu-bar').on( "click", "a", event => {
           if (!_config.api.invokeUrl) {
             $('#noApiMessage').show();
