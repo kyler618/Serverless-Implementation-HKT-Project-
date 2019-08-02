@@ -7,9 +7,10 @@ if (!_config.api.invokeUrl) {
 Users.authToken.then((token) => {
   if (token) {
     authToken = token;
+    let identityCode = jwt_decode(token).iss.replace('https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_', '');
     let httpRequest = {
       method: 'POST',
-      url: _config.api.invokeUrl + '/hkt-support-resource',
+      url: _config.api.invokeUrl,
       data: JSON.stringify({table: "Client_Information", operation: "clientInfoQuery"}),
       contentType: 'application/json',
       headers: {Authorization: authToken},
@@ -21,6 +22,14 @@ Users.authToken.then((token) => {
         alert('An error occured:\n' + jqXHR.responseText);
       }
     };
+    switch(identityCode){
+      case '8oxVNNeyb':
+      httpRequest.url += '/hkt-support-resource';
+      break;
+      case 'InROTeRsW':
+      httpRequest.url += '/hkt-fieldeng-resource';
+      break;
+    }
     $.ajax(httpRequest);
   } else {
     // window.location.href = '/signin.html';
