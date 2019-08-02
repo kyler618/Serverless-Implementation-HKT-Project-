@@ -17,15 +17,14 @@ let poolData;
       }).catch((error) => {
         console.log(error);
         localStorage.removeItem('poolData');
-        window.location = "index.html";
+        // window.location = "index.html";
       });
     });
   }
   else{
     $(function onDocReady() {
     $('#signinForm').submit(signin);
-    function signin(event){
-      event.preventDefault();
+    function signin(){
       let email = $('#emailInputSignin').val();
       let password = $('#passwordInputSignin').val();
       let authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
