@@ -1,4 +1,4 @@
-var Users = window.Users || {};
+// var Users = window.Users || {};
 
 Users.authToken.then( token => {
   if (token) {
