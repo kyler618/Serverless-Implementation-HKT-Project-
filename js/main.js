@@ -53,7 +53,7 @@ var openOnce = false;
         let path = window.location.href;
         path = path.slice(path.lastIndexOf("#") + 1, path.length);
         console.log(path);
-        if( path != "" ){
+        if( path != "https://itletsgo.github.io/main.html" ){
           switch (identityCode){
             case 'DevfD3lWf':
               $('#support-Line-Information').show();
