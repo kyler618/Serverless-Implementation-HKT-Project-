@@ -56,7 +56,6 @@ let poolData;
           },
           onFailure: function(err){
             alert('Login Failed');
-            console.log(err);
           },
           newPasswordRequired: function(userAttributes, requiredAttributes) {
             cognitoUser.completeNewPasswordChallenge(password, {}, this)
