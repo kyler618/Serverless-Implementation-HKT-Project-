@@ -1,4 +1,4 @@
-var Users = window.Users || {};
+// var Users = window.Users || {};
 let poolData;
 (function ($) {
   if (typeof AWSCognito !== 'undefined') {
@@ -12,7 +12,10 @@ let poolData;
           window.location.href = 'main.html';
         } else {
           localStorage.removeItem('poolData');
+          // window.location = "index.html";
         }
+      }).catch((error) => {
+        localStorage.removeItem('poolData');
       });
     });
   }
