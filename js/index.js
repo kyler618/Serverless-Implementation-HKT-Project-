@@ -19,7 +19,8 @@ let poolData;
   else{
     $(function onDocReady() {
     $('#signinForm').submit(signin);
-    function signin(){
+    function signin(event){
+      event.preventDefault();
       let email = $('#emailInputSignin').val();
       let password = $('#passwordInputSignin').val();
       let authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
