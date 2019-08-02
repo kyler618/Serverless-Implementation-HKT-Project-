@@ -51,7 +51,9 @@ var openOnce = false;
           }
         });
         let x = window.location.href;
-        console.log(typeof(x));
+        let index = x.lastIndexOf("/") + 1;
+        x = x.slice(index, x.length);
+        console.log(x);
         switch (identityCode){
           case 'DevfD3lWf':
             $('#support_Line_Information').show();
