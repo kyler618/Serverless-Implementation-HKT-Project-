@@ -52,7 +52,7 @@ var openOnce = false;
         });
         let path = window.location.href;
         path = path.slice(path.lastIndexOf("/") + 1, path.length);
-        if(path!="main"){
+        if(path!="main.html"){
           path = "#" + path;
           $(path).click();
           switch (identityCode){
