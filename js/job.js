@@ -1,5 +1,4 @@
 var Users = window.Users || {};
-console.log('version 7');
 
 Users.authToken.then( token => {
   if (token) {
