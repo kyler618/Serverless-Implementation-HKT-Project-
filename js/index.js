@@ -12,12 +12,7 @@ let poolData;
           window.location.href = 'main.html';
         } else {
           localStorage.removeItem('poolData');
-          // window.location = "index.html";
         }
-      }).catch((error) => {
-        console.log(error);
-        localStorage.removeItem('poolData');
-        // window.location = "index.html";
       });
     });
   }

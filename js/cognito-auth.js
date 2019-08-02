@@ -34,8 +34,13 @@ if (typeof AWSCognito !== 'undefined') {
       };
     Users.authToken.then( token => {   // check user authority
       if (!token) {
+        localStorage.removeItem('poolData');
         Users.signOut();
       }
+    }).catch((error) => {
+      console.log(error);
+      localStorage.removeItem('poolData');
+      window.location = "index.html";
     });
   }
   catch(error){
