@@ -12,6 +12,7 @@ var openOnce = false;
             $('#noApiMessage').show();
           }
           let target = event.target.innerHTML;
+          if( $('#current').html() == target ) return;
           $('#current').html(target);
           $('#current').val(event.target.id);
           switch(target){
