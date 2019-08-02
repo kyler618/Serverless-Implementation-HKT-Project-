@@ -45,6 +45,6 @@ if (typeof AWSCognito !== 'undefined') {
   }
   catch(error){
     localStorage.removeItem('poolData');
-    window.location.href = 'index.html';
+    // window.location.href = 'index.html';
   }
 }(jQuery));
