@@ -70,7 +70,7 @@ Users.authToken.then( token => {
       headers: {Authorization: token},
       contentType: 'application/json',
       data : JSON.stringify(data_getRecord),
-      async: true,
+      // async: true,
       success: success_getRecord,
       error: (jqXHR, textStatus, errorThrown) => {
         console.error('Error requesting: ', textStatus, ', Details: ', errorThrown);
