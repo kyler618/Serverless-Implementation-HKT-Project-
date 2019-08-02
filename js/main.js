@@ -16,7 +16,7 @@ var openOnce = false;
           $('#current').val(event.target.id);
           switch(target){
             case 'Job':
-              window.history.pushState(null, null, "job");
+              window.history.pushState(null, null, "main.html#job");
               if(identityCode=="p7IxZwAdF"){
                 contentBody.load( "job.html" );
               }
@@ -51,8 +51,8 @@ var openOnce = false;
           }
         });
         let path = window.location.href;
-        path = path.slice(path.lastIndexOf("/") + 1, path.length);
-        if( path != "main.html" ){
+        path = path.slice(path.lastIndexOf("#") + 1, path.length);
+        if( path != "" ){
           switch (identityCode){
             case 'DevfD3lWf':
               $('#support-Line-Information').show();
