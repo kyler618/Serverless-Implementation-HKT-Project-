@@ -49,6 +49,7 @@ var openOnce = false;
               Users.signOut();
               break;
           }
+
         });
         let path = window.location.href;
         path = path.slice(path.lastIndexOf("#") + 1, path.length);
@@ -66,6 +67,7 @@ var openOnce = false;
           $(path).click();
         }
         else{
+          console.log('here');
           switch (identityCode){
           case 'DevfD3lWf':
           $('#support-Line-Information').show();
