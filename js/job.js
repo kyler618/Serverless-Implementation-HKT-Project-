@@ -89,8 +89,7 @@ Users.authToken.then( token => {
     // window.location.href = '/signin.html';
   }
 }).catch((error) => {
-  // alert(error);
-  // window.location.href = '/signin.html';
+  window.location.href = '/signin.html';
 });
 
 function card(){
