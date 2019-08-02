@@ -49,15 +49,18 @@ var openOnce = false;
               break;
           }
         });
-        console.log(window.history);
+        // console.log(window.history);
+        window.onpopstate = function(event) {
+          alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
+        };
         switch (identityCode){
           case 'DevfD3lWf':
-          $('#support_Line_Information').show();
-          $('#Customer_and_Software').click();
-          break;
+            $('#support_Line_Information').show();
+            $('#Customer_and_Software').click();
+            break;
           case 'p7IxZwAdF':
-          $('#Job').show().click();
-          break;
+            $('#Job').show().click();
+            break;
         }
       });
     }
