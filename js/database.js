@@ -960,7 +960,7 @@ var Users = window.Users || {};
       let item = storedItem.find(record => {
       return record.id == id
     });
-      $('#itemModel').show();
+      $('#modal').show();
       createForm();
     };
     initialize();
