@@ -419,7 +419,8 @@ var Users = window.Users || {};
     $("input[name='table_Input']").attr('readOnly', true).unbind();
 
     $('#editTable').click(handleEditTable);
-    $('table tbody').click(handleRowClick);
+    // $('table tbody').click(handleRowClick);
+    $('table tbody').click(model);
     $('#updateTable').click(handleUpdateTable);
   }
 
@@ -804,61 +805,81 @@ var Users = window.Users || {};
     let pk;
     const itemForm = document.getElementById('itemForm');
     let id = event.target.classList[1];
-    let item = storedItem.find(record => {
+
+
+    function initialize(){
+      card.show_Modal = show_Modal;
+    }
+    function show_Modal(id){
+      function createForm(){
+        function createInput(attribute, record){
+          return getHtml([
+            '<p class="addition">',
+            '<input type="text" class="input-group-text" value=\'' + attribute + '\' readonly>',
+            '<input type="text" class="form-control" name=\'' + attribute + '\' value=\'' + record + '\' readonly>',
+            '<button class="edit" onclick=""><i class="fa fa-close"></i></button>',
+            '</p>'
+          ]);
+        }
+        for(let key in item){
+          if(key=="id") continue;
+          let $input = $('#itemModel input.form-control[name=\'' + key + '\']');
+          if($input.length != 0 ){
+            $('#itemModel input.input-group-text[value=\'' + key + '\']').val(key); // for undo
+            $input.val(item[key]);
+          }
+          else{
+            $('#itemForm').append(createInput(key, item[key]));
+          }
+        }
+      }
+      let item = storedItem.find(record => {
       return record.id == id
     });
-    function createForm(){
-      function createInput(attribute, record){
-        return getHtml([
-          '<p class="addition">',
-          '<input type="text" class="input-group-text" value=\'' + attribute + '\' readonly>',
-          '<input type="text" class="form-control" name=\'' + attribute + '\' value=\'' + record + '\' readonly>',
-          '<button class="edit" onclick=""><i class="fa fa-close"></i></button>',
-          '</p>'
-        ]);
-      }
-      for(let key in item){
-        if(key=="id") continue;
-        let $input = $('#itemModel input.form-control[name=\'' + key + '\']');
-        if($input.length != 0 ){
-          $('#itemModel input.input-group-text[value=\'' + key + '\']').val(key); // for undo
-          $input.val(item[key]);
-        }
-        else{
-          $('#itemForm').append(createInput(key, item[key]));
-        }
-      }
+      $('#itemModel').show();
+      createForm();
+    };
+    // buttonClick();
+
+  }
+
+  function modal(event){
+    function initialize(){
+      event.preventDefault();
+      modal.show_Model = show_Model;
+      let id = event.target.classList[1];
+      show_Modal(id);
     }
-    createForm();
-    // for( let x=Object.keys(item).length-1 ; x>=0 ; x-- ){
-    //   const fieldName = Object.getOwnPropertyNames(item)[x];
-    //   if(fieldName == attributes[0]) continue;
-    //   const field = createFormInput('form_Input', fieldName, true);
-    //   const value = createFormInput('form_Input', Object.values(item)[x], true);
-    //   field.classList.add('input-group-text');
-    //   value.classList.add('form-control');
-    //   if(Object.getOwnPropertyNames(item)[x] == attributes[0]){
-    //     field.id = attributes[0];
-    //     itemForm.insertBefore(field, itemForm.childNodes[0]);
-    //     itemForm.insertBefore(value, itemForm.childNodes[1]);
-    //     itemForm.insertBefore(document.createElement("P"), itemForm.childNodes[2]);
-    //   }
-    //   else{
-    //     field.classList.add(fieldName);
-    //     value.classList.add(fieldName);
-    //     itemForm.appendChild(field);
-    //     itemForm.appendChild(value);
-    //     const button = createRemoveButton();
-    //     button.id = fieldName;
-    //     itemForm.appendChild(button);
-    //     itemForm.appendChild(document.createElement("P"));
-    //   }
-    // }
-
-    $('#itemModel').show();
-    // document.getElementById('itemModel').style.display='block';
-    buttonClick();
-
+    function show_Modal(id){
+      function createForm(){
+        function createInput(attribute, record){
+          return getHtml([
+            '<p class="addition">',
+            '<input type="text" class="input-group-text" value=\'' + attribute + '\' readonly>',
+            '<input type="text" class="form-control" name=\'' + attribute + '\' value=\'' + record + '\' readonly>',
+            '<button class="edit" onclick=""><i class="fa fa-close"></i></button>',
+            '</p>'
+          ]);
+        }
+        for(let key in item){
+          if(key=="id") continue;
+          let $input = $('#itemModel input.form-control[name=\'' + key + '\']');
+          if($input.length != 0 ){
+            $('#itemModel input.input-group-text[value=\'' + key + '\']').val(key); // for undo
+            $input.val(item[key]);
+          }
+          else{
+            $('#itemForm').append(createInput(key, item[key]));
+          }
+        }
+      }
+      let item = storedItem.find(record => {
+      return record.id == id
+    });
+      $('#itemModel').show();
+      createForm();
+    };
+    initialize();
   }
 
   function handleTestClick(event) {
