@@ -947,13 +947,13 @@ var Users = window.Users || {};
         }
         for(let key in item){
           if(key=="id") continue;
-          let $input = $('#itemModel input.form-control[name=\'' + key + '\']');
+          let $input = $('#modal input.form-control[name=\'' + key + '\']');
           if($input.length != 0 ){
-            $('#itemModel input.input-group-text[value=\'' + key + '\']').val(key); // for undo
+            $('#modal input.input-group-text[value=\'' + key + '\']').val(key); // for undo
             $input.val(item[key]);
           }
           else{
-            $('#itemForm').append(createInput(key, item[key]));
+            $('#form').append(createInput(key, item[key]));
           }
         }
       }
