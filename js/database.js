@@ -846,7 +846,7 @@ var Users = window.Users || {};
   function modal(event){
     function initialize(){
       event.preventDefault();
-      modal.show_Model = show_Model;
+      modal.show_Modal = show_Modal;
       let id = event.target.classList[1];
       show_Modal(id);
     }
