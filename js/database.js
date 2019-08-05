@@ -847,7 +847,7 @@ var Users = window.Users || {};
     function initialize(){
       event.preventDefault();
       modal.show_Modal = show_Modal;
-      let id = event.target.classList[1];
+      var id = event.target.classList[1];
       show_Modal(id);
     }
     function show_Modal(id){
@@ -957,6 +957,25 @@ var Users = window.Users || {};
           }
         }
       }
+      function complete(){
+        function handleResponse(results){
+          if(results=="ok"){
+            httpRequest.data = JSON.stringify(data_getRecord);
+            httpRequest.success = function(results){
+              success_getRecord(results);
+              $('#quit').click();
+            }
+            $.ajax(httpRequest);
+          }
+        }
+        // let target = current_Jobs.find(current_Job => {
+        //   return current_Job.inventory_ID == id;
+        // });
+        data_confirm = {operation: "completeMaintenance", table: "Maintenance", target: id};
+        httpRequest.data = JSON.stringify(data_confirm);
+        httpRequest.success = handleResponse;
+        $.ajax(httpRequest);
+      };
       function remove_Input(button){
         $(button).parent().remove();
       }
