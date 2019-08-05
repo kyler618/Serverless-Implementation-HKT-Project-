@@ -803,8 +803,15 @@ var Users = window.Users || {};
     event.preventDefault();
     let pk;
     const itemForm = document.getElementById('itemForm');
+    let id = event.target.classList[1];
+    console.log('id = ', event.target.classList[1]);
+    let item = storedItem.find(record => {
+      return record.id == id
+    });
+    console.log(item);
     const index = Array.from($('tr').not(':first')).map(x=>x.id).indexOf(event.target.classList[1]);
     const item = storedItem[index];
+
     for( let x=Object.keys(item).length-1 ; x>=0 ; x-- ){
       const fieldName = Object.getOwnPropertyNames(item)[x];
       if(fieldName == attributes[0]) continue;
