@@ -964,6 +964,19 @@ var Users = window.Users || {};
       return record.id == id
     });
       $('#modal').show();
+      $('#edit').click(edit);
+      $('#quit').click( () => {
+        $('#edit').unbind().show();
+        $('#complete').unbind().show();
+        $('#modal .edit').unbind().hide();
+        $('#modal').hide();
+        $('.addition').remove();
+        $('.temporary').remove();
+        $('#modal .form-control').val('');
+        modal.remove_Input = null;
+        modal.show_Modal = show_Modal;
+        $('#quit').unbind();
+      });
       createForm();
     };
     initialize();
