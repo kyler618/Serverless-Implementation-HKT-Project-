@@ -851,6 +851,90 @@ var Users = window.Users || {};
       show_Modal(id);
     }
     function show_Modal(id){
+      // function edit(){
+      //   modal.remove_Input = remove_Input;
+      //   $('#card .edit').show();
+      //   $('#undo').click( () => {
+      //     $('#card .edit').unbind().hide();
+      //     $('#edit').show().click(edit);
+      //     $('#complete').show().click(complete);
+      //     $('#card input').attr('readonly', true);
+      //     $('.temporary').remove();
+      //     createForm();
+      //     card.remove_Input = null;
+      //   });
+      //   $('#add').click( () => {
+      //     $('#form').append(getHtml([
+      //       '<p class="temporary">',
+      //       '<input type="text" class="input-group-text">',
+      //       '<input type="text" class="form-control">',
+      //       '<button class="edit" onclick="card.remove_Input(this) style="display:inline"><i class="fa fa-close"></i></button>',
+      //       '</p>'
+      //     ]));
+      //     $('.temporary button.edit').show();
+      //   });
+      //   $('#save').click( () => {
+      //     function handleResponse(results){
+      //       if(results=="ok"){
+      //         let index = records.indexOf(item);
+      //         items.id = id;
+      //         item = items;
+      //         records[index] = items;
+      //         $('#card .temporary').removeClass('temporary');
+      //         $('#undo').click();
+      //         httpRequest.data = JSON.stringify(data_getRecord);
+      //         httpRequest.success = success_getRecord;
+      //         $.ajax(httpRequest);
+      //       }
+      //     }
+      //     const items = {};
+      //     const attributes = [];
+      //     const input = $('#card input');
+      //     let changed = false;
+      //     for( let x = 0 ; x < input.length ; x++ ){
+      //       const attribute = input[x++];
+      //       const record = input[x];
+      //       if(attribute.value==""||record.value==""){
+      //         // items.incompleteError = x-1;
+      //         alert("Incompleted Error");
+      //         break;
+      //       }
+      //       if(attributes.includes(attribute.value)){
+      //         // items.DuplicateError = x-1;
+      //         alert("Duplicate Error");
+      //         break;
+      //       }
+      //       attributes.push(attribute.value);
+      //       items[attribute.value] = record.value;
+      //       if(!changed){
+      //         if(item[attribute.value]===undefined){
+      //           changed = true;
+      //         }
+      //         if(items[attribute.value]!=item[attribute.value]){
+      //           changed = true;
+      //         }
+      //       }
+      //     }
+      //     let deleteItem = Object.keys(item).filter( attribute => {
+      //       if( attribute!="id" && !(attributes.includes(attribute)) ){
+      //         return attribute;
+      //       }
+      //     });
+      //     if( !changed && deleteItem.length==0){
+      //       return $('#undo').click();
+      //     }
+      //     const data = {table:"Hardware", operation: "maintainSensor", pk: id};
+      //     data.input = (changed)? items:null;
+      //     data.delete = (deleteItem.length!=0)? deleteItem:null;
+      //     httpRequest.data = JSON.stringify(data);
+      //     httpRequest.success = handleResponse;
+      //     $.ajax(httpRequest);
+      //   });
+      //   $('#card .form-control').removeAttr('readonly');
+      //   $('#card .input-group-text:not(.readonly)').removeAttr('readonly');
+      //   $('#edit').unbind().hide();
+      //   $('#complete').unbind().hide();
+      // }
       function createForm(){
         function createInput(attribute, record){
           return getHtml([

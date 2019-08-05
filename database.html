@@ -19,14 +19,10 @@
       max-height: 580px;
       overflow: auto;
     }
-    .w3-modal-content{
-      border-radius: 10px;
-      border-style: solid;
-      padding: 32px 32px;
-    }
     .btn-primary{
       height:40px;
     }
+
     table td{
       padding-left: 8px;
     }
@@ -77,7 +73,24 @@
     tbody tr input:focus{
       outline: none;
     }
-    .w3-container button {
+
+    #selector{
+      display: none;
+    }
+    #showAll{
+      font-size: 16px;
+    }
+    #pager{
+      width: fit-content;
+      vertical-align: bottom;
+    }
+
+    /* #modal .w3-modal-content{
+      border-radius: 10px;
+      border-style: solid;
+      padding: 32px 32px;
+    }
+    #modal button {
       border: none;
       background: none;
       font-size: large;
@@ -91,16 +104,6 @@
     }
     .w3-container #modalCancelButton{
       font-size: 20px;
-    }
-    #selector{
-      display: none;
-    }
-    #showAll{
-      font-size: 16px;
-    }
-    #pager{
-      width: fit-content;
-      vertical-align: bottom;
     }
     #itemForm .input-group-text{
       display: inline-block;
@@ -118,24 +121,55 @@
       border-radius: unset;
       border: none;
       background-color: #ffdcb980;
+    } */
+    #modal .edit{
+      display:none;
     }
-    #itemModel #maintainButton{
+    #modal .w3-modal-content{
+      border-radius: 10px;
+      border-style: solid;
+      padding: 32px 32px;
+    }
+    #modal #quit{
+      font-size: 20px;
+    }
+    #modal input{
+      display: inline-block;
+      border: none;
+      background-color: #e9ecef;
+    }
+    #modal button {
+      border: none;
+      background: none;
+      font-size: large;
+    }
+    #modal .input-group-text{
+      border-right: 1px solid #dadcde;
+    }
+    #modal .form-control{
+      width: 60%;
+    }
+    #modal .form-control :not([readonly]){
+      background-color: #ffdcb980;
+    }
+    #modal #maintainButton{
       display: none;
     }
-    #itemModel #itemModel-maintain-Container{
+    #modal #itemModel-maintain-Container{
       display:none;
       width:fit-content;
     }
-    #itemModel #itemModel-maintain-Container #itemModel-maintain-select{
+    #modal #itemModel-maintain-Container #itemModel-maintain-select{
       width: auto;
     }
-    #itemModel #itemModel-maintain-Container #itemModel-maintain-cancel{
+    #modal #itemModel-maintain-Container #itemModel-maintain-cancel{
       display: none;
     }
-    #itemModel #itemModel-maintain-Container #itemModel-maintain-confirm{
+    #modal #itemModel-maintain-Container #itemModel-maintain-confirm{
       display: none;
       float:right;
     }
+
   </style>
   <p>
   <div id="selector">
@@ -185,15 +219,15 @@
       <tbody/>
     </table>
   </div>
-  <div id="itemModel" class="w3-modal" data-backdrop="true">
+  <div id="modal" class="w3-modal" data-backdrop="true">
     <div class="w3-modal-content">
       <div class="w3-container">
-        <span id="modalCancelButton"class="w3-button w3-display-topright"><i class="fa fa-window-close" aria-hidden="true"></i></span>
-        <button id="addButton" class="addItem w3-display-bottomleft" style="display:none"><i class="fa fa-plus" aria-hidden="true"></i></button>
-        <button id="confirmButton" class="addItem" style="display:none"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-        <button id="cancelButton" style="display:none"><i class="fa fa-undo" aria-hidden="true"></i></button>
-        <button id="editButton" class="editItem" style="display:none;"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-        <button id="deleteButton" class="editItem w3-right" style="display:none"><i class="fa fa-trash" aria-hidden="true"></i></button>
+        <span id="quit"class="w3-button w3-display-topright"><i class="fa fa-window-close"></i></span>
+        <button id="add" class="edit w3-display-bottomleft"><i class="fa fa-plus"></i></button>
+        <button id="save" class="edit"><i class="fa fa-floppy-o"></i></button>
+        <button id="undo" class="edit"><i class="fa fa-undo"></i></button>
+        <button id="edit"><i class="fa fa-pencil"></i></button>
+        <button id="remove" class="edit w3-right"><i class="fa fa-trash"></i></button>
         <button id="maintainButton">Maintain</button>
         <div id="itemModel-maintain-Container">
             <span>Sensor ID : </span>
@@ -206,7 +240,7 @@
             <p>
             <button id="itemModel-maintain-confirm">Confirm</button>
         </div>
-        <p><form id="itemForm" onsubmit="return false;"/>
+        <p><form id="form" onsubmit="return false;"/>
       </div>
     </div>
   </div>
