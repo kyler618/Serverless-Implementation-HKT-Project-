@@ -672,6 +672,7 @@ var Users = window.Users || {};
           }
         }
         let data = {operation: "delete", pk: $('#itemForm')[0][1].value};
+        console.log(data);
         request(data, handleDeleteResponse);
       });
       $('#editButton').click( () => {
