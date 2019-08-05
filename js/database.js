@@ -941,7 +941,7 @@ var Users = window.Users || {};
             '<p class="addition">',
             '<input type="text" class="input-group-text" value=\'' + attribute + '\' readonly>',
             '<input type="text" class="form-control" name=\'' + attribute + '\' value=\'' + record + '\' readonly>',
-            '<button class="edit" onclick=""><i class="fa fa-close"></i></button>',
+            '<button class="edit" onclick="modal.remove_Input(this)"><i class="fa fa-close"></i></button>',
             '</p>'
           ]);
         }
@@ -995,7 +995,7 @@ var Users = window.Users || {};
         modal.remove_Input = null;
         modal.show_Modal = show_Modal;
         $('#quit').unbind();
-      });
+      } );
       createForm();
     };
     initialize();
