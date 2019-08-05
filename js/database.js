@@ -942,4 +942,7 @@ var Users = window.Users || {};
     }
   }
 
+  function getHtml(template) {
+    return template.join('\n');
+  }
 }(jQuery));
