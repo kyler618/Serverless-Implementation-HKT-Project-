@@ -829,6 +829,7 @@ var Users = window.Users || {};
         }
       }
     }
+    createForm();
     // for( let x=Object.keys(item).length-1 ; x>=0 ; x-- ){
     //   const fieldName = Object.getOwnPropertyNames(item)[x];
     //   if(fieldName == attributes[0]) continue;
