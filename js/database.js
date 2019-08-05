@@ -138,7 +138,7 @@ var Users = window.Users || {};
             $('#itemModel-maintain-select').unbind().empty();
             $('#itemModel-maintain-cancel').unbind().hide();
             $('#modalCancelButton').unbind();
-            return console.log('BUTTON END');
+            return;
           });
           const default_Option = document.createElement('option');
           default_Option.appendChild( document.createTextNode(' -- Select Field Engineer -- ') );
