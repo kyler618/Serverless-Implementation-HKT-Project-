@@ -805,10 +805,10 @@ var Users = window.Users || {};
     const itemForm = document.getElementById('itemForm');
     let id = event.target.classList[1];
     console.log('id = ', event.target.classList[1]);
-    let item = storedItem.find(record => {
+    let _item = storedItem.find(record => {
       return record.id == id
     });
-    console.log(item);
+    console.log(_item);
     const index = Array.from($('tr').not(':first')).map(x=>x.id).indexOf(event.target.classList[1]);
     const item = storedItem[index];
 
