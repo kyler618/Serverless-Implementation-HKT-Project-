@@ -843,6 +843,10 @@ var Users = window.Users || {};
   //
   // }
 
+  function remove_Input(button){
+    $(button).parent().remove();
+  }
+
   function modal(event){
     function initialize(){
       event.preventDefault();
@@ -873,7 +877,7 @@ var Users = window.Users || {};
             '<p class="temporary">',
             '<input type="text" class="input-group-text">',
             '<input type="text" class="form-control">',
-            '<button class="edit" onclick="modal.remove_Input(this)" style="display:inline"><i class="fa fa-close"></i></button>',
+            '<button class="edit" onclick="remove_Input(this)" style="display:inline"><i class="fa fa-close"></i></button>',
             '</p>'
           ]));
           $('.temporary button.edit').show();
