@@ -856,7 +856,7 @@ var Users = window.Users || {};
     }
     function show_Modal(id){
       function edit(){
-        modal.remove_Input = remove_Input;
+        // modal.remove_Input = remove_Input;
         $('#modal .edit').show();
         $('#undo').click( () => {
           $('#modal .edit').unbind().hide();
