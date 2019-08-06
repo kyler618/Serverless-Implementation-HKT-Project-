@@ -649,199 +649,199 @@ var Users = window.Users || {};
     request(data, handleScanResponse);
   }
 
-  // function handleRowClick(event) {
-  //   function buttonClick(){
-  //     pk = event.target.classList[1];
-  //     $('.addItem').hide().unbind();
-  //     $('#cancelButton').hide();
-  //     $('.editItem').show().unbind();
-  //
-  //     $('button.removeAttr').unbind();
-  //     $('#cancelButton').unbind();
-  //
-  //     $('#deleteButton').click( () => {
-  //       function handleDeleteResponse(results){
-  //         if(results.status=="ok")
-  //         {
-  //           hideModel();
-  //           handleScanResponse(results);
-  //           alert("Delete Item Successed.");
-  //         }
-  //         else
-  //         {
-  //           alert("Delete Item Failed.");
-  //         }
-  //       }
-  //       let data = {operation: "delete", pk: $('#itemForm')[0][1].value};
-  //       console.log(data);
-  //       request(data, handleDeleteResponse);
-  //     });
-  //     $('#editButton').click( () => {
-  //       $('.addItem').show();
-  //       $('#cancelButton').show();
-  //       $('.editItem').hide().unbind();
-  //       $('#modalCancelButton').unbind();
-  //       $("input[name='form_Input']").removeAttr("readOnly");
-  //       $('input#pk').attr('readOnly', true);
-  //
-  //       $('#addButton').click( () => {
-  //         const field = createFormInput("form_Input", "", false);
-  //         const value = createFormInput("form_Input", "", false);
-  //         field.classList.add('input-group-text');
-  //         value.classList.add('form-control');
-  //         const button = createRemoveButton();
-  //         button.onclick = event => {
-  //           event.preventDefault();
-  //           field.parentNode.removeChild(field);
-  //           value.parentNode.removeChild(value);
-  //           button.parentNode.removeChild(button);
-  //         };
-  //         itemForm.appendChild(field);
-  //         itemForm.appendChild(value);
-  //         itemForm.appendChild(button);
-  //         itemForm.appendChild(document.createElement("P"));
-  //       });
-  //       $('button.removeAttr').click( function(){
-  //         if(this.id===""){
-  //           return;
-  //         }
-  //         const attr = "#itemForm input." + this.id;
-  //         $(attr).remove();
-  //         $("#" + this.id).remove();
-  //       });
-  //       $('#confirmButton').click( () => {
-  //         function handleUpdateResponse(results){
-  //           if(results.status=="ok"){
-  //             $("input[name='form_Input']").attr("readOnly", true);
-  //             handleRowClick.buttonClick();
-  //             handleScanResponse(results);
-  //             alert("Update Item Successed.");
-  //           }
-  //           else {
-  //             handleRowClick.rollback();
-  //             alert("Update Item Failed.");
-  //           }
-  //         }
-  //         const inputs = getInputData();
-  //         if(inputs.incompleteError!==undefined){
-  //           alert("Incompleted Error");
-  //           return;
-  //         }
-  //         if(inputs.DuplicateError!==undefined){
-  //           alert("Duplicate Error");
-  //           return;
-  //         }
-  //         let changed = false;
-  //         const index = storedItem.map(x=>x[attributes[0]]).indexOf(pk);
-  //         let deleteAttr = Object.keys(storedItem[index]).filter(attr=>attr!=attributes[0]);
-  //         const data = {operation: "singleUpdate", pk: pk};
-  //         for(let x in inputs){
-  //           deleteAttr = deleteAttr.filter(attr=>attr!=x);
-  //           if(inputs[x]!=storedItem[index][x]){
-  //             changed = true;
-  //           }
-  //         }
-  //
-  //         // user not change but may delete records
-  //         if(changed){
-  //           // user have changed records
-  //           data.input = inputs;
-  //           // check user whether delete any record
-  //           data.delete = (deleteAttr.length!=0)? deleteAttr:null;
-  //           request(data, handleUpdateResponse);
-  //         }
-  //         else{
-  //           if(deleteAttr.length!=0){
-  //             // user have delete records
-  //             data.input = null;
-  //             data.delete = deleteAttr;
-  //             request(data, handleUpdateResponse);
-  //           }
-  //           else{
-  //             // user nothing to do
-  //             $('#itemForm').empty();
-  //             handleRowClick(event);
-  //           }
-  //         }
-  //       });
-  //       $('#cancelButton').click(function(){
-  //         $('#itemForm').empty();
-  //         handleRowClick(event);
-  //       });
-  //       $('#modalCancelButton').click(function(){
-  //         hideModel();
-  //         $('.addItem').unbind();
-  //         $('button.removeAttr').unbind();
-  //         $('#modalCancelButton').unbind();
-  //       });
-  //     });
-  //     $('#maintainButton').click( () => {
-  //       function handleResponse(results){
-  //         if(results.Items.length!=0){
-  //           user_Identity.listUsers(id, results.Items[0]);
-  //         }
-  //         else{
-  //           user_Identity.listUsers(id);
-  //         }
-  //       }
-  //       const id = event.target.classList[1];
-  //       const data = {operation: "scanMaintenanceRecord", target: id};
-  //       request(data, handleResponse, 'Maintenance');
-  //     });
-  //     $('#modalCancelButton').click(function(){
-  //       hideModel();
-  //       $('.editItem').unbind();
-  //       $('#modalCancelButton').unbind();
-  //     });
-  //   }
-  //   function rollback(){
-  //     event.target.classList.remove(event.target.classList[1]);
-  //     event.target.classList.add(pk);
-  //   }
-  //   handleRowClick.buttonClick = buttonClick;
-  //   handleRowClick.rollback = rollback;
-  //
-  //   event.preventDefault();
-  //   let pk;
-  //   const itemForm = document.getElementById('itemForm');
-  //   let id = event.target.classList[1];
-  //
-  //
-  //   function initialize(){
-  //     card.show_Modal = show_Modal;
-  //   }
-  //   function show_Modal(id){
-  //     function createForm(){
-  //       function createInput(attribute, record){
-  //         return getHtml([
-  //           '<p class="addition">',
-  //           '<input type="text" class="input-group-text" value=\'' + attribute + '\' readonly>',
-  //           '<input type="text" class="form-control" name=\'' + attribute + '\' value=\'' + record + '\' readonly>',
-  //           '<button class="edit" onclick=""><i class="fa fa-close"></i></button>',
-  //           '</p>'
-  //         ]);
-  //       }
-  //       for(let key in item){
-  //         if(key=="id") continue;
-  //         let $input = $('#itemModel input.form-control[name=\'' + key + '\']');
-  //         if($input.length != 0 ){
-  //           $('#itemModel input.input-group-text[value=\'' + key + '\']').val(key); // for undo
-  //           $input.val(item[key]);
-  //         }
-  //         else{
-  //           $('#itemForm').append(createInput(key, item[key]));
-  //         }
-  //       }
-  //     }
-  //     let item = storedItem.find(record => {
-  //     return record.id == id
-  //   });
-  //     $('#itemModel').show();
-  //     createForm();
-  //   };
-  //   // buttonClick();
-  //
-  // }
+  function handleRowClick(event) {
+    function buttonClick(){
+      pk = event.target.classList[1];
+      $('.addItem').hide().unbind();
+      $('#cancelButton').hide();
+      $('.editItem').show().unbind();
+
+      $('button.removeAttr').unbind();
+      $('#cancelButton').unbind();
+
+      $('#deleteButton').click( () => {
+        function handleDeleteResponse(results){
+          if(results.status=="ok")
+          {
+            hideModel();
+            handleScanResponse(results);
+            alert("Delete Item Successed.");
+          }
+          else
+          {
+            alert("Delete Item Failed.");
+          }
+        }
+        let data = {operation: "delete", pk: $('#itemForm')[0][1].value};
+        console.log(data);
+        request(data, handleDeleteResponse);
+      });
+      $('#editButton').click( () => {
+        $('.addItem').show();
+        $('#cancelButton').show();
+        $('.editItem').hide().unbind();
+        $('#modalCancelButton').unbind();
+        $("input[name='form_Input']").removeAttr("readOnly");
+        $('input#pk').attr('readOnly', true);
+
+        $('#addButton').click( () => {
+          const field = createFormInput("form_Input", "", false);
+          const value = createFormInput("form_Input", "", false);
+          field.classList.add('input-group-text');
+          value.classList.add('form-control');
+          const button = createRemoveButton();
+          button.onclick = event => {
+            event.preventDefault();
+            field.parentNode.removeChild(field);
+            value.parentNode.removeChild(value);
+            button.parentNode.removeChild(button);
+          };
+          itemForm.appendChild(field);
+          itemForm.appendChild(value);
+          itemForm.appendChild(button);
+          itemForm.appendChild(document.createElement("P"));
+        });
+        $('button.removeAttr').click( function(){
+          if(this.id===""){
+            return;
+          }
+          const attr = "#itemForm input." + this.id;
+          $(attr).remove();
+          $("#" + this.id).remove();
+        });
+        $('#confirmButton').click( () => {
+          function handleUpdateResponse(results){
+            if(results.status=="ok"){
+              $("input[name='form_Input']").attr("readOnly", true);
+              handleRowClick.buttonClick();
+              handleScanResponse(results);
+              alert("Update Item Successed.");
+            }
+            else {
+              handleRowClick.rollback();
+              alert("Update Item Failed.");
+            }
+          }
+          const inputs = getInputData();
+          if(inputs.incompleteError!==undefined){
+            alert("Incompleted Error");
+            return;
+          }
+          if(inputs.DuplicateError!==undefined){
+            alert("Duplicate Error");
+            return;
+          }
+          let changed = false;
+          const index = storedItem.map(x=>x[attributes[0]]).indexOf(pk);
+          let deleteAttr = Object.keys(storedItem[index]).filter(attr=>attr!=attributes[0]);
+          const data = {operation: "singleUpdate", pk: pk};
+          for(let x in inputs){
+            deleteAttr = deleteAttr.filter(attr=>attr!=x);
+            if(inputs[x]!=storedItem[index][x]){
+              changed = true;
+            }
+          }
+
+          // user not change but may delete records
+          if(changed){
+            // user have changed records
+            data.input = inputs;
+            // check user whether delete any record
+            data.delete = (deleteAttr.length!=0)? deleteAttr:null;
+            request(data, handleUpdateResponse);
+          }
+          else{
+            if(deleteAttr.length!=0){
+              // user have delete records
+              data.input = null;
+              data.delete = deleteAttr;
+              request(data, handleUpdateResponse);
+            }
+            else{
+              // user nothing to do
+              $('#itemForm').empty();
+              handleRowClick(event);
+            }
+          }
+        });
+        $('#cancelButton').click(function(){
+          $('#itemForm').empty();
+          handleRowClick(event);
+        });
+        $('#modalCancelButton').click(function(){
+          hideModel();
+          $('.addItem').unbind();
+          $('button.removeAttr').unbind();
+          $('#modalCancelButton').unbind();
+        });
+      });
+      $('#maintainButton').click( () => {
+        function handleResponse(results){
+          if(results.Items.length!=0){
+            user_Identity.listUsers(id, results.Items[0]);
+          }
+          else{
+            user_Identity.listUsers(id);
+          }
+        }
+        const id = event.target.classList[1];
+        const data = {operation: "scanMaintenanceRecord", target: id};
+        request(data, handleResponse, 'Maintenance');
+      });
+      $('#modalCancelButton').click(function(){
+        hideModel();
+        $('.editItem').unbind();
+        $('#modalCancelButton').unbind();
+      });
+    }
+    function rollback(){
+      event.target.classList.remove(event.target.classList[1]);
+      event.target.classList.add(pk);
+    }
+    handleRowClick.buttonClick = buttonClick;
+    handleRowClick.rollback = rollback;
+
+    event.preventDefault();
+    let pk;
+    const itemForm = document.getElementById('itemForm');
+    let id = event.target.classList[1];
+
+
+    function initialize(){
+      card.show_Modal = show_Modal;
+    }
+    function show_Modal(id){
+      function createForm(){
+        function createInput(attribute, record){
+          return getHtml([
+            '<p class="addition">',
+            '<input type="text" class="input-group-text" value=\'' + attribute + '\' readonly>',
+            '<input type="text" class="form-control" name=\'' + attribute + '\' value=\'' + record + '\' readonly>',
+            '<button class="edit" onclick=""><i class="fa fa-close"></i></button>',
+            '</p>'
+          ]);
+        }
+        for(let key in item){
+          if(key=="id") continue;
+          let $input = $('#itemModel input.form-control[name=\'' + key + '\']');
+          if($input.length != 0 ){
+            $('#itemModel input.input-group-text[value=\'' + key + '\']').val(key); // for undo
+            $input.val(item[key]);
+          }
+          else{
+            $('#itemForm').append(createInput(key, item[key]));
+          }
+        }
+      }
+      let item = storedItem.find(record => {
+      return record.id == id
+    });
+      $('#itemModel').show();
+      createForm();
+    };
+    // buttonClick();
+
+  }
 
   function modal(event){
     function initialize(){
@@ -855,13 +855,13 @@ var Users = window.Users || {};
         modal.remove_Input = remove_Input;
         $('#modal .edit').show();
         $('#undo').click( () => {
+          modal.remove_Input = null;
           $('#modal .edit').unbind().hide();
           $('#edit').show().click(edit);
           $('#complete').show().click(complete);
           $('#modal input').attr('readonly', true);
           $('.temporary').remove();
           createForm();
-          modal.remove_Input = null;
         });
         $('#add').click( () => {
           $('#form').append(getHtml([
@@ -875,6 +875,21 @@ var Users = window.Users || {};
         });
         $('#save').click( () => {
           function handleResponse(results){
+            if(results.status=="ok"){
+              let index = storedItem.indexOf(item);
+              // item = items;
+              storedItem[index] = item = items;
+              $('#modal .temporary').removeClass('temporary');
+              $('#undo').click();
+              // $("input[name='form_Input']").attr("readOnly", true);
+              // handleRowClick.buttonClick();
+              handleScanResponse(results);
+              alert("Update Item Successed.");
+            }
+            else {
+              handleRowClick.rollback();
+              alert("Update Item Failed.");
+            }
             if(results=="ok"){
               // let index = records.indexOf(item);
               // items.id = id;
@@ -889,7 +904,7 @@ var Users = window.Users || {};
           }
           const items = {};
           const attributes = [];
-          const input = $('#card input');
+          const input = $('#modal input');
           let changed = false;
           for( let x = 0 ; x < input.length ; x++ ){
             const attribute = input[x++];
@@ -923,7 +938,7 @@ var Users = window.Users || {};
           if( !changed && deleteItem.length==0){
             return $('#undo').click();
           }
-          const data = {table:"Hardware", operation: "maintainSensor", pk: id};
+          const data = {table:"Hardware", operation: "table_Update", pk: id};
           data.input = (changed)? items:null;
           data.delete = (deleteItem.length!=0)? deleteItem:null;
           httpRequest.data = JSON.stringify(data);
@@ -957,25 +972,6 @@ var Users = window.Users || {};
           }
         }
       }
-      function complete(){
-        function handleResponse(results){
-          if(results=="ok"){
-            httpRequest.data = JSON.stringify(data_getRecord);
-            httpRequest.success = function(results){
-              success_getRecord(results);
-              $('#quit').click();
-            }
-            $.ajax(httpRequest);
-          }
-        }
-        // let target = current_Jobs.find(current_Job => {
-        //   return current_Job.inventory_ID == id;
-        // });
-        data_confirm = {operation: "completeMaintenance", table: "Maintenance", target: id};
-        httpRequest.data = JSON.stringify(data_confirm);
-        httpRequest.success = handleResponse;
-        $.ajax(httpRequest);
-      };
       function remove_Input(button){
         $(button).parent().remove();
       }
@@ -992,8 +988,8 @@ var Users = window.Users || {};
         $('.addition').remove();
         $('.temporary').remove();
         $('#modal .form-control').val('');
-        modal.remove_Input = null;
         modal.show_Modal = show_Modal;
+        modal.remove_Input = null;
         $('#quit').unbind();
       } );
       createForm();
