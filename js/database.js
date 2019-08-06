@@ -861,7 +861,7 @@ var Users = window.Users || {};
           $('#modal input').attr('readonly', true);
           $('.temporary').remove();
           createForm();
-          modal.remove_Input = null;
+          // modal.remove_Input = null;
         });
         $('#add').click( () => {
           $('#form').append(getHtml([
@@ -992,7 +992,7 @@ var Users = window.Users || {};
         $('.addition').remove();
         $('.temporary').remove();
         $('#modal .form-control').val('');
-        modal.remove_Input = null;
+        // modal.remove_Input = null;
         modal.show_Modal = show_Modal;
         $('#quit').unbind();
       } );
