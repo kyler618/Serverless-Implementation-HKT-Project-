@@ -878,7 +878,7 @@ var Users = window.Users || {};
               let index = storedItem.indexOf(item);
               // item = items;
               storedItem[index] = item = items;
-              $('#modal .temporary').removeClass('temporary');
+              // $('#modal .temporary').removeClass('temporary');
               $('#undo').click();
               // $("input[name='form_Input']").attr("readOnly", true);
               // handleRowClick.buttonClick();

@@ -101,7 +101,7 @@ function card(){
         $('#edit').show().click(edit);
         $('#complete').show().click(complete);
         $('#card input').attr('readonly', true);
-        $('.temporary').remove();
+        $('#card .temporary').remove();
         createForm();
         card.remove_Input = null;
       });
