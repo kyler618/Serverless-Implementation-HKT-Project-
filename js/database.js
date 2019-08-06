@@ -114,7 +114,7 @@ var Users = window.Users || {};
             return item.id = id;
           });
           console.log(sensorID);
-          $('#maintain-sensorID').html(sensorID);
+          $('#maintain-sensorID').html(sensorID.sensor_ID);
           let users = (data.Users).map(user=>user.Username);
           $('#form').hide();
           $('.edit').hide();
