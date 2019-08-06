@@ -107,10 +107,11 @@ var Users = window.Users || {};
             request(data, handleResponse, 'Maintenance');
           });
         }
-        sensorID = storedItem.find( item => {
-          return item.id = id;
+        sensorID = storedItem.reduce( item => {
+          if(item.id == id) return item.Sensor_ID;
         });
-        $('#maintain-sensorID').html(sensorID.Sensor_ID);
+        console.log(sensorID);
+        $('#maintain-sensorID').html(sensorID);
         // let users = (data.Users).map(user=>user.Username);
         // $('#form').hide();
         // $('#edit').hide();
