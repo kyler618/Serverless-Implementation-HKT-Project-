@@ -117,10 +117,14 @@ var Users = window.Users || {};
           $('#maintain-sensorID').html(sensorID.sensor_ID);
           let users = (data.Users).map(user=>user.Username);
           $('#form').hide();
+          $('#edit').hide();
+          $('.maintain').hide();
           $('.edit').hide();
           $('#maintain-Container').show();
           $('#undo').show().click( () => {
             $('#form').show();
+            $('#edit').show();
+            $('.maintain').show();
             $('.edit').show();
             $('#maintain-Container').hide();
             $('#maintain-confirm').unbind().hide();
