@@ -884,7 +884,6 @@ var Users = window.Users || {};
               });
               $('#undo').click();
               handleScanResponse(results);
-              // alert("Update Item Successed.");
             }
             else {
               alert("Update Item Failed.");
@@ -901,12 +900,12 @@ var Users = window.Users || {};
             if(attribute.value==""||record.value==""){
               // items.incompleteError = x-1;
               alert("Incompleted Error");
-              break;
+              return;
             }
             if(attributes.includes(attribute.value)){
               // items.DuplicateError = x-1;
               alert("Duplicate Error");
-              break;
+              return;
             }
             attributes.push(attribute.value);
             items[attribute.value] = record.value;
@@ -921,7 +920,6 @@ var Users = window.Users || {};
           }
           var deleteItem = Object.keys(item).filter( attribute => {
             if( attribute!="id" && !(attributes.includes(attribute)) ){
-              // $('#form input.form-control[name=\'' + attribute + '\']').parent().remove();
               return attribute;
             }
           });
