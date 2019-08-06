@@ -847,8 +847,12 @@ var Users = window.Users || {};
     function initialize(){
       event.preventDefault();
       modal.show_Modal = show_Modal;
+      modal.remove_Input = remove_Input;
       var id = event.target.classList[1];
       show_Modal(id);
+    }
+    function remove_Input(button){
+      $(button).parent().remove();
     }
     function show_Modal(id){
       function edit(){
@@ -869,7 +873,7 @@ var Users = window.Users || {};
             '<p class="temporary">',
             '<input type="text" class="input-group-text">',
             '<input type="text" class="form-control">',
-            '<button class="edit" onclick="modal.remove_Input('this')" style="display:inline"><i class="fa fa-close"></i></button>',
+            '<button class="edit" onclick="modal.remove_Input(this)" style="display:inline"><i class="fa fa-close"></i></button>',
             '</p>'
           ]));
           $('.temporary button.edit').show();
