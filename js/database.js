@@ -110,8 +110,8 @@ var Users = window.Users || {};
         let target = storedItem.find( item => {
           return item.id == id ;
         });
-        console.log(sensorID);
-        $('#maintain-sensorID').html(sensorID.Sensor_ID);
+        console.log(target);
+        $('#maintain-sensorID').html(target[constantAttributes[0]]);
         // let users = (data.Users).map(user=>user.Username);
         // $('#form').hide();
         // $('#edit').hide();
