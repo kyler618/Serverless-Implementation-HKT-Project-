@@ -869,7 +869,7 @@ var Users = window.Users || {};
             '<p class="temporary">',
             '<input type="text" class="input-group-text">',
             '<input type="text" class="form-control">',
-            '<button class="edit" onclick="modal.remove_Input(this)" style="display:inline"><i class="fa fa-close"></i></button>',
+            '<button class="edit" onclick="modal.remove_Input('this')" style="display:inline"><i class="fa fa-close"></i></button>',
             '</p>'
           ]));
           $('.temporary button.edit').show();
