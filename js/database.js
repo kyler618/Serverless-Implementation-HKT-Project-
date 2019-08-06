@@ -26,13 +26,12 @@ var Users = window.Users || {};
     targetTable = "Customer_and_Software"
     constantAttributes.push('Tenant_ID_number');
     selectFields.push('Billed_customer_name', 'Billed_Customer_Contact', 'Enduser_address_for_reference');
-    $('#maintain').hide();
     break;
     case "Hardware":
     constantAttributes.push('Sensor_ID');
     selectFields.push('Enduser_name', 'Physical_Site_Address', 'Device_Type');
     constantAttributes = constantAttributes.concat(selectFields);
-    // $('#maintain').addClass('edit');
+    $('#maintain').addClass('.maintain');
     $('#selector').show();
     break;
   }
@@ -99,11 +98,11 @@ var Users = window.Users || {};
         }
         else {
           function show_Maintain_Cancel_Button(id){
-            $('#itemModel-maintain-select').prop('disabled', 'disabled');
-            $('#itemModel-maintain-cancel').show().click( () => {
+            $('#maintain-select').prop('disabled', 'disabled');
+            $('#maintain-cancel').show().click( () => {
               function handleResponse(results){
-                $('#itemModel-maintain-cancel').unbind().hide();
-                $('#itemModel-maintain-select').prop('disabled', false);
+                $('#maintain-cancel').unbind().hide();
+                $('#maintain-select').prop('disabled', false);
                 default_Option.selected = true;
                 alert('Maintenance Request Canceled');
               }
@@ -111,55 +110,58 @@ var Users = window.Users || {};
               request(data, handleResponse, 'Maintenance');
             });
           }
-          $('#itemModel-maintain-sensorID').html($('#itemForm input.Sensor_ID')[1].value);
+          $('#maintain-sensorID').html($('#form input.Sensor_ID')[1].value);
           let users = (data.Users).map(user=>user.Username);
-          $('#itemForm').hide();
-          $('.editItem').hide();
-          $('#itemModel-maintain-Container').show();
-          $('#cancelButton').show().click( () => {
-            $('#itemForm').show();
-            $('.editItem').show();
-            $('#itemModel-maintain-Container').hide();
-            $('#itemModel-maintain-confirm').unbind().hide();
-            $('#itemModel-maintain-sensorID').html("");
-            $('#itemModel-maintain-select').unbind().empty();
-            $('#itemModel-maintain-cancel').unbind().hide();
-            $('#cancelButton').unbind().hide();
+          $('#form').hide();
+          $('.edit').hide();
+          $('#maintain-Container').show();
+          $('#undo').show().click( () => {
+            $('#form').show();
+            $('.edit').show();
+            $('#maintain-Container').hide();
+            $('#maintain-confirm').unbind().hide();
+            $('#maintain-sensorID').html("");
+            $('#maintain-select').unbind().empty();
+            $('#maintain-cancel').unbind().hide();
+            $('#undo').unbind().hide();
           });
-          $('#modalCancelButton').unbind();
-          $('#modalCancelButton').click( () => {
-            hideModel();
-            $('#itemForm').show();
-            $('.editItem').unbind();
-            $('#itemModel-maintain-Container').hide();
-            $('#itemModel-maintain-confirm').unbind().hide();
-            $('#cancelButton').unbind().hide();
-            $('#itemModel-maintain-sensorID').html("");
-            $('#itemModel-maintain-select').unbind().empty();
-            $('#itemModel-maintain-cancel').unbind().hide();
-            $('#modalCancelButton').unbind();
+          $('#quit').unbind();
+          $('#quit').click( () => {
+            $('#form').empty();
+            $('.addItem').hide();
+            $('.edit').hide();
+            $('#modal').hide();
+            $('#form').show();
+            $('.edit').unbind();
+            $('#maintain-Container').hide();
+            $('#maintain-confirm').unbind().hide();
+            $('#undo').unbind().hide();
+            $('#maintain-sensorID').html("");
+            $('#maintain-select').unbind().empty();
+            $('#maintain-cancel').unbind().hide();
+            $('#quit').unbind();
             return;
           });
           const default_Option = document.createElement('option');
           default_Option.appendChild( document.createTextNode(' -- Select Field Engineer -- ') );
           default_Option.disabled = true;
           default_Option.selected = true;
-          $('#itemModel-maintain-select').prop('disabled', false).append(default_Option);
-          $('#itemModel-maintain-select').change( event => {
+          $('#maintain-select').prop('disabled', false).append(default_Option);
+          $('#maintain-select').change( event => {
             if(event.target.value != null){
-              $('#itemModel-maintain-confirm').show();
+              $('#maintain-confirm').show();
             }
           });
-          $('#itemModel-maintain-confirm').click( () => {
+          $('#maintain-confirm').click( () => {
             function handleResponse(results){
               show_Maintain_Cancel_Button(results);
-              $('#itemModel-maintain-confirm').hide();
+              $('#maintain-confirm').hide();
               alert('Request Confirm');
             }
             const inputs = {};
             inputs.inventory_ID = id;
-            inputs.sensor_ID = $('#itemModel-maintain-sensorID').html();
-            inputs.field_Engineer = $('#itemModel-maintain-select').val();
+            inputs.sensor_ID = $('#maintain-sensorID').html();
+            inputs.field_Engineer = $('#maintain-select').val();
             const data = {operation: "maintainRequest", input: inputs};
             request(data, handleResponse, 'Maintenance');
           });
@@ -167,7 +169,7 @@ var Users = window.Users || {};
             const option = document.createElement('option');
             option.appendChild( document.createTextNode(user) );
             option.value = user;
-            $('#itemModel-maintain-select').append(option);
+            $('#maintain-select').append(option);
             if(oldRecord!==undefined && user==oldRecord.field_Engineer){
               option.selected = true;
               show_Maintain_Cancel_Button(oldRecord.id);
@@ -629,10 +631,10 @@ var Users = window.Users || {};
   }
 
   function hideModel(){
-    $('#itemForm').empty();
+    $('#form').empty();
     $('.addItem').hide();
-    $('.editItem').hide();
-    $('#itemModel').hide();
+    $('.edit').hide();
+    $('#modal').hide();
   }
 
   function request(data, success, table) {
@@ -663,7 +665,7 @@ var Users = window.Users || {};
         function handleDeleteResponse(results){
           if(results.status=="ok")
           {
-            hideModel();
+            // hideModel();
             handleScanResponse(results);
             alert("Delete Item Successed.");
           }
@@ -769,7 +771,7 @@ var Users = window.Users || {};
           handleRowClick(event);
         });
         $('#modalCancelButton').click(function(){
-          hideModel();
+          // hideModel();
           $('.addItem').unbind();
           $('button.removeAttr').unbind();
           $('#modalCancelButton').unbind();
@@ -789,7 +791,7 @@ var Users = window.Users || {};
         request(data, handleResponse, 'Maintenance');
       });
       $('#modalCancelButton').click(function(){
-        hideModel();
+        // hideModel();
         $('.editItem').unbind();
         $('#modalCancelButton').unbind();
       });
@@ -936,6 +938,7 @@ var Users = window.Users || {};
         });
         $('#modal .form-control').removeAttr('readonly');
         $('#modal .input-group-text:not(.readonly)').removeAttr('readonly');
+        $('.maintain').unbind().hide();
         $('#edit').unbind().hide();
       }
       function createForm(){
@@ -954,10 +957,24 @@ var Users = window.Users || {};
       function remove_Input(button){
         $(button).parent().remove();
       }
+      function maintain(){
+        function handleResponse(results){
+          if(results.Items.length!=0){
+            user_Identity.listUsers(id, results.Items[0]);
+          }
+          else{
+            user_Identity.listUsers(id);
+          }
+        }
+        const id = event.target.classList[1];
+        const data = {operation: "scanMaintenanceRecord", target: id};
+        request(data, handleResponse, 'Maintenance');
+      }
       let item = storedItem.find(record => {
       return record.id == id
     });
       $('#modal').show();
+      $('.maintain').show().click(maintain);
       $('#edit').click(edit);
       $('#quit').click( () => {
         $('#edit').unbind().show();

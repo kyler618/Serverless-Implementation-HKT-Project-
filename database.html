@@ -152,20 +152,20 @@
     #modal .form-control :not([readonly]){
       background-color: #ffdcb980;
     }
-    #modal #maintainButton{
+    #modal #maintain{
       display: none;
     }
-    #modal #itemModel-maintain-Container{
+    #modal #maintain-Container{
       display:none;
       width:fit-content;
     }
-    #modal #itemModel-maintain-Container #itemModel-maintain-select{
+    #modal #maintain-select{
       width: auto;
     }
-    #modal #itemModel-maintain-Container #itemModel-maintain-cancel{
+    #modal #maintain-cancel{
       display: none;
     }
-    #modal #itemModel-maintain-Container #itemModel-maintain-confirm{
+    #modal #maintain-confirm{
       display: none;
       float:right;
     }
@@ -229,16 +229,16 @@
         <button id="edit"><i class="fa fa-pencil"></i></button>
         <button id="remove" class="edit w3-right"><i class="fa fa-trash"></i></button>
         <button id="maintain">Maintain</button>
-        <div id="itemModel-maintain-Container">
+        <div id="maintain-Container">
             <span>Sensor ID : </span>
-            <span id="itemModel-maintain-sensorID"></span>
+            <span id="maintain-sensorID"></span>
             <p>
             <span>Field Engineer : </span>
-            <select id="itemModel-maintain-select" class="select custom-select">
+            <select id="maintain-select" class="select custom-select">
             </select>
-            <button id="itemModel-maintain-cancel"><i class='fa fa-close'></i></button>
+            <button id="maintain-cancel"><i class='fa fa-close'></i></button>
             <p>
-            <button id="itemModel-maintain-confirm">Confirm</button>
+            <button id="maintain-confirm">Confirm</button>
         </div>
         <p><form id="form" onsubmit="return false;"/>
       </div>
