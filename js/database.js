@@ -864,6 +864,7 @@ var Users = window.Users || {};
           // modal.remove_Input = null;
         });
         $('#add').click( () => {
+          console.log(modal.remove_Input);
           $('#form').append(getHtml([
             '<p class="temporary">',
             '<input type="text" class="input-group-text">',
