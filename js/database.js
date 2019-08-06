@@ -31,7 +31,7 @@ var Users = window.Users || {};
     constantAttributes.push('Sensor_ID');
     selectFields.push('Enduser_name', 'Physical_Site_Address', 'Device_Type');
     constantAttributes = constantAttributes.concat(selectFields);
-    $('#maintain').addClass('.maintain');
+    $('#maintain').addClass('maintain');
     $('#selector').show();
     break;
   }
