@@ -813,7 +813,7 @@ var Users = window.Users || {};
       function createForm(){
         function createInput(attribute, record){
           return getHtml([
-            '<p>',
+            '<p class="addition">',
             '<input type="text" class="input-group-text" value=\'' + attribute + '\' readonly>',
             '<input type="text" class="form-control" name=\'' + attribute + '\' value=\'' + record + '\' readonly>',
             '<button class="edit" onclick=""><i class="fa fa-close"></i></button>',
@@ -918,6 +918,7 @@ var Users = window.Users || {};
           }
           let deleteItem = Object.keys(item).filter( attribute => {
             if( attribute!="id" && !(attributes.includes(attribute)) ){
+              $('#form input.form-control[name=\'' + attribute + '\']').parent().remove();
               return attribute;
             }
           });
