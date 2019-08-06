@@ -851,7 +851,7 @@ var Users = window.Users || {};
     function initialize(){
       event.preventDefault();
       modal.show_Modal = show_Modal;
-      modal.remove_Input = remove_Input;
+      // modal.remove_Input = remove_Input;
       var id = event.target.classList[1];
       show_Modal(id);
     }
