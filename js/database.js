@@ -31,7 +31,7 @@ var Users = window.Users || {};
     case "Hardware":
     constantAttributes.push('Sensor_ID');
     selectFields.push('Enduser_name', 'Physical_Site_Address', 'Device_Type');
-    constantAttributes.concat(selectFields);
+    constantAttributes = constantAttributes.concat(selectFields);
     $('#maintainButton').addClass('editItem');
     $('#selector').show();
     break;
