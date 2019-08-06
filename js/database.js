@@ -146,17 +146,18 @@ var Users = window.Users || {};
           // $('#maintain-cancel').unbind().hide();
           // $('#quit').unbind();
         });
-        
-        // const default_Option = document.createElement('option');
-        // default_Option.appendChild( document.createTextNode(' -- Select Field Engineer -- ') );
-        // default_Option.disabled = true;
-        // default_Option.selected = true;
-        // $('#maintain-select').prop('disabled', false).append(default_Option);
-        // $('#maintain-select').change( event => {
-        //   if(event.target.value != null){
-        //     $('#maintain-confirm').show();
-        //   }
-        // });
+
+        const default_Option = document.createElement('option');
+        default_Option.appendChild( document.createTextNode(' -- Select Field Engineer -- ') );
+        default_Option.disabled = true;
+        default_Option.selected = true;
+        $('#maintain-select').prop('disabled', false).append(default_Option);
+        $('#maintain-select').change( event => {
+          if(event.target.value != null){
+            $('#maintain-confirm').show();
+          }
+        });
+
         // $('#maintain-confirm').click( () => {
         //   function handleResponse(results){
         //     show_Maintain_Cancel_Button(results);
