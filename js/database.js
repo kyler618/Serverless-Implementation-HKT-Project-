@@ -158,29 +158,30 @@ var Users = window.Users || {};
           }
         });
 
-        // $('#maintain-confirm').click( () => {
-        //   function handleResponse(results){
-        //     show_Maintain_Cancel_Button(results);
-        //     $('#maintain-confirm').hide();
-        //     alert('Request Confirm');
-        //   }
-        //   const inputs = {};
-        //   inputs.inventory_ID = id;
-        //   inputs.sensor_ID = $('#maintain-sensorID').html();
-        //   inputs.field_Engineer = $('#maintain-select').val();
-        //   const data = {operation: "maintainRequest", input: inputs};
-        //   request(data, handleResponse, 'Maintenance');
-        // });
-        // users.forEach(user => {
-        //   const option = document.createElement('option');
-        //   option.appendChild( document.createTextNode(user) );
-        //   option.value = user;
-        //   $('#maintain-select').append(option);
-        //   if(oldRecord!==undefined && user==oldRecord.field_Engineer){
-        //     option.selected = true;
-        //     show_Maintain_Cancel_Button(oldRecord.id);
-        //   }
-        // });
+        $('#maintain-confirm').click( () => {
+          function handleResponse(results){
+            show_Maintain_Cancel_Button(results);
+            $('#maintain-confirm').hide();
+            alert('Request Confirm');
+          }
+          const inputs = {};
+          inputs.inventory_ID = id;
+          inputs.sensor_ID = $('#maintain-sensorID').html();
+          inputs.field_Engineer = $('#maintain-select').val();
+          const data = {operation: "maintainRequest", input: inputs};
+          request(data, handleResponse, 'Maintenance');
+        });
+
+        users.forEach(user => {
+          const option = document.createElement('option');
+          option.appendChild( document.createTextNode(user) );
+          option.value = user;
+          $('#maintain-select').append(option);
+          if(oldRecord!==undefined && user==oldRecord.field_Engineer){
+            option.selected = true;
+            show_Maintain_Cancel_Button(oldRecord.id);
+          }
+        });
 
       });
     }
