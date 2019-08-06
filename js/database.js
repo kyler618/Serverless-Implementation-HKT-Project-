@@ -1,6 +1,5 @@
 var Users = window.Users || {};
 
-
   user_Identity();
   const selector = [];
   const attributes = [];
@@ -29,8 +28,9 @@ var Users = window.Users || {};
     selectFields.push('Billed_customer_name', 'Billed_Customer_Contact', 'Enduser_address_for_reference');
     break;
     case "Hardware":
+    constantAttributes.push('Sensor_ID');
     selectFields.push('Enduser_name', 'Physical_Site_Address', 'Device_Type');
-    constantAttributes = constantAttributes.push('Sensor_ID').concat(selectFields);
+    constantAttributes = constantAttributes.concat(selectFields);
     $('#maintainButton').addClass('editItem');
     $('#selector').show();
     break;
