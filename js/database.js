@@ -921,7 +921,7 @@ var Users = window.Users || {};
           }
           var deleteItem = Object.keys(item).filter( attribute => {
             if( attribute!="id" && !(attributes.includes(attribute)) ){
-              $('#form input.form-control[name=\'' + attribute + '\']').parent().remove();
+              // $('#form input.form-control[name=\'' + attribute + '\']').parent().remove();
               return attribute;
             }
           });
