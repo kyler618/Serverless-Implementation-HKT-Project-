@@ -31,7 +31,7 @@ var Users = window.Users || {};
     case "Hardware":
     constantAttributes.push('Sensor_ID');
     selectFields.push('Enduser_name', 'Physical_Site_Address', 'Device_Type');
-
+    constantAttributes.concat(selectFields);
     $('#maintainButton').addClass('editItem');
     $('#selector').show();
     break;
@@ -848,6 +848,7 @@ var Users = window.Users || {};
       event.preventDefault();
       modal.show_Modal = show_Modal;
       var id = event.target.classList[1];
+      for()
       show_Modal(id);
     }
     function show_Modal(id){
@@ -876,12 +877,8 @@ var Users = window.Users || {};
           function handleResponse(results){
             if(results.status=="ok"){
               let index = storedItem.indexOf(item);
-              // item = items;
               storedItem[index] = item = items;
-              // $('#modal .temporary').removeClass('temporary');
               $('#undo').click();
-              // $("input[name='form_Input']").attr("readOnly", true);
-              // handleRowClick.buttonClick();
               handleScanResponse(results);
               alert("Update Item Successed.");
             }
@@ -938,15 +935,6 @@ var Users = window.Users || {};
         $('#edit').unbind().hide();
       }
       function createForm(){
-        function createInput(attribute, record){
-          return getHtml([
-            '<p class="addition">',
-            '<input type="text" class="input-group-text" value=\'' + attribute + '\' readonly>',
-            '<input type="text" class="form-control" name=\'' + attribute + '\' value=\'' + record + '\' readonly>',
-            '<button class="edit" onclick="modal.remove_Input(this)"><i class="fa fa-close"></i></button>',
-            '</p>'
-          ]);
-        }
         for(let key in item){
           if(key=="id") continue;
           let $input = $('#modal input.form-control[name=\'' + key + '\']');
@@ -972,6 +960,7 @@ var Users = window.Users || {};
         $('#modal .edit').unbind().hide();
         $('#modal').hide();
         $('.addition').remove();
+        $('.addition').remove();
         $('.temporary').remove();
         $('#modal .form-control').val('');
         modal.show_Modal = show_Modal;
@@ -980,6 +969,15 @@ var Users = window.Users || {};
       } );
       createForm();
     };
+    function createInput(attribute, record){
+      return getHtml([
+        '<p class="addition">',
+        '<input type="text" class="input-group-text" value=\'' + attribute + '\' readonly>',
+        '<input type="text" class="form-control" name=\'' + attribute + '\' value=\'' + record + '\' readonly>',
+        '<button class="edit" onclick="modal.remove_Input(this)"><i class="fa fa-close"></i></button>',
+        '</p>'
+      ]);
+    }
     initialize();
   }
 
@@ -1022,7 +1020,7 @@ var Users = window.Users || {};
           }
         });
       });
-      constantAttributes = constantAttributes.concat(selectFields);
+      // constantAttributes = constantAttributes.concat(selectFields);
       constantAttributesIndex = constantAttributes.map(attribute => $.inArray(attribute,attributes));
     }
     function insertBodyRow(){
