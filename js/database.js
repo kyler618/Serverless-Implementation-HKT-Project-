@@ -963,6 +963,9 @@ var Users = window.Users || {};
       }
       function maintain(){
         function handleResponse(results){
+          modal.edit = edit;
+          modal.maintain = maintain;
+          modal.quit = quit;
           if(results.Items.length!=0){
             user_Identity.listUsers(id, results.Items[0]);
           }
@@ -974,22 +977,23 @@ var Users = window.Users || {};
         const data = {operation: "scanMaintenanceRecord", target: id};
         request(data, handleResponse, 'Maintenance');
       }
+      function quit(){
+        $('#edit').unbind().show();
+        $('#modal .edit').unbind().hide();
+        $('#modal').hide();
+        $('#form p').remove();
+        $('#modal .form-control').val('');
+        $('#quit').unbind();
+        modal.show_Modal = show_Modal;
+        modal.remove_Input = null;
+      }
       let item = storedItem.find(record => {
       return record.id == id
     });
       $('#modal').show();
       $('.maintain').show().click(maintain);
       $('#edit').click(edit);
-      $('#quit').click( () => {
-        $('#edit').unbind().show();
-        $('#modal .edit').unbind().hide();
-        $('#modal').hide();
-        $('#form p').remove();
-        $('#modal .form-control').val('');
-        modal.show_Modal = show_Modal;
-        modal.remove_Input = null;
-        $('#quit').unbind();
-      } );
+      $('#quit').click(quit);
       createForm();
     };
     function createInput(attribute, record){
