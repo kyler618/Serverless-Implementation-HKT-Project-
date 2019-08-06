@@ -1,5 +1,9 @@
 var Users = window.Users || {};
 
+function remove_Input(button){
+  $(button).parent().remove();
+}
+
 (function ($) {
   user_Identity();
   const selector = [];
@@ -854,9 +858,6 @@ var Users = window.Users || {};
       // modal.remove_Input = remove_Input;
       var id = event.target.classList[1];
       show_Modal(id);
-    }
-    function remove_Input(button){
-      $(button).parent().remove();
     }
     function show_Modal(id){
       function edit(){
