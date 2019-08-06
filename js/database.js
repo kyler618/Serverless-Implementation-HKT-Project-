@@ -879,6 +879,9 @@ var Users = window.Users || {};
             if(results.status=="ok"){
               let index = storedItem.indexOf(item);
               storedItem[index] = item = items;
+              deleteItem.forEach( attribute => {
+                $('#form input.form-control[name=\'' + attribute + '\']').parent().remove();
+              });
               $('#undo').click();
               handleScanResponse(results);
               // alert("Update Item Successed.");
@@ -916,7 +919,7 @@ var Users = window.Users || {};
               }
             }
           }
-          let deleteItem = Object.keys(item).filter( attribute => {
+          var deleteItem = Object.keys(item).filter( attribute => {
             if( attribute!="id" && !(attributes.includes(attribute)) ){
               $('#form input.form-control[name=\'' + attribute + '\']').parent().remove();
               return attribute;
