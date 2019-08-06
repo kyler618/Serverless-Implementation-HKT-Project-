@@ -888,6 +888,7 @@ var Users = window.Users || {};
             }
             else {
               alert("Update Item Failed.");
+              $('#undo').click();
             }
           }
           const items = {};
