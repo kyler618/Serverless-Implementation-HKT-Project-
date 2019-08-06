@@ -964,7 +964,7 @@ var Users = window.Users || {};
         $('#edit').unbind().show();
         $('#modal .edit').unbind().hide();
         $('#modal').hide();
-        $('#form input').remove();
+        $('#form p').remove();
         $('#modal .form-control').val('');
         modal.show_Modal = show_Modal;
         modal.remove_Input = null;
