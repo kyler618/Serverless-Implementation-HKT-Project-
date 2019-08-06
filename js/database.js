@@ -847,7 +847,9 @@ var Users = window.Users || {};
       event.preventDefault();
       modal.show_Modal = show_Modal;
       var id = event.target.classList[1];
-
+      constantAttributes.forEach( attribute => {
+        $('#form').append(createInput(attribute, ''));
+      });
       show_Modal(id);
     }
     function show_Modal(id){
