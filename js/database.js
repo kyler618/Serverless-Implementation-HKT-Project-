@@ -110,6 +110,7 @@ var Users = window.Users || {};
               request(data, handleResponse, 'Maintenance');
             });
           }
+          console.log(id);
           $('#maintain-sensorID').html($('#form input.Sensor_ID')[1].value);
           let users = (data.Users).map(user=>user.Username);
           $('#form').hide();
