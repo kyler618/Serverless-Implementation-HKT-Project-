@@ -92,6 +92,7 @@ var Users = window.Users || {};
       userPool = new AWS.CognitoIdentityServiceProvider();
     }
     function listUsers(id, oldRecord){
+      console.log(userPool);
       userPool.listUsers(params, (err, data) => {
         if (err) return console.log(err);
         function show_Maintain_Cancel_Button(id){
@@ -110,7 +111,6 @@ var Users = window.Users || {};
         let target = storedItem.find( item => {
           return item.id == id ;
         });
-        console.log(target);
         $('#maintain-sensorID').html(target[constantAttributes[0]]);
         // let users = (data.Users).map(user=>user.Username);
         // $('#form').hide();
