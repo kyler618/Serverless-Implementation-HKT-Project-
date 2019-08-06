@@ -92,7 +92,6 @@ var Users = window.Users || {};
       userPool = new AWS.CognitoIdentityServiceProvider();
     }
     function listUsers(id, oldRecord){
-      console.log(userPool);
       userPool.listUsers(params, (err, data) => {
         if (err) return console.log(err);
         function show_Maintain_Cancel_Button(id){
