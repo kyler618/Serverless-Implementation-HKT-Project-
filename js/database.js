@@ -31,7 +31,7 @@ var Users = window.Users || {};
     constantAttributes.push('Sensor_ID');
     selectFields.push('Enduser_name', 'Physical_Site_Address', 'Device_Type');
     constantAttributes = constantAttributes.concat(selectFields);
-    $('#maintainButton').addClass('editItem');
+    $('#maintain').addClass('edit');
     $('#selector').show();
     break;
   }
@@ -774,7 +774,7 @@ var Users = window.Users || {};
           $('#modalCancelButton').unbind();
         });
       });
-      $('#maintainButton').click( () => {
+      $('#maintain').click( () => {
         function handleResponse(results){
           if(results.Items.length!=0){
             user_Identity.listUsers(id, results.Items[0]);
