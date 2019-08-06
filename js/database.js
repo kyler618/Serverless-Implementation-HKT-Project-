@@ -110,8 +110,11 @@ var Users = window.Users || {};
               request(data, handleResponse, 'Maintenance');
             });
           }
-          console.log(id);
-          $('#maintain-sensorID').html($('#form input.Sensor_ID')[1].value);
+          sensorID = storedItem.find( item => {
+            return item.id = id;
+          });
+          console.log(sensorID);
+          $('#maintain-sensorID').html(sensorID);
           let users = (data.Users).map(user=>user.Username);
           $('#form').hide();
           $('.edit').hide();
