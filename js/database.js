@@ -93,97 +93,93 @@ var Users = window.Users || {};
     }
     function listUsers(id, oldRecord){
       userPool.listUsers(params, (err, data) => {
-        if (err) {
-          console.log(err);
-        }
-        else {
-          function show_Maintain_Cancel_Button(id){
-            $('#maintain-select').prop('disabled', 'disabled');
-            $('#maintain-cancel').show().click( () => {
-              function handleResponse(results){
-                $('#maintain-cancel').unbind().hide();
-                $('#maintain-select').prop('disabled', false);
-                default_Option.selected = true;
-                alert('Maintenance Request Canceled');
-              }
-              const data = {operation: "cancelMaintainRequest", target: id};
-              request(data, handleResponse, 'Maintenance');
-            });
-          }
-          sensorID = storedItem.find( item => {
-            return item.id = id;
-          });
-          console.log(sensorID);
-          $('#maintain-sensorID').html(sensorID.sensor_ID);
-          let users = (data.Users).map(user=>user.Username);
-          $('#form').hide();
-          $('#edit').hide();
-          $('.maintain').hide();
-          $('.edit').hide();
-          $('#maintain-Container').show();
-          $('#undo').show().click( () => {
-            $('#form').show();
-            $('#edit').show();
-            $('.maintain').show();
-            $('.edit').show();
-            $('#maintain-Container').hide();
-            $('#maintain-confirm').unbind().hide();
-            $('#maintain-sensorID').html("");
-            $('#maintain-select').unbind().empty();
-            $('#maintain-cancel').unbind().hide();
-            $('#undo').unbind().hide();
-          });
-          $('#quit').unbind();
-          $('#quit').click( () => {
-            $('#form').empty();
-            $('.addItem').hide();
-            $('.edit').hide();
-            $('#modal').hide();
-            $('#form').show();
-            $('.edit').unbind();
-            $('#maintain-Container').hide();
-            $('#maintain-confirm').unbind().hide();
-            $('#undo').unbind().hide();
-            $('#maintain-sensorID').html("");
-            $('#maintain-select').unbind().empty();
-            $('#maintain-cancel').unbind().hide();
-            $('#quit').unbind();
-            return;
-          });
-          const default_Option = document.createElement('option');
-          default_Option.appendChild( document.createTextNode(' -- Select Field Engineer -- ') );
-          default_Option.disabled = true;
-          default_Option.selected = true;
-          $('#maintain-select').prop('disabled', false).append(default_Option);
-          $('#maintain-select').change( event => {
-            if(event.target.value != null){
-              $('#maintain-confirm').show();
-            }
-          });
-          $('#maintain-confirm').click( () => {
+        if (err) return console.log(err);
+        function show_Maintain_Cancel_Button(id){
+          $('#maintain-select').prop('disabled', 'disabled');
+          $('#maintain-cancel').show().click( () => {
             function handleResponse(results){
-              show_Maintain_Cancel_Button(results);
-              $('#maintain-confirm').hide();
-              alert('Request Confirm');
+              $('#maintain-cancel').unbind().hide();
+              $('#maintain-select').prop('disabled', false);
+              default_Option.selected = true;
+              alert('Maintenance Request Canceled');
             }
-            const inputs = {};
-            inputs.inventory_ID = id;
-            inputs.sensor_ID = $('#maintain-sensorID').html();
-            inputs.field_Engineer = $('#maintain-select').val();
-            const data = {operation: "maintainRequest", input: inputs};
+            const data = {operation: "cancelMaintainRequest", target: id};
             request(data, handleResponse, 'Maintenance');
           });
-          users.forEach(user => {
-            const option = document.createElement('option');
-            option.appendChild( document.createTextNode(user) );
-            option.value = user;
-            $('#maintain-select').append(option);
-            if(oldRecord!==undefined && user==oldRecord.field_Engineer){
-              option.selected = true;
-              show_Maintain_Cancel_Button(oldRecord.id);
-            }
-          });
         }
+        sensorID = storedItem.find( item => {
+          return item.id = id;
+        });
+        $('#maintain-sensorID').html(sensorID.Sensor_ID);
+        // let users = (data.Users).map(user=>user.Username);
+        // $('#form').hide();
+        // $('#edit').hide();
+        // $('.maintain').hide();
+        // $('.edit').hide();
+        // $('#maintain-Container').show();
+        // $('#undo').show().click( () => {
+        //   $('#form').show();
+        //   $('#edit').show();
+        //   $('.maintain').show();
+        //   $('.edit').show();
+        //   $('#maintain-Container').hide();
+        //   $('#maintain-confirm').unbind().hide();
+        //   $('#maintain-sensorID').html("");
+        //   $('#maintain-select').unbind().empty();
+        //   $('#maintain-cancel').unbind().hide();
+        //   $('#undo').unbind().hide();
+        // });
+        // $('#quit').unbind();
+        // $('#quit').click( () => {
+        //   $('#form').empty();
+        //   $('.addItem').hide();
+        //   $('.edit').hide();
+        //   $('#modal').hide();
+        //   $('#form').show();
+        //   $('.edit').unbind();
+        //   $('#maintain-Container').hide();
+        //   $('#maintain-confirm').unbind().hide();
+        //   $('#undo').unbind().hide();
+        //   $('#maintain-sensorID').html("");
+        //   $('#maintain-select').unbind().empty();
+        //   $('#maintain-cancel').unbind().hide();
+        //   $('#quit').unbind();
+        //   return;
+        // });
+        // const default_Option = document.createElement('option');
+        // default_Option.appendChild( document.createTextNode(' -- Select Field Engineer -- ') );
+        // default_Option.disabled = true;
+        // default_Option.selected = true;
+        // $('#maintain-select').prop('disabled', false).append(default_Option);
+        // $('#maintain-select').change( event => {
+        //   if(event.target.value != null){
+        //     $('#maintain-confirm').show();
+        //   }
+        // });
+        // $('#maintain-confirm').click( () => {
+        //   function handleResponse(results){
+        //     show_Maintain_Cancel_Button(results);
+        //     $('#maintain-confirm').hide();
+        //     alert('Request Confirm');
+        //   }
+        //   const inputs = {};
+        //   inputs.inventory_ID = id;
+        //   inputs.sensor_ID = $('#maintain-sensorID').html();
+        //   inputs.field_Engineer = $('#maintain-select').val();
+        //   const data = {operation: "maintainRequest", input: inputs};
+        //   request(data, handleResponse, 'Maintenance');
+        // });
+        // users.forEach(user => {
+        //   const option = document.createElement('option');
+        //   option.appendChild( document.createTextNode(user) );
+        //   option.value = user;
+        //   $('#maintain-select').append(option);
+        //   if(oldRecord!==undefined && user==oldRecord.field_Engineer){
+        //     option.selected = true;
+        //     show_Maintain_Cancel_Button(oldRecord.id);
+        //   }
+        // });
+
       });
     }
     initialize();
