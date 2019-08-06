@@ -29,9 +29,8 @@ var Users = window.Users || {};
     selectFields.push('Billed_customer_name', 'Billed_Customer_Contact', 'Enduser_address_for_reference');
     break;
     case "Hardware":
-    constantAttributes.push('Sensor_ID');
     selectFields.push('Enduser_name', 'Physical_Site_Address', 'Device_Type');
-    constantAttributes = constantAttributes.concat(selectFields);
+    constantAttributes = constantAttributes.push('Sensor_ID').concat(selectFields);
     $('#maintainButton').addClass('editItem');
     $('#selector').show();
     break;
