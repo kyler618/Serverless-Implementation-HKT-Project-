@@ -887,19 +887,7 @@ var Users = window.Users || {};
               alert("Update Item Successed.");
             }
             else {
-              handleRowClick.rollback();
               alert("Update Item Failed.");
-            }
-            if(results=="ok"){
-              // let index = records.indexOf(item);
-              // items.id = id;
-              // item = items;
-              // records[index] = items;
-              // $('#card .temporary').removeClass('temporary');
-              // $('#undo').click();
-              // httpRequest.data = JSON.stringify(data_getRecord);
-              // httpRequest.success = success_getRecord;
-              // $.ajax(httpRequest);
             }
           }
           const items = {};
