@@ -881,7 +881,6 @@ var Users = window.Users || {};
               storedItem[index] = item = items;
               $('#undo').click();
               handleScanResponse(results);
-              alert("Update Item Successed.");
             }
             else {
               alert("Update Item Failed.");
