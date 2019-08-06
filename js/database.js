@@ -26,12 +26,13 @@ var Users = window.Users || {};
     targetTable = "Customer_and_Software"
     constantAttributes.push('Tenant_ID_number');
     selectFields.push('Billed_customer_name', 'Billed_Customer_Contact', 'Enduser_address_for_reference');
+    $('#maintain').hide();
     break;
     case "Hardware":
     constantAttributes.push('Sensor_ID');
     selectFields.push('Enduser_name', 'Physical_Site_Address', 'Device_Type');
     constantAttributes = constantAttributes.concat(selectFields);
-    $('#maintain').addClass('edit');
+    // $('#maintain').addClass('edit');
     $('#selector').show();
     break;
   }
