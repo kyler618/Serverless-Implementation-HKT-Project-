@@ -848,7 +848,7 @@ var Users = window.Users || {};
       event.preventDefault();
       modal.show_Modal = show_Modal;
       var id = event.target.classList[1];
-      for()
+
       show_Modal(id);
     }
     function show_Modal(id){
