@@ -858,7 +858,6 @@ var Users = window.Users || {};
           modal.remove_Input = null;
           $('#modal .edit').unbind().hide();
           $('#edit').show().click(edit);
-          $('#complete').show().click(complete);
           $('#modal input').attr('readonly', true);
           $('.temporary').remove();
           createForm();
@@ -937,7 +936,6 @@ var Users = window.Users || {};
         $('#modal .form-control').removeAttr('readonly');
         $('#modal .input-group-text:not(.readonly)').removeAttr('readonly');
         $('#edit').unbind().hide();
-        $('#complete').unbind().hide();
       }
       function createForm(){
         function createInput(attribute, record){
