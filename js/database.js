@@ -969,7 +969,6 @@ var Users = window.Users || {};
       $('#edit').click(edit);
       $('#quit').click( () => {
         $('#edit').unbind().show();
-        $('#complete').unbind().show();
         $('#modal .edit').unbind().hide();
         $('#modal').hide();
         $('.addition').remove();
