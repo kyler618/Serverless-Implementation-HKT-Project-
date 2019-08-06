@@ -142,6 +142,7 @@ var Users = window.Users || {};
           $('#maintain-select').unbind().empty();
           $('#maintain-sensorID').html("");
           $('#quit').unbind();
+          $('#modal').hide();
         });
 
         const default_Option = document.createElement('option');
