@@ -398,6 +398,7 @@ var Users = window.Users || {};
         $('#table tbody').unbind();
         changedRecords.forEach( changedRecord => {
           const records = $('#table tbody tr[id=\'' + changedRecord + '\'] input');
+          console.log(records);
           const item = storedItem.find( item => item.id == changedRecord);
           const attrs = Object.keys(item);
           records.forEach( record => {
