@@ -427,7 +427,8 @@ var Users = window.Users || {};
     $('.readMode').show();
     $('.editMode').hide();
 
-    $("input[name='table_Input']").attr('readOnly', true).unbind();
+    $("table tbody input[name='table_Input']").attr('readOnly', true).unbind();
+
 
     $('#editTable').click(handleEditTable);
     $('table tbody').click(modal);
