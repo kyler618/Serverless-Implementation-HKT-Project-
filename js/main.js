@@ -73,7 +73,7 @@ var openOnce = false;
         else{
           switch (identityCode){
           case 'DevfD3lWf':
-          $('#support-Line-Information').show();
+            $('#support-Line-Information').show();
             $('#customer-and-Software').click();
             break;
           case 'p7IxZwAdF':
