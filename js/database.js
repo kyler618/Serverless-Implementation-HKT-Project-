@@ -5,10 +5,7 @@ var Users = window.Users || {};
   attributes = [];
   selectFields = [];
   constantAttributes = [];
-  // let _searchItem = null;
-  // let storedItem;
-  // let constantAttributesIndex;
-  var httpRequest = {
+  httpRequest = {
     method: 'POST',
     url: _config.api.invokeUrl,
     contentType: 'application/json',
@@ -20,7 +17,7 @@ var Users = window.Users || {};
     }
   };
 
-  var targetTable = $('#current').html();
+  targetTable = $('#current').html();
   switch(targetTable){
     case "Customer and Software":
     targetTable = "Customer_and_Software"
@@ -249,7 +246,6 @@ var Users = window.Users || {};
 
     handleUpdateTable();
     readMode();
-    $('#test').click(handleTestClick);
   }
 
   function readMode(){
@@ -666,7 +662,7 @@ var Users = window.Users || {};
     function initialize(){
       event.preventDefault();
       modal.show_Modal = show_Modal;
-      var id = event.target.classList[1];
+      var id = event.target.parentNode.id;
       constantAttributes.forEach( attribute => {
         $('#form').append(createInput(attribute, ''));
       });
@@ -820,21 +816,6 @@ var Users = window.Users || {};
       ]);
     }
     initialize();
-  }
-
-  function handleTestClick(event) {
-    function testFunction(){
-      // var object = {pk1:'56789', Test:'test20', Type:'row2', a:'abcde'}
-      // var data = {operation: "test"};
-      // request(data, handleTestResponse);
-
-      console.log('OK');
-    }
-    function handleTestResponse(results){
-      console.log('Response received from API: ', results);
-    }
-    event.preventDefault();
-    testFunction();
   }
 
   // handle Response
