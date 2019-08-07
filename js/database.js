@@ -251,14 +251,14 @@ var Users = window.Users || {};
 
   function readMode(){
     function handleEditTable(){
-      const changedRecord = [];
+      const changedRecords = [];
       $('.readMode').hide().unbind();
       $('.editMode').show().unbind();
 
       $("#table tbody input").removeAttr("readOnly").change( event => {
-        if(!changedRecord.includes(event.target.classList[1]))
+        if(!changedRecords.includes(event.target.classList[1]))
         {
-          changedRecord.push(event.target.classList[1]);
+          changedRecords.push(event.target.classList[1]);
         }
       });
 
@@ -353,11 +353,11 @@ var Users = window.Users || {};
             alert("Update Items Failed.");
           }
         }
-        if(changedRecord.length==0){
+        if(changedRecords.length==0){
           return readMode();
         }
         const updateRecords = [];
-        changedRecord.forEach( recordPk => {
+        changedRecords.forEach( recordPk => {
           let changed = false;
           const index = storedItem.map(item=>item[attributes[0]]).indexOf(recordPk);
           const items = {};
@@ -387,8 +387,8 @@ var Users = window.Users || {};
         if(cell.innerHTML=="" && cell.tagName == "TD"){
           const field = cell.headers;
           const id = $(cell).parent().prop('id');
-          if(!changedRecord.includes(id)){
-            changedRecord.push(id);
+          if(!changedRecords.includes(id)){
+            changedRecords.push(id);
           }
           $(cell).append(createFormInput(field, "", false));
         }
@@ -396,10 +396,13 @@ var Users = window.Users || {};
       $('#cancelEdit').click( () => {
         $('#cancelEdit').unbind();
         $('#table tbody').unbind();
-        console.log(changedRecord);
-        if(changedRecord.length!=0){
-          for(let x=0; x<changedRecord.length; x++){
-            const pkey = changedRecord[x];
+        changedRecords.forEach( changedRecord => {
+          record = storedItem.find( item => item.id == changedRecord);
+          console.log(storedItem);
+        })
+        if(changedRecords.length!=0){
+          for(let x=0; x<changedRecords.length; x++){
+            const pkey = changedRecords[x];
             const index = storedItem.map(x=>x[attributes[0]]).indexOf(pkey);
             const attrs = Object.keys(storedItem[index]);
             const record = Array.from($("input." + pkey));
