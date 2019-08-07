@@ -844,6 +844,7 @@ var Users = window.Users || {};
           }
         });
         headers = header.filter( header => {header} );
+        console.log(headers);
         attr.forEach( field => {
           if( !attributes.includes(field) ){
             attributes.push(field);
