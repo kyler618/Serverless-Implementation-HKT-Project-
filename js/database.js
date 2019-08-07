@@ -844,14 +844,6 @@ var Users = window.Users || {};
         });
         headers = headers.filter( header => header );
         return getHtml(headers);
-        attr.forEach( field => {
-          if( !attributes.includes(field) ){
-            attributes.push(field);
-            const headerCell = headerRow.insertCell();
-            headerCell.innerHTML = field;
-            headerCell.id = field;
-          }
-        });
       });
       $('table thead tr').html(_headers);
       constantAttributesIndex = constantAttributes.map(attribute => $.inArray(attribute,attributes));
