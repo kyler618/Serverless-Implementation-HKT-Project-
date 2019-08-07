@@ -119,17 +119,26 @@ var Users = window.Users || {};
         $('#maintain-Container').show();
         $('#undo').show().click( () => {
           $('#form').show();
-          $('#edit').show();
-          $('.maintain').show();
+          $('#edit').show().click(modal.edit);
+          $('.maintain').show().click(modal.maintain);
+          $('#quit').unbind();
+          $('#quit').click(modal.quit);
           $('#maintain-Container').hide();
           $('#maintain-confirm').unbind().hide();
           $('#maintain-sensorID').html("");
           $('#maintain-select').unbind().empty();
           $('#maintain-cancel').unbind().hide();
           $('#undo').unbind().hide();
+          modal.edit = null;
+          modal.maintain = null;
+          modal.quit = null;
         });
         $('#quit').unbind();
         $('#quit').click( () => {
+          modal.show_Modal = null;
+          modal.edit = null;
+          modal.maintain = null;
+          modal.quit = null;
           $('#form').show().empty();
           $('#edit').show();
           $('#maintain').show();
@@ -983,7 +992,7 @@ var Users = window.Users || {};
         $('#form p').remove();
         $('#modal .form-control').val('');
         $('#quit').unbind();
-        modal.show_Modal = show_Modal;
+        modal.show_Modal = null;
         modal.remove_Input = null;
       }
       let item = storedItem.find(record => {
