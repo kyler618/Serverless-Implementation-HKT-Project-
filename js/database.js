@@ -397,9 +397,8 @@ var Users = window.Users || {};
         $('#cancelEdit').unbind();
         $('#table tbody').unbind();
         changedRecords.forEach( changedRecord => {
-          records = storedItem.find( item => item.id == changedRecord);
-          records = records.map( record => Object.keys(record) );
-          console.log(records);
+          attributes = Object.keys ( storedItem.find( item => item.id == changedRecord) );
+          console.log(attributes);
         })
         if(changedRecords.length!=0){
           for(let x=0; x<changedRecords.length; x++){
