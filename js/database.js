@@ -401,7 +401,7 @@ var Users = window.Users || {};
       });
       $('#cancelEdit').click( () => {
         $('#cancelEdit').unbind();
-        $('table tbody').unbind();
+        $('#table tbody').unbind();
         if(changedRecord.length!=0){
           for(let x=0; x<changedRecord.length; x++){
             const pkey = changedRecord[x];
