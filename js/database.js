@@ -666,7 +666,6 @@ var Users = window.Users || {};
       if( !($($target).is("tr")) ){
         $target = $($target).parent();
       }
-      console.log($target);
       var id = $target.prop('id');
       constantAttributes.forEach( attribute => {
         $('#form').append(createInput(attribute, ''));
