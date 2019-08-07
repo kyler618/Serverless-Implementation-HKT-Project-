@@ -255,7 +255,7 @@ var Users = window.Users || {};
       $('.readMode').hide().unbind();
       $('.editMode').show().unbind();
 
-      $("input[name='table_Input']").removeAttr("readOnly").change( event => {
+      $("#table tbody input").removeAttr("readOnly").change( event => {
         if(!changedRecord.includes(event.target.classList[1]))
         {
           changedRecord.push(event.target.classList[1]);
@@ -430,7 +430,7 @@ var Users = window.Users || {};
     $("#table tbody input").attr('readOnly', true).unbind();
 
     $('#editTable').click(handleEditTable);
-    $('table tbody').click(modal);
+    $('#table tbody').click(modal);
     $('#updateTable').click(handleUpdateTable);
   }
 
