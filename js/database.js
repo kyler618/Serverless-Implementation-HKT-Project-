@@ -858,7 +858,7 @@ var Users = window.Users || {};
         for(let x = 1; x<attributes.length;x++){
           const cell = bodyRow.insertCell();
           cell.headers = attributes[x];
-          cell.classList.add(attributes[x]);
+          // cell.classList.add(attributes[x]);
           bodyCell.push(cell);
         }
         for(let field in item){
