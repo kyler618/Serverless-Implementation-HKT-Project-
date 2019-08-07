@@ -397,7 +397,18 @@ var Users = window.Users || {};
         $('#cancelEdit').unbind();
         $('#table tbody').unbind();
         changedRecords.forEach( changedRecord => {
-          attributes = Object.keys ( storedItem.find( item => item.id == changedRecord) );
+          const records = $('#table tbody tr[id=\'' + changedRecord + '\'] input');
+          const item = storedItem.find( item => item.id == changedRecord);
+          const attrs = Object.keys(item);
+          records.forEach( record => {
+            const attr = record.attr('name');
+            if(attrs.includes(attr)){
+              $(record).val(item[attr]);
+            }
+            else{
+              $(record).remove();
+            }
+          });
           console.log(attributes);
         })
         if(changedRecords.length!=0){
