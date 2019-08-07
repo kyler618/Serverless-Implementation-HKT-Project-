@@ -114,8 +114,8 @@ var Users = window.Users || {};
         let users = (data.Users).map(user=>user.Username);
 
         $('#form').hide();
-        $('#edit').hide();
-        $('#maintain').hide();
+        $('#edit').hide().unbind();
+        $('#maintain').hide().unbind();
         $('#maintain-Container').show();
         $('#undo').show().click( () => {
           $('#form').show();
