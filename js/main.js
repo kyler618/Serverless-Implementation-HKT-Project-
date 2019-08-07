@@ -36,6 +36,8 @@ var openOnce = false;
               contentBody.load( "database.html", () => {
                 if(openOnce) $.getScript("https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"); // it is a bug
                 openOnce = true;
+                if( identityCode=='DevfD3lWf' )
+                $('#maintain').addClass('maintain');
               });
               break;
             case 'Client Information':
