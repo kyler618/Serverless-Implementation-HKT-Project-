@@ -867,9 +867,9 @@ var Users = window.Users || {};
             if( targetTable=="Hardware" && field==selectFields[0] && !options.includes(item[field])){
               createOption(item[field], 1);
             }
-            const input = createFormInput("table_Input", item[field],true);
-            input.classList.add(field);
-            
+            const input = createFormInput(field, item[field],true);
+            // input.classList.add(field);
+
             // input.classList.add(item[attributes[0]]);
             const index = $.inArray(field,attributes);
             bodyCell[index-1].appendChild(input);  // since there is no id field -> index - 1
