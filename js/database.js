@@ -875,6 +875,7 @@ var Users = window.Users || {};
           modal.remove_Input = null;
           $('#modal .edit').unbind().hide();
           $('#edit').show().click(edit);
+          $('#maintain').show().click(maintain);
           $('#modal input').attr('readonly', true);
           $('.temporary').remove();
           createForm();
