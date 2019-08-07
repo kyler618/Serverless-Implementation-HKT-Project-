@@ -843,7 +843,7 @@ var Users = window.Users || {};
             return '<th id=\'' + field + '\'>' + field + '</th>';
           }
         });
-        headers = headers.filter( header => {header} );
+        headers = headers.filter( header => header );
         console.log(headers);
         attr.forEach( field => {
           if( !attributes.includes(field) ){
