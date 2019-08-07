@@ -97,14 +97,19 @@ var Users = window.Users || {};
         function show_Maintain_Cancel_Button(id){
           $('#maintain-select').prop('disabled', 'disabled');
           $('#maintain-cancel').show().click( () => {
-            function handleResponse(results){
-              $('#maintain-cancel').unbind().hide();
-              $('#maintain-select').prop('disabled', false);
-              default_Option.selected = true;
-              alert('Maintenance Request Canceled');
-            }
-            const data = {operation: "cancelMaintainRequest", target: id};
-            request(data, handleResponse, 'Maintenance');
+            $('#maintain-cancel').unbind().hide();
+            $('#maintain-select').prop('disabled', false);
+            default_Option.selected = true;
+            alert('Maintenance Request Canceled');
+
+            // function handleResponse(results){
+            //   $('#maintain-cancel').unbind().hide();
+            //   $('#maintain-select').prop('disabled', false);
+            //   default_Option.selected = true;
+            //   alert('Maintenance Request Canceled');
+            // }
+            // const data = {operation: "cancelMaintainRequest", target: id};
+            // request(data, handleResponse, 'Maintenance');
           });
         }
         let target = storedItem.find( item => {
@@ -135,11 +140,12 @@ var Users = window.Users || {};
         });
         $('#quit').unbind();
         $('#quit').click( () => {
+          $('#undo').click();
           modal.show_Modal = null;
           modal.edit = null;
           modal.maintain = null;
           modal.quit = null;
-          $('#form').show().empty();
+          $('#form').empty();
           $('#edit').show();
           $('#maintain').show();
           $('#undo').unbind().hide();
