@@ -385,20 +385,20 @@ var Users = window.Users || {};
       $('#table tbody').unbind().click( event => {
         console.log(id);
         if(target.innerHTML=="" && target.tagName == "TD"){
-          const field = event.target.headers;
-          const id = $(event.target).parent().prop('id');
+          const cell = event.target;
+          const field = cell.headers;
+          const id = $(cell).parent().prop('id');
           console.log(field, id);
 
-          const cell = "td." + field + "." + pk;
-          const input = createFormInput(field, "", false);
+          // const input = createFormInput(field, "", false);
 
           // const input = createFormInput("table_Input", "", false);
           // input.classList.add(field);
           // input.classList.add(pk);
-          if(!changedRecord.includes(pk)){
-            changedRecord.push(pk);
+          if(!changedRecord.includes(id)){
+            changedRecord.push(id);
           }
-          $(cell).append(input);
+          $(cell).append(createFormInput(field, "", false));
         }
       });
       $('#cancelEdit').click( () => {
