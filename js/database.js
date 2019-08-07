@@ -834,9 +834,7 @@ var Users = window.Users || {};
       $(selector[0].bar).children().first().html('All');
     }
     function insertHeaderRow(){
-      // const headerRow = document.querySelector("table thead tr");
       const attrs = storedItem.map(item => Object.keys(item));
-      console.log(attrs);
       let _headers = attrs.map( attr => {
         let headers = attr.map( field => {
           if( !attributes.includes(field) ){
