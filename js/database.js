@@ -857,7 +857,7 @@ var Users = window.Users || {};
         const options = Array.from(selector[0].bar.children).map(({value}) => value);
         console.log(attributes[0]);
         attributes.forEach( attribute => {
-          if(attribute!='id'){
+          if(attribute!=attributes[0]){
             const cell = bodyRow.insertCell();
             cell.headers = attribute;
             bodyCell.push(cell);
