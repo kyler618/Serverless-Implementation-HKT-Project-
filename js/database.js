@@ -1,8 +1,8 @@
 var Users = window.Users || {};
 
   user_Identity();
-  // const selector = [];
-  // const attributes = [];
+  selector = [];
+  attributes = [];
   selectFields = [];
   constantAttributes = [];
   // let _searchItem = null;
