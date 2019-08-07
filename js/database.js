@@ -396,9 +396,11 @@ var Users = window.Users || {};
       $('#cancelEdit').click( () => {
         $('#cancelEdit').unbind();
         $('#table tbody').unbind();
+        console.log(console)
         changedRecords.forEach( changedRecord => {
           const records = $('#table tbody tr[id=\'' + changedRecord + '\'] input');
           const item = storedItem.find( item => item.id == changedRecord);
+          console.log(item);
           const attrs = Object.keys(item);
           Array.from(records).forEach( record => {
             const attr = $(record).attr('name');
