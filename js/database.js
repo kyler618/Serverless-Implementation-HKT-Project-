@@ -383,7 +383,12 @@ var Users = window.Users || {};
 
       });
       $('#table tbody').unbind().click( event => {
-        const target = event.target;
+        let $target = $(event.target).parent();
+        if( !($($target).is("tr")) ){
+          $target = $($target).parent();
+        }
+        var id = $target.prop('id');
+        console.log(id);
         if(target.innerHTML=="" && target.tagName == "TD"){
           const field = target.classList[0];
           const pk = target.classList[1];
@@ -826,8 +831,8 @@ var Users = window.Users || {};
 
   function handleScanResponse(results){
     function clearTable(){
-      $("table thead tr").empty();
-      $('table tbody').empty();
+      $("#table thead tr").empty();
+      $('#table tbody').empty();
       for(let x=1;x<=selector.length-1;x++){
         clearOption(x);
       }
@@ -845,11 +850,11 @@ var Users = window.Users || {};
         headers = headers.filter( header => header );
         return getHtml(headers);
       });
-      $('table thead tr').html(_headers);
+      $('#table thead tr').html(_headers);
       constantAttributesIndex = constantAttributes.map(attribute => $.inArray(attribute,attributes));
     }
     function insertBodyRow(){
-      const tableBody = document.querySelector("table tbody");
+      const tableBody = document.querySelector("#table tbody");
       storedItem.forEach( item => {
         const bodyRow = tableBody.insertRow();
         bodyRow.id = item[attributes[0]];
