@@ -135,7 +135,6 @@ var Users = window.Users || {};
         });
         $('#quit').unbind();
         $('#quit').click( () => {
-          $('#undo').click();
           modal.show_Modal = null;
           modal.edit = null;
           modal.maintain = null;
