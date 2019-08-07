@@ -605,8 +605,7 @@ var Users = window.Users || {};
     const item = document.createElement("INPUT");
     item.setAttribute("type", "text");
     // item.style.textAlign = "center";
-    if(readOnly)
-    {
+    if(readOnly){
       item.setAttribute("readOnly", true);
     }
     item.setAttribute("name", name);
@@ -838,6 +837,13 @@ var Users = window.Users || {};
       const headerRow = document.querySelector("table thead tr");
       const attrs = storedItem.map(item => Object.keys(item));
       attrs.forEach( attr => {
+        let header = attr.map( field => {
+          if( !attributes.includes(field) ){
+            attributes.push(field);
+            return '<th id=\'' + field + '\'>' + field + '</th>';
+          }
+        });
+        console.log(header);
         attr.forEach( field => {
           if( !attributes.includes(field) ){
             attributes.push(field);
