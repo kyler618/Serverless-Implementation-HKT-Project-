@@ -401,6 +401,7 @@ var Users = window.Users || {};
           console.log(records);
           const item = storedItem.find( item => item.id == changedRecord);
           const attrs = Object.keys(item);
+          console.log(typeof(records));
           records.forEach( record => {
             console.log(record);
             const attr = $(record).attr('name');
