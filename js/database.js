@@ -4,7 +4,7 @@ var Users = window.Users || {};
   // const selector = [];
   // const attributes = [];
   // const selectFields = [];
-  // let constantAttributes = [];
+  constantAttributes = [];
   // let _searchItem = null;
   // let storedItem;
   // let constantAttributesIndex;
@@ -40,6 +40,7 @@ var Users = window.Users || {};
   $( document ).ready(function() {
     initialize();
     pagination();
+    var constantAttributes = [];
   });
 
   // basic functions
@@ -860,7 +861,6 @@ var Users = window.Users || {};
           }
         });
       });
-      // constantAttributes = constantAttributes.concat(selectFields);
       constantAttributesIndex = constantAttributes.map(attribute => $.inArray(attribute,attributes));
     }
     function insertBodyRow(){
