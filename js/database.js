@@ -842,7 +842,7 @@ var Users = window.Users || {};
             attributes.push(field);
             const headerCell = headerRow.insertCell();
             headerCell.innerHTML = field;
-            headerCell.classList.add(field);
+            headerCell.id = field;
           }
         });
       });
