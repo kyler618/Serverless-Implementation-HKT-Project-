@@ -139,7 +139,7 @@ var Users = window.Users || {};
           modal.edit = null;
           modal.maintain = null;
           modal.quit = null;
-          $('#form').empty();
+          $('#form').show().empty();
           $('#edit').show();
           $('#maintain').show();
           $('#undo').unbind().hide();
