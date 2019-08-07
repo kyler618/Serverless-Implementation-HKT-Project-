@@ -662,8 +662,8 @@ var Users = window.Users || {};
     function initialize(){
       event.preventDefault();
       modal.show_Modal = show_Modal;
-      console.log($(event.target).parent());
-      var id = $(event.target).parent().id;
+      console.log($(event.target).parent().attr('id'));
+      var id = $(event.target).parent().attr('id');
       constantAttributes.forEach( attribute => {
         $('#form').append(createInput(attribute, ''));
       });
