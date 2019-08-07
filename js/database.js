@@ -856,10 +856,12 @@ var Users = window.Users || {};
         const bodyCell = [];
         const options = Array.from(selector[0].bar.children).map(({value}) => value);
         console.log(attributes);
+        attributes.forEach( attribute => {
+          console.log(attributes);
+        });
         for(let x = 1; x<attributes.length;x++){
           const cell = bodyRow.insertCell();
           cell.headers = attributes[x];
-          // cell.classList.add(attributes[x]);
           bodyCell.push(cell);
         }
         for(let field in item){
@@ -868,9 +870,6 @@ var Users = window.Users || {};
               createOption(item[field], 1);
             }
             const input = createFormInput(field, item[field],true);
-            // input.classList.add(field);
-
-            // input.classList.add(item[attributes[0]]);
             const index = $.inArray(field,attributes);
             bodyCell[index-1].appendChild(input);  // since there is no id field -> index - 1
           }
