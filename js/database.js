@@ -663,7 +663,7 @@ var Users = window.Users || {};
       event.preventDefault();
       modal.show_Modal = show_Modal;
       console.log($(event.target));
-      var id = event.target.parentNode.id;
+      var id = $(event.target).parent().id;
       constantAttributes.forEach( attribute => {
         $('#form').append(createInput(attribute, ''));
       });
