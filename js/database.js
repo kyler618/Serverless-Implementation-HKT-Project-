@@ -131,7 +131,7 @@ var Users = window.Users || {};
         });
         $('#quit').unbind();
         $('#quit').click( () => {
-          $('#form').show();
+          $('#form').show().empty();
           $('#edit').show();
           $('#maintain').show();
           $('#undo').unbind().hide();
