@@ -855,15 +855,19 @@ var Users = window.Users || {};
         bodyRow.id = item[attributes[0]];
         const bodyCell = [];
         const options = Array.from(selector[0].bar.children).map(({value}) => value);
-        console.log(attributes);
+        console.log(attributes[0]);
         attributes.forEach( attribute => {
-          console.log(attribute);
+          if(attribute!='id'){
+            const cell = bodyRow.insertCell();
+            cell.headers = attribute;
+            bodyCell.push(cell);
+          }
         });
-        for(let x = 1; x<attributes.length;x++){
-          const cell = bodyRow.insertCell();
-          cell.headers = attributes[x];
-          bodyCell.push(cell);
-        }
+        // for(let x = 1; x<attributes.length;x++){
+        //   const cell = bodyRow.insertCell();
+        //   cell.headers = attributes[x];
+        //   bodyCell.push(cell);
+        // }
         for(let field in item){
           if(field!=attributes[0]){
             if( targetTable=="Hardware" && field==selectFields[0] && !options.includes(item[field])){
