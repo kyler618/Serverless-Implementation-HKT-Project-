@@ -387,13 +387,6 @@ var Users = window.Users || {};
         if(cell.innerHTML=="" && cell.tagName == "TD"){
           const field = cell.headers;
           const id = $(cell).parent().prop('id');
-          console.log(field, id);
-
-          // const input = createFormInput(field, "", false);
-
-          // const input = createFormInput("table_Input", "", false);
-          // input.classList.add(field);
-          // input.classList.add(pk);
           if(!changedRecord.includes(id)){
             changedRecord.push(id);
           }
@@ -403,6 +396,7 @@ var Users = window.Users || {};
       $('#cancelEdit').click( () => {
         $('#cancelEdit').unbind();
         $('#table tbody').unbind();
+        console.log(changedRecord);
         if(changedRecord.length!=0){
           for(let x=0; x<changedRecord.length; x++){
             const pkey = changedRecord[x];
