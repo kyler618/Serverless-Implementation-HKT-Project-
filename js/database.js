@@ -256,8 +256,8 @@ var Users = window.Users || {};
       $('.editMode').show().unbind();
 
       $("#table tbody input").removeAttr("readOnly").change( event => {
-        let $target = $(event.target).parent().parent().prop('id');
-        console.log($target);
+        let $target = $(event.target).parent().parent();
+        console.log($target.prop('id'));
         if(!changedRecords.includes($($target).prop('id')))
         {
           changedRecords.push($($target).prop('id'));
