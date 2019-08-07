@@ -118,16 +118,16 @@ var Users = window.Users || {};
         $('#maintain').hide();
         $('#maintain-Container').show();
         $('#undo').show().click( () => {
-          // $('#form').show();
-          // $('#edit').show();
-          // $('.maintain').show();
-          // $('.edit').show();
-          // $('#maintain-Container').hide();
-          // $('#maintain-confirm').unbind().hide();
-          // $('#maintain-sensorID').html("");
-          // $('#maintain-select').unbind().empty();
-          // $('#maintain-cancel').unbind().hide();
-          // $('#undo').unbind().hide();
+          $('#form').show();
+          $('#edit').show();
+          $('.maintain').show();
+          $('.edit').show();
+          $('#maintain-Container').hide();
+          $('#maintain-confirm').unbind().hide();
+          $('#maintain-sensorID').html("");
+          $('#maintain-select').unbind().empty();
+          $('#maintain-cancel').unbind().hide();
+          $('#undo').unbind().hide();
         });
         $('#quit').unbind();
         $('#quit').click( () => {
