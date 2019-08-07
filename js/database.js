@@ -837,13 +837,13 @@ var Users = window.Users || {};
       const headerRow = document.querySelector("table thead tr");
       const attrs = storedItem.map(item => Object.keys(item));
       attrs.forEach( attr => {
-        let header = attr.map( field => {
+        let headers = attr.map( field => {
           if( !attributes.includes(field) ){
             attributes.push(field);
             return '<th id=\'' + field + '\'>' + field + '</th>';
           }
         });
-        console.log(header);
+        headers = header.filter( header => {header} );
         attr.forEach( field => {
           if( !attributes.includes(field) ){
             attributes.push(field);
