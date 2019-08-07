@@ -115,7 +115,7 @@ var Users = window.Users || {};
 
         $('#form').hide();
         $('#edit').hide().unbind();
-        $('#maintain').hide().unbind();
+        $('.maintain').hide().unbind();
         $('#maintain-Container').show();
         $('#undo').show().click( () => {
           $('#form').show();
@@ -141,7 +141,7 @@ var Users = window.Users || {};
           modal.quit = null;
           $('#form').show().empty();
           $('#edit').show();
-          $('#maintain').show();
+          $('.maintain').show();
           $('#undo').unbind().hide();
           $('#maintain-Container').hide();
           $('#maintain-confirm').unbind().hide();
@@ -680,7 +680,7 @@ var Users = window.Users || {};
           modal.remove_Input = null;
           $('#modal .edit').unbind().hide();
           $('#edit').show().click(edit);
-          $('#maintain').show().click(maintain);
+          $('.maintain').show().click(maintain);
           $('#modal input').attr('readonly', true);
           $('.temporary').remove();
           createForm();
