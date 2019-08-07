@@ -1,13 +1,13 @@
 var Users = window.Users || {};
 
   user_Identity();
-  const selector = [];
-  const attributes = [];
-  const selectFields = [];
-  let constantAttributes = [];
-  let _searchItem = null;
-  let storedItem;
-  let constantAttributesIndex;
+  // const selector = [];
+  // const attributes = [];
+  // const selectFields = [];
+  // let constantAttributes = [];
+  // let _searchItem = null;
+  // let storedItem;
+  // let constantAttributesIndex;
   var httpRequest = {
     method: 'POST',
     url: _config.api.invokeUrl,
