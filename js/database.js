@@ -854,7 +854,7 @@ var Users = window.Users || {};
           }
         });
       });
-      console.log(getHtml([_headers]));
+      $('table thead tr').html(_headers);
       constantAttributesIndex = constantAttributes.map(attribute => $.inArray(attribute,attributes));
     }
     function insertBodyRow(){
