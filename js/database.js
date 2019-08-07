@@ -382,18 +382,18 @@ var Users = window.Users || {};
         return (data.input!=null)? request(data, handleMultipleUpdateResponse):readMode();
 
       });
-      $('table tbody').unbind().click( event => {
+      $('#table tbody').unbind().click( event => {
         const target = event.target;
-        if(target.innerHTML=="" && target.tagName == "TD")
-        {
+        if(target.innerHTML=="" && target.tagName == "TD"){
           const field = target.classList[0];
           const pk = target.classList[1];
           const cell = "td." + field + "." + pk;
-          const input = createFormInput("table_Input", "", false);
-          input.classList.add(field);
-          input.classList.add(pk);
-          if(!changedRecord.includes(pk))
-          {
+          const input = createFormInput(field, "", false);
+
+          // const input = createFormInput("table_Input", "", false);
+          // input.classList.add(field);
+          // input.classList.add(pk);
+          if(!changedRecord.includes(pk)){
             changedRecord.push(pk);
           }
           $(cell).append(input);
