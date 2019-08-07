@@ -383,15 +383,12 @@ var Users = window.Users || {};
 
       });
       $('#table tbody').unbind().click( event => {
-        let $target = $(event.target).parent();
-        if( !($($target).is("tr")) ){
-          $target = $($target).parent();
-        }
-        var id = $target.prop('id');
         console.log(id);
         if(target.innerHTML=="" && target.tagName == "TD"){
-          const field = target.classList[0];
-          const pk = target.classList[1];
+          const field = event.target.headers;
+          const id = $(event.target).parent().prop('id');
+          console.log(field, id);
+
           const cell = "td." + field + "." + pk;
           const input = createFormInput(field, "", false);
 
