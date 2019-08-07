@@ -383,8 +383,8 @@ var Users = window.Users || {};
 
       });
       $('#table tbody').unbind().click( event => {
-        if(target.innerHTML=="" && target.tagName == "TD"){
-          const cell = event.target;
+        const cell = event.target;
+        if(cell.innerHTML=="" && cell.tagName == "TD"){
           const field = cell.headers;
           const id = $(cell).parent().prop('id');
           console.log(field, id);
