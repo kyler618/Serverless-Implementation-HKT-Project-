@@ -3,7 +3,7 @@ var Users = window.Users || {};
   user_Identity();
   // const selector = [];
   // const attributes = [];
-  // const selectFields = [];
+  selectFields = [];
   constantAttributes = [];
   // let _searchItem = null;
   // let storedItem;
