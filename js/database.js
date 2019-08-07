@@ -398,7 +398,7 @@ var Users = window.Users || {};
         $('#table tbody').unbind();
         changedRecords.forEach( changedRecord => {
           record = storedItem.find( item => item.id == changedRecord);
-          console.log(storedItem);
+          console.log(record);
         })
         if(changedRecords.length!=0){
           for(let x=0; x<changedRecords.length; x++){
