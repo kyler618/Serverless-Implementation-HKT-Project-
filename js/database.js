@@ -836,7 +836,7 @@ var Users = window.Users || {};
     function insertHeaderRow(){
       const headerRow = document.querySelector("table thead tr");
       const attrs = storedItem.map(item => Object.keys(item));
-      attrs.forEach( attr => {
+      let _headers = attrs.map( attr => {
         let headers = attr.map( field => {
           if( !attributes.includes(field) ){
             attributes.push(field);
@@ -844,7 +844,6 @@ var Users = window.Users || {};
           }
         });
         headers = headers.filter( header => header );
-        console.log(headers);
         attr.forEach( field => {
           if( !attributes.includes(field) ){
             attributes.push(field);
@@ -854,6 +853,7 @@ var Users = window.Users || {};
           }
         });
       });
+      console.log(_headers);
       constantAttributesIndex = constantAttributes.map(attribute => $.inArray(attribute,attributes));
     }
     function insertBodyRow(){
