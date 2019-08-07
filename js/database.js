@@ -868,7 +868,7 @@ var Users = window.Users || {};
             }
             const input = createFormInput("table_Input", item[field],true);
             input.classList.add(field);
-            input.classList.add(item[attributes[0]]);
+            // input.classList.add(item[attributes[0]]);
             const index = $.inArray(field,attributes);
             bodyCell[index-1].appendChild(input);  // since there is no id field -> index - 1
           }
