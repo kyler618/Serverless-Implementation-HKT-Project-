@@ -854,7 +854,7 @@ var Users = window.Users || {};
           }
         });
       });
-      console.log(_headers);
+      console.log(getHtml([_headers]));
       constantAttributesIndex = constantAttributes.map(attribute => $.inArray(attribute,attributes));
     }
     function insertBodyRow(){
