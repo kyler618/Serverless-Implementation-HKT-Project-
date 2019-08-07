@@ -857,8 +857,8 @@ var Users = window.Users || {};
         const options = Array.from(selector[0].bar.children).map(({value}) => value);
         for(let x = 1; x<attributes.length;x++){
           const cell = bodyRow.insertCell();
+          cell.name = attributes[x];
           cell.classList.add(attributes[x]);
-          // cell.classList.add(item[attributes[0]]);
           bodyCell.push(cell);
         }
         for(let field in item){
