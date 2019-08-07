@@ -97,19 +97,14 @@ var Users = window.Users || {};
         function show_Maintain_Cancel_Button(id){
           $('#maintain-select').prop('disabled', 'disabled');
           $('#maintain-cancel').show().click( () => {
-            $('#maintain-cancel').unbind().hide();
-            $('#maintain-select').prop('disabled', false);
-            default_Option.selected = true;
-            alert('Maintenance Request Canceled');
-
-            // function handleResponse(results){
-            //   $('#maintain-cancel').unbind().hide();
-            //   $('#maintain-select').prop('disabled', false);
-            //   default_Option.selected = true;
-            //   alert('Maintenance Request Canceled');
-            // }
-            // const data = {operation: "cancelMaintainRequest", target: id};
-            // request(data, handleResponse, 'Maintenance');
+            function handleResponse(results){
+              $('#maintain-cancel').unbind().hide();
+              $('#maintain-select').prop('disabled', false);
+              default_Option.selected = true;
+              alert('Maintenance Request Canceled');
+            }
+            const data = {operation: "cancelMaintainRequest", target: id};
+            request(data, handleResponse, 'Maintenance');
           });
         }
         let target = storedItem.find( item => {
