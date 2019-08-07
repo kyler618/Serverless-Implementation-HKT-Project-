@@ -855,6 +855,7 @@ var Users = window.Users || {};
         bodyRow.id = item[attributes[0]];
         const bodyCell = [];
         const options = Array.from(selector[0].bar.children).map(({value}) => value);
+        console.log(attributes);
         for(let x = 1; x<attributes.length;x++){
           const cell = bodyRow.insertCell();
           cell.headers = attributes[x];
