@@ -5,6 +5,7 @@ var Users = window.Users || {};
   attributes = [];
   selectFields = [];
   constantAttributes = [];
+  _searchItem = null;
   httpRequest = {
     method: 'POST',
     url: _config.api.invokeUrl,
@@ -20,16 +21,16 @@ var Users = window.Users || {};
   targetTable = $('#current').html();
   switch(targetTable){
     case "Customer and Software":
-    targetTable = "Customer_and_Software"
-    constantAttributes.push('Tenant_ID_number');
-    selectFields.push('Billed_customer_name', 'Billed_Customer_Contact', 'Enduser_address_for_reference');
-    break;
+      targetTable = "Customer_and_Software"
+      constantAttributes.push('Tenant_ID_number');
+      selectFields.push('Billed_customer_name', 'Billed_Customer_Contact', 'Enduser_address_for_reference');
+      break;
     case "Hardware":
-    constantAttributes.push('Sensor_ID');
-    selectFields.push('Enduser_name', 'Physical_Site_Address', 'Device_Type');
-    constantAttributes = constantAttributes.concat(selectFields);
-    $('#selector').show();
-    break;
+      constantAttributes.push('Sensor_ID');
+      selectFields.push('Enduser_name', 'Physical_Site_Address', 'Device_Type');
+      constantAttributes = constantAttributes.concat(selectFields);
+      $('#selector').show();
+      break;
   }
 
   // on start
@@ -855,7 +856,6 @@ var Users = window.Users || {};
         bodyRow.id = item[attributes[0]];
         const bodyCell = [];
         const options = Array.from(selector[0].bar.children).map(({value}) => value);
-        console.log(attributes[0]);
         attributes.forEach( attribute => {
           if(attribute!=attributes[0]){
             const cell = bodyRow.insertCell();
@@ -863,11 +863,6 @@ var Users = window.Users || {};
             bodyCell.push(cell);
           }
         });
-        // for(let x = 1; x<attributes.length;x++){
-        //   const cell = bodyRow.insertCell();
-        //   cell.headers = attributes[x];
-        //   bodyCell.push(cell);
-        // }
         for(let field in item){
           if(field!=attributes[0]){
             if( targetTable=="Hardware" && field==selectFields[0] && !options.includes(item[field])){
