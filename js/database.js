@@ -403,7 +403,7 @@ var Users = window.Users || {};
           const attrs = Object.keys(item);
           records.forEach( record => {
             console.log(record);
-            const attr = record.attr('name');
+            const attr = $(record).attr('name');
             if(attrs.includes(attr)){
               $(record).val(item[attr]);
             }
