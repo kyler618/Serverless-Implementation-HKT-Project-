@@ -397,6 +397,7 @@ var Users = window.Users || {};
         $('#cancelEdit').unbind();
         $('#table tbody').unbind();
         changedRecords.forEach( changedRecord => {
+          console.log(changedRecord);
           record = storedItem.find( item => item.id == changedRecord);
           console.log(record);
         })
