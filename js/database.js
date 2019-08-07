@@ -396,6 +396,7 @@ var Users = window.Users || {};
       $('#cancelEdit').click( () => {
         $('#cancelEdit').unbind();
         $('#table tbody').unbind();
+        console.log(changedRecords);
         changedRecords.forEach( changedRecord => {
           console.log(changedRecord);
           const records = $('#table tbody tr[id=\'' + changedRecord + '\'] input');
