@@ -383,7 +383,6 @@ var Users = window.Users || {};
 
       });
       $('#table tbody').unbind().click( event => {
-        console.log(id);
         if(target.innerHTML=="" && target.tagName == "TD"){
           const cell = event.target;
           const field = cell.headers;
