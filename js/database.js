@@ -121,7 +121,6 @@ var Users = window.Users || {};
           $('#form').show();
           $('#edit').show();
           $('.maintain').show();
-          $('.edit').show();
           $('#maintain-Container').hide();
           $('#maintain-confirm').unbind().hide();
           $('#maintain-sensorID').html("");
