@@ -315,7 +315,7 @@ var Users = window.Users || {};
         if(!storedItem.every( item => {
           return item[constantAttributes[0]] != items[constantAttributes[0]];
         })){
-          alert("Sensor ID Duplicate with Existing Item");
+          alert("Sensor ID Duplicate with Existing Items");
           return;
         }
         const data = {operation: "put", input: items};
