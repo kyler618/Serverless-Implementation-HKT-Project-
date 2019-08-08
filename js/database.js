@@ -312,13 +312,13 @@ var Users = window.Users || {};
           attributes.push(attribute.value);
           items[attribute.value] = record.value;
         }
-        // let check = storedItem.every( item => {
-        //   return item[constantAttributes[0]] != items[constantAttributes[0]];
-        // });
-        // if(!check){
-        //   alert("Sensor ID Duplicates with Existing Items");
-        //   return;
-        // }
+        let check = storedItem.every( item => {
+          return item[constantAttributes[0]] != items[constantAttributes[0]];
+        });
+        if(!check){
+          alert("Sensor ID Duplicates with Existing Items");
+          return;
+        }
         const data = {operation: "put", input: items};
         request(data, handleResponse);
       });
