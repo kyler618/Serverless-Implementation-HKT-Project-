@@ -452,22 +452,15 @@ var Users = window.Users || {};
         $('#table tbody td[headers=\'' + attribute + '\']').hide();
       }
     });
-    // for(let x = 0 ; x < attributes.length ; x++){
-    //   if(!constantAttributesIndex.includes(x))
-    //   {
-    //     console.log(attributes[x]);
-    //     $('#table tbody td[headers=\'' + attribute + '\']')
-    //     $("td." + attributes[x]).hide();
-    //   }
-    // }
   }
 
   function showColumn(){
-    for(let x=0;x<attributes.length;x++){
-      if(!constantAttributesIndex.includes(x)){
-        $("." + attributes[x]).show();
+    attributes.forEach( attribute => {
+      if(!constantAttributes.includes(attribute)){
+        $('#table thead th[id=\'' + attribute + '\']').show();
+        $('#table tbody td[headers=\'' + attribute + '\']').show();
       }
-    }
+    });
     if(selector[0].searchKey!==undefined || _searchItem!==null){
       searchItem();
     }
