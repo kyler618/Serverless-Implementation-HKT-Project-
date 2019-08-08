@@ -665,9 +665,7 @@ var Users = window.Users || {};
       }
       var id = $target.prop('id');
       constantAttributes.forEach( attribute => {
-        if( attribute==constantAttributes[0]){
-          $('#form').append(createInput(attribute, '', true));          
-        }
+        $('#form').append(createInput(attribute, '', (attribute==constantAttributes[0])?false:true));          
       });
       show_Modal(id);
     }
@@ -769,7 +767,7 @@ var Users = window.Users || {};
             $input.val(item[key]);
           }
           else{
-            $('#form').append(createInput(key, item[key], false));
+            $('#form').append(createInput(key, item[key], true));
           }
         }
       }
