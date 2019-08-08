@@ -1,3 +1,4 @@
+
 Users.authToken.then( token => {
   if (token) {
     function handleResponse(results){
@@ -23,11 +24,11 @@ Users.authToken.then( token => {
         return getHtml([
           '<div class="card-content">',
             '<div class="card-body">',
-              record.Enduser_name,
+              record.['Enduser Name'],
               '<br>',
-              record.Physical_Site_Address,
+              record.['Physical Site Address'],
               '<p>',
-              record.Device_Type,
+              record.['Device Type'],
               '</p>',
               '<span class="w3-right">',
               start_time,
