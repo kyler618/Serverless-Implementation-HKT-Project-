@@ -275,6 +275,13 @@ var Users = window.Users || {};
             alert("Put Item Failed.");
           }
         }
+        function createRemoveButton(){
+          return getHtml([
+            '<button onclick="addItem.remove(this)">',
+            '<i class="fa fa-close"></i>',
+            '</button>'
+          ]);
+        }
         const form = constantAttributes.map( constantAttribute => {
           let item = [];
           let field = createFormInput( null, constantAttribute, true);
@@ -296,13 +303,6 @@ var Users = window.Users || {};
         $('#add').show().click( () => {
           function remove(button){
             return $(button).parent().remove();
-          }
-          function createRemoveButton(){
-            return getHtml([
-              '<button onclick="addItem.remove(this)">',
-              '<i class="fa fa-close"></i>',
-              '</button>'
-            ]);
           }
           addItem.remove = remove;
           const p = document.createElement("P");
