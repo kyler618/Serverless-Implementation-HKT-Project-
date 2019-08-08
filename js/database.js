@@ -283,8 +283,7 @@ var Users = window.Users || {};
           value.classList.add('form-control');
           item.push(field.outerHTML, value.outerHTML);
           if(constantAttribute != constantAttributes[0]){
-            let button = createRemoveButton();
-            item.push(button.outerHTML);
+            item.push(createRemoveButton());
           }
           return getHtml([
             "<p>",
@@ -300,11 +299,10 @@ var Users = window.Users || {};
           const value = createFormInput( null, null, false);
           field.classList.add('input-group-text');
           value.classList.add('form-control');
-          const button = createRemoveButton();
           $(p).html(getHtml([
             field.outerHTML,
             value.outerHTML,
-            button.outerHTML
+            createRemoveButton()
           ]));
           $('#form').append(p);
         });
@@ -584,7 +582,7 @@ var Users = window.Users || {};
       event.preventDefault();
       $(event.target).parent().remove();
     };
-    return button;
+    return button.outerHTML;
   }
 
   function createOption(item, number){
