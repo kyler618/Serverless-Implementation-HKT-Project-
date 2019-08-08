@@ -293,7 +293,7 @@ var Users = window.Users || {};
           }
           return getHtml([
             "<p>",
-            getHtml(getHtml),
+            getHtml(item),
             "</p>"
           ]);
         });
