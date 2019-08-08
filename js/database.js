@@ -335,7 +335,7 @@ var Users = window.Users || {};
             attributes.push(attribute.value);
             items[attribute.value] = record.value;
           }
-          const data = {operation: "put", input: inputs};
+          const data = {operation: "put", input: items};
           httpRequest.data = JSON.stringify(data);
           httpRequest.success = handleResponse;
           console.log(httpRequest);
