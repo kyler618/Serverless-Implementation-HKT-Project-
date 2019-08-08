@@ -4,8 +4,8 @@ var Users = window.Users || {};
   selector = [];
   attributes = [];
   selectFields = [];
-  // constantAttributes = [];
-  // _searchItem = null;
+  constantAttributes = [];
+  _searchItem = null;
   httpRequest = {
     method: 'POST',
     url: _config.api.invokeUrl,
@@ -38,8 +38,6 @@ var Users = window.Users || {};
   $( document ).ready(function() {
     initialize();
     pagination();
-    constantAttributes = [];
-    _searchItem = null;
   });
 
   // basic functions
