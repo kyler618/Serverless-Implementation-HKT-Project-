@@ -580,7 +580,7 @@ var Users = window.Users || {};
       return $(event.target).parent().remove();
     }
     return getHtml([
-      '<button onclick="remove(event)">',
+      '<button onclick="function(event){$(event.target).parent().remove()}">',
       '<i class="fa fa-close"></i>',
       '</button>'
     ]);
