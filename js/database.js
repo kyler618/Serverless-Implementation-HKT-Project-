@@ -357,17 +357,18 @@ var Users = window.Users || {};
           return readMode();
         }
         const updateRecords = [];
-        changedRecords.forEach( recordPk => {
+        changedRecords.forEach( changedRecord => {
           let changed = false;
-          const index = storedItem.map(item=>item[attributes[0]]).indexOf(recordPk);
           const items = {};
-          const item = Array.from($("input." + recordPk));
-          item.forEach( record => {
+          const item = storedItem.find( item => item.id == changedRecord);
+          const records = $('#table tbody tr[id=\'' + changedRecord + '\'] input');
+          Array.from(records).forEach( record => {
+            console.log(record);
             if(record.value == ""){
               alert("Incompleted Error.");
               return;
             }
-            if(record.value != storedItem[index][record.classList[0]]){
+            if(record.value != item[record.classList[0]]){
               changed = true;
             }
             items[record.classList[0]] = record.value;
@@ -379,7 +380,7 @@ var Users = window.Users || {};
         });
         const data = {operation:'multipleUpdate'};
         data.input = (updateRecords.length!=0)? updateRecords:null;
-        return (data.input!=null)? request(data, handleMultipleUpdateResponse):readMode();
+        // return (data.input!=null)? request(data, handleMultipleUpdateResponse):readMode();
 
       });
       $('#table tbody').unbind().click( event => {
@@ -396,12 +397,9 @@ var Users = window.Users || {};
       $('#cancelEdit').click( () => {
         $('#cancelEdit').unbind();
         $('#table tbody').unbind();
-        console.log(changedRecords);
         changedRecords.forEach( changedRecord => {
-          console.log(changedRecord);
           const records = $('#table tbody tr[id=\'' + changedRecord + '\'] input');
           const item = storedItem.find( item => item.id == changedRecord);
-          console.log(item);
           const attrs = Object.keys(item);
           Array.from(records).forEach( record => {
             const attr = $(record).attr('name');
@@ -412,7 +410,6 @@ var Users = window.Users || {};
               $(record).remove();
             }
           });
-          console.log(attributes);
         })
         if(changedRecords.length!=0){
           for(let x=0; x<changedRecords.length; x++){
