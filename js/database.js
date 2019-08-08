@@ -313,7 +313,7 @@ var Users = window.Users || {};
           items[attribute.value] = record.value;
         }
         let x = storedItem.every( item => {
-          return item[constantAttributes[0]] == items[constantAttributes[0]];
+          return item[constantAttributes[0]] != items[constantAttributes[0]];
         });
         console.log(x);
         const data = {operation: "put", input: items};
