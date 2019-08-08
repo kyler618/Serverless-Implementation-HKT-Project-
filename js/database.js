@@ -802,7 +802,6 @@ var Users = window.Users || {};
             user_Identity.listUsers(id);
           }
         }
-        const id = event.target.classList[1];
         const data = {operation: "scanMaintenanceRecord", target: id};
         request(data, handleResponse, 'Maintenance');
       }
