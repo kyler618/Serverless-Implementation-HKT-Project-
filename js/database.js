@@ -20,7 +20,7 @@ var Users = window.Users || {};
 
   targetTable = $('#current').html();
   switch(targetTable){
-    case "Customer and Software":
+    case "Customer_and_Software":
       targetTable = "Customer and Software"
       constantAttributes.push('Tenant ID number');
       selectFields.push(
