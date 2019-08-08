@@ -282,7 +282,7 @@ var Users = window.Users || {};
             '</button>'
           ]);
         }
-        modal.remove = function remove(button){
+        modal.remove = button => {
             return $(button).parent().remove();
           };
         const form = constantAttributes.map( constantAttribute => {
