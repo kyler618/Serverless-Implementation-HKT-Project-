@@ -312,10 +312,12 @@ var Users = window.Users || {};
           attributes.push(attribute.value);
           items[attribute.value] = record.value;
         }
-        let x = storedItem.every( item => {
+        if(!storedItem.every( item => {
           return item[constantAttributes[0]] != items[constantAttributes[0]];
-        });
-        console.log(x);
+        })){
+          alert("Sensor ID Duplicate with Existing Item");
+          return;
+        }
         const data = {operation: "put", input: items};
         request(data, handleResponse);
       });
