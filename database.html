@@ -135,16 +135,19 @@
       border: none;
       background-color: #e9ecef;
     }
-    #modal button {
+    #modal button :not(#quit){
       border: none;
       background: none;
       font-size: large;
+      display: none;
     }
     #modal #remove{
       display: none;
     }
     #modal #quit{
       font-size: 20px;
+      border: none;
+      background: none;
     }
     #modal .input-group-text{
       border-right: 1px solid #dadcde;
