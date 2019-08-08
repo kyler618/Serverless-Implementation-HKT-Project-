@@ -277,7 +277,7 @@ var Users = window.Users || {};
         }
         function createRemoveButton(){
           return getHtml([
-            '<button onclick="addItem.remove(this)">',
+            '<button onclick="modal.remove(this)">',
             '<i class="fa fa-close"></i>',
             '</button>'
           ]);
@@ -301,7 +301,7 @@ var Users = window.Users || {};
         $('#form').html(form);
         $('#modal').show();
         $('#add').show().click( () => {
-          addItem.remove = function remove(button){
+          modal.remove = function remove(button){
             return $(button).parent().remove();
           };
           const p = document.createElement("P");
