@@ -276,12 +276,12 @@ var Users = window.Users || {};
           }
         }
         const form = constantAttributes.map( constantAttribute => {
-          let foo = document.createElement("P");
+          let item = [];
           let field = createFormInput( null, constantAttribute, true);
           let value = createFormInput( constantAttribute, null, false);
           field.classList.add('input-group-text');
           value.classList.add('form-control');
-          foo.appendChild(field, value);
+          item.push(field.outerHTML, value.outerHTML);
           // foo.appendChild(value);
           if(constantAttribute != constantAttributes[0]){
             let button = createRemoveButton();
@@ -289,12 +289,16 @@ var Users = window.Users || {};
               event.preventDefault();
               $(foo).remove();
             };
-            foo.appendChild(button);
+            item.push(button.outerHTML);
           }
-          return foo;
+          return getHtml([
+            "<p>",
+            getHtml(getHtml),
+            "</p>"
+          ]);
         });
-        console.log(getHtml(form));
-        $('#form').append(getHtml(form));
+        console.log(form);
+        // $('#form').append(getHtml(form));
         // $('.addItem').show().unbind();
         $('#modal').show();
         // $('#add').click( () => {
