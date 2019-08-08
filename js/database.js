@@ -826,6 +826,7 @@ var Users = window.Users || {};
         $('#modal').hide();
         $('#form p').remove();
         $('#modal .form-control').val('');
+        $('#maintain-select').empty();
         $('#quit').unbind();
         modal.show_Modal = null;
         modal.remove_Input = null;
