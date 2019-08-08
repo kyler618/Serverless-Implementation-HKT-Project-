@@ -665,7 +665,7 @@ var Users = window.Users || {};
       }
       var id = $target.prop('id');
       constantAttributes.forEach( attribute => {
-        $('#form').append(createInput(attribute, ''));
+        $('#form').append(createInput(attribute, ''), true);
       });
       show_Modal(id);
     }
@@ -767,7 +767,7 @@ var Users = window.Users || {};
             $input.val(item[key]);
           }
           else{
-            $('#form').append(createInput(key, item[key]));
+            $('#form').append(createInput(key, item[key]), false);
           }
         }
       }
@@ -802,8 +802,8 @@ var Users = window.Users || {};
         modal.remove_Input = null;
       }
       let item = storedItem.find(record => {
-      return record.id == id
-    });
+        return record.id == id
+      });
       $('#modal').show();
       $('.maintain').show().click(maintain);
       $('#remove').show().click(remove);
@@ -811,14 +811,17 @@ var Users = window.Users || {};
       $('#quit').click(quit);
       createForm();
     };
-    function createInput(attribute, record){
-      return getHtml([
+    function createInput(attribute, record, button){
+      let item = [
         '<p>',
         '<input type="text" class="input-group-text" value=\'' + attribute + '\' readonly>',
-        '<input type="text" class="form-control" name=\'' + attribute + '\' value=\'' + record + '\' readonly>',
-        '<button class="edit" onclick="modal.remove_Input(this)"><i class="fa fa-close"></i></button>',
-        '</p>'
-      ]);
+        '<input type="text" class="form-control" name=\'' + attribute + '\' value=\'' + record + '\' readonly>'
+      ];
+      if(button){
+        item.push('<button class="edit" onclick="modal.remove_Input(this)"><i class="fa fa-close"></i></button>');
+      }
+      item.push('</p>');
+      return getHtml(item);
     }
     initialize();
   }
