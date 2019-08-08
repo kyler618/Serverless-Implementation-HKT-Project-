@@ -293,7 +293,7 @@ var Users = window.Users || {};
           }
           return foo;
         });
-        console.log(foo);
+        console.log(form);
 
         // $('.addItem').show().unbind();
         $('#modal').show();
