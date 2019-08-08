@@ -287,7 +287,8 @@ var Users = window.Users || {};
             let button = createRemoveButton();
             button.onclick = event => {
               event.preventDefault();
-              $(foo).remove();
+              $(event.target).parent().remove();
+              // $(foo).remove();
             };
             item.push(button.outerHTML);
           }
@@ -298,25 +299,24 @@ var Users = window.Users || {};
           ]);
         });
         $('#form').html(form);
-        // $('.addItem').show().unbind();
         $('#modal').show();
-        // $('#add').click( () => {
-        //   const field = createFormInput("form_Input", "", false);
-        //   const value = createFormInput("form_Input", "", false);
-        //   field.classList.add('input-group-text');
-        //   value.classList.add('form-control');
-        //   const button = createRemoveButton();
-        //   button.onclick = event => {
-        //     event.preventDefault();
-        //     field.parentNode.removeChild(field);
-        //     value.parentNode.removeChild(value);
-        //     button.parentNode.removeChild(button);
-        //   };
-        //   itemForm.appendChild(field);
-        //   itemForm.appendChild(value);
-        //   itemForm.appendChild(button);
-        //   itemForm.appendChild(document.createElement("P"));
-        // });
+        $('#add').show().click( () => {
+          const field = createFormInput( null, null, false);
+          const value = createFormInput( null, null, false);
+          field.classList.add('input-group-text');
+          value.classList.add('form-control');
+          const button = createRemoveButton();
+          button.onclick = event => {
+            event.preventDefault();
+            field.parentNode.removeChild(field);
+            value.parentNode.removeChild(value);
+            button.parentNode.removeChild(button);
+          };
+          itemForm.appendChild(field);
+          itemForm.appendChild(value);
+          itemForm.appendChild(button);
+          itemForm.appendChild(document.createElement("P"));
+        });
         // $('#confirm').click( event => {
         //   const inputs = getInputData();
         //   if(inputs.incompleteError!==undefined)
