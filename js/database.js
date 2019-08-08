@@ -581,7 +581,7 @@ var Users = window.Users || {};
     }
     return getHtml([
       '<button onclick="remove(event)">',
-      '<i class="fa fa-close"></i>'
+      '<i class="fa fa-close"></i>',
       '</button>'
     ]);
     // const button = document.createElement("BUTTON");
