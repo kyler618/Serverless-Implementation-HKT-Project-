@@ -363,23 +363,23 @@ var Users = window.Users || {};
           const item = storedItem.find( item => item.id == changedRecord);
           const records = $('#table tbody tr[id=\'' + changedRecord + '\'] input');
           Array.from(records).forEach( record => {
-            console.log(record);
             if(record.value == ""){
               alert("Incompleted Error.");
               return;
             }
-            if(record.value != item[record.classList[0]]){
+            if(record.value != item[record.name]){
               changed = true;
             }
-            items[record.classList[0]] = record.value;
+            items[record.name] = record.value;
           });
           if(changed){
-            items[attributes[0]] = recordPk;
+            items[attributes[0]] = changedRecord;
             updateRecords.push(items);
           }
         });
         const data = {operation:'multipleUpdate'};
         data.input = (updateRecords.length!=0)? updateRecords:null;
+        console.log(data.input);
         // return (data.input!=null)? request(data, handleMultipleUpdateResponse):readMode();
 
       });
