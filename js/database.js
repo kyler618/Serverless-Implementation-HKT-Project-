@@ -665,11 +665,27 @@ var Users = window.Users || {};
       }
       var id = $target.prop('id');
       constantAttributes.forEach( attribute => {
-        $('#form').append(createInput(attribute, '', (attribute==constantAttributes[0])?false:true));          
+        $('#form').append(createInput(attribute, '', (attribute==constantAttributes[0])?false:true));
       });
       show_Modal(id);
     }
     function show_Modal(id){
+      function createForm(){
+        for(let key in item){
+          if(key=="id") continue;
+          let $input = $('#modal input.form-control[name=\'' + key + '\']');
+          if($input.length != 0 ){
+            $('#modal input.input-group-text[value=\'' + key + '\']').val(key); // for undo
+            $input.val(item[key]);
+          }
+          else{
+            $('#form').append(createInput(key, item[key], true));
+          }
+        }
+      }
+      function remove_Input(button){
+        $(button).parent().remove();
+      }
       function edit(){
         modal.remove_Input = remove_Input;
         $('#modal .edit').show();
@@ -748,31 +764,13 @@ var Users = window.Users || {};
           const data = {table:"Hardware", operation: "table_Update", pk: id};
           data.input = (changed)? items:null;
           data.delete = (deleteItem.length!=0)? deleteItem:null;
-          httpRequest.data = JSON.stringify(data);
-          httpRequest.success = handleResponse;
-          $.ajax(httpRequest);
+          request(data, handleResponse);
         });
         $('#modal .form-control').removeAttr('readonly');
         $('#modal .input-group-text:not(.readonly)').removeAttr('readonly');
         $('.maintain').unbind().hide();
         $('#remove').unbind().hide();
         $('#edit').unbind().hide();
-      }
-      function createForm(){
-        for(let key in item){
-          if(key=="id") continue;
-          let $input = $('#modal input.form-control[name=\'' + key + '\']');
-          if($input.length != 0 ){
-            $('#modal input.input-group-text[value=\'' + key + '\']').val(key); // for undo
-            $input.val(item[key]);
-          }
-          else{
-            $('#form').append(createInput(key, item[key], true));
-          }
-        }
-      }
-      function remove_Input(button){
-        $(button).parent().remove();
       }
       function maintain(){
         function handleResponse(results){
@@ -789,6 +787,20 @@ var Users = window.Users || {};
         const id = event.target.classList[1];
         const data = {operation: "scanMaintenanceRecord", target: id};
         request(data, handleResponse, 'Maintenance');
+      }
+      function remove(){
+        function handleDeleteResponse(results){
+          if(results.status=="ok"){
+            quit();
+            handleScanResponse(results);
+            alert("Delete Item Successed.");
+          }
+          else{
+            alert("Delete Item Failed.");
+          }
+        }
+        let data = {operation: "delete", pk: id};
+        request(data, handleDeleteResponse);
       }
       function quit(){
         $('#edit').unbind().hide();
