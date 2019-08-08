@@ -344,15 +344,14 @@ var Users = window.Users || {};
       });
       $('#confirmUpdate').click( () => {
         function handleMultipleUpdateResponse(results){
-          console.log(results);
-          // if(results.status=="ok"){
-          //   handleScanResponse(results);
-          //   alert("Update Items Successed.");
-          //   readMode();
-          // }
-          // else {
-          //   alert("Update Items Failed.");
-          // }
+          if(results.status=="ok"){
+            handleScanResponse(results);
+            alert("Update Items Successed.");
+            readMode();
+          }
+          else {
+            alert("Update Items Failed.");
+          }
         }
         if(changedRecords.length==0){
           return readMode();
