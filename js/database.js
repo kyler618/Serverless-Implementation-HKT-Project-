@@ -336,26 +336,8 @@ var Users = window.Users || {};
             items[attribute.value] = record.value;
           }
           const data = {operation: "put", input: items};
-          httpRequest.data = JSON.stringify(data);
-          httpRequest.success = handleResponse;
-          console.log(httpRequest);
-          $.ajax(httpRequest);
+          request(data, handleResponse);
 
-          // const inputs = getInputData();
-          // if(inputs.incompleteError!==undefined){
-          //   alert("Incompleted Error");
-          //   return;
-          // }
-          // if(inputs.DuplicateError!==undefined){
-          //   alert("Duplicate Error");
-          //   return;
-          // }
-          // if(storedItem.map(x=>x[attributes[0]]).includes(inputs[attributes[0]])){
-          //   alert("Duplicate Error, the primary key duplicates with other record.");
-          //   return;
-          // }
-          // const data = {operation: "put", input: inputs};
-          // request(data, handlePutResponse);
         });
         $('#quit').click( () => {
           delete modal.remove;
