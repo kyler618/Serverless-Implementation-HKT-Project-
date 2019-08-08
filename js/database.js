@@ -21,9 +21,13 @@ var Users = window.Users || {};
   targetTable = $('#current').html();
   switch(targetTable){
     case "Customer and Software":
-      targetTable = "Customer_and_Software"
-      constantAttributes.push('Tenant_ID_number');
-      selectFields.push('Billed_customer_name', 'Billed_Customer_Contact', 'Enduser_address_for_reference');
+      targetTable = "Customer and Software"
+      constantAttributes.push('Tenant ID number');
+      selectFields.push(
+        'Billed customer name',
+        'Billed Customer Contact',
+        'Enduser address for reference'
+      );
       break;
     case "Hardware":
       constantAttributes.push('Sensor_ID');
