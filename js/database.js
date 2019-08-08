@@ -790,7 +790,7 @@ var Users = window.Users || {};
         request(data, handleResponse, 'Maintenance');
       }
       function quit(){
-        $('#edit').unbind().show();
+        $('#edit').unbind().hide();
         $('#remove').unbind().hide();
         $('#modal .edit').unbind().hide();
         $('#modal').hide();
