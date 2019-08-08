@@ -297,8 +297,7 @@ var Users = window.Users || {};
             "</p>"
           ]);
         });
-        console.log(form);
-        // $('#form').append(getHtml(form));
+        $('#form').html(form);
         // $('.addItem').show().unbind();
         $('#modal').show();
         // $('#add').click( () => {
