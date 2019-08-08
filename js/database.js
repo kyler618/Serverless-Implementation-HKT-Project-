@@ -299,23 +299,64 @@ var Users = window.Users || {};
           ]));
           $('#form').append(p);
         });
-        // $('#save').show().click( event => {
-        //   const inputs = getInputData();
-        //   if(inputs.incompleteError!==undefined){
-        //     alert("Incompleted Error");
-        //     return;
-        //   }
-        //   if(inputs.DuplicateError!==undefined){
-        //     alert("Duplicate Error");
-        //     return;
-        //   }
-        //   if(storedItem.map(x=>x[attributes[0]]).includes(inputs[attributes[0]])){
-        //     alert("Duplicate Error, the primary key duplicates with other record.");
-        //     return;
-        //   }
-        //   const data = {operation: "put", input: inputs};
-        //   request(data, handlePutResponse);
-        // });
+        $('#save').show().click( event => {
+          function handleResponse(results){
+            console.log(results);
+            // if(results.status=="ok"){
+            //   let index = storedItem.indexOf(item);
+            //   storedItem[index] = item = items;
+            //   deleteItem.forEach( attribute => {
+            //     $('#form input.form-control[name=\'' + attribute + '\']').parent().remove();
+            //   });
+            //   $('#undo').click();
+            //   handleScanResponse(results);
+            // }
+            // else {
+            //   alert("Update Item Failed.");
+            //   $('#undo').click();
+            // }
+          }
+          const items = {};
+          const attributes = [];
+          const input = $('#modal input');
+          for( let x = 0 ; x < input.length ; x++ ){
+            const attribute = input[x++];
+            const record = input[x];
+            if(attribute.value==""||record.value==""){
+              // items.incompleteError = x-1;
+              alert("Incompleted Error");
+              return;
+            }
+            if(attributes.includes(attribute.value)){
+              // items.DuplicateError = x-1;
+              alert("Duplicate Error");
+              return;
+            }
+            attributes.push(attribute.value);
+            items[attribute.value] = record.value;
+          }
+          const data = {operation: "put", input: inputs};
+          httpRequest.data = JSON.stringify(data);
+          httpRequest.success = handleResponse;
+          console.log(httpRequest);
+          $.ajax(httpRequest);
+
+          // const inputs = getInputData();
+          // if(inputs.incompleteError!==undefined){
+          //   alert("Incompleted Error");
+          //   return;
+          // }
+          // if(inputs.DuplicateError!==undefined){
+          //   alert("Duplicate Error");
+          //   return;
+          // }
+          // if(storedItem.map(x=>x[attributes[0]]).includes(inputs[attributes[0]])){
+          //   alert("Duplicate Error, the primary key duplicates with other record.");
+          //   return;
+          // }
+          // const data = {operation: "put", input: inputs};
+          // request(data, handlePutResponse);
+        });
         $('#quit').click( () => {
           delete modal.remove;
           $('#form').empty();
@@ -622,17 +663,14 @@ var Users = window.Users || {};
     const inputData = {};
     const fieldArray = [];
     const input = $('#itemForm').serializeArray();
-    for( let i = 0 ; i < input.length ; i++ )
-    {
+    for( let i = 0 ; i < input.length ; i++ ){
       const field = input[i++];
       const values = input[i];
-      if(field.value==""||values.value=="")
-      {
+      if(field.value==""||values.value==""){
         inputData.incompleteError = i-1;
         break;
       }
-      if(fieldArray.includes(field.value))
-      {
+      if(fieldArray.includes(field.value)){
         inputData.DuplicateError = i-1;
         break;
       }
