@@ -275,26 +275,25 @@ var Users = window.Users || {};
             alert("Put Item Failed.");
           }
         }
-        const itemForm = document.getElementById('itemForm');
-        constantAttributes.forEach( constantAttribute => {
+        const form = constantAttributes.map( constantAttribute => {
+          let foo = document.createElement("P");
           let field = createFormInput("field", constantAttribute, true);
           let value = createFormInput("value", "", false);
           field.classList.add('input-group-text');
           value.classList.add('form-control');
-          itemForm.appendChild(field);
-          itemForm.appendChild(value);
+          foo.appendChild(field);
+          foo.appendChild(value);
           if(constantAttribute != constantAttributes[0]){
             let button = createRemoveButton();
             button.onclick = event => {
               event.preventDefault();
-              field.parentNode.removeChild(field);
-              value.parentNode.removeChild(value);
-              button.parentNode.removeChild(button);
+              $(foo).remove();
             };
-            itemForm.appendChild(button);
+            foo.appendChild(button);
           }
-          itemForm.appendChild(document.createElement("P"));
+          return foo;
         });
+        console.log(form);
 
         $('.addItem').show().unbind();
         $('#itemModel').show();
