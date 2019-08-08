@@ -880,7 +880,6 @@ var Users = window.Users || {};
         return getHtml(headers);
       });
       $('#table thead tr').html(_headers);
-      constantAttributesIndex = constantAttributes.map(attribute => $.inArray(attribute,attributes));
     }
     function insertBodyRow(){
       const tableBody = document.querySelector("#table tbody");
