@@ -282,6 +282,9 @@ var Users = window.Users || {};
             '</button>'
           ]);
         }
+        modal.remove = function remove(button){
+            return $(button).parent().remove();
+          };
         const form = constantAttributes.map( constantAttribute => {
           let item = [];
           let field = createFormInput( null, constantAttribute, true);
@@ -301,9 +304,6 @@ var Users = window.Users || {};
         $('#form').html(form);
         $('#modal').show();
         $('#add').show().click( () => {
-          modal.remove = function remove(button){
-            return $(button).parent().remove();
-          };
           const p = document.createElement("P");
           const field = createFormInput( null, null, false);
           const value = createFormInput( null, null, false);
