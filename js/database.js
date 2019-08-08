@@ -665,7 +665,9 @@ var Users = window.Users || {};
       }
       var id = $target.prop('id');
       constantAttributes.forEach( attribute => {
-        $('#form').append(createInput(attribute, '', true));
+        if( attribute==constantAttributes[0]){
+          $('#form').append(createInput(attribute, '', true));          
+        }
       });
       show_Modal(id);
     }
