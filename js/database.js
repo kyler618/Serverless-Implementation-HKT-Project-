@@ -448,12 +448,20 @@ var Users = window.Users || {};
   }
 
   function hideColumn(){
-    for(let x = 0 ; x < attributes.length ; x++){
-      if(!constantAttributesIndex.includes(x))
-      {
-        $("td." + attributes[x]).hide();
+    attributes.forEach( attribute => {
+      if(!constantAttributes.includes(attribute)){
+        $('#table thead th[id=\'' + attribute + '\']').hide();
+        $('#table tbody td[headers=\'' + attribute + '\']').hide();
       }
-    }
+    });
+    // for(let x = 0 ; x < attributes.length ; x++){
+    //   if(!constantAttributesIndex.includes(x))
+    //   {
+    //     console.log(attributes[x]);
+    //     $('#table tbody td[headers=\'' + attribute + '\']')
+    //     $("td." + attributes[x]).hide();
+    //   }
+    // }
   }
 
   function showColumn(){
