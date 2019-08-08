@@ -312,7 +312,10 @@ var Users = window.Users || {};
           attributes.push(attribute.value);
           items[attribute.value] = record.value;
         }
-        console.log(items[constantAttributes[0]]);
+        let x = storedItem.find( item => {
+          return item[constantAttributes[0]] == items[constantAttributes[0]];
+        });
+        console.log(x);
         const data = {operation: "put", input: items};
         request(data, handleResponse);
       });
