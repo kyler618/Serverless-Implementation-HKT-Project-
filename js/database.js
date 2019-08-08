@@ -262,109 +262,6 @@ var Users = window.Users || {};
         }
       });
 
-      $('#addItem').click( () => {
-        function handlePutResponse(results){
-          if(results.status=="ok"){
-
-            handleScanResponse(results);
-            $("input[name='table_Input']").removeAttr("readOnly");
-            alert("Put Item Successed.");
-          }
-          else{
-            alert("Put Item Failed.");
-          }
-        }
-        function createRemoveButton(){
-          return getHtml([
-            '<button onclick="modal.remove(this)">',
-            '<i class="fa fa-close"></i>',
-            '</button>'
-          ]);
-        }
-        modal.remove = button => {
-            return $(button).parent().remove();
-          };
-        $('#edit').hide();
-        $('#modal').show();
-        $('#add').show().click( () => {
-          const p = document.createElement("P");
-          const field = createFormInput( null, null, false);
-          const value = createFormInput( null, null, false);
-          field.classList.add('input-group-text');
-          value.classList.add('form-control');
-          $(p).html(getHtml([
-            field.outerHTML,
-            value.outerHTML,
-            createRemoveButton()
-          ]));
-          $('#form').append(p);
-        });
-        $('#save').show().click( event => {
-          function handleResponse(results){
-            console.log(results);
-            // if(results.status=="ok"){
-            //   let index = storedItem.indexOf(item);
-            //   storedItem[index] = item = items;
-            //   deleteItem.forEach( attribute => {
-            //     $('#form input.form-control[name=\'' + attribute + '\']').parent().remove();
-            //   });
-            //   $('#undo').click();
-            //   handleScanResponse(results);
-            // }
-            // else {
-            //   alert("Update Item Failed.");
-            //   $('#undo').click();
-            // }
-          }
-          const items = {};
-          const attributes = [];
-          const input = $('#modal input');
-          for( let x = 0 ; x < input.length ; x++ ){
-            const attribute = input[x++];
-            const record = input[x];
-            if(attribute.value==""||record.value==""){
-              // items.incompleteError = x-1;
-              alert("Incompleted Error");
-              return;
-            }
-            if(attributes.includes(attribute.value)){
-              // items.DuplicateError = x-1;
-              alert("Duplicate Error");
-              return;
-            }
-            attributes.push(attribute.value);
-            items[attribute.value] = record.value;
-          }
-          const data = {operation: "put", input: items};
-          request(data, handleResponse);
-
-        });
-        $('#quit').click( () => {
-          delete modal.remove;
-          $('#form').empty();
-          $('#modal').hide();
-          $('#add').hide().unbind();
-          $('#save').hide().unbind();
-          $('#quit').unbind();
-        });
-        const form = constantAttributes.map( constantAttribute => {
-          let item = [];
-          let field = createFormInput( null, constantAttribute, true);
-          let value = createFormInput( constantAttribute, null, false);
-          field.classList.add('input-group-text');
-          value.classList.add('form-control');
-          item.push(field.outerHTML, value.outerHTML);
-          if(constantAttribute != constantAttributes[0]){
-            item.push(createRemoveButton());
-          }
-          return getHtml([
-            "<p>",
-            getHtml(item),
-            "</p>"
-          ]);
-        });
-        $('#form').html(form);
-      });
       $('#confirmUpdate').click( () => {
         function handleMultipleUpdateResponse(results){
           if(results.status=="ok"){
@@ -459,7 +356,91 @@ var Users = window.Users || {};
     $('.editMode').hide();
 
     $("#table tbody input").attr('readOnly', true).unbind();
-
+    $('#addItem').click( () => {
+      function createRemoveButton(){
+        return getHtml([
+          '<button onclick="modal.remove(this)">',
+          '<i class="fa fa-close"></i>',
+          '</button>'
+        ]);
+      }
+      modal.remove = button => {
+          return $(button).parent().remove();
+        };
+      $('#edit').hide();
+      $('#modal').show();
+      $('#add').show().click( () => {
+        const p = document.createElement("P");
+        const field = createFormInput( null, null, false);
+        const value = createFormInput( null, null, false);
+        field.classList.add('input-group-text');
+        value.classList.add('form-control');
+        $(p).html(getHtml([
+          field.outerHTML,
+          value.outerHTML,
+          createRemoveButton()
+        ]));
+        $('#form').append(p);
+      });
+      $('#save').show().click( event => {
+        function handleResponse(results){
+          if(results.status=="ok"){
+            handleScanResponse(results);
+            $('#quit').click();
+            alert("Put Item Successed.");
+          }
+          else {
+            alert("Put Item Failed.");
+          }
+        }
+        const items = {};
+        const attributes = [];
+        const input = $('#modal input');
+        for( let x = 0 ; x < input.length ; x++ ){
+          const attribute = input[x++];
+          const record = input[x];
+          if(attribute.value==""||record.value==""){
+            // items.incompleteError = x-1;
+            alert("Incompleted Error");
+            return;
+          }
+          if(attributes.includes(attribute.value)){
+            // items.DuplicateError = x-1;
+            alert("Duplicate Error");
+            return;
+          }
+          attributes.push(attribute.value);
+          items[attribute.value] = record.value;
+        }
+        const data = {operation: "put", input: items};
+        request(data, handleResponse);
+      });
+      $('#quit').click( () => {
+        delete modal.remove;
+        $('#form').empty();
+        $('#modal').hide();
+        $('#add').hide().unbind();
+        $('#save').hide().unbind();
+        $('#quit').unbind();
+      });
+      const form = constantAttributes.map( constantAttribute => {
+        let item = [];
+        let field = createFormInput( null, constantAttribute, true);
+        let value = createFormInput( constantAttribute, null, false);
+        field.classList.add('input-group-text');
+        value.classList.add('form-control');
+        item.push(field.outerHTML, value.outerHTML);
+        if(constantAttribute != constantAttributes[0]){
+          item.push(createRemoveButton());
+        }
+        return getHtml([
+          "<p>",
+          getHtml(item),
+          "</p>"
+        ]);
+      });
+      $('#form').html(form);
+    });
     $('#editTable').click(handleEditTable);
     $('#table tbody').click(modal);
     $('#updateTable').click(handleUpdateTable);
