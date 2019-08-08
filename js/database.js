@@ -282,7 +282,6 @@ var Users = window.Users || {};
           field.classList.add('input-group-text');
           value.classList.add('form-control');
           item.push(field.outerHTML, value.outerHTML);
-          // foo.appendChild(value);
           if(constantAttribute != constantAttributes[0]){
             let button = createRemoveButton();
             item.push(button.outerHTML);
@@ -581,7 +580,6 @@ var Users = window.Users || {};
   function createRemoveButton(){
     const button = document.createElement("BUTTON");
     button.innerHTML = "<i class='fa fa-close'></i>";
-    button.classList.add('addItem', 'removeAttr');
     button.onclick = event => {
       event.preventDefault();
       $(event.target).parent().remove();
