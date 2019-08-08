@@ -576,14 +576,22 @@ var Users = window.Users || {};
   }
 
   function createRemoveButton(){
-    const button = document.createElement("BUTTON");
-    button.innerHTML = "<i class='fa fa-close'></i>";
-    button.onclick = event => {
-      event.preventDefault();
-      console.log(event.target);
-      $(event.target).parent().remove();
-    };
-    return button.outerHTML;
+    function remove(event){
+      return $(event.target).parent().remove();
+    }
+    return getHtml([
+      '<button onclick="remove(event)">',
+      '<i class="fa fa-close"></i>'
+      '</button>'
+    ]);
+    // const button = document.createElement("BUTTON");
+    // button.innerHTML = "<i class='fa fa-close'></i>";
+    // button.onclick = event => {
+    //   event.preventDefault();
+    //   console.log(event.target);
+    //   $(event.target).parent().remove();
+    // };
+    // return button.outerHTML;
   }
 
   function createOption(item, number){
