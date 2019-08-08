@@ -314,7 +314,11 @@ var Users = window.Users || {};
             // value.parentNode.removeChild(value);
             // button.parentNode.removeChild(button);
           };
-          $(p).append(field, value, button);
+          $(p).html(getHtml([
+            field.outerHTML,
+            value.outerHTML,
+            button.outerHTML
+          ]));
           // p.appendChild(field, value, button);
           $('#form').append(p);
           // itemForm.appendChild(document.createElement("P"));
