@@ -24,14 +24,14 @@ var Users = window.Users || {};
       targetTable = "Customer and Software"
       constantAttributes.push('Tenant ID number');
       selectFields.push(
-        'Billed customer name',
+        'Billed Customer Name',
         'Billed Customer Contact',
-        'Enduser address for reference'
+        'Enduser Address for Reference'
       );
       break;
     case "Hardware":
-      constantAttributes.push('Sensor_ID');
-      selectFields.push('Enduser_name', 'Physical_Site_Address', 'Device_Type');
+      constantAttributes.push('Sensor ID');
+      selectFields.push('Enduser Name', 'Physical Site Address', 'Device Type');
       constantAttributes = constantAttributes.concat(selectFields);
       $('#selector').show();
       break;
