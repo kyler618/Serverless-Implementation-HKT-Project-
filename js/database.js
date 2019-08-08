@@ -755,6 +755,7 @@ var Users = window.Users || {};
         $('#modal .form-control').removeAttr('readonly');
         $('#modal .input-group-text:not(.readonly)').removeAttr('readonly');
         $('.maintain').unbind().hide();
+        $('#remove').unbind().hide();
         $('#edit').unbind().hide();
       }
       function createForm(){
