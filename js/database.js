@@ -277,12 +277,12 @@ var Users = window.Users || {};
         }
         const form = constantAttributes.map( constantAttribute => {
           let foo = document.createElement("P");
-          let field = createFormInput("field", constantAttribute, true);
-          let value = createFormInput("value", "", false);
+          let field = createFormInput( null, constantAttribute, true);
+          let value = createFormInput( constantAttribute, null, false);
           field.classList.add('input-group-text');
           value.classList.add('form-control');
-          foo.appendChild(field);
-          foo.appendChild(value);
+          foo.appendChild(field, value);
+          // foo.appendChild(value);
           if(constantAttribute != constantAttributes[0]){
             let button = createRemoveButton();
             button.onclick = event => {
@@ -615,8 +615,12 @@ var Users = window.Users || {};
     if(readOnly){
       item.setAttribute("readOnly", true);
     }
-    item.setAttribute("name", name);
-    item.setAttribute("value",value);
+    if(name!=null){
+      item.setAttribute("name", name);
+    }
+    if(value!=null){
+      item.setAttribute("value", value);
+    }
     return item;
   }
 
