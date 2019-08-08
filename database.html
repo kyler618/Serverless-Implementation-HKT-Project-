@@ -130,9 +130,6 @@
       border-style: solid;
       padding: 32px 32px;
     }
-    #modal #quit{
-      font-size: 20px;
-    }
     #modal input{
       display: inline-block;
       border: none;
@@ -142,6 +139,12 @@
       border: none;
       background: none;
       font-size: large;
+    }
+    #modal #remove{
+      display: none;
+    }
+    #modal #quit{
+      font-size: 20px;
     }
     #modal .input-group-text{
       border-right: 1px solid #dadcde;
@@ -227,7 +230,7 @@
         <button id="save" class="edit"><i class="fa fa-floppy-o"></i></button>
         <button id="undo" class="edit"><i class="fa fa-undo"></i></button>
         <button id="edit"><i class="fa fa-pencil"></i></button>
-        <button id="remove" class="edit w3-right"><i class="fa fa-trash"></i></button>
+        <button id="remove" class="w3-right"><i class="fa fa-trash"></i></button>
         <button id="maintain">Maintain</button>
         <div id="maintain-Container">
             <span>Sensor ID : </span>

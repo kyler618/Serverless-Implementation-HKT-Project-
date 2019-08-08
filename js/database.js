@@ -791,6 +791,7 @@ var Users = window.Users || {};
       }
       function quit(){
         $('#edit').unbind().show();
+        $('#remove').unbind().hide();
         $('#modal .edit').unbind().hide();
         $('#modal').hide();
         $('#form p').remove();
@@ -804,7 +805,8 @@ var Users = window.Users || {};
     });
       $('#modal').show();
       $('.maintain').show().click(maintain);
-      $('#edit').click(edit);
+      $('#remove').show().click();
+      $('#edit').show().click(edit);
       $('#quit').click(quit);
       createForm();
     };
