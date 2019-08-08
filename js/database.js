@@ -301,10 +301,9 @@ var Users = window.Users || {};
         $('#form').html(form);
         $('#modal').show();
         $('#add').show().click( () => {
-          function remove(button){
+          addItem.remove = function remove(button){
             return $(button).parent().remove();
-          }
-          addItem.remove = remove;
+          };
           const p = document.createElement("P");
           const field = createFormInput( null, null, false);
           const value = createFormInput( null, null, false);
