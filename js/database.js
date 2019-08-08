@@ -312,6 +312,7 @@ var Users = window.Users || {};
           attributes.push(attribute.value);
           items[attribute.value] = record.value;
         }
+        console.log(items[constantAttributes[0]]);
         const data = {operation: "put", input: items};
         request(data, handleResponse);
       });
