@@ -285,11 +285,6 @@ var Users = window.Users || {};
           // foo.appendChild(value);
           if(constantAttribute != constantAttributes[0]){
             let button = createRemoveButton();
-            button.onclick = event => {
-              event.preventDefault();
-              $(event.target).parent().remove();
-              // $(foo).remove();
-            };
             item.push(button.outerHTML);
           }
           return getHtml([
@@ -307,21 +302,12 @@ var Users = window.Users || {};
           field.classList.add('input-group-text');
           value.classList.add('form-control');
           const button = createRemoveButton();
-          button.onclick = event => {
-            event.preventDefault();
-            $(p).remove();
-            // field.parentNode.removeChild(field);
-            // value.parentNode.removeChild(value);
-            // button.parentNode.removeChild(button);
-          };
           $(p).html(getHtml([
             field.outerHTML,
             value.outerHTML,
             button.outerHTML
           ]));
-          // p.appendChild(field, value, button);
           $('#form').append(p);
-          // itemForm.appendChild(document.createElement("P"));
         });
         // $('#confirm').click( event => {
         //   const inputs = getInputData();
@@ -596,6 +582,10 @@ var Users = window.Users || {};
     const button = document.createElement("BUTTON");
     button.innerHTML = "<i class='fa fa-close'></i>";
     button.classList.add('addItem', 'removeAttr');
+    button.onclick = event => {
+      event.preventDefault();
+      $(event.target).parent().remove();
+    };
     return button;
   }
 
