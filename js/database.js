@@ -264,7 +264,6 @@ var Users = window.Users || {};
       modal.remove = button => {
           return $(button).parent().remove();
         };
-      $('#edit').hide();
       $('#modal').show();
       $('#add').show().click( () => {
         const p = document.createElement("P");
@@ -340,106 +339,106 @@ var Users = window.Users || {};
       $('#form').html(form);
     } );
     $('#editTable').click( () => {
-          const changedRecords = [];
-          $('.readMode').hide().unbind();
-          $('.editMode').show().unbind();
+      const changedRecords = [];
+      $('.readMode').hide().unbind();
+      $('.editMode').show().unbind();
 
-          $("#table tbody input").removeAttr("readOnly").change( event => {
-            const id = $(event.target).parent().parent().prop('id');
-            if(!changedRecords.includes(id)){
-              changedRecords.push(id);
-            }
-          });
+      $("#table tbody input").removeAttr("readOnly").change( event => {
+        const id = $(event.target).parent().parent().prop('id');
+        if(!changedRecords.includes(id)){
+          changedRecords.push(id);
+        }
+      });
 
-          $('#confirmUpdate').click( () => {
-            function handleMultipleUpdateResponse(results){
-              if(results.status=="ok"){
-                handleScanResponse(results);
-                alert("Update Items Successed.");
-                readMode();
-              }
-              else {
-                alert("Update Items Failed.");
-              }
-            }
-            if(changedRecords.length==0){
-              return readMode();
-            }
-            const updateRecords = [];
-            changedRecords.forEach( changedRecord => {
-              let changed = false;
-              const items = {};
-              const item = storedItem.find( item => item.id == changedRecord);
-              const records = $('#table tbody tr[id=\'' + changedRecord + '\'] input');
-              Array.from(records).forEach( record => {
-                if(record.value == ""){
-                  alert("Incompleted Error.");
-                  return;
-                }
-                if(record.value != item[record.name]){
-                  changed = true;
-                }
-                items[record.name] = record.value;
-              });
-              if(changed){
-                items[attributes[0]] = changedRecord;
-                updateRecords.push(items);
-              }
-            });
-            const data = {operation:'multipleUpdate'};
-            data.input = (updateRecords.length!=0)? updateRecords:null;
-            return (data.input!=null)? request(data, handleMultipleUpdateResponse):readMode();
-
-          });
-          $('#table tbody').unbind().click( event => {
-            const cell = event.target;
-            if(cell.innerHTML=="" && cell.tagName == "TD"){
-              const field = cell.headers;
-              const id = $(cell).parent().prop('id');
-              if(!changedRecords.includes(id)){
-                changedRecords.push(id);
-              }
-              $(cell).append(createFormInput(field, "", false));
-            }
-          });
-          $('#cancelEdit').click( () => {
-            $('#cancelEdit').unbind();
-            $('#table tbody').unbind();
-            changedRecords.forEach( changedRecord => {
-              const records = $('#table tbody tr[id=\'' + changedRecord + '\'] input');
-              const item = storedItem.find( item => item.id == changedRecord);
-              const attrs = Object.keys(item);
-              Array.from(records).forEach( record => {
-                const attr = $(record).attr('name');
-                if(attrs.includes(attr)){
-                  $(record).val(item[attr]);
-                }
-                else{
-                  $(record).remove();
-                }
-              });
-            })
-            if(changedRecords.length!=0){
-              for(let x=0; x<changedRecords.length; x++){
-                const pkey = changedRecords[x];
-                const index = storedItem.map(x=>x[attributes[0]]).indexOf(pkey);
-                const attrs = Object.keys(storedItem[index]);
-                const record = Array.from($("input." + pkey));
-                for(let y=0; y<record.length; y++){
-                  const field = record[y].classList[0];
-                  const cell = "input." + field + "." + pkey;
-                  if(attrs.includes(field)){
-                    $(cell)[0].value = storedItem[index][field];
-                  }
-                  else{
-                    $(cell)[0].remove();
-                  }
-                }
-              }
-            }
+      $('#confirmUpdate').click( () => {
+        function handleMultipleUpdateResponse(results){
+          if(results.status=="ok"){
+            handleScanResponse(results);
+            alert("Update Items Successed.");
             readMode();
+          }
+          else {
+            alert("Update Items Failed.");
+          }
+        }
+        if(changedRecords.length==0){
+          return readMode();
+        }
+        const updateRecords = [];
+        changedRecords.forEach( changedRecord => {
+          let changed = false;
+          const items = {};
+          const item = storedItem.find( item => item.id == changedRecord);
+          const records = $('#table tbody tr[id=\'' + changedRecord + '\'] input');
+          Array.from(records).forEach( record => {
+            if(record.value == ""){
+              alert("Incompleted Error.");
+              return;
+            }
+            if(record.value != item[record.name]){
+              changed = true;
+            }
+            items[record.name] = record.value;
           });
-        } );
+          if(changed){
+            items[attributes[0]] = changedRecord;
+            updateRecords.push(items);
+          }
+        });
+        const data = {operation:'multipleUpdate'};
+        data.input = (updateRecords.length!=0)? updateRecords:null;
+        return (data.input!=null)? request(data, handleMultipleUpdateResponse):readMode();
+
+      });
+      $('#table tbody').unbind().click( event => {
+        const cell = event.target;
+        if(cell.innerHTML=="" && cell.tagName == "TD"){
+          const field = cell.headers;
+          const id = $(cell).parent().prop('id');
+          if(!changedRecords.includes(id)){
+            changedRecords.push(id);
+          }
+          $(cell).append(createFormInput(field, "", false));
+        }
+      });
+      $('#cancelEdit').click( () => {
+        $('#cancelEdit').unbind();
+        $('#table tbody').unbind();
+        changedRecords.forEach( changedRecord => {
+          const records = $('#table tbody tr[id=\'' + changedRecord + '\'] input');
+          const item = storedItem.find( item => item.id == changedRecord);
+          const attrs = Object.keys(item);
+          Array.from(records).forEach( record => {
+            const attr = $(record).attr('name');
+            if(attrs.includes(attr)){
+              $(record).val(item[attr]);
+            }
+            else{
+              $(record).remove();
+            }
+          });
+        })
+        if(changedRecords.length!=0){
+          for(let x=0; x<changedRecords.length; x++){
+            const pkey = changedRecords[x];
+            const index = storedItem.map(x=>x[attributes[0]]).indexOf(pkey);
+            const attrs = Object.keys(storedItem[index]);
+            const record = Array.from($("input." + pkey));
+            for(let y=0; y<record.length; y++){
+              const field = record[y].classList[0];
+              const cell = "input." + field + "." + pkey;
+              if(attrs.includes(field)){
+                $(cell)[0].value = storedItem[index][field];
+              }
+              else{
+                $(cell)[0].remove();
+              }
+            }
+          }
+        }
+        readMode();
+      });
+    } );
     $('#table tbody').click(modal);
     $('#updateTable').click(handleUpdateTable);
   }
