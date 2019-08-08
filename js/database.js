@@ -295,51 +295,51 @@ var Users = window.Users || {};
         });
         console.log(form);
 
-        $('.addItem').show().unbind();
-        $('#itemModel').show();
-        $('#addButton').click( () => {
-          const field = createFormInput("form_Input", "", false);
-          const value = createFormInput("form_Input", "", false);
-          field.classList.add('input-group-text');
-          value.classList.add('form-control');
-          const button = createRemoveButton();
-          button.onclick = event => {
-            event.preventDefault();
-            field.parentNode.removeChild(field);
-            value.parentNode.removeChild(value);
-            button.parentNode.removeChild(button);
-          };
-          itemForm.appendChild(field);
-          itemForm.appendChild(value);
-          itemForm.appendChild(button);
-          itemForm.appendChild(document.createElement("P"));
-        });
-        $('#confirmButton').click( event => {
-          const inputs = getInputData();
-          if(inputs.incompleteError!==undefined)
-          {
-            alert("Incompleted Error");
-            return;
-          }
-          if(inputs.DuplicateError!==undefined)
-          {
-            alert("Duplicate Error");
-            return;
-          }
-          if(storedItem.map(x=>x[attributes[0]]).includes(inputs[attributes[0]]))
-          {
-            alert("Duplicate Error, the primary key duplicates with other record.");
-            return;
-          }
-          const data = {operation: "put", input: inputs};
-          request(data, handlePutResponse);
-        });
-        $('#modalCancelButton').click( () => {
-          hideModel();
-          $('#addButton').unbind();
-          $('#confirmButton').unbind();
-          $('#modalCancelButton').unbind();
-        });
+        // $('.addItem').show().unbind();
+        $('#modal').show();
+        // $('#add').click( () => {
+        //   const field = createFormInput("form_Input", "", false);
+        //   const value = createFormInput("form_Input", "", false);
+        //   field.classList.add('input-group-text');
+        //   value.classList.add('form-control');
+        //   const button = createRemoveButton();
+        //   button.onclick = event => {
+        //     event.preventDefault();
+        //     field.parentNode.removeChild(field);
+        //     value.parentNode.removeChild(value);
+        //     button.parentNode.removeChild(button);
+        //   };
+        //   itemForm.appendChild(field);
+        //   itemForm.appendChild(value);
+        //   itemForm.appendChild(button);
+        //   itemForm.appendChild(document.createElement("P"));
+        // });
+        // $('#confirm').click( event => {
+        //   const inputs = getInputData();
+        //   if(inputs.incompleteError!==undefined)
+        //   {
+        //     alert("Incompleted Error");
+        //     return;
+        //   }
+        //   if(inputs.DuplicateError!==undefined)
+        //   {
+        //     alert("Duplicate Error");
+        //     return;
+        //   }
+        //   if(storedItem.map(x=>x[attributes[0]]).includes(inputs[attributes[0]]))
+        //   {
+        //     alert("Duplicate Error, the primary key duplicates with other record.");
+        //     return;
+        //   }
+        //   const data = {operation: "put", input: inputs};
+        //   request(data, handlePutResponse);
+        // });
+        // $('#quit').click( () => {
+        //   hideModel();
+        //   $('#addButton').unbind();
+        //   $('#confirmButton').unbind();
+        //   $('#modalCancelButton').unbind();
+        // });
       });
       $('#confirmUpdate').click( () => {
         function handleMultipleUpdateResponse(results){
