@@ -580,6 +580,7 @@ var Users = window.Users || {};
     button.innerHTML = "<i class='fa fa-close'></i>";
     button.onclick = event => {
       event.preventDefault();
+      console.log(event.target);
       $(event.target).parent().remove();
     };
     return button.outerHTML;
@@ -654,7 +655,6 @@ var Users = window.Users || {};
     data.table = (table===undefined)?targetTable:table;
     httpRequest.data = JSON.stringify(data);
     httpRequest.success = success;
-    console.log(httpRequest);
     $.ajax(httpRequest);
   }
 
