@@ -379,7 +379,8 @@ var Users = window.Users || {};
         });
         const data = {operation:'multipleUpdate'};
         data.input = (updateRecords.length!=0)? updateRecords:null;
-        return (data.input!=null)? request(data, handleMultipleUpdateResponse):readMode();
+        console.log(data);
+        // return (data.input!=null)? request(data, handleMultipleUpdateResponse):readMode();
 
       });
       $('#table tbody').unbind().click( event => {
