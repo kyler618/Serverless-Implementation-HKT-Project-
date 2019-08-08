@@ -291,9 +291,9 @@ var Users = window.Users || {};
             };
             foo.appendChild(button);
           }
-          return foo;
+          return foo.outerHTML;
         });
-        console.log(form);
+        console.log(getHtml(form));
 
         // $('.addItem').show().unbind();
         $('#modal').show();
