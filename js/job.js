@@ -165,6 +165,13 @@ function card(){
         if( !changed && deleteItem.length==0){
           return $('#undo').click();
         }
+        let check = storedItem.every( item => {
+          return item[constantAttributes[0]] != items[constantAttributes[0]];
+        });
+        if(!check){
+          alert("Sensor ID Duplicates with Existing Items");
+          return;
+        }
         const data = {table:"Hardware", operation: "maintainSensor", pk: id};
         data.input = (changed)? items:null;
         data.delete = (deleteItem.length!=0)? deleteItem:null;
