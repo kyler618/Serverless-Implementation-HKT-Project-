@@ -301,6 +301,7 @@ var Users = window.Users || {};
         $('#form').html(form);
         $('#modal').show();
         $('#add').show().click( () => {
+          const p = document.createElement("P");
           const field = createFormInput( null, null, false);
           const value = createFormInput( null, null, false);
           field.classList.add('input-group-text');
@@ -308,14 +309,14 @@ var Users = window.Users || {};
           const button = createRemoveButton();
           button.onclick = event => {
             event.preventDefault();
-            field.parentNode.removeChild(field);
-            value.parentNode.removeChild(value);
-            button.parentNode.removeChild(button);
+            $(p).remove();
+            // field.parentNode.removeChild(field);
+            // value.parentNode.removeChild(value);
+            // button.parentNode.removeChild(button);
           };
-          itemForm.appendChild(field);
-          itemForm.appendChild(value);
-          itemForm.appendChild(button);
-          itemForm.appendChild(document.createElement("P"));
+          p.appendChild(field, value, button);
+          $('#form').append(p);
+          // itemForm.appendChild(document.createElement("P"));
         });
         // $('#confirm').click( event => {
         //   const inputs = getInputData();
