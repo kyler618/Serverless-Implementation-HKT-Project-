@@ -294,6 +294,17 @@ var Users = window.Users || {};
         $('#form').html(form);
         $('#modal').show();
         $('#add').show().click( () => {
+          function remove(button){
+            return $(button).parent().remove();
+          }
+          function createRemoveButton(){
+            return getHtml([
+              '<button onclick="addItem.remove(this)">',
+              '<i class="fa fa-close"></i>',
+              '</button>'
+            ]);
+          }
+          addItem.remove = remove;
           const p = document.createElement("P");
           const field = createFormInput( null, null, false);
           const value = createFormInput( null, null, false);
@@ -573,25 +584,6 @@ var Users = window.Users || {};
     pagination.case_search = case_search;
     pagination.setTable = setTable;
     pagination.setPageSize = setPageSize;
-  }
-
-  function createRemoveButton(){
-    function remove(event){
-      return $(event.target).parent().remove();
-    }
-    return getHtml([
-      '<button onclick="function remove(event){console.log(123);$(event.target).parent().remove()}">',
-      '<i class="fa fa-close"></i>',
-      '</button>'
-    ]);
-    // const button = document.createElement("BUTTON");
-    // button.innerHTML = "<i class='fa fa-close'></i>";
-    // button.onclick = event => {
-    //   event.preventDefault();
-    //   console.log(event.target);
-    //   $(event.target).parent().remove();
-    // };
-    // return button.outerHTML;
   }
 
   function createOption(item, number){
