@@ -265,13 +265,12 @@ var Users = window.Users || {};
       $('#addItem').click( () => {
         function handlePutResponse(results){
           if(results.status=="ok"){
-            hideModel();
+
             handleScanResponse(results);
             $("input[name='table_Input']").removeAttr("readOnly");
             alert("Put Item Successed.");
           }
-          else
-          {
+          else{
             alert("Put Item Failed.");
           }
         }
@@ -285,6 +284,46 @@ var Users = window.Users || {};
         modal.remove = button => {
             return $(button).parent().remove();
           };
+        $('#edit').hide();
+        $('#modal').show();
+        $('#add').show().click( () => {
+          const p = document.createElement("P");
+          const field = createFormInput( null, null, false);
+          const value = createFormInput( null, null, false);
+          field.classList.add('input-group-text');
+          value.classList.add('form-control');
+          $(p).html(getHtml([
+            field.outerHTML,
+            value.outerHTML,
+            createRemoveButton()
+          ]));
+          $('#form').append(p);
+        });
+        // $('#save').show().click( event => {
+        //   const inputs = getInputData();
+        //   if(inputs.incompleteError!==undefined){
+        //     alert("Incompleted Error");
+        //     return;
+        //   }
+        //   if(inputs.DuplicateError!==undefined){
+        //     alert("Duplicate Error");
+        //     return;
+        //   }
+        //   if(storedItem.map(x=>x[attributes[0]]).includes(inputs[attributes[0]])){
+        //     alert("Duplicate Error, the primary key duplicates with other record.");
+        //     return;
+        //   }
+        //   const data = {operation: "put", input: inputs};
+        //   request(data, handlePutResponse);
+        // });
+        $('#quit').click( () => {
+          delete modal.remove;
+          $('#form').empty();
+          $('#modal').hide();
+          $('#add').hide().unbind();
+          $('#save').hide().unbind();
+          $('#quit').unbind();
+        });
         const form = constantAttributes.map( constantAttribute => {
           let item = [];
           let field = createFormInput( null, constantAttribute, true);
@@ -302,46 +341,6 @@ var Users = window.Users || {};
           ]);
         });
         $('#form').html(form);
-        $('#modal').show();
-        $('#add').show().click( () => {
-          const p = document.createElement("P");
-          const field = createFormInput( null, null, false);
-          const value = createFormInput( null, null, false);
-          field.classList.add('input-group-text');
-          value.classList.add('form-control');
-          $(p).html(getHtml([
-            field.outerHTML,
-            value.outerHTML,
-            createRemoveButton()
-          ]));
-          $('#form').append(p);
-        });
-        // $('#confirm').click( event => {
-        //   const inputs = getInputData();
-        //   if(inputs.incompleteError!==undefined)
-        //   {
-        //     alert("Incompleted Error");
-        //     return;
-        //   }
-        //   if(inputs.DuplicateError!==undefined)
-        //   {
-        //     alert("Duplicate Error");
-        //     return;
-        //   }
-        //   if(storedItem.map(x=>x[attributes[0]]).includes(inputs[attributes[0]]))
-        //   {
-        //     alert("Duplicate Error, the primary key duplicates with other record.");
-        //     return;
-        //   }
-        //   const data = {operation: "put", input: inputs};
-        //   request(data, handlePutResponse);
-        // });
-        // $('#quit').click( () => {
-        //   hideModel();
-        //   $('#addButton').unbind();
-        //   $('#confirmButton').unbind();
-        //   $('#modalCancelButton').unbind();
-        // });
       });
       $('#confirmUpdate').click( () => {
         function handleMultipleUpdateResponse(results){
@@ -641,13 +640,6 @@ var Users = window.Users || {};
       inputData[field.value] = values.value;
     }
     return inputData;
-  }
-
-  function hideModel(){
-    $('#form').empty();
-    $('.addItem').hide();
-    $('.edit').hide();
-    $('#modal').hide();
   }
 
   function request(data, success, table) {
