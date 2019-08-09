@@ -1,4 +1,3 @@
-
 Users.authToken.then( token => {
   if (token) {
     function handleResponse(results){

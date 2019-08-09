@@ -62,3 +62,7 @@ function select_EndUser_Change(event){
     }
   });
 }
+
+function getHtml(template) {
+  return template.join('\n');
+}
