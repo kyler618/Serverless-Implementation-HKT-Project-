@@ -65,6 +65,7 @@ function itemClick(event){
     case 'Customer and Software':
       window.history.pushState(null, null, "main.html#customer-and-software");
       $( "#contentBody" ).load( "database.html", () => {
+        $('#Menu-bar').on( "click", "a", itemClick);
         if(openOnce) $.getScript("https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"); // it is a bug
         openOnce = true;
       });
@@ -81,9 +82,11 @@ function itemClick(event){
       break;
     case 'Client Information':
       window.history.pushState(null, null, "main.html#client-infomation");
-      $( "#contentBody" ).load( "clientInfo.html" );
+      $( "#contentBody" ).load( "clientInfo.html", () => {
+        $('#Menu-bar').on( "click", "a", itemClick);
+      });
       break;
-    case 'Client Information':
+    case 'Support Line Information':
       window.history.pushState(null, null, "main.html#support-line-information");
       break;
     case 'Documents':
