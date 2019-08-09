@@ -8,6 +8,7 @@ var openOnce = false;
       $(function onDocReady() {
         const contentBody = $( "#contentBody" );
         $('#Menu-bar').on( "click", "a", event => {
+          
           if (!_config.api.invokeUrl) {
             $('#noApiMessage').show();
           }
