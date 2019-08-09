@@ -8,7 +8,8 @@ var openOnce = false;
       $(function onDocReady() {
         const contentBody = $( "#contentBody" );
         $('#Menu-bar').on( "click", "a", event => {
-          
+          $('#Menu-bar a').css('color', 'inherit');
+          $(event.target).css('color', 'yellow');
           if (!_config.api.invokeUrl) {
             $('#noApiMessage').show();
           }
