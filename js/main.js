@@ -43,7 +43,7 @@ var openOnce = false;
 
 function itemClick(event){
   if(objectOps !== undefined){
-    delete objectOps;    
+    delete objectOps;
   }
   $('#Menu-bar').unbind();
   $('#Menu-bar a').css('color', 'inherit');

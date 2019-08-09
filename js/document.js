@@ -138,13 +138,14 @@ function uploadOps(){
   function finalize(){
     pushedItems = null;
     counter = null;
-    uploadOps.inputClicked = null;
-    uploadOps.push = null;
-    uploadOps.upload = null;
-    uploadOps.uploadFile = null;
-    uploadOps.haveUploadItems = null;
-    uploadOps.postOperation = null;
-    uploadOps.addCounter = null;
+    delete uploadOps;
+    // uploadOps.inputClicked = null;
+    // uploadOps.push = null;
+    // uploadOps.upload = null;
+    // uploadOps.uploadFile = null;
+    // uploadOps.haveUploadItems = null;
+    // uploadOps.postOperation = null;
+    // uploadOps.addCounter = null;
     document.getElementById('dropDiv').removeEventListener('dragover', dragHover);
     document.getElementById('dropDiv').removeEventListener('dragleave', dragHover);
     document.getElementById('dropDiv').removeEventListener('drop', drop_Handler);
