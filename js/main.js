@@ -6,7 +6,6 @@ var openOnce = false;
     if (token) {
       let identityCode = jwt_decode(token).iss.replace('https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_', '');
       $(function onDocReady() {
-        const contentBody = $( "#contentBody" );
         $('#Menu-bar').on( "click", "a", itemClick);
         let path = window.location.href;
         path = path.slice(path.lastIndexOf("#") + 1, path.length);
@@ -59,19 +58,19 @@ function itemClick(event){
     case 'Job':
       window.history.pushState(null, null, "main.html#job");
       if(identityCode=="p7IxZwAdF"){
-        contentBody.load( "job.html" );
+        $( "#contentBody" ).load( "job.html" );
       }
       break;
     case 'Customer and Software':
       window.history.pushState(null, null, "main.html#customer-and-software");
-      contentBody.load( "database.html", () => {
+      $( "#contentBody" ).load( "database.html", () => {
         if(openOnce) $.getScript("https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"); // it is a bug
         openOnce = true;
       });
       break;
     case 'Hardware':
       window.history.pushState(null, null, "main.html#hardware");
-      contentBody.load( "database.html", () => {
+      $( "#contentBody" ).load( "database.html", () => {
         if(openOnce) $.getScript("https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"); // it is a bug
         openOnce = true;
         if( identityCode=='DevfD3lWf' )
@@ -80,11 +79,11 @@ function itemClick(event){
       break;
     case 'Client Information':
       window.history.pushState(null, null, "main.html#client-Infomation");
-      contentBody.load( "clientInfo.html" );
+      $( "#contentBody" ).load( "clientInfo.html" );
       break;
     case 'Documents':
       window.history.pushState(null, null, "main.html#documents");
-      contentBody.load( "document.html", () => {
+      $( "#contentBody" ).load( "document.html", () => {
         $.getScript("js/document.js");
       });
       break;
