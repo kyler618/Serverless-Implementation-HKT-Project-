@@ -233,7 +233,6 @@ var Users = window.Users || {};
         event.preventDefault();
       }
     });
-    const selectBarText = $('#selector div span');
     const input = document.getElementById('searchBar');
     input.addEventListener("keyup", function(event) {
       event.preventDefault();
@@ -246,6 +245,7 @@ var Users = window.Users || {};
     });
     if(targetTable == 'Hardware'){
       const selectBar = $('#selector div select');
+      const selectBarText = $('#selector div span');
       for(let x=0;x<selectBar.length;x++){
         let name = selectFields[x].replace(/\_+/g, ' ');
         $(selectBarText[x]).html(name+" :");
