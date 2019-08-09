@@ -42,7 +42,7 @@ var openOnce = false;
   });
 
 function itemClick(event){
-  if(typeof(objectOps)!== "undefined"){
+  if(!!objectOps){
     delete objectOps;
   }
   $('#Menu-bar').unbind();
