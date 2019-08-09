@@ -909,19 +909,19 @@ var Users = window.Users || {};
             bodyCell.push(cell);
           }
         });
-        if(targetTable=="Hardware"){
-          const options = Array.from(selector[0].bar.children).map(({value}) => value);
-          console.log(options);
-          for(let field in item){
+
+        for(let field in item){
           if(field!=attributes[0]){
-            if(field==selectFields[0] && !options.includes(item[field])){
-              createOption(item[field], 1);
-            }
             const input = createFormInput(field, item[field],true);
             const index = $.inArray(field,attributes);
             bodyCell[index-1].appendChild(input);  // since there is no id field -> index - 1
+            if(targetTable=="Hardware"){
+              const options = Array.from(selector[0].bar.children).map(({value}) => value);
+              if(field==selectFields[0] && !options.includes(item[field])){
+                createOption(item[field], 1);
+              }
+            }
           }
-        }
         }
       });
     }
