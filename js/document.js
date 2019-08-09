@@ -73,56 +73,49 @@ function getHtml(template) {
 }
 
 function listFolder() {
-  console.log(s3);
   s3.listObjects({ Delimiter: '/', Prefix: path }, function(err, data) {
     if (err) {
       return alert('There was an error : ' + err.message);
     }
-    console.log(data);
+    // 'this' references the AWS.Response instance that represents the response
+    objectOps.push(data.Prefix);
+    var href = this.request.httpRequest.endpoint.href;
+    var bucketUrl = href + bucket + '/';
+    var folder = data.CommonPrefixes.map(function(file){
+      var filesName = file.Prefix;
+      filesName = filesName.slice(0,-1);
+      let index = filesName.lastIndexOf("/") + 1;
+      filesName = filesName.slice(index, filesName.length);
+      return getHtml([
+        '<input type="checkbox" onclick="objectOps.pushFolder(\'' + file.Prefix + '\')"/>',
+        '<span onclick="prefix_add(\'' + filesName + '\');objectOps.clear();listFolder();">',
+          filesName,
+        '</span>',
+        '<br>'
+      ]);
+    });
+    var files = data.Contents.map(function(file) {
+      var fileKey = file.Key;
+      if(file.Size==0) return;
+      var fileUrl = bucketUrl + encodeURIComponent(fileKey);
+      var fileName = fileKey.replace(path, '');
+      return getHtml([
+        '<span>',
+          '<div>',
+            '<input type="checkbox" onclick="objectOps.push(\'' + fileKey + '\')"/>',
+            '<a href="' + fileUrl + '">',
+              fileName,
+            '</a>',
+          '</div>',
+        '</span>'
+      ]);
+    });
+    var htmlTemplate = [
+      getHtml(folder),
+      getHtml(files)
+    ];
+    document.getElementById('list-item').innerHTML = getHtml(htmlTemplate);
   });
-  // s3.listObjects({ Delimiter: '/', Prefix: path }, function(err, data) {
-  //   if (err) {
-  //     return alert('There was an error : ' + err.message);
-  //   }
-  //   // 'this' references the AWS.Response instance that represents the response
-  //   objectOps.push(data.Prefix);
-  //   var href = this.request.httpRequest.endpoint.href;
-  //   var bucketUrl = href + bucket + '/';
-  //   var folder = data.CommonPrefixes.map(function(file){
-  //     var filesName = file.Prefix;
-  //     filesName = filesName.slice(0,-1);
-  //     let index = filesName.lastIndexOf("/") + 1;
-  //     filesName = filesName.slice(index, filesName.length);
-  //     return getHtml([
-  //       '<input type="checkbox" onclick="objectOps.pushFolder(\'' + file.Prefix + '\')"/>',
-  //       '<span onclick="prefix_add(\'' + filesName + '\');objectOps.clear();listFolder();">',
-  //         filesName,
-  //       '</span>',
-  //       '<br>'
-  //     ]);
-  //   });
-  //   var files = data.Contents.map(function(file) {
-  //     var fileKey = file.Key;
-  //     if(file.Size==0) return;
-  //     var fileUrl = bucketUrl + encodeURIComponent(fileKey);
-  //     var fileName = fileKey.replace(path, '');
-  //     return getHtml([
-  //       '<span>',
-  //         '<div>',
-  //           '<input type="checkbox" onclick="objectOps.push(\'' + fileKey + '\')"/>',
-  //           '<a href="' + fileUrl + '">',
-  //             fileName,
-  //           '</a>',
-  //         '</div>',
-  //       '</span>'
-  //     ]);
-  //   });
-  //   var htmlTemplate = [
-  //     getHtml(folder),
-  //     getHtml(files)
-  //   ];
-  //   document.getElementById('list-item').innerHTML = getHtml(htmlTemplate);
-  // });
 }
 
 function uploadOps(){
