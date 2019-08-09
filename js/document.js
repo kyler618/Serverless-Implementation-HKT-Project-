@@ -73,6 +73,7 @@ function getHtml(template) {
 }
 
 function listFolder() {
+  console.log(s3);
   s3.listObjects({ Delimiter: '/', Prefix: path }, function(err, data) {
     if (err) {
       return alert('There was an error : ' + err.message);
