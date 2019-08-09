@@ -79,8 +79,11 @@ function itemClick(event){
       });
       break;
     case 'Client Information':
-      window.history.pushState(null, null, "main.html#client-Infomation");
+      window.history.pushState(null, null, "main.html#client-infomation");
       $( "#contentBody" ).load( "clientInfo.html" );
+      break;
+    case 'Client Information':
+      window.history.pushState(null, null, "main.html#support-line-information");
       break;
     case 'Documents':
       window.history.pushState(null, null, "main.html#documents");
