@@ -19,6 +19,7 @@ var openOnce = false;
               break;
           }
           path = "#" + path;
+          console.log(path);
           $(path).click();
         }
         else{
