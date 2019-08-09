@@ -76,7 +76,6 @@ function listFolder() {
     if (err) {
       return alert('There was an error : ' + err.message);
     }
-    // 'this' references the AWS.Response instance that represents the response
     console.log(data);
   });
   // s3.listObjects({ Delimiter: '/', Prefix: path }, function(err, data) {
@@ -591,7 +590,6 @@ function checkBoxClear(){
 
 function setSourcePath(source){
   path = source.value + '/';
-  console.log(path);
   listFolder();
 }
 
