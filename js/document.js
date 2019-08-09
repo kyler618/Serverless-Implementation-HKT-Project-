@@ -577,12 +577,12 @@ function checkBoxClear(){
 }
 
 function setSourcePath(source){
+  $('#current-Path').empty();
   path = source.value + '/';
   listFolder();
 }
 
 function prefix_add(folderName){
-  $('#current-Path').empty();
   path += folderName + '/';
   document.getElementById('current-Path').appendChild(document.createTextNode(" > "+folderName));
 }
