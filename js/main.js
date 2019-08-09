@@ -1,8 +1,7 @@
 var Users = window.Users || {};
 var openOnce = false;
 
-// (function ($) {
-  Users.authToken.then((token) => {   // check user authority
+  Users.authToken.then((token) => {
     if (token) {
       identityCode = jwt_decode(token).iss.replace('https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_', '');
       $(function onDocReady() {
@@ -42,8 +41,9 @@ var openOnce = false;
     console.log(error);
     window.location.href = '/signin.html';
   });
-// }(jQuery));
+
 function itemClick(event){
+  $('#Menu-bar').unbind();
   $('#Menu-bar a').css('color', 'inherit');
   $(event.target).css('color', 'yellow');
   if (!_config.api.invokeUrl) {
@@ -59,7 +59,7 @@ function itemClick(event){
     case 'Job':
       window.history.pushState(null, null, "main.html#job");
       if(identityCode=="p7IxZwAdF"){
-        $( "#contentBody" ).load( "job.html" );
+        $( "#contentBody" ).load( "job.html");
       }
       break;
     case 'Customer and Software':
@@ -72,6 +72,7 @@ function itemClick(event){
     case 'Hardware':
       window.history.pushState(null, null, "main.html#hardware");
       $( "#contentBody" ).load( "database.html", () => {
+        $('#Menu-bar').on( "click", "a", itemClick);
         if(openOnce) $.getScript("https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"); // it is a bug
         openOnce = true;
         if( identityCode=='DevfD3lWf' )
