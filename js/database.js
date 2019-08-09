@@ -236,11 +236,6 @@ var Users = window.Users || {};
     const selectBarText = $('#selector div span');
     const selectBar = $('#selector div select');
     const input = document.getElementById('searchBar');
-    for(let x=0;x<selectBar.length;x++){
-      let name = selectFields[x].replace(/\_+/g, ' ');
-      $(selectBarText[x]).html(name+" :");
-      selector.push({field:selectFields[x], bar:selectBar[x]});
-    }
     input.addEventListener("keyup", function(event) {
       event.preventDefault();
       _searchItem = ($(this).val() != "")? $(this).val():null;
@@ -251,7 +246,12 @@ var Users = window.Users || {};
       ( $("#showAll").prop("checked") )?showColumn():hideColumn();
     });
     if(targetTable == 'Hardware'){
-      $(selector[0].bar).change( event => {selectorChange(event, 0)});    
+      for(let x=0;x<selectBar.length;x++){
+        let name = selectFields[x].replace(/\_+/g, ' ');
+        $(selectBarText[x]).html(name+" :");
+        selector.push({field:selectFields[x], bar:selectBar[x]});
+      }
+      $(selector[0].bar).change( event => {selectorChange(event, 0)});
     }
     $('#pagerSize').change(function(){
       pagination.case_changeSize(this.value);
