@@ -479,7 +479,10 @@ var Users = window.Users || {};
         $('#table tbody td[headers=\'' + attribute + '\']').show();
       }
     });
-    if(selector[0].searchKey!==undefined || _searchItem!==null){
+    if(_searchItem!==null){
+      if(targetTable =='Hardware' && selector[0].searchKey===undefined){
+        return;
+      }
       searchItem();
     }
   }
