@@ -83,7 +83,7 @@ function itemClick(event){
       });
       break;
     case 'Client Information':
-      window.history.pushState(null, null, "main.html#client-infomation");
+      window.history.pushState(null, null, "main.html#client-information");
       $( "#contentBody" ).load( "clientInfo.html", () => {
         $('#Menu-bar').on( "click", "a", itemClick);
       });
