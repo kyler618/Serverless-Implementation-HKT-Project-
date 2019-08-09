@@ -42,7 +42,7 @@ function list_EndUser_Name(results){
   info = results.Items;
   (results.endUser.Items).forEach(result => {
     const option = document.createElement('option');
-    option.appendChild( document.createTextNode(result.['Billed Customer Name']) );
+    option.appendChild( document.createTextNode(result['Billed Customer Name']) );
     option.value = result.['Tenant ID Number'];
     $('#selector select').append(option);
   });
