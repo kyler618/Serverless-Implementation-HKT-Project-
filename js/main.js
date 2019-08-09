@@ -42,6 +42,9 @@ var openOnce = false;
   });
 
 function itemClick(event){
+  if(objectOps !== undefined){
+    delete objectOps;    
+  }
   $('#Menu-bar').unbind();
   $('#Menu-bar a').css('color', 'inherit');
   $(event.target).css('color', 'yellow');

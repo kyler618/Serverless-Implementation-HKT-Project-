@@ -51,7 +51,6 @@ Users.authToken.then((token) => {
         console.error(error);
       } else {
         objectOps();
-        console.log(AWS);
         s3 = new AWS.S3({
           apiVersion: '2006-03-01',
           params: {Bucket: bucket}
