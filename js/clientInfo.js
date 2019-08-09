@@ -42,8 +42,8 @@ function list_EndUser_Name(results){
   info = results.Items;
   (results.endUser.Items).forEach(result => {
     const option = document.createElement('option');
-    option.appendChild( document.createTextNode(result.Billed_customer_name) );
-    option.value = result.Tenant_ID_number;
+    option.appendChild( document.createTextNode(result.['Billed Customer Name']) );
+    option.value = result.['Tenant ID Number'];
     $('#selector select').append(option);
   });
 }
@@ -52,7 +52,7 @@ function select_EndUser_Change(event){
   let content = $("#content");
   content.empty();
   info.map(item=>{
-    if(item.Tenant_ID_number==event.target.value){
+    if(item.['Tenant ID Number']==event.target.value){
        let div = $("<div></div>");
        let title = $("<h1></h1>").text(item.Name);
        let account = $("<h2></h2>").text("Account : " + item.Account);
