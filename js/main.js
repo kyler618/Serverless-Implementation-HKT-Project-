@@ -59,7 +59,9 @@ function itemClick(event){
     case 'Job':
       window.history.pushState(null, null, "main.html#job");
       if(identityCode=="p7IxZwAdF"){
-        $( "#contentBody" ).load( "job.html");
+        $( "#contentBody" ).load( "job.html", () => {
+          $('#Menu-bar').on( "click", "a", itemClick);
+        });
       }
       break;
     case 'Customer and Software':
@@ -88,10 +90,14 @@ function itemClick(event){
       break;
     case 'Support Line Information':
       window.history.pushState(null, null, "main.html#support-line-information");
+      $( "#contentBody" ).load( "clientInfo.html", () => {
+        $('#Menu-bar').on( "click", "a", itemClick);
+      });
       break;
     case 'Documents':
       window.history.pushState(null, null, "main.html#documents");
       $( "#contentBody" ).load( "document.html", () => {
+        $('#Menu-bar').on( "click", "a", itemClick);
         $.getScript("js/document.js");
       });
       break;
