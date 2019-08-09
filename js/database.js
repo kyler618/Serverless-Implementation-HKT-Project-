@@ -250,7 +250,9 @@ var Users = window.Users || {};
     $("#showAll").change( () => {
       ( $("#showAll").prop("checked") )?showColumn():hideColumn();
     });
-    $(selector[0].bar).change( event => {selectorChange(event, 0)});
+    if(targetTable == 'Hardware'){
+      $(selector[0].bar).change( event => {selectorChange(event, 0)});    
+    }
     $('#pagerSize').change(function(){
       pagination.case_changeSize(this.value);
     })
