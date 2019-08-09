@@ -18,7 +18,7 @@ var openOnce = false;
               break;
           }
           path = "#" + path;
-          console.log($(path));
+          console.log(path, $(path));
           $(path).click();
         }
         else{
