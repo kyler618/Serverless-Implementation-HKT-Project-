@@ -22,7 +22,7 @@ var Users = window.Users || {};
   switch(targetTable){
     case "Customer and Software":
       targetTable = "Customer_and_Software"
-      constantAttributes.push('Tenant ID number');
+      constantAttributes.push('Tenant ID Number');
       selectFields.push(
         'Billed Customer Name',
         'Billed Customer Contact',
