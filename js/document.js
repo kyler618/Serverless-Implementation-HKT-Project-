@@ -1,6 +1,6 @@
 // Goals: control buttons display, path
 var Users = window.Users || {};
-var bucket = _config.s3.bucket;
+var bucket = _config.s3.bucket + '-documents';
 var s3;
 var path;
 
