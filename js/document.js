@@ -30,7 +30,7 @@ Users.authToken.then((token) => {
         let results = JSON.parse(this.response).Items;
         console.log(results);
         results.forEach( result => {
-          let endUser = result.Billed_customer_name;
+          let endUser = result['Billed Customer Name'];
           let option = document.createElement("OPTION");
           option.setAttribute("value", endUser);
           option.appendChild(document.createTextNode(endUser));
