@@ -1,3 +1,4 @@
+// add reset search bar
 var Users = window.Users || {};
 
   user_Identity();
@@ -901,7 +902,6 @@ var Users = window.Users || {};
         const bodyRow = tableBody.insertRow();
         bodyRow.id = item[attributes[0]];
         const bodyCell = [];
-        const options = Array.from(selector[0].bar.children).map(({value}) => value);
         attributes.forEach( attribute => {
           if(attribute!=attributes[0]){
             const cell = bodyRow.insertCell();
@@ -909,15 +909,18 @@ var Users = window.Users || {};
             bodyCell.push(cell);
           }
         });
-        for(let field in item){
+        if(targetTable=="Hardware"){
+          const options = Array.from(selector[0].bar.children).map(({value}) => value);
+          for(let field in item){
           if(field!=attributes[0]){
-            if( targetTable=="Hardware" && field==selectFields[0] && !options.includes(item[field])){
+            if(field==selectFields[0] && !options.includes(item[field])){
               createOption(item[field], 1);
             }
             const input = createFormInput(field, item[field],true);
             const index = $.inArray(field,attributes);
             bodyCell[index-1].appendChild(input);  // since there is no id field -> index - 1
           }
+        }          
         }
       });
     }
