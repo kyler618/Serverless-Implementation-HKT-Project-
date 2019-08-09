@@ -234,7 +234,6 @@ var Users = window.Users || {};
       }
     });
     const selectBarText = $('#selector div span');
-    const selectBar = $('#selector div select');
     const input = document.getElementById('searchBar');
     input.addEventListener("keyup", function(event) {
       event.preventDefault();
@@ -246,6 +245,7 @@ var Users = window.Users || {};
       ( $("#showAll").prop("checked") )?showColumn():hideColumn();
     });
     if(targetTable == 'Hardware'){
+      const selectBar = $('#selector div select');
       for(let x=0;x<selectBar.length;x++){
         let name = selectFields[x].replace(/\_+/g, ' ');
         $(selectBarText[x]).html(name+" :");
