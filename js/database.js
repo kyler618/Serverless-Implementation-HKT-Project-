@@ -4,7 +4,7 @@ var Users = window.Users || {};
   selector = [];
   attributes = [];
   selectFields = [];
-  constantAttributes = [];
+  // constantAttributes = [];
   _searchItem = null;
   httpRequest = {
     method: 'POST',
@@ -21,16 +21,23 @@ var Users = window.Users || {};
   targetTable = $('#current').html();
   switch(targetTable){
     case "Customer and Software":
-      targetTable = "Customer_and_Software"
-      constantAttributes.push('Tenant ID Number');
-      selectFields.push(
+      targetTable = "Customer_and_Software";
+      constantAttributes = [
+        'Tenant ID Number',
         'Billed Customer Name',
         'Billed Customer Contact',
         'Enduser Address for Reference'
-      );
+      ]
+      // constantAttributes.push('Tenant ID Number');
+      // selectFields.push(
+      //   'Billed Customer Name',
+      //   'Billed Customer Contact',
+      //   'Enduser Address for Reference'
+      // );
       break;
     case "Hardware":
-      constantAttributes.push('Sensor ID');
+      constantAttributes = ['Sensor ID'];
+      // constantAttributes.push('Sensor ID');
       selectFields.push('Enduser Name', 'Physical Site Address', 'Device Type');
       constantAttributes = constantAttributes.concat(selectFields);
       $('#selector').show();
