@@ -30,6 +30,7 @@ Users.authToken.then((token) => {
       httpRequest.url += '/field-engineer';
       break;
     }
+    console.log(httpRequest);
     $.ajax(httpRequest);
   } else {
     window.location.href = '/signin.html';
@@ -39,6 +40,7 @@ Users.authToken.then((token) => {
   });
 
 function list_EndUser_Name(results){
+  console.log(results);
   info = results.Items;
   (results.endUser.Items).forEach(result => {
     const option = document.createElement('option');
