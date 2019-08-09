@@ -28,7 +28,6 @@ Users.authToken.then((token) => {
       if (this.readyState == 4 && this.status == 200) {
         let selectBar = document.getElementById('select-folder');
         let results = JSON.parse(this.response).Items;
-        console.log(results);
         results.forEach( result => {
           let endUser = result['Billed Customer Name'];
           let option = document.createElement("OPTION");
@@ -87,11 +86,11 @@ function listFolder() {
       let index = filesName.lastIndexOf("/") + 1;
       filesName = filesName.slice(index, filesName.length);
       return getHtml([
-            '<input type="checkbox" onclick="objectOps.pushFolder(\'' + file.Prefix + '\')"/>',
-            '<span onclick="prefix_add(\'' + filesName + '\');objectOps.clear();listFolder();">',
-              filesName,
-            '</span>',
-            '<br>'
+        '<input type="checkbox" onclick="objectOps.pushFolder(\'' + file.Prefix + '\')"/>',
+        '<span onclick="prefix_add(\'' + filesName + '\');objectOps.clear();listFolder();">',
+          filesName,
+        '</span>',
+        '<br>'
       ]);
     });
     var files = data.Contents.map(function(file) {
@@ -111,8 +110,8 @@ function listFolder() {
       ]);
     });
     var htmlTemplate = [
-        getHtml(folder),
-        getHtml(files),
+      getHtml(folder),
+      getHtml(files)
     ];
     document.getElementById('list-item').innerHTML = getHtml(htmlTemplate);
   });
@@ -268,7 +267,9 @@ function uploadOps(){
       document.getElementById("upload-modal").style.display = "none";
       document.getElementById('upload-Modal').style.display = "none";
       finalize();
-      if(!cancel) listFolder();
+      if(!cancel){
+        listFolder();
+      }
     }
   }
   function addCounter(){
@@ -583,6 +584,7 @@ function checkBoxClear(){
 
 function setSourcePath(source){
   path = source.value + '/';
+  console.log(path);
   listFolder();
 }
 
