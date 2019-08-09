@@ -911,6 +911,7 @@ var Users = window.Users || {};
         });
         if(targetTable=="Hardware"){
           const options = Array.from(selector[0].bar.children).map(({value}) => value);
+          console.log(options);
           for(let field in item){
           if(field!=attributes[0]){
             if(field==selectFields[0] && !options.includes(item[field])){
@@ -920,7 +921,7 @@ var Users = window.Users || {};
             const index = $.inArray(field,attributes);
             bodyCell[index-1].appendChild(input);  // since there is no id field -> index - 1
           }
-        }          
+        }
         }
       });
     }
