@@ -28,6 +28,7 @@ Users.authToken.then((token) => {
       if (this.readyState == 4 && this.status == 200) {
         let selectBar = document.getElementById('select-folder');
         let results = JSON.parse(this.response).Items;
+        console.log(results);
         results.forEach( result => {
           let endUser = result.Billed_customer_name;
           let option = document.createElement("OPTION");
