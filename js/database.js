@@ -871,10 +871,12 @@ var Users = window.Users || {};
     function clearTable(){
       $("#table thead tr").empty();
       $('#table tbody').empty();
-      for(let x=1;x<=selector.length-1;x++){
+      if(targetTable == 'Hardware'){
+        for(let x=1;x<=selector.length-1;x++){
         clearOption(x);
       }
-      $(selector[0].bar).children().first().html('All');
+        $(selector[0].bar).children().first().html('All');
+      }
     }
     function insertHeaderRow(){
       const attrs = storedItem.map(item => Object.keys(item));
