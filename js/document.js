@@ -139,13 +139,6 @@ function uploadOps(){
     pushedItems = null;
     counter = null;
     delete uploadOps;
-    // uploadOps.inputClicked = null;
-    // uploadOps.push = null;
-    // uploadOps.upload = null;
-    // uploadOps.uploadFile = null;
-    // uploadOps.haveUploadItems = null;
-    // uploadOps.postOperation = null;
-    // uploadOps.addCounter = null;
     document.getElementById('dropDiv').removeEventListener('dragover', dragHover);
     document.getElementById('dropDiv').removeEventListener('dragleave', dragHover);
     document.getElementById('dropDiv').removeEventListener('drop', drop_Handler);
@@ -589,6 +582,7 @@ function setSourcePath(source){
 }
 
 function prefix_add(folderName){
+  $('#current-Path').empty();
   path += folderName + '/';
   document.getElementById('current-Path').appendChild(document.createTextNode(" > "+folderName));
 }
