@@ -24,7 +24,7 @@ var openOnce = false;
           switch (identityCode){
           case 'DevfD3lWf':
             $('#support-Line-Information').show();
-            $('#customer-and-Software').click();
+            $('#customer-and-software').click();
             break;
           case 'p7IxZwAdF':
             $('#job').show().click();
