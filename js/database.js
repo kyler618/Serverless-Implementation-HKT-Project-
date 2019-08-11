@@ -809,10 +809,10 @@ var Users = window.Users || {};
           modal.maintain = maintain;
           modal.quit = quit;
           if(results.Items.length!=0){
-            user_Identity.listUsers(id, results.Items[0]);
+            // user_Identity.listUsers(id, results.Items[0]);
           }
           else{
-            user_Identity.listUsers(id);
+            // user_Identity.listUsers(id);
           }
         }
         const data = {operation: "scanMaintenanceRecord", target: id};
