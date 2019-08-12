@@ -45,7 +45,6 @@ function itemClick(event){
   if(typeof(objectOps)!== "undefined"){
     delete objectOps;
   }
-  $('#Menu-bar').unbind();
   $('#Menu-bar a').css('color', 'inherit');
   $(event.target).css('color', 'yellow');
   if (!_config.api.invokeUrl) {
@@ -55,6 +54,7 @@ function itemClick(event){
   if( $('#current').html() == target ) {
     return;
   }
+  $('#Menu-bar').unbind();
   $('#current').html(target);
   $('#current').val(event.target.id);
   switch(target){
