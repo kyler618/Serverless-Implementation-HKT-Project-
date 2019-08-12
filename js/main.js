@@ -1,7 +1,7 @@
 var Users = window.Users || {};
 var openOnce = false;
 
-  Users.authToken.then((token) => {
+  Users.authToken.then( token => {
     if (token) {
       identityCode = jwt_decode(token).iss.replace('https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_', '');
       $(function onDocReady() {

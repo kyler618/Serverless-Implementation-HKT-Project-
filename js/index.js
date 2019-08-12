@@ -1,5 +1,3 @@
-// var Users = window.Users || {};
-let poolData;
 (function ($) {
   if (typeof AWSCognito !== 'undefined') {
     AWSCognito.config.region = _config.cognito.region;
@@ -7,7 +5,7 @@ let poolData;
   poolData = JSON.parse(localStorage.getItem("poolData"));
   if(poolData!==null){
     $.getScript( "js/cognito-auth.js", () => {
-      Users.authToken.then((token) => {   // check user authority
+      Users.authToken.then((token) => {
         if (token) {
           window.location.href = 'main.html';
         } else {
@@ -53,7 +51,6 @@ let poolData;
       cognitoUser.authenticateUser(authenticationDetails, {
           onSuccess: function(){
             window.location.href = 'main.html';
-            console.log('worked');
           },
           onFailure: function(err){
             alert('Login Failed');
