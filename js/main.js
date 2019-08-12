@@ -11,6 +11,7 @@ var openOnce = false;
         if( path != "https://itletsgo.github.io/main.html" ){
           switch (identityCode){
             case 'DevfD3lWf':
+              $('#client-information').show();
               $('#support-Line-Information').show();
               break;
             case 'p7IxZwAdF':
@@ -54,7 +55,6 @@ function itemClick(event){
   if( $('#current').html() == target ) {
     return;
   }
-  $('#Menu-bar').unbind();
   $('#current').html(target);
   $('#current').val(event.target.id);
   switch(target){
