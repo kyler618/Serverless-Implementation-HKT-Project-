@@ -12,7 +12,7 @@ var openOnce = false;
           switch (identityCode){
             case 'DevfD3lWf':
               $('#client-information').show();
-              $('#support-Line-Information').show();
+              $('#support-line-information').show();
               break;
             case 'p7IxZwAdF':
               $('#job').show();
