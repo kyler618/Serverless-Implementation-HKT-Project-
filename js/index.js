@@ -52,7 +52,7 @@ let poolData;
       });
       cognitoUser.authenticateUser(authenticationDetails, {
           onSuccess: function(){
-            // window.location.href = 'main.html';
+            window.location.href = 'main.html';
             console.log('worked');
           },
           onFailure: function(err){
