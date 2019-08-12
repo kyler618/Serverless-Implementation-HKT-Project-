@@ -339,7 +339,7 @@ var Users = window.Users || {};
         $('#modal').hide();
         $('#add').hide().unbind();
         $('#save').hide().unbind();
-        $('#edit').show();
+        // $('#edit').show();
         $('#quit').unbind();
       });
       const form = constantAttributes.map( constantAttribute => {
