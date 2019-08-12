@@ -124,6 +124,7 @@ var Users = window.Users || {};
 
         $('#form').hide();
         $('#edit').hide().unbind();
+        $('#remove').hide().unbind();
         $('.maintain').hide().unbind();
         $('#maintain-Container').show();
         $('#undo').show().click( () => {
