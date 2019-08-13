@@ -11,7 +11,7 @@ var Users = window.Users || {};
     method: 'POST',
     url: _config.api.invokeUrl,
     contentType: 'application/json',
-    async: true ,
+    async: true,
     error: (jqXHR, textStatus, errorThrown) => {
       console.error('Error requesting: ', textStatus, ', Details: ', errorThrown);
       console.error('Response: ', jqXHR.responseText);

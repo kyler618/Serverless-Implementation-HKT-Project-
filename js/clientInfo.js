@@ -10,12 +10,13 @@ Users.authToken.then((token) => {
     let identityCode = jwt_decode(token).iss.replace('https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_', '');
     let httpRequest = {
       method: 'POST',
-      url: _config.api.invokeUrl,
-      data: JSON.stringify({table: "Client_Information", operation: "clientInfoQuery"}),
+      url: _config.api.invokeUrl1,
+      // data: JSON.stringify({table: "Client_Information", operation: "clientInfoQuery"}),
       contentType: 'application/json',
       headers: {Authorization: authToken},
       async: true ,
-      success: list_EndUser_Name,
+      // success: list_EndUser_Name,
+      success: (result) => { console.log(result) },
       error: (jqXHR, textStatus, errorThrown) => {
         console.error('Error requesting: ', textStatus, ', Details: ', errorThrown);
         console.error('Response: ', jqXHR.responseText);
