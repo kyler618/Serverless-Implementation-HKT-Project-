@@ -11,7 +11,7 @@ Users.authToken.then((token) => {
     let httpRequest = {
       method: 'POST',
       url: _config.api.invokeUrl1,
-      data:JSON.stringify({username: "abc1"}),
+      data:JSON.stringify({username: "abc2"}),
       // data: JSON.stringify({table: "Client_Information", operation: "clientInfoQuery"}),
       contentType: 'application/json',
       // headers: {Authorization: authToken},
