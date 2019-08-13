@@ -11,6 +11,7 @@ window._config = {
         bucket: 'iot-inventory-portal',
     },
     api: {
-        invokeUrl: 'https://cnekmnt98d.execute-api.ap-southeast-1.amazonaws.com/prod'
+        invokeUrl: 'https://cnekmnt98d.execute-api.ap-southeast-1.amazonaws.com/prod',
+        invokeUrl1: 'https://46i25wf3t2.execute-api.ap-southeast-1.amazonaws.com/prod'
     }
 };
