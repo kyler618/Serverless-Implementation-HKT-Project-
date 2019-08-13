@@ -13,7 +13,7 @@ Users.authToken.then((token) => {
       url: _config.api.invokeUrl1,
       // data: JSON.stringify({table: "Client_Information", operation: "clientInfoQuery"}),
       contentType: 'application/json',
-      headers: {Authorization: authToken},
+      // headers: {Authorization: authToken},
       async: true ,
       // success: list_EndUser_Name,
       success: (result) => { console.log(result) },
