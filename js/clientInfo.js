@@ -30,7 +30,6 @@ Users.authToken.then((token) => {
       httpRequest.url += '/field-engineer';
       break;
     }
-    console.log(httpRequest);
     $.ajax(httpRequest);
   } else {
     window.location.href = '/signin.html';
