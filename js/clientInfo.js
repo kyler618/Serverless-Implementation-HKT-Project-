@@ -26,7 +26,7 @@ Users.authToken.then((token) => {
     switch(identityCode){
       case 'DevfD3lWf':
       // httpRequest.url += '/support';
-      httpRequest.url += '/cnf'
+      httpRequest.url += '/cnf';
       break;
       case 'p7IxZwAdF':
       httpRequest.url += '/field-engineer';
