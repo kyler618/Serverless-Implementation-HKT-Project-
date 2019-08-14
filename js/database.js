@@ -33,6 +33,25 @@ var Users = window.Users || {};
       constantAttributes = ['Sensor ID'];
       selectFields.push('Enduser Name', 'Physical Site Address', 'Device Type');
       constantAttributes = constantAttributes.concat(selectFields);
+      otherAttributes = [
+        'Tenant ID number',
+        'Device model/part no.',
+        'Device Label Identifier',
+        'ID1',
+        'ID2',
+        'SIM Type',
+        'SIM IMSI',
+        'SIM Tel.',
+        'Day-One or Last-known Customer contact for Physical site installed',
+        'MTCE Start Date',
+        'MTCE End Date',
+        'PO. Number ',
+        'Support svc level',
+        'MTCE Service Type',
+        'MTCE repair svc level',
+        'Equipment Vendor Name',
+        'Remark'
+      ];
       $('#selector').show();
       break;
   }
