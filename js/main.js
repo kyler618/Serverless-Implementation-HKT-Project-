@@ -93,7 +93,7 @@ function itemClick(event){
       break;
     case 'Support Line Information':
       window.history.pushState(null, null, "main.html#support-line-information");
-      $( "#contentBody" ).load( "support-line-information.html", () => {
+      $( "#contentBody" ).load( "supportLineInfo.html", () => {
         $('#Menu-bar').on( "click", "a", itemClick);
       });
       break;
