@@ -9,7 +9,7 @@ Users.authToken.then((token) => {
     let httpRequest = {
       method: 'POST',
       url: _config.api.invokeUrl + '/support',
-      data: JSON.stringify({table: "Support_Line_Information", operation: "Scan"}),
+      data: JSON.stringify({table: "Support_Line_Information", operation: "scan"}),
       contentType: 'application/json',
       headers: {Authorization: authToken},
       async: true,
