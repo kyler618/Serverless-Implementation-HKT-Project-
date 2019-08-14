@@ -154,6 +154,7 @@ function card(){
             if(item[attribute.value]===undefined){
               changed = true;
             }
+            console.log(items[attribute.value], item[attribute.value]);
             if(items[attribute.value]!=item[attribute.value]){
               changed = true;
             }
@@ -175,6 +176,7 @@ function card(){
         //   alert("Sensor ID Duplicates with Existing Items");
         //   return;
         // }
+        console.log(items);
         const data = {table:"Hardware", operation: "maintainSensor", pk: id};
         data.input = (changed)? items:null;
         data.delete = (deleteItem.length!=0)? deleteItem:null;
