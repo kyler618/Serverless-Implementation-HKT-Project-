@@ -722,7 +722,7 @@ var Users = window.Users || {};
             '<button class="edit" onclick="modal.remove_Input(this)" style="display:inline"><i class="fa fa-close"></i></button>',
             '</p>'
           ]));
-          $('.temporary button.edit').show();
+          $('#modal .temporary button.edit').show();
         });
         $('#save').click( () => {
           function handleResponse(results){
