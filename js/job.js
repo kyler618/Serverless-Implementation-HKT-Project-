@@ -179,6 +179,7 @@ function card(){
         // console.log(items);
         const data = {table:"Hardware", operation: "maintainSensor", pk: id};
         data.input = (changed)? items:null;
+        console.log(changed, data.input);
         data.delete = (deleteItem.length!=0)? deleteItem:null;
         httpRequest.data = JSON.stringify(data);
         httpRequest.success = handleResponse;
