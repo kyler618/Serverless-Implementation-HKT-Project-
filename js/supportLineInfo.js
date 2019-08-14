@@ -49,28 +49,3 @@ Users.authToken.then((token) => {
 }).catch((error) => {
     window.location.href = '/signin.html';
   });
-
-// function list(results){
-//   let content = (results.Items).map(result => {
-//     return getHtml([
-//       '<div>',
-//         '<h1>',
-//           result['Product'],
-//         '</h1>',
-//         '<h2>',
-//           'Contact No. : ',
-//           result['Contact No.'],
-//         '</h2>',
-//         '<h2>',
-//           'Email Address : ',
-//           result['Email Address'],
-//         '</h2>',
-//       '</div>',
-//     ]);
-//   });
-//   $('#content').html(getHtml(content));
-// }
-
-// function getHtml(template) {
-//   return template.join('\n');
-// }
