@@ -34,13 +34,13 @@ function list(results){
     return getHtml([
       '<div>',
         '<h1>',
-          result.['Contact No.'],
+          result['Contact No.'],
         '</h1>',
         '<h2>',
-          result.['Email Address'],
+          result['Email Address'],
         '</h2>',
         '<h2>',
-          result.['Product'],
+          result['Product'],
         '</h2>',
       '</div>',
     ]);
