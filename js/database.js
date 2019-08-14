@@ -839,8 +839,9 @@ var Users = window.Users || {};
         $('#modal .form-control').val('');
         $('#maintain-select').empty();
         $('#quit').unbind();
-        modal.show_Modal = null;
-        modal.remove_Input = null;
+        delete modal;
+        // modal.show_Modal = null;
+        // modal.remove_Input = null;
       }
       let item = storedItem.find(record => {
         return record.id == id
