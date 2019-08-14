@@ -71,7 +71,7 @@ Users.authToken.then( token => {
       url: _config.api.invokeUrl +'/field-engineer',
       headers: {Authorization: token},
       contentType: 'application/json',
-      // data: JSON.stringify(data_getRecord),
+      data: JSON.stringify(data_getRecord),
       async: true,
       success: success_getRecord,
       error: (jqXHR, textStatus, errorThrown) => {
@@ -80,8 +80,8 @@ Users.authToken.then( token => {
         alert('An error occured:\n' + jqXHR.responseText);
       }
     };
-    httpRequest.data = JSON.stringify(data_getRecord);
-    console.log(httpRequest);
+    // httpRequest.data = JSON.stringify(data_getRecord);
+    // console.log(httpRequest);
     $.ajax(httpRequest);
     card();
   }
@@ -128,10 +128,8 @@ function card(){
             records[index] = items;
             $('#card .temporary').removeClass('temporary');
             $('#undo').click();
-            if(httpRequest.data != JSON.stringify(data_getRecord)){
-              httpRequest.data = JSON.stringify(data_getRecord);          
-            }
-            httpRequest.success = success_getRecord;
+            // httpRequest.data = JSON.stringify(data_getRecord);
+            // httpRequest.success = success_getRecord;
             // $.ajax(httpRequest);
           }
         }
