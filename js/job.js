@@ -122,16 +122,15 @@ function card(){
       $('#save').click( () => {
         function handleResponse(results){
           if(results=="ok"){
-            console.log(results);
             let index = records.indexOf(item);
             items.id = id;
             item = items;
             records[index] = items;
             $('#card .temporary').removeClass('temporary');
             $('#undo').click();
-            httpRequest.data = JSON.stringify(data_getRecord);
-            httpRequest.success = success_getRecord;
-            $.ajax(httpRequest);
+            // httpRequest.data = JSON.stringify(data_getRecord);
+            // httpRequest.success = success_getRecord;
+            // $.ajax(httpRequest);
           }
         }
         const items = {};
