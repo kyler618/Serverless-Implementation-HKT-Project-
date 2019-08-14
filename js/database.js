@@ -633,27 +633,6 @@ var Users = window.Users || {};
     return item;
   }
 
-  function getInputData(){
-    const inputData = {};
-    const fieldArray = [];
-    const input = $('#itemForm').serializeArray();
-    for( let i = 0 ; i < input.length ; i++ ){
-      const field = input[i++];
-      const values = input[i];
-      if(field.value==""||values.value==""){
-        inputData.incompleteError = i-1;
-        break;
-      }
-      if(fieldArray.includes(field.value)){
-        inputData.DuplicateError = i-1;
-        break;
-      }
-      fieldArray.push(field.value);
-      inputData[field.value] = values.value;
-    }
-    return inputData;
-  }
-
   function request(data, success, table) {
     data.table = (table===undefined)?targetTable:table;
     httpRequest.data = JSON.stringify(data);
