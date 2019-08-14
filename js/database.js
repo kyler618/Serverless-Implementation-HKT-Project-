@@ -347,7 +347,7 @@ var Users = window.Users || {};
           return;
         }
         const data = {operation: "put", input: items};
-        // request(data, handleResponse);
+        request(data, handleResponse);
       });
       $('#quit').click( () => {
         delete modal.remove;
