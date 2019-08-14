@@ -182,6 +182,7 @@ function card(){
         data.input = (changed)? items:null;
         console.log(changed, data.input, data);
         data.delete = (deleteItem.length!=0)? deleteItem:null;
+        delete httpRequest.data;
         httpRequest.data = JSON.stringify(data);
         console.log(httpRequest.data);
         httpRequest.success = handleResponse;
