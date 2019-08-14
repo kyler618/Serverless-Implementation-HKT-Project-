@@ -249,6 +249,7 @@ var Users = window.Users || {};
     })
     $('#resetSearchBar').click( () => {
       $('#searchBar').val('');
+      _searchItem = null;
       searchItem();
     });
 
