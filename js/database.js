@@ -247,6 +247,9 @@ var Users = window.Users || {};
     $('#pagerSize').change(function(){
       pagination.case_changeSize(this.value);
     })
+    $('#resetSearchBar').click( () => {
+      
+    });
 
     handleUpdateTable();
     readMode();
