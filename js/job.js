@@ -64,6 +64,7 @@ Users.authToken.then( token => {
       $('#container').html(getHtml($jobs));
     }
     let user = jwt_decode(token);
+    tk = token;
     data_getRecord = {operation: "getMaintenanceRecord", table: "Maintenance", target:user['cognito:username']};
     success_getRecord = handleResponse;
     httpRequest = {
@@ -71,7 +72,7 @@ Users.authToken.then( token => {
       url: _config.api.invokeUrl +'/field-engineer',
       headers: {Authorization: token},
       contentType: 'application/json',
-      data: JSON.stringify(data_getRecord),
+      // data: JSON.stringify(data_getRecord),
       async: true,
       success: success_getRecord,
       error: (jqXHR, textStatus, errorThrown) => {
@@ -80,8 +81,8 @@ Users.authToken.then( token => {
         alert('An error occured:\n' + jqXHR.responseText);
       }
     };
-    // httpRequest.data = JSON.stringify(data_getRecord);
-    // console.log(httpRequest);
+    httpRequest.data = JSON.stringify(data_getRecord);
+    console.log(httpRequest);
     $.ajax(httpRequest);
     card();
   }
@@ -180,10 +181,24 @@ function card(){
         const data = {table:"Hardware", operation: "maintainSensor", pk: id};
         data.input = (changed)? items:null;
         data.delete = (deleteItem.length!=0)? deleteItem:null;
-        httpRequest.data = JSON.stringify(data);
-        httpRequest.success = handleResponse;
-        console.log(httpRequest);
-        $.ajax(httpRequest);
+        // httpRequest.data = JSON.stringify(data);
+        // httpRequest.success = handleResponse;
+        let request = {
+          method: 'POST',
+          url: _config.api.invokeUrl +'/field-engineer',
+          headers: {Authorization: tk},
+          contentType: 'application/json',
+          data: JSON.stringify(data),
+          async: true,
+          success: handleResponse,
+          error: (jqXHR, textStatus, errorThrown) => {
+            console.error('Error requesting: ', textStatus, ', Details: ', errorThrown);
+            console.error('Response: ', jqXHR.responseText);
+            alert('An error occured:\n' + jqXHR.responseText);
+          }
+        };
+        console.log(request);
+        $.ajax(request);
       });
       $('#card .form-control').removeAttr('readonly');
       $('#card .input-group-text:not(.readonly)').removeAttr('readonly');
