@@ -154,7 +154,7 @@ function card(){
             if(item[attribute.value]===undefined){
               changed = true;
             }
-            console.log(items[attribute.value], item[attribute.value]);
+            // console.log(items[attribute.value], item[attribute.value]);
             if(items[attribute.value]!=item[attribute.value]){
               changed = true;
             }
@@ -176,12 +176,13 @@ function card(){
         //   alert("Sensor ID Duplicates with Existing Items");
         //   return;
         // }
-        console.log(items);
+        // console.log(items);
         const data = {table:"Hardware", operation: "maintainSensor", pk: id};
         data.input = (changed)? items:null;
         data.delete = (deleteItem.length!=0)? deleteItem:null;
         httpRequest.data = JSON.stringify(data);
         httpRequest.success = handleResponse;
+        console.log(httpRequest);
         $.ajax(httpRequest);
       });
       $('#card .form-control').removeAttr('readonly');
