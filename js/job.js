@@ -120,7 +120,6 @@ function card(){
       });
       $('#save').click( () => {
         function handleResponse(results){
-          console.log(results);
           if(results=="ok"){
             let index = records.indexOf(item);
             items.id = id;
