@@ -13,7 +13,29 @@ Users.authToken.then((token) => {
       contentType: 'application/json',
       headers: {Authorization: authToken},
       async: true,
-      success: list,
+      success: results => {
+        function getHtml(template) {
+          return template.join('\n');
+        }
+        let content = (results.Items).map(result => {
+          return getHtml([
+            '<div>',
+              '<h1>',
+                result['Product'],
+              '</h1>',
+              '<h2>',
+                'Contact No. : ',
+                result['Contact No.'],
+              '</h2>',
+              '<h2>',
+                'Email Address : ',
+                result['Email Address'],
+              '</h2>',
+            '</div>',
+          ]);
+        });
+        $('#content').html(getHtml(content));
+      },
       error: (jqXHR, textStatus, errorThrown) => {
         console.error('Error requesting: ', textStatus, ', Details: ', errorThrown);
         console.error('Response: ', jqXHR.responseText);
@@ -28,48 +50,27 @@ Users.authToken.then((token) => {
     window.location.href = '/signin.html';
   });
 
-function list(results){
-  console.log(results.Items);
-  let content = (results.Items).map(result => {
-    return getHtml([
-      '<div>',
-        '<h1>',
-          result['Product'],
-        '</h1>',
-        '<h2>',
-          'Contact No. : ',
-          result['Contact No.'],
-        '</h2>',
-        '<h2>',
-          'Email Address : ',
-          result['Email Address'],
-        '</h2>',
-      '</div>',
-    ]);
+// function list(results){
+//   let content = (results.Items).map(result => {
+//     return getHtml([
+//       '<div>',
+//         '<h1>',
+//           result['Product'],
+//         '</h1>',
+//         '<h2>',
+//           'Contact No. : ',
+//           result['Contact No.'],
+//         '</h2>',
+//         '<h2>',
+//           'Email Address : ',
+//           result['Email Address'],
+//         '</h2>',
+//       '</div>',
+//     ]);
+//   });
+//   $('#content').html(getHtml(content));
+// }
 
-    // const option = document.createElement('option');
-    // option.appendChild( document.createTextNode(result['Billed Customer Name']) );
-    // option.value = result['Tenant ID Number'];
-    // $('#selector select').append(option);
-  });
-  $('#content').html(getHtml(content));
-}
-
-function select_EndUser_Change(event){
-  let content = $("#content");
-  content.empty();
-  info.map(item=>{
-    if(item['Tenant ID Number']==event.target.value){
-       let div = $("<div></div>");
-       let title = $("<h1></h1>").text(item.Name);
-       let account = $("<h2></h2>").text("Account : " + item.Account);
-       let password = $("<h2></h2>").text("Password : " + item.Password);
-       div.append(title, account, password);
-       content.append(div, $("<p>"));
-    }
-  });
-}
-
-function getHtml(template) {
-  return template.join('\n');
-}
+// function getHtml(template) {
+//   return template.join('\n');
+// }
