@@ -128,8 +128,8 @@ function card(){
             records[index] = items;
             $('#card .temporary').removeClass('temporary');
             $('#undo').click();
-            // httpRequest.data = JSON.stringify(data_getRecord);
-            // httpRequest.success = success_getRecord;
+            httpRequest.data = JSON.stringify(data_getRecord);
+            httpRequest.success = success_getRecord;
             // $.ajax(httpRequest);
           }
         }
