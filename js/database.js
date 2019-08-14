@@ -325,7 +325,7 @@ var Users = window.Users || {};
         for( let x = 0 ; x < input.length ; x++ ){
           const attribute = input[x++];
           const record = input[x];
-          console.log($(input[x]));
+          console.log($(input[x]).parent());
           // if(attribute.value==""||record.value==""){
           //   // items.incompleteError = x-1;
           //   alert("Incompleted Error");
