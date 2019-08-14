@@ -165,7 +165,7 @@ function card(){
         if( !changed && deleteItem.length==0){
           return $('#undo').click();
         }
-        let check = storedItem.every( item => {
+        let check = records.every( item => {
           return item[constantAttributes[0]] != items[constantAttributes[0]];
         });
         if(!check){
