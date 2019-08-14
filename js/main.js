@@ -45,7 +45,7 @@ var openOnce = false;
 
 function itemClick(event){
   if(typeof(objectOps)!== "undefined"){
-    delete objectOps;
+    objectOps = null;
   }
   $('#Menu-bar a').css('color', 'inherit');
   $(event.target).css('color', 'yellow');
