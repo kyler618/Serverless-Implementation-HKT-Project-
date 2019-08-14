@@ -23,6 +23,7 @@
       height:40px;
     }
 
+
     table td{
       padding-left: 8px;
     }
@@ -74,15 +75,24 @@
       outline: none;
     }
 
-    #selector{
+    #toolbar button{
+      font-size:22px;
+    }
+
+    #toolbar #selector{
       display: none;
     }
-    #showAll{
+    #toolbar #showAll{
       font-size: 16px;
     }
-    #pager{
+    #toolbar #pager{
       width: fit-content;
       vertical-align: bottom;
+      display:inline-block;
+    }
+    #toolbar #searchBar{
+      display:inline-block;
+      width:unset;
     }
 
     #modal .w3-modal-content{
@@ -157,7 +167,7 @@
       </select>
     </div>
   </div>
-  <div>
+  <div id="toolbar">
     Show
     <select id="pagerSize" class="custom-select" style="width:unset">
       <option value=10>10</option>
@@ -166,16 +176,17 @@
     </select>
     entries
     <input id="showAll" type="checkbox" checked data-toggle="toggle" data-on="All" data-off="Portion" data-offstyle="primary">
-    <div id="pager" class="w3-bar w3-border w3-round" style="display:inline-block">
+    <div id="pager" class="w3-bar w3-border w3-round">
       <a href="#" class="w3-bar-item"><i class="fa fa-step-backward" aria-hidden="true"></i></a>
       <a href="#" class="w3-bar-item"><i class="fa fa-step-forward" aria-hidden="true"></i></a>
     </div>
-    <label for="searchBar" class="w3-right">Search : <input type="text" id="searchBar" class="search form-control" style="display:inline-block;width:unset"></label>
-    <button id="cancelEdit" class="editMode w3-right" style="font-size:22px;"><i class="fa fa-undo"></i></button>
-    <button id="confirmUpdate" class="editMode w3-right" style="font-size:22px;"><i class="fa fa-floppy-o"></i></button>
-    <button id="updateTable" class="readMode w3-right" style="font-size:22px;"><i class="fa fa-refresh"></i></button>
-    <button id="editTable" class="readMode w3-right" style="font-size:22px;"><i class="fa fa-pencil"></i></button>
-    <button id="addItem" class="readMode w3-right" style="font-size:22px;"><i class="fa fa-plus"></i></button>
+    <button id="resetSearchBar" class="w3-right"><i class="fa fa-eraser"></i></button>
+    <label for="searchBar" class="w3-right">Search : <input type="text" id="searchBar" class="search form-control"></label>
+    <button id="cancelEdit" class="editMode w3-right"><i class="fa fa-undo"></i></button>
+    <button id="confirmUpdate" class="editMode w3-right"><i class="fa fa-floppy-o"></i></button>
+    <button id="updateTable" class="readMode w3-right"><i class="fa fa-refresh"></i></button>
+    <button id="editTable" class="readMode w3-right"><i class="fa fa-pencil"></i></button>
+    <button id="addItem" class="readMode w3-right"><i class="fa fa-plus"></i></button>
   </div>
   <div id="table">
     <table>
