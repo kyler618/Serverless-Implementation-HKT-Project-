@@ -66,7 +66,7 @@ Users.authToken.then( token => {
     let user = jwt_decode(token);
     data_getRecord = {operation: "getMaintenanceRecord", table: "Maintenance", target:user['cognito:username']};
     success_getRecord = handleResponse;
-    const httpRequest = {
+    var httpRequest = {
       method: 'POST',
       url: _config.api.invokeUrl +'/field-engineer',
       headers: {Authorization: token},
