@@ -123,6 +123,7 @@ var Users = window.Users || {};
           $('#form').show();
           $('#edit').show().click(modal.edit);
           $('.maintain').show().click(modal.maintain);
+          $('#remove').show().click(modal.remove);
           $('#quit').unbind();
           $('#quit').click(modal.quit);
           $('#maintain-Container').hide();
@@ -133,14 +134,16 @@ var Users = window.Users || {};
           $('#undo').unbind().hide();
           modal.edit = null;
           modal.maintain = null;
+          modal.remvoe = null;
           modal.quit = null;
         });
         $('#quit').unbind();
         $('#quit').click( () => {
-          modal.show_Modal = null;
-          modal.edit = null;
-          modal.maintain = null;
-          modal.quit = null;
+          delete modal;
+          // modal.show_Modal = null;
+          // modal.edit = null;
+          // modal.maintain = null;
+          // modal.quit = null;
           $('#form').show().empty();
           $('#edit').show();
           $('.maintain').show();
@@ -799,6 +802,7 @@ var Users = window.Users || {};
         function handleResponse(results){
           modal.edit = edit;
           modal.maintain = maintain;
+          modal.remove = remove;
           modal.quit = quit;
           if(results.Items.length!=0){
             console.log('user_Identity_listUsers');
