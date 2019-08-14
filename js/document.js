@@ -288,6 +288,7 @@ function objectOps(){
     objectOps.handle_createFolder = handle_createFolder;
     objectOps.cut = cut;
     objectOps.paste = paste;
+    objectOps.remove = remove;
     objectOps.rename = rename;
     objectOps.clear = pushedKeys_Clear;
     objectOps.dropDown = dropDown;
