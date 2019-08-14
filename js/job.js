@@ -72,7 +72,7 @@ Users.authToken.then( token => {
       url: _config.api.invokeUrl +'/field-engineer',
       headers: {Authorization: token},
       contentType: 'application/json',
-      data : JSON.stringify(data_getRecord),
+      data: JSON.stringify(data_getRecord),
       async: true,
       success: success_getRecord,
       error: (jqXHR, textStatus, errorThrown) => {
