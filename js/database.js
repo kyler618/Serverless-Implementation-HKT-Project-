@@ -357,7 +357,7 @@ var Users = window.Users || {};
         $('#save').hide().unbind();
         $('#quit').unbind();
       });
-      const attrs = constantAttributes.concat(otherAttributes);
+      // const attrs = constantAttributes.concat(otherAttributes);
       const form = constantAttributes.map( attr => {
         let field = createFormInput( null, attr, true);
         let value = createFormInput( attr, null, false);
