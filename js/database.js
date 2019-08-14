@@ -5,7 +5,6 @@ var Users = window.Users || {};
   selector = [];
   attributes = [];
   selectFields = [];
-  // constantAttributes = [];
   _searchItem = null;
   httpRequest = {
     method: 'POST',
@@ -29,16 +28,9 @@ var Users = window.Users || {};
         'Billed Customer Contact',
         'Enduser Address for Reference'
       ]
-      // constantAttributes.push('Tenant ID Number');
-      // selectFields.push(
-      //   'Billed Customer Name',
-      //   'Billed Customer Contact',
-      //   'Enduser Address for Reference'
-      // );
       break;
     case "Hardware":
       constantAttributes = ['Sensor ID'];
-      // constantAttributes.push('Sensor ID');
       selectFields.push('Enduser Name', 'Physical Site Address', 'Device Type');
       constantAttributes = constantAttributes.concat(selectFields);
       $('#selector').show();
@@ -809,6 +801,7 @@ var Users = window.Users || {};
           modal.maintain = maintain;
           modal.quit = quit;
           if(results.Items.length!=0){
+            console.log('user_Identity_listUsers');
             user_Identity.listUsers(id, results.Items[0]);
           }
           else{
