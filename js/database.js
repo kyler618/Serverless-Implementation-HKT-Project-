@@ -356,18 +356,19 @@ var Users = window.Users || {};
       });
       let attrs = constantAttributes.concat(otherAttributes);
       const form = attrs.map( attr => {
-        let item = [];
+        // let item = [];
         let field = createFormInput( null, attr, true);
         let value = createFormInput( attr, null, false);
         field.classList.add('input-group-text');
         value.classList.add('form-control');
-        item.push(field.outerHTML, value.outerHTML);
+        // item.push(field.outerHTML, value.outerHTML);
         // if(constantAttribute != constantAttributes[0]){
         //   item.push(createRemoveButton());
         // }
         return getHtml([
           "<p>",
-          getHtml(item),
+          field.outerHTML,
+          value.outerHTML,
           "</p>"
         ]);
       });
