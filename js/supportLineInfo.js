@@ -20,7 +20,6 @@ Users.authToken.then((token) => {
         alert('An error occured:\n' + jqXHR.responseText);
       }
     };
-    console.log(httpRequest);
     $.ajax(httpRequest);
   } else {
     window.location.href = '/signin.html';
@@ -30,14 +29,28 @@ Users.authToken.then((token) => {
   });
 
 function list(results){
-  info = results.Items;
-  console.log(info);
-  // (results.endUser.Items).forEach(result => {
-  //   const option = document.createElement('option');
-  //   option.appendChild( document.createTextNode(result['Billed Customer Name']) );
-  //   option.value = result['Tenant ID Number'];
-  //   $('#selector select').append(option);
-  // });
+  console.log(results.Items);
+  let content = (results.Items).map(result => {
+    return getHtml([
+      '<div>',
+        '<h1>',
+          result.['Contact No.'],
+        '</h1>',
+        '<h2>',
+          result.['Email Address'],
+        '</h2>',
+        '<h2>',
+          result.['Product'],
+        '</h2>',
+      '</div>',
+    ]);
+
+    // const option = document.createElement('option');
+    // option.appendChild( document.createTextNode(result['Billed Customer Name']) );
+    // option.value = result['Tenant ID Number'];
+    // $('#selector select').append(option);
+  });
+  $('#content').html(content);
 }
 
 function select_EndUser_Change(event){
