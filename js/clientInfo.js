@@ -1,5 +1,4 @@
 var Users = window.Users || {};
-var info;
 if (!_config.api.invokeUrl) {
   $('#noApiMessage').show();
 }
