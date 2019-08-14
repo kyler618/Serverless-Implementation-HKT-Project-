@@ -158,7 +158,7 @@ var Users = window.Users || {};
         });
         $('#quit').unbind();
         $('#quit').click( () => {
-          delete modal;
+          modal = null;
           $('#form').show().empty();
           $('#undo').unbind().hide();
           $('#maintain-Container').hide();
@@ -849,7 +849,7 @@ var Users = window.Users || {};
         $('#modal .form-control').val('');
         $('#maintain-select').empty();
         $('#quit').unbind();
-        delete modal;
+        modal = null;
         // modal.show_Modal = null;
         // modal.remove_Input = null;
       }
