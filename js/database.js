@@ -141,8 +141,6 @@ var Users = window.Users || {};
         $('#quit').click( () => {
           delete modal;
           $('#form').show().empty();
-          // $('#edit').show();
-          // $('.maintain').show();
           $('#undo').unbind().hide();
           $('#maintain-Container').hide();
           $('#maintain-confirm').unbind().hide();
