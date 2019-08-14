@@ -117,7 +117,7 @@ var Users = window.Users || {};
         $('#form').hide();
         $('#edit').hide().unbind();
         $('#remove').hide().unbind();
-        $('.maintain').hide().unbind();
+        $('.maintain').hide();
         $('#maintain-Container').show();
         $('#undo').show().click( () => {
           $('#form').show();
@@ -808,6 +808,7 @@ var Users = window.Users || {};
             user_Identity.listUsers(id);
           }
         }
+        $('.maintain').unbind();
         const data = {operation: "scanMaintenanceRecord", target: id};
         request(data, handleResponse, 'Maintenance');
       }
