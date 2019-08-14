@@ -165,9 +165,10 @@ function card(){
         if( !changed && deleteItem.length==0){
           return $('#undo').click();
         }
-        let check = records.every( item => {
-          return item[constantAttributes[0]] != items[constantAttributes[0]];
-        });
+        // check there is no duplicate sensor Id, but need to get all sensor id first...
+        // let check = records.every( item => {
+        //   return item['Sensor ID'] != items['Sensor ID'];
+        // });
         if(!check){
           alert("Sensor ID Duplicates with Existing Items");
           return;
