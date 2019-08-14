@@ -180,6 +180,18 @@ var Users = window.Users || {};
         });
 
         let options = users.map(user => {
+          let option = '<option value=\'' + user + '\'';
+          if(oldRecord!==undefined && user==oldRecord.field_Engineer){
+            option += ' selected';
+            show_Maintain_Cancel_Button(oldRecord.id);
+          }
+          option += '>';
+          return getHtml([
+            option,
+            user,
+            '</option>'
+          ]);
+
           const option = document.createElement('option');
           option.appendChild( document.createTextNode(user) );
           option.value = user;
@@ -191,7 +203,7 @@ var Users = window.Users || {};
           return option.outerHTML;
         });
         console.log(getHtml(options));
-        $('#maintain-select').html(getHtml(options));
+        // $('#maintain-select').html(getHtml(options));
 
       });
     }
