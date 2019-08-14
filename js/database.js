@@ -218,7 +218,7 @@ var Users = window.Users || {};
       }
       searchItem();
     }
-    $("#table").bind("keypress", event => {
+    $("#modal").bind("keypress", event => {
       if(event.keyCode === 13)
       {
         event.preventDefault();
