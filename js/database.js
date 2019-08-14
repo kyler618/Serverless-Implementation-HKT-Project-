@@ -306,7 +306,7 @@ var Users = window.Users || {};
           createRemoveButton()
         ]));
         $('#form').append(p);
-        $('#modal .temporary button.edit').show();
+        $('#modal .temporary button').show();
       });
       $('#save').show().click( event => {
         function handleResponse(results){
