@@ -138,7 +138,7 @@ function uploadOps(){
   function finalize(){
     pushedItems = null;
     counter = null;
-    uploadOps = null;
+    delete uploadOps;
     document.getElementById('dropDiv').removeEventListener('dragover', dragHover);
     document.getElementById('dropDiv').removeEventListener('dragleave', dragHover);
     document.getElementById('dropDiv').removeEventListener('drop', drop_Handler);
