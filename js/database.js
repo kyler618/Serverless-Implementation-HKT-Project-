@@ -326,11 +326,11 @@ var Users = window.Users || {};
           const attribute = input[x++];
           const record = input[x];
           console.log($(input[x]));
-          if(attribute.value==""||record.value==""){
-            // items.incompleteError = x-1;
-            alert("Incompleted Error");
-            return;
-          }
+          // if(attribute.value==""||record.value==""){
+          //   // items.incompleteError = x-1;
+          //   alert("Incompleted Error");
+          //   return;
+          // }
           if(attributes.includes(attribute.value)){
             // items.DuplicateError = x-1;
             alert("Duplicate Error");
