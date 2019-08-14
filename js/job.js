@@ -20,7 +20,6 @@ Users.authToken.then( token => {
       }
       function createCardContent(id, start_time){
         let record = results.records.find(item => item.id == id);
-        console.log(results);
         if(!record) return;
         return getHtml([
           '<div class="card-content">',
@@ -45,7 +44,6 @@ Users.authToken.then( token => {
         if(current_Job.end_time === undefined){
           let $cardHeader = createCardHeader(current_Job.sensor_ID);
           let $cardContent = createCardContent(current_Job.inventory_ID, current_Job.start_time);
-          console.log($cardContent);
           if(!$cardContent) return;
           return createCard(current_Job.inventory_ID, $cardHeader, $cardContent);
         }
