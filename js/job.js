@@ -232,10 +232,16 @@ function card(){
     let item = records.find(record => {
       return record.id == id
     });
+    $("#form").bind("keypress", event => {
+      if(event.keyCode === 13){
+        event.preventDefault();
+      }
+    });
     $('#card').show();
     $('#edit').click(edit);
     $('#complete').click(complete);
     $('#quit').click( () => {
+      $("#form").unbind();
       $('#edit').unbind().show();
       $('#complete').unbind().show();
       $('#card .edit').unbind().hide();
