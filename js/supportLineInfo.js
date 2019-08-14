@@ -50,7 +50,7 @@ function list(results){
     // option.value = result['Tenant ID Number'];
     // $('#selector select').append(option);
   });
-  $('#content').html(content);
+  $('#content').html(getHtml(content));
 }
 
 function select_EndUser_Change(event){
