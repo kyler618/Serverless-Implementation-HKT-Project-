@@ -189,7 +189,6 @@ var Users = window.Users || {};
             show_Maintain_Cancel_Button(oldRecord.id);
           }
         });
-        $('#maintain-select').append(option);
 
       });
     }
