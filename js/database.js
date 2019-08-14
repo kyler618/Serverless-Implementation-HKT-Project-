@@ -295,6 +295,7 @@ var Users = window.Users || {};
       $('#modal').show();
       $('#add').show().click( () => {
         const p = document.createElement("P");
+        p.classList.add('temporary');
         const field = createFormInput( null, null, false);
         const value = createFormInput( null, null, false);
         field.classList.add('input-group-text');
@@ -305,6 +306,7 @@ var Users = window.Users || {};
           createRemoveButton()
         ]));
         $('#form').append(p);
+        $('#modal .temporary button.edit').show();
       });
       $('#save').show().click( event => {
         function handleResponse(results){
@@ -354,17 +356,12 @@ var Users = window.Users || {};
         $('#save').hide().unbind();
         $('#quit').unbind();
       });
-      let attrs = constantAttributes.concat(otherAttributes);
+      const attrs = constantAttributes.concat(otherAttributes);
       const form = attrs.map( attr => {
-        // let item = [];
         let field = createFormInput( null, attr, true);
         let value = createFormInput( attr, null, false);
         field.classList.add('input-group-text');
         value.classList.add('form-control');
-        // item.push(field.outerHTML, value.outerHTML);
-        // if(constantAttribute != constantAttributes[0]){
-        //   item.push(createRemoveButton());
-        // }
         return getHtml([
           "<p>",
           field.outerHTML,
