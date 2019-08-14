@@ -20,7 +20,7 @@ Users.authToken.then( token => {
       }
       function createCardContent(id, start_time){
         let record = results.records.find(item => item.id == id);
-        console.log(record);
+        console.log(results);
         return getHtml([
           '<div class="card-content">',
             '<div class="card-body">',
