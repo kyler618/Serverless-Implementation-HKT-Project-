@@ -120,7 +120,6 @@ function card(){
       });
       $('#save').click( () => {
         function handleResponse(results){
-          console.log(results);
           if(results=="ok"){
             let index = records.indexOf(item);
             items.id = id;
@@ -196,7 +195,6 @@ function card(){
             alert('An error occured:\n' + jqXHR.responseText);
           }
         };
-        console.log(request);
         $.ajax(request);
       });
       $('#card .form-control').removeAttr('readonly');
