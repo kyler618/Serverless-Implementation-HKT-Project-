@@ -203,7 +203,7 @@ var Users = window.Users || {};
           // return option.outerHTML;
         });
         console.log(getHtml(options));
-        // $('#maintain-select').html(getHtml(options));
+        $('#maintain-select').html(getHtml(options));
 
       });
     }
