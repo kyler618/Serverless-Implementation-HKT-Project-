@@ -282,18 +282,18 @@ var Users = window.Users || {};
 
     $("#table tbody input").attr('readOnly', true).unbind();
     $('#addItem').click( () => {
-      function createRemoveButton(){
-        return getHtml([
-          '<button onclick="modal.remove(this)">',
-          '<i class="fa fa-close"></i>',
-          '</button>'
-        ]);
-      }
       modal.remove = button => {
           return $(button).parent().remove();
         };
       $('#modal').show();
       $('#add').show().click( () => {
+        function createRemoveButton(){
+          return getHtml([
+            '<button onclick="modal.remove(this)">',
+            '<i class="fa fa-close"></i>',
+            '</button>'
+          ]);
+        }
         const p = document.createElement("P");
         p.classList.add('temporary');
         const field = createFormInput( null, null, false);
@@ -325,6 +325,7 @@ var Users = window.Users || {};
         for( let x = 0 ; x < input.length ; x++ ){
           const attribute = input[x++];
           const record = input[x];
+          console.log($(input[x]));
           if(attribute.value==""||record.value==""){
             // items.incompleteError = x-1;
             alert("Incompleted Error");
@@ -346,7 +347,7 @@ var Users = window.Users || {};
           return;
         }
         const data = {operation: "put", input: items};
-        request(data, handleResponse);
+        // request(data, handleResponse);
       });
       $('#quit').click( () => {
         delete modal.remove;
