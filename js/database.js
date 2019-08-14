@@ -248,7 +248,8 @@ var Users = window.Users || {};
       pagination.case_changeSize(this.value);
     })
     $('#resetSearchBar').click( () => {
-      
+      $('#searchBar').val('');
+      searchItem();
     });
 
     handleUpdateTable();
