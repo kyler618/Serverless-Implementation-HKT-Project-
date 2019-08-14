@@ -354,16 +354,17 @@ var Users = window.Users || {};
         $('#save').hide().unbind();
         $('#quit').unbind();
       });
-      const form = constantAttributes.map( constantAttribute => {
+      let attrs = constantAttributes.concat(otherAttributes);
+      const form = attrs.map( attr => {
         let item = [];
-        let field = createFormInput( null, constantAttribute, true);
-        let value = createFormInput( constantAttribute, null, false);
+        let field = createFormInput( null, attr, true);
+        let value = createFormInput( attr, null, false);
         field.classList.add('input-group-text');
         value.classList.add('form-control');
         item.push(field.outerHTML, value.outerHTML);
-        if(constantAttribute != constantAttributes[0]){
-          item.push(createRemoveButton());
-        }
+        // if(constantAttribute != constantAttributes[0]){
+        //   item.push(createRemoveButton());
+        // }
         return getHtml([
           "<p>",
           getHtml(item),
