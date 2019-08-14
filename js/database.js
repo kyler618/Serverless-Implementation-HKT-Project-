@@ -179,31 +179,17 @@ var Users = window.Users || {};
           request(data, handleResponse, 'Maintenance');
         });
 
-        let options = users.map(user => {
-          let option = '<option value=\'' + user + '\'';
+        users.forEach(user => {
+          const option = document.createElement('option');
+          option.appendChild( document.createTextNode(user) );
+          option.value = user;
+          $('#maintain-select').append(option);
           if(oldRecord!==undefined && user==oldRecord.field_Engineer){
-            option += ' selected';
+            option.selected = true;
             show_Maintain_Cancel_Button(oldRecord.id);
           }
-          option += '>';
-          return getHtml([
-            option,
-            user,
-            '</option>'
-          ]);
-
-          // const option = document.createElement('option');
-          // option.appendChild( document.createTextNode(user) );
-          // option.value = user;
-          // // $('#maintain-select').append(option);
-          // if(oldRecord!==undefined && user==oldRecord.field_Engineer){
-          //   option.selected = true;
-          //   show_Maintain_Cancel_Button(oldRecord.id);
-          // }
-          // return option.outerHTML;
         });
-        console.log(getHtml(options));
-        $('#maintain-select').html(getHtml(options));
+        $('#maintain-select').append(option);
 
       });
     }
