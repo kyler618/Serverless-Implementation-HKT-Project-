@@ -19,8 +19,27 @@
       max-height: 580px;
       overflow: auto;
     }
+    #selector{
+      display: none;
+    }
     .btn-primary{
       height:40px;
+    }
+
+    #toolbar button{
+      font-size:22px;
+    }
+    #toolbar #showAll{
+      font-size: 16px;
+    }
+    #toolbar #pager{
+      width: fit-content;
+      vertical-align: bottom;
+      display:inline-block;
+    }
+    #toolbar #searchBar{
+      display:inline-block;
+      width:unset;
     }
 
     table td{
@@ -72,25 +91,6 @@
     }
     tbody tr input:focus{
       outline: none;
-    }
-
-    #toolbar button{
-      font-size:22px;
-    }
-    #toolbar #selector{
-      display: none;
-    }
-    #toolbar #showAll{
-      font-size: 16px;
-    }
-    #toolbar #pager{
-      width: fit-content;
-      vertical-align: bottom;
-      display:inline-block;
-    }
-    #toolbar #searchBar{
-      display:inline-block;
-      width:unset;
     }
 
     #modal .w3-modal-content{
