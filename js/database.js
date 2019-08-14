@@ -358,7 +358,7 @@ var Users = window.Users || {};
         $('#quit').unbind();
       });
       const attrs = constantAttributes.concat(otherAttributes);
-      const form = attrs.map( attr => {
+      const form = constantAttributes.map( attr => {
         let field = createFormInput( null, attr, true);
         let value = createFormInput( attr, null, false);
         field.classList.add('input-group-text');
@@ -370,6 +370,18 @@ var Users = window.Users || {};
           "</p>"
         ]);
       });
+      // const form = attrs.map( attr => {
+      //   let field = createFormInput( null, attr, true);
+      //   let value = createFormInput( attr, null, false);
+      //   field.classList.add('input-group-text');
+      //   value.classList.add('form-control');
+      //   return getHtml([
+      //     "<p>",
+      //     field.outerHTML,
+      //     value.outerHTML,
+      //     "</p>"
+      //   ]);
+      // });
       $('#form').html(form);
     } );
     $('#editTable').click( () => {
