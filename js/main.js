@@ -7,8 +7,8 @@ var openOnce = false;
       $(function onDocReady() {
         $('#Menu-bar').on( "click", "a", itemClick);
         let path = window.location.href;
-        path = path.slice(path.lastIndexOf("#") + 1, path.length);
-        if( path != "https://itletsgo.github.io/main.html" ){
+        if( path.lastIndexOf("#") != -1 ){
+          path = path.slice(path.lastIndexOf("#") + 1, path.length);
           switch (identityCode){
             case 'DevfD3lWf':
               $('#client-information').show();
@@ -23,15 +23,15 @@ var openOnce = false;
         }
         else{
           switch (identityCode){
-          case 'DevfD3lWf':
-            $('#client-information').show();
-            $('#support-Line-information').show();
-            $('#customer-and-software').click();
-            break;
-          case 'p7IxZwAdF':
-            $('#job').show().click();
-            break;
-        }
+            case 'DevfD3lWf':
+              $('#client-information').show();
+              $('#support-Line-information').show();
+              $('#customer-and-software').click();
+              break;
+            case 'p7IxZwAdF':
+              $('#job').show().click();
+              break;
+          }
         }
       });
     }
@@ -40,12 +40,13 @@ var openOnce = false;
     }
   }).catch((error) => {
     console.log(error);
-    window.location.href = '/signin.html';
+    Users.signOut();
+    window.location.href = '/index.html';
   });
 
 function itemClick(event){
   if(typeof(objectOps)!== "undefined"){
-    objectOps = null;
+    delete objectOps;
   }
   $('#Menu-bar a').css('color', 'inherit');
   $(event.target).css('color', 'yellow');
